@@ -1,103 +1,153 @@
-import { Navigate, Route, Routes } from "react-router-dom";
-import AppShell from "./layout/AppShell";
+import React, { useEffect } from "react";
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
 
+// Public pages
 import HomePage from "./pages/public/HomePage";
 import AboutPage from "./pages/public/AboutPage";
 import ContactPage from "./pages/public/ContactPage";
 import CoursesPage from "./pages/public/CoursesPage";
 import CourseDetailsPage from "./pages/public/CourseDetailsPage";
-import ServicesPage from "./pages/public/ServicesPage";
-import ConsultingPage from "./pages/public/ConsultingPage";
-import FAQsPage from "./pages/public/FAQsPage";
 import MarketplacePage from "./pages/public/MarketplacePage";
 import RecruiterPage from "./pages/public/RecruiterPage";
-import PrivacyPolicyPage from "./pages/public/PrivacyPolicyPage";
+import ServicesPage from "./pages/public/ServicesPage";
+import PolicyPage from "./pages/public/PolicyPage";
+import CheckoutPage from "./pages/public/CheckoutPage";
+import PaymentPage from "./pages/public/PaymentPage";
 
+// Auth pages
 import LoginPage from "./pages/auth/LoginPage";
 import SignupPage from "./pages/auth/SignupPage";
 import AdminLoginPage from "./pages/auth/AdminLoginPage";
-import AdminSignupPage from "./pages/auth/AdminSignupPage";
 
-import CheckoutPage from "./pages/payments/CheckoutPage";
-import PaymentPage from "./pages/payments/PaymentPage";
+// Dashboards (under dashboard folder)
+import AdminDashboard from "./pages/dashboard/admin/AdminDashboard";
+import TeacherDashboard from "./pages/dashboard/teacher/TeacherDashboard";
+import FacilitatorDashboard from "./pages/dashboard/facilitator/FacilitatorDashboard";
 
-import AdminDashboardPage from "./pages/dashboards/AdminDashboardPage";
-import TeacherDashboardPage from "./pages/dashboards/TeacherDashboardPage";
-import FacilitatorDashboardPage from "./pages/dashboards/FacilitatorDashboardPage";
+/**
+ * Scroll to top on route change (professional UX)
+ */
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, [pathname]);
+  return null;
+}
 
-import LiveClassPage from "./pages/app/LiveClassPage";
-import AnnouncementsPage from "./pages/app/AnnouncementsPage";
-import NotificationsPage from "./pages/app/NotificationsPage";
-import MessagingPage from "./pages/app/MessagingPage";
-import SettingsPage from "./pages/app/SettingsPage";
-import CertificatesPage from "./pages/app/CertificatesPage";
-import EarningsPage from "./pages/app/EarningsPage";
-import UsersReportPage from "./pages/app/UsersReportPage";
-import UserProfilePage from "./pages/app/UserProfilePage";
-import AdminProfilePage from "./pages/app/AdminProfilePage";
-import ContactAdminPage from "./pages/app/ContactAdminPage";
-import CourseMarketplacePage from "./pages/app/CourseMarketplacePage";
-import AttendancePage from "./pages/app/AttendancePage";
-import AssignmentsPage from "./pages/app/AssignmentsPage";
-import SupportCenterPage from "./pages/app/SupportCenterPage";
-import VerificationPage from "./pages/app/VerificationPage";
-import TermsPage from "./pages/public/TermsPage";
+/**
+ * Backend-ready protected route (replace with real auth later)
+ * - Example: check token from localStorage, cookie, or auth context.
+ */
+function ProtectedRoute({
+  children,
+  role
+}: {
+  children: React.ReactNode;
+  role?: "admin" | "teacher" | "facilitator";
+}) {
+  // TODO: replace with real auth
+  const isAuthed = true; // e.g. !!localStorage.getItem("token")
+  const userRole: "admin" | "teacher" | "facilitator" = "admin"; // e.g. from decoded token / API
 
+  if (!isAuthed) return <Navigate to="/login" replace />;
+  if (role && userRole !== role) return <Navigate to="/unauthorized" replace />;
+
+  return <>{children}</>;
+}
+
+function NotFound() {
+  return (
+    <div style={{ padding: 32, fontFamily: "Arial" }}>
+      <h2>404 — Page Not Found</h2>
+      <p>The page you are looking for does not exist.</p>
+      <a href="/" style={{ fontWeight: 800 }}>Go back home</a>
+    </div>
+  );
+}
+
+function Unauthorized() {
+  return (
+    <div style={{ padding: 32, fontFamily: "Arial" }}>
+      <h2>Unauthorized</h2>
+      <p>You don’t have access to this page.</p>
+      <a href="/" style={{ fontWeight: 800 }}>Go back home</a>
+    </div>
+  );
+}
 
 export default function App() {
   return (
-    <Routes>
-      <Route element={<AppShell />}>
-        {/* Public */}
+    <BrowserRouter>
+      <ScrollToTop />
+
+      <Routes>
+        {/* ===================== PUBLIC ROUTES ===================== */}
         <Route path="/" element={<HomePage />} />
+        <Route path="/home" element={<Navigate to="/" replace />} />
+
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+
         <Route path="/courses" element={<CoursesPage />} />
+        {/* If your course details uses an id/slug, keep this dynamic route */}
         <Route path="/courses/:courseId" element={<CourseDetailsPage />} />
-        <Route path="/services" element={<ServicesPage />} />
-        <Route path="/consulting" element={<ConsultingPage />} />
-        <Route path="/faqs" element={<FAQsPage />} />
+        {/* Optional static fallback if you already made CourseDetailsPage without params */}
+        <Route path="/course-details" element={<CourseDetailsPage />} />
+
         <Route path="/marketplace" element={<MarketplacePage />} />
         <Route path="/recruiter" element={<RecruiterPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/privacy" element={<PrivacyPolicyPage />} />
+        <Route path="/services" element={<ServicesPage />} />
 
-        {/* Auth */}
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage />} />
-        <Route path="/admin/login" element={<AdminLoginPage />} />
-        <Route path="/admin/signup" element={<AdminSignupPage />} />
+        <Route path="/policy" element={<PolicyPage />} />
+        {/* if you later create these pages, you can replace with real components */}
+        <Route path="/terms" element={<PolicyPage />} />
+        <Route path="/cookie-policy" element={<PolicyPage />} />
 
-        {/* Payments */}
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/payment" element={<PaymentPage />} />
 
-        {/* Dashboards */}
-        <Route path="/dashboard/admin" element={<AdminDashboardPage />} />
-        <Route path="/dashboard/teacher" element={<TeacherDashboardPage />} />
-        <Route path="/dashboard/facilitator" element={<FacilitatorDashboardPage />} />
+        {/* ===================== AUTH ROUTES ===================== */}
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
 
-        {/* App */}
-        <Route path="/app/live-class" element={<LiveClassPage />} />
-        <Route path="/app/announcements" element={<AnnouncementsPage />} />
-        <Route path="/app/notifications" element={<NotificationsPage />} />
-        <Route path="/app/messaging" element={<MessagingPage />} />
-        <Route path="/app/settings" element={<SettingsPage />} />
-        <Route path="/app/certificates" element={<CertificatesPage />} />
-        <Route path="/app/earnings" element={<EarningsPage />} />
-        <Route path="/app/users-report" element={<UsersReportPage />} />
-        <Route path="/app/profile" element={<UserProfilePage />} />
-        <Route path="/app/admin-profile" element={<AdminProfilePage />} />
-        <Route path="/app/contact-admin" element={<ContactAdminPage />} />
-        <Route path="/app/course-marketplace" element={<CourseMarketplacePage />} />
-<Route path="/app/attendance" element={<AttendancePage />} />
-<Route path="/app/assignments" element={<AssignmentsPage />} />
-<Route path="/app/support" element={<SupportCenterPage />} />
-<Route path="/verify" element={<VerificationPage />} />
-<Route path="/terms" element={<TermsPage />} />
+        {/* Admin auth */}
+        <Route path="/admin/login" element={<AdminLoginPage />} />
 
-        <Route path="/home" element={<Navigate to="/" replace />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Route>
-    </Routes>
+        {/* ===================== DASHBOARD ROUTES ===================== */}
+        <Route
+          path="/dashboard/admin"
+          element={
+            <ProtectedRoute role="admin">
+              <AdminDashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/dashboard/teacher"
+          element={
+            <ProtectedRoute role="teacher">
+              <TeacherDashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/dashboard/facilitator"
+          element={
+            <ProtectedRoute role="facilitator">
+              <FacilitatorDashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* Helpers */}
+        <Route path="/unauthorized" element={<Unauthorized />} />
+
+        {/* ===================== FALLBACK ===================== */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
