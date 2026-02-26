@@ -1,0 +1,60 @@
+.policy-container{
+font-family:Arial, sans-serif;
+}
+
+.policy-hero{
+background:linear-gradient(135deg,#2246c7,#4d6fff);
+color:white;
+padding:60px;
+text-align:center;
+}
+
+.nigeria-time{
+margin-top:10px;
+font-size:14px;
+font-weight:bold;
+}
+
+.policy-content{
+padding:40px;
+max-width:1100px;
+margin:auto;
+}
+
+.policy-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+margin-top:30px;
+}
+
+.policy-grid h3{
+color:#2246c7;
+margin-top:20px;
+}
+
+.policy-grid ul{
+padding-left:20px;
+}
+
+.policy-cta{
+margin-top:40px;
+background:#f4f6ff;
+padding:30px;
+text-align:center;
+border-radius:10px;
+}
+
+.policy-cta a{
+background:#f59e0b;
+padding:12px 20px;
+color:white;
+text-decoration:none;
+border-radius:6px;
+}
+
+@media(max-width:768px){
+.policy-grid{
+grid-template-columns:1fr;
+}
+}

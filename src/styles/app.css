@@ -1,0 +1,104 @@
+.container{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.grid{
+  display: grid;
+  gap: 16px;
+}
+
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.cardHeader{
+  padding: 16px 18px 0 18px;
+}
+
+.cardBody{
+  padding: 16px 18px 18px 18px;
+}
+
+.h1{ font-size: 28px; margin: 0 0 6px 0; letter-spacing: 0.2px; }
+.h2{ font-size: 18px; margin: 0; color: var(--muted); font-weight: 600; }
+.p{ margin: 0; color: var(--muted); line-height: 1.6; }
+
+.badge{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.04);
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.btn{
+  appearance: none;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.06);
+  color: var(--text);
+  padding: 10px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform .08s ease, background .12s ease, border-color .12s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+}
+.btn:hover{
+  background: rgba(255,255,255,0.09);
+  border-color: rgba(255,255,255,0.16);
+}
+.btn:active{ transform: translateY(1px); }
+
+.btnPrimary{
+  border-color: rgba(59,130,246,0.35);
+  background: linear-gradient(180deg, rgba(59,130,246,0.35), rgba(59,130,246,0.20));
+}
+.btnPrimary:hover{
+  border-color: rgba(59,130,246,0.55);
+  background: linear-gradient(180deg, rgba(59,130,246,0.45), rgba(59,130,246,0.24));
+}
+
+.input{
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(10,14,26,0.55);
+  color: var(--text);
+  outline: none;
+}
+.input:focus{
+  border-color: rgba(96,165,250,0.55);
+  box-shadow: 0 0 0 3px rgba(96,165,250,0.18);
+}
+
+.kpiRow{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+@media (max-width: 900px){
+  .kpiRow{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 520px){
+  .kpiRow{ grid-template-columns: 1fr; }
+}
+.kpi{
+  padding: 14px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.04);
+}
+.kpiLabel{ color: var(--muted2); font-size: 12px; }
+.kpiValue{ font-size: 20px; font-weight: 800; margin-top: 6px; }

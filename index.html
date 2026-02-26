@@ -1,0 +1,1114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>STEAM ONE Platform — Home</title>
+  <style>
+    :root{
+      --bg1:#0b2a85;
+      --bg2:#2d7cff;
+      --bg3:#6aa8ff;
+      --card:#ffffff;
+      --ink:#0b1530;
+      --muted:#5a6b8a;
+      --line:rgba(14,35,92,.10);
+      --shadow:0 18px 45px rgba(6,16,40,.18);
+      --radius:18px;
+      --btn:#f59e0b;
+      --btn2:#ffb100;
+      --navH:72px;
+      --max:1180px;
+      --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--font);
+      color:var(--ink);
+      background:
+        radial-gradient(1100px 520px at 15% 5%, rgba(255,255,255,.22), transparent 65%),
+        radial-gradient(980px 520px at 85% 10%, rgba(255,255,255,.14), transparent 60%),
+        linear-gradient(180deg, #0a2a84 0%, #1f59d1 35%, #4a86ff 65%, #edf4ff 100%);
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    button{font-family:inherit}
+
+    /* Layout helpers */
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px;}
+    .pill{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.25);
+      background:rgba(255,255,255,.12);
+      color:#fff;
+      font-weight:600;
+      font-size:12px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 12px 30px rgba(0,0,0,.12);
+    }
+
+    /* Top Nav */
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      height:var(--navH);
+      background: rgba(9,33,102,.58);
+      border-bottom:1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    .topbar .inner{
+      height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px; min-width:220px;
+      color:#fff;
+      font-weight:900; letter-spacing:.2px;
+    }
+    .msMark{
+      width:26px; height:26px; border-radius:6px;
+      display:grid; grid-template-columns:repeat(2,1fr); gap:2px;
+      background:rgba(255,255,255,.12);
+      padding:4px;
+    }
+    .msMark span{border-radius:2px}
+    .msMark span:nth-child(1){background:#F25022}
+    .msMark span:nth-child(2){background:#7FBA00}
+    .msMark span:nth-child(3){background:#00A4EF}
+    .msMark span:nth-child(4){background:#FFB900}
+    .brand small{
+      display:block; font-weight:700; opacity:.85; letter-spacing:0;
+      font-size:11px; margin-top:2px
+    }
+
+    .nav{
+      display:flex; align-items:center; gap:18px;
+      color:#eaf1ff;
+      font-weight:700;
+      font-size:13px;
+    }
+    .nav a{
+      opacity:.9;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid transparent;
+      transition:.15s ease;
+    }
+    .nav a:hover{opacity:1; background:rgba(255,255,255,.10); border-color:rgba(255,255,255,.14)}
+    .nav a.active{background:rgba(255,255,255,.14); border-color:rgba(255,255,255,.18); opacity:1}
+
+    .navRight{
+      display:flex; align-items:center; gap:10px;
+    }
+    .timePill{white-space:nowrap}
+
+    .btn{
+      border:0;
+      cursor:pointer;
+      padding:10px 14px;
+      border-radius:12px;
+      font-weight:900;
+      letter-spacing:.2px;
+      box-shadow: 0 16px 30px rgba(0,0,0,.18);
+      transition: transform .08s ease, filter .12s ease;
+    }
+    .btn:active{transform: translateY(1px)}
+    .btnPrimary{
+      background: linear-gradient(180deg, var(--btn2), var(--btn));
+      color:#1b1b1b;
+    }
+    .btnGhost{
+      background: rgba(255,255,255,.14);
+      border:1px solid rgba(255,255,255,.20);
+      color:#fff;
+      box-shadow:none;
+    }
+    .btn:hover{filter:brightness(1.03)}
+
+    /* HERO */
+    .hero{
+      padding:28px 0 10px;
+      position:relative;
+    }
+    .heroCard{
+      border-radius:28px;
+      border:1px solid rgba(255,255,255,.18);
+      background:
+        radial-gradient(900px 320px at 20% 20%, rgba(255,255,255,.18), transparent 60%),
+        radial-gradient(820px 320px at 80% 10%, rgba(255,255,255,.12), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
+      box-shadow: 0 30px 70px rgba(0,0,0,.22);
+      overflow:hidden;
+    }
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:18px;
+      padding:26px;
+      align-items:center;
+    }
+    .hero h1{
+      margin:0 0 10px;
+      color:#fff;
+      font-size: clamp(26px, 3.2vw, 40px);
+      line-height:1.12;
+      letter-spacing:.2px;
+      text-shadow: 0 12px 35px rgba(0,0,0,.18);
+    }
+    .hero p{
+      margin:0 0 16px;
+      color:rgba(255,255,255,.88);
+      line-height:1.65;
+      max-width: 56ch;
+      font-weight:600;
+      font-size: 14px;
+    }
+    .heroActions{display:flex; gap:10px; flex-wrap:wrap; margin: 12px 0 16px}
+    .standards{
+      display:flex; gap:14px; flex-wrap:wrap; align-items:center;
+      margin-top:10px;
+      color:rgba(255,255,255,.88);
+      font-weight:800;
+      font-size:12px;
+    }
+    .standards .tag{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 10px;
+      border-radius:999px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.18);
+    }
+    .illustration{
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,.16);
+      background:
+        radial-gradient(420px 180px at 50% 20%, rgba(255,255,255,.22), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.03));
+      min-height: 260px;
+      position:relative;
+      overflow:hidden;
+    }
+    .illusBubble{
+      position:absolute; inset:auto;
+      width: 120px; height:120px; border-radius:50%;
+      background: rgba(255,255,255,.12);
+      filter: blur(.2px);
+    }
+    .illusBubble.b1{right:-20px; top:-20px}
+    .illusBubble.b2{left:-30px; bottom:-30px; width:160px; height:160px; background:rgba(255,255,255,.10)}
+    .illusCard{
+      position:absolute;
+      left:16px; top:16px;
+      right:16px; bottom:16px;
+      border-radius:18px;
+      background: rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.14);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:rgba(255,255,255,.9);
+      font-weight:900;
+      text-align:center;
+      padding:16px;
+    }
+    .illusCard span{display:block; font-weight:700; opacity:.9; margin-top:8px; font-size:12px}
+
+    /* SECTION CONTAINERS */
+    .section{
+      padding:18px 0 6px;
+    }
+    .panel{
+      background: rgba(255,255,255,.86);
+      border:1px solid rgba(255,255,255,.9);
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .panelHead{
+      padding:18px 18px 0;
+      text-align:center;
+    }
+    .panelHead h2{
+      margin:0;
+      font-size: clamp(18px, 2.3vw, 26px);
+      letter-spacing:.2px;
+      color:#0b2a85;
+    }
+    .panelHead p{
+      margin:8px auto 0;
+      max-width:72ch;
+      color:var(--muted);
+      font-weight:600;
+      line-height:1.6;
+      font-size:13px;
+    }
+
+    /* Programs cards */
+    .programs{
+      padding:18px;
+    }
+    .cards3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    .programCard{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:20px;
+      box-shadow: 0 14px 34px rgba(0,0,0,.10);
+      overflow:hidden;
+      position:relative;
+    }
+    .programTop{
+      padding:14px 14px 12px;
+      color:#fff;
+      font-weight:900;
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .programTop .ttl{
+      font-size:16px;
+      letter-spacing:.3px;
+    }
+    .programTop .sub{
+      font-size:11px;
+      opacity:.92;
+      font-weight:800;
+      margin-top:2px;
+    }
+    .topBlue{background: linear-gradient(180deg, #1b4ed9, #0b2a85);}
+    .topCyan{background: linear-gradient(180deg, #2c72ff, #1240b7);}
+    .topOrange{background: linear-gradient(180deg, #ffb100, #f59e0b);}
+    .programBody{padding:14px}
+    .checkList{margin:0; padding:0 0 0 18px; color:#334562}
+    .checkList li{margin:8px 0; font-weight:700; font-size:13px}
+    .priceRow{
+      display:flex; align-items:baseline; justify-content:space-between; gap:10px;
+      margin-top:14px;
+      padding-top:12px;
+      border-top:1px dashed rgba(14,35,92,.14);
+    }
+    .price{
+      font-weight:1000;
+      color:#0b2a85;
+      font-size:26px;
+      letter-spacing:.2px;
+    }
+    .price small{font-size:12px; font-weight:800; color:var(--muted)}
+    .access{
+      text-align:right;
+      color:var(--muted);
+      font-weight:800;
+      font-size:11px;
+    }
+    .payBtn{
+      width:100%;
+      margin-top:12px;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid rgba(245,158,11,.35);
+      background: linear-gradient(180deg, #ffb100, #f59e0b);
+      color:#1b1b1b;
+      font-weight:1000;
+      cursor:pointer;
+      box-shadow: 0 14px 22px rgba(245,158,11,.25);
+    }
+
+    /* Enrollment steps */
+    .steps{
+      padding:0 18px 18px;
+    }
+    .stepsBar{
+      background: rgba(13,39,108,.06);
+      border:1px solid rgba(13,39,108,.10);
+      border-radius: 18px;
+      padding:12px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:space-between;
+      align-items:center;
+    }
+    .step{
+      display:flex; align-items:center; gap:10px;
+      min-width: 210px;
+      flex: 1 1 220px;
+    }
+    .stepNum{
+      width:30px; height:30px; border-radius:10px;
+      display:grid; place-items:center;
+      background: linear-gradient(180deg, #2c72ff, #1240b7);
+      color:#fff;
+      font-weight:1000;
+      box-shadow: 0 12px 20px rgba(18,64,183,.25);
+    }
+    .stepTxt{font-weight:900; color:#19325f; font-size:12px}
+    .stepTxt small{display:block; font-weight:800; color:var(--muted); margin-top:2px}
+
+    /* CTA stripe */
+    .ctaStripe{
+      margin: 12px 18px 18px;
+      border-radius: 22px;
+      padding:18px;
+      color:#fff;
+      background:
+        radial-gradient(700px 200px at 20% 0%, rgba(255,255,255,.22), transparent 62%),
+        linear-gradient(180deg, rgba(11,42,133,.95), rgba(23,83,214,.92));
+      border: 1px solid rgba(255,255,255,.18);
+      box-shadow: 0 20px 50px rgba(0,0,0,.22);
+      text-align:center;
+    }
+    .ctaStripe h3{margin:0; font-size:18px; letter-spacing:.2px}
+    .ctaStripe .ctaBtns{display:flex; justify-content:center; gap:10px; margin-top:12px; flex-wrap:wrap}
+
+    /* Marketplace */
+    .market{
+      padding: 0 18px 18px;
+    }
+    .people{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:12px;
+    }
+    .person{
+      background:#fff;
+      border:1px solid rgba(13,39,108,.10);
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow: 0 14px 28px rgba(0,0,0,.10);
+    }
+    .personTop{
+      padding:12px;
+      display:flex; gap:10px; align-items:center;
+      background: linear-gradient(180deg, rgba(44,114,255,.08), rgba(245,158,11,.06));
+      border-bottom:1px solid rgba(13,39,108,.08);
+    }
+    .avatar{
+      width:44px; height:44px; border-radius:14px;
+      background: linear-gradient(180deg, #2c72ff, #0b2a85);
+      display:grid; place-items:center;
+      color:#fff; font-weight:1000;
+      box-shadow: 0 12px 20px rgba(18,64,183,.22);
+      flex:0 0 auto;
+    }
+    .personName{font-weight:1000; color:#0b2a85; font-size:13px}
+    .role{color:var(--muted); font-weight:800; font-size:11px; margin-top:2px}
+    .personBody{padding:12px}
+    .bullet{
+      margin:0; padding:0 0 0 18px;
+      color:#334562;
+      font-weight:800;
+      font-size:11px;
+      line-height:1.6;
+    }
+    .contactBtn{
+      margin-top:12px;
+      width:100%;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid rgba(18,64,183,.18);
+      background: linear-gradient(180deg, #2c72ff, #1240b7);
+      color:#fff;
+      font-weight:1000;
+      cursor:pointer;
+      box-shadow: 0 14px 22px rgba(18,64,183,.22);
+    }
+
+    /* Recruit block */
+    .recruit{
+      margin: 0 18px 18px;
+      border-radius: 22px;
+      padding:16px;
+      background: rgba(13,39,108,.06);
+      border:1px solid rgba(13,39,108,.10);
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:14px;
+      align-items:center;
+    }
+    .recruit h4{margin:0; color:#0b2a85; font-size:16px}
+    .recruit p{margin:8px 0 0; color:var(--muted); font-weight:700; line-height:1.6; font-size:12px}
+    .recruit .mini{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:12px;
+    }
+    .iconTag{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 12px;
+      border-radius:16px;
+      background:#fff;
+      border:1px solid rgba(13,39,108,.10);
+      box-shadow: 0 12px 22px rgba(0,0,0,.08);
+      font-weight:900;
+      color:#0b2a85;
+      font-size:12px;
+    }
+    .icon{
+      width:30px; height:30px; border-radius:12px;
+      display:grid; place-items:center;
+      background: linear-gradient(180deg, #ffb100, #f59e0b);
+      box-shadow: 0 10px 18px rgba(245,158,11,.25);
+    }
+    .recruitArt{
+      border-radius:18px;
+      background:
+        radial-gradient(420px 180px at 60% 20%, rgba(44,114,255,.20), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,.55));
+      border: 1px solid rgba(13,39,108,.10);
+      min-height: 140px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:14px;
+      color:#0b2a85;
+      font-weight:1000;
+    }
+    .recruitArt span{display:block; margin-top:8px; font-weight:800; color:var(--muted); font-size:12px}
+
+    /* Bottom CTA */
+    .bottomCta{
+      margin: 0 18px 18px;
+      border-radius: 22px;
+      padding:18px;
+      color:#fff;
+      background:
+        radial-gradient(700px 220px at 20% 0%, rgba(255,255,255,.20), transparent 60%),
+        linear-gradient(180deg, rgba(11,42,133,.96), rgba(26,98,255,.92));
+      border: 1px solid rgba(255,255,255,.18);
+      box-shadow: 0 20px 50px rgba(0,0,0,.22);
+      text-align:center;
+    }
+    .bottomCta h3{margin:0; font-size:18px; letter-spacing:.2px}
+    .bottomCta p{margin:8px 0 0; opacity:.9; font-weight:700; font-size:12px}
+    .bottomCta .ctaBtns{display:flex; justify-content:center; gap:10px; margin-top:12px; flex-wrap:wrap}
+
+    /* Footer */
+    footer{
+      color:rgba(255,255,255,.9);
+      padding: 18px 0 26px;
+      text-align:center;
+      font-weight:700;
+      font-size:12px;
+    }
+    footer .fine{opacity:.85; font-weight:700}
+    footer .miniBrand{
+      display:inline-flex; align-items:center; gap:8px; margin-top:8px;
+      opacity:.95;
+    }
+
+    /* Modal */
+    .modalOverlay{
+      position:fixed; inset:0;
+      background: rgba(0,0,0,.55);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+      z-index:100;
+    }
+    .modal{
+      width:min(720px, 100%);
+      border-radius: 22px;
+      background: rgba(255,255,255,.95);
+      border:1px solid rgba(255,255,255,.9);
+      box-shadow: 0 30px 80px rgba(0,0,0,.35);
+      overflow:hidden;
+    }
+    .modalHead{
+      padding:14px 16px;
+      background: linear-gradient(180deg, rgba(44,114,255,.10), rgba(245,158,11,.08));
+      border-bottom: 1px solid rgba(13,39,108,.10);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .modalHead strong{color:#0b2a85; font-size:14px}
+    .closeX{
+      border:0; cursor:pointer;
+      width:36px; height:36px; border-radius:12px;
+      background: rgba(13,39,108,.08);
+      color:#0b2a85;
+      font-weight:1000;
+    }
+    .modalBody{padding:16px}
+    .formGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    .field label{
+      display:block;
+      font-size:12px;
+      font-weight:900;
+      color:#24407a;
+      margin-bottom:6px;
+    }
+    .field input, .field textarea{
+      width:100%;
+      border-radius: 12px;
+      border: 1px solid rgba(13,39,108,.14);
+      background:#fff;
+      padding:10px 12px;
+      outline:none;
+      font-weight:700;
+      color:#1d2a4d;
+    }
+    .field input:focus, .field textarea:focus{
+      border-color: rgba(44,114,255,.45);
+      box-shadow: 0 0 0 3px rgba(44,114,255,.14);
+    }
+    .field textarea{grid-column: 1 / -1; min-height: 110px; resize: vertical;}
+    .modalActions{
+      margin-top:12px;
+      display:flex;
+      justify-content:flex-end;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .toast{
+      margin-top:10px;
+      display:none;
+      padding:10px 12px;
+      border-radius: 14px;
+      background: rgba(34,197,94,.12);
+      border: 1px solid rgba(34,197,94,.25);
+      color:#14532d;
+      font-weight:900;
+      font-size:12px;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .heroGrid{grid-template-columns: 1fr; padding:18px}
+      .illustration{min-height: 210px}
+      .cards3{grid-template-columns: 1fr; }
+      .people{grid-template-columns: repeat(2, 1fr);}
+      .recruit{grid-template-columns: 1fr;}
+      .nav{display:none}
+      .brand{min-width:auto}
+    }
+    @media (max-width: 520px){
+      .people{grid-template-columns: 1fr;}
+      .step{min-width: 100%;}
+      .formGrid{grid-template-columns: 1fr;}
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Top Nav -->
+  <header class="topbar">
+    <div class="wrap inner">
+      <a class="brand" href="#home" aria-label="Microsoft Education - STEAM Platform">
+        <div class="msMark" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </div>
+        <div>
+          Microsoft Education
+          <small>STEAM Teacher Certification Platform</small>
+        </div>
+      </a>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="active" href="#home">Home</a>
+        <a href="#courses">Courses</a>
+        <a href="#marketplace">Marketplace</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="#login">Login</a>
+      </nav>
+
+      <div class="navRight">
+        <span class="pill timePill" title="Africa/Lagos">
+          🕒 <span id="ngTime">Loading Nigeria time…</span>
+        </span>
+        <button class="btn btnPrimary" id="enrollTop">Enroll Now</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main id="home" class="hero">
+    <div class="wrap">
+      <section class="heroCard">
+        <div class="heroGrid">
+          <div>
+            <h1>Skilling Teachers Towards<br/>STEAM Excellence</h1>
+            <p>
+              Introductory, Advanced & Expert digital teaching programs for pre-service & in-service teachers worldwide.
+              Built to align with <b>ISTE Standards</b>, <b>UNESCO ICT CFT</b> framework and international <b>PISA</b> standard.
+            </p>
+
+            <div class="heroActions">
+              <button class="btn btnGhost" id="viewPricing">View Pricing</button>
+              <button class="btn btnPrimary" id="enrollNow">Enroll Now</button>
+            </div>
+
+            <div class="standards" aria-label="Standards and research powerhouse">
+              <span class="tag">🟦 Microsoft</span>
+              <span class="tag">📌 ISTE</span>
+              <span class="tag">🏛️ UNESCO ICT CFT</span>
+              <span class="tag">📊 PISA</span>
+            </div>
+          </div>
+
+          <div class="illustration" aria-label="Hero illustration placeholder">
+            <div class="illusBubble b1"></div>
+            <div class="illusBubble b2"></div>
+            <div class="illusCard">
+              Microsoft Education Hero Illustration (Placeholder)
+              <span>Replace this block with your real hero image/illustration.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Programs -->
+  <section id="courses" class="section">
+    <div class="wrap">
+      <div class="panel">
+        <div class="panelHead">
+          <h2>Our STEAM Certification Programs</h2>
+          <p>Choose a level, review requirements, then proceed to secure payment to unlock access and receive login instructions by email.</p>
+        </div>
+
+        <div class="programs">
+          <div class="cards3">
+            <article class="programCard" data-course="STEAM ONE" data-price="599">
+              <div class="programTop topBlue">
+                <div>
+                  <div class="ttl">STEAM ONE</div>
+                  <div class="sub">Introductory Courses</div>
+                </div>
+                <div class="pill">Paid</div>
+              </div>
+              <div class="programBody">
+                <ul class="checkList">
+                  <li>Digital Literacy</li>
+                  <li>Teaching Foundations</li>
+                </ul>
+
+                <div class="priceRow">
+                  <div class="price">$599 <small>/ course</small></div>
+                  <div class="access">Standard Access<br/>+ Basic Resources</div>
+                </div>
+
+                <button class="payBtn jsEnroll">Enroll & Pay</button>
+              </div>
+            </article>
+
+            <article class="programCard" data-course="STEAM TWO" data-price="199">
+              <div class="programTop topCyan">
+                <div>
+                  <div class="ttl">STEAM TWO</div>
+                  <div class="sub">Technology in Teaching</div>
+                </div>
+                <div class="pill">Paid</div>
+              </div>
+              <div class="programBody">
+                <ul class="checkList">
+                  <li>Technology Integration</li>
+                  <li>Digital Teaching Tools</li>
+                </ul>
+
+                <div class="priceRow">
+                  <div class="price">$199 <small>/ course</small></div>
+                  <div class="access">Standard Access<br/>+ Toolkits</div>
+                </div>
+
+                <button class="payBtn jsEnroll">Enroll & Pay</button>
+              </div>
+            </article>
+
+            <article class="programCard" data-course="STEAM THREE" data-price="399">
+              <div class="programTop topOrange">
+                <div>
+                  <div class="ttl">STEAM THREE</div>
+                  <div class="sub">Advanced the Course</div>
+                </div>
+                <div class="pill">Paid</div>
+              </div>
+              <div class="programBody">
+                <ul class="checkList">
+                  <li>Advanced STEAM</li>
+                  <li>Creating Learning Pathways</li>
+                </ul>
+
+                <div class="priceRow">
+                  <div class="price">$399 <small>/ course</small></div>
+                  <div class="access">Advanced Access<br/>+ Mentorship</div>
+                </div>
+
+                <button class="payBtn jsEnroll">Enroll & Pay</button>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="panelHead" style="padding-top:0">
+          <h2 style="margin-top:4px">Simple Enrollment Process</h2>
+        </div>
+
+        <div class="steps">
+          <div class="stepsBar" role="list">
+            <div class="step" role="listitem">
+              <div class="stepNum">1</div>
+              <div class="stepTxt">Choose Course <small>Pick STEAM ONE–THREE</small></div>
+            </div>
+            <div class="step" role="listitem">
+              <div class="stepNum">2</div>
+              <div class="stepTxt">Secure Payment <small>Paystack/Flutterwave/Stripe</small></div>
+            </div>
+            <div class="step" role="listitem">
+              <div class="stepNum">3</div>
+              <div class="stepTxt">Receive Login <small>Email instructions + start date</small></div>
+            </div>
+            <div class="step" role="listitem">
+              <div class="stepNum">4</div>
+              <div class="stepTxt">Start Learning <small>Complete modules & get certified</small></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ctaStripe">
+          <h3>Ready to Start Your Certification?</h3>
+          <div class="ctaBtns">
+            <button class="btn btnGhost" id="viewPricing2">View Pricing</button>
+            <button class="btn btnPrimary" id="enrollNow2">Enroll Now</button>
+          </div>
+        </div>
+
+        <div class="panelHead" style="padding-top:0">
+          <h2 id="marketplace">Certified Teachers Marketplace</h2>
+          <p>After certification, teachers may opt into our marketplace for job placement. “Contact this teacher” sends a request to admin for moderation.</p>
+        </div>
+
+        <div class="market">
+          <div class="people">
+            <div class="person" data-teacher="Jane Doe">
+              <div class="personTop">
+                <div class="avatar">JD</div>
+                <div>
+                  <div class="personName">Jane Doe</div>
+                  <div class="role">AI School Teacher</div>
+                </div>
+              </div>
+              <div class="personBody">
+                <ul class="bullet">
+                  <li>Policy & Curriculum Development</li>
+                  <li>Elem. School Teacher</li>
+                </ul>
+                <button class="contactBtn jsContact">Contact This Teacher</button>
+              </div>
+            </div>
+
+            <div class="person" data-teacher="Michael Smith">
+              <div class="personTop">
+                <div class="avatar">MS</div>
+                <div>
+                  <div class="personName">Michael Smith</div>
+                  <div class="role">Middle School Lecturer</div>
+                </div>
+              </div>
+              <div class="personBody">
+                <ul class="bullet">
+                  <li>Technology Integration</li>
+                  <li>Middle School Educator</li>
+                </ul>
+                <button class="contactBtn jsContact">Contact This Teacher</button>
+              </div>
+            </div>
+
+            <div class="person" data-teacher="Laura Kim">
+              <div class="personTop">
+                <div class="avatar">LK</div>
+                <div>
+                  <div class="personName">Laura Kim</div>
+                  <div class="role">Tech School Teacher</div>
+                </div>
+              </div>
+              <div class="personBody">
+                <ul class="bullet">
+                  <li>Digital Transformation</li>
+                  <li>High School Teacher</li>
+                </ul>
+                <button class="contactBtn jsContact">Contact This Teacher</button>
+              </div>
+            </div>
+
+            <div class="person" data-teacher="David Johnson">
+              <div class="personTop">
+                <div class="avatar">DJ</div>
+                <div>
+                  <div class="personName">David Johnson</div>
+                  <div class="role">Digital Educator</div>
+                </div>
+              </div>
+              <div class="personBody">
+                <ul class="bullet">
+                  <li>Lead Learning & STEAM Education</li>
+                  <li>Senior Lecturer</li>
+                </ul>
+                <button class="contactBtn jsContact">Contact This Teacher</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panelHead" style="padding-top:0">
+          <h2 id="services">Recruit Certified Teachers</h2>
+          <p>Fill out a recruitment form to get connected with recommended pedagogical solutions and certified educators.</p>
+        </div>
+
+        <div class="recruit">
+          <div>
+            <h4>Recruit a Teacher</h4>
+            <p>
+              Submit your recruitment needs (role, location, timeline). Our admin team will review and recommend certified teachers for your school or organization.
+            </p>
+
+            <div class="mini">
+              <div class="iconTag">
+                <div class="icon">📝</div>
+                Fill recruitment form
+              </div>
+              <div class="iconTag">
+                <div class="icon">🎓</div>
+                Pedagogical Solutions
+              </div>
+              <button class="btn btnPrimary" id="recruitBtn">Recruit A Teacher</button>
+            </div>
+          </div>
+          <div class="recruitArt" aria-label="Recruitment illustration placeholder">
+            Recruitment Illustration (Placeholder)
+            <span>Replace with your recruiter banner image.</span>
+          </div>
+        </div>
+
+        <div class="bottomCta">
+          <h3>Become a Certified 21st Century Educator</h3>
+          <p>Join our community of innovative teachers today.</p>
+          <div class="ctaBtns">
+            <button class="btn btnPrimary" id="enrollProgram">Enroll in STEAM Program</button>
+            <button class="btn btnGhost" id="viewCourses">View Courses</button>
+          </div>
+        </div>
+      </div>
+
+      <footer id="about">
+        <div class="fine">© <span id="year"></span> STEAM ONE Platform • All rights reserved</div>
+        <div class="miniBrand">
+          <span aria-hidden="true" style="display:inline-grid;grid-template-columns:repeat(2,8px);gap:2px;transform:translateY(1px)">
+            <span style="width:8px;height:8px;background:#F25022;border-radius:2px"></span>
+            <span style="width:8px;height:8px;background:#7FBA00;border-radius:2px"></span>
+            <span style="width:8px;height:8px;background:#00A4EF;border-radius:2px"></span>
+            <span style="width:8px;height:8px;background:#FFB900;border-radius:2px"></span>
+          </span>
+          Microsoft Education (logo placeholder)
+        </div>
+      </footer>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div class="modalOverlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <div class="modalHead">
+        <strong id="modalTitle">Request</strong>
+        <button class="closeX" id="closeModal" aria-label="Close">✕</button>
+      </div>
+
+      <div class="modalBody">
+        <div class="pill" style="border-color: rgba(44,114,255,.18); background: rgba(44,114,255,.08); color:#0b2a85">
+          <span id="modalMeta">—</span>
+        </div>
+
+        <div style="height:10px"></div>
+
+        <form id="modalForm">
+          <div class="formGrid">
+            <div class="field">
+              <label for="fullName">Full Name</label>
+              <input id="fullName" name="fullName" placeholder="Your name" required />
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" placeholder="you@example.com" required />
+            </div>
+
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Write your message..." required></textarea>
+            </div>
+          </div>
+
+          <div class="modalActions">
+            <button type="button" class="btn btnGhost" id="cancelBtn">Cancel</button>
+            <button type="submit" class="btn btnPrimary" id="submitBtn">Send (Demo)</button>
+          </div>
+
+          <div class="toast" id="toast">✅ Sent successfully (demo). Backend will email admin / create order later.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Nigeria time (Africa/Lagos)
+    function formatNigeriaTime(d){
+      try{
+        return new Intl.DateTimeFormat("en-NG",{
+          timeZone:"Africa/Lagos",
+          weekday:"short",
+          year:"numeric",
+          month:"short",
+          day:"2-digit",
+          hour:"2-digit",
+          minute:"2-digit",
+          second:"2-digit",
+          hour12:true
+        }).format(d);
+      }catch(e){
+        // fallback: UTC+1
+        const utc = d.getTime() + d.getTimezoneOffset()*60000;
+        const lagos = new Date(utc + 60*60000);
+        return lagos.toLocaleString("en-NG");
+      }
+    }
+    const timeEl = document.getElementById("ngTime");
+    function tick(){ timeEl.textContent = formatNigeriaTime(new Date()); }
+    tick(); setInterval(tick, 1000);
+
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Simple "active" for nav hash links (desktop only)
+    const navLinks = Array.from(document.querySelectorAll(".nav a"));
+    function setActive(){
+      const hash = location.hash || "#home";
+      navLinks.forEach(a => a.classList.toggle("active", a.getAttribute("href") === hash));
+    }
+    window.addEventListener("hashchange", setActive);
+    setActive();
+
+    // Modal controller
+    const overlay = document.getElementById("modalOverlay");
+    const closeModalBtn = document.getElementById("closeModal");
+    const cancelBtn = document.getElementById("cancelBtn");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalMeta = document.getElementById("modalMeta");
+    const modalForm = document.getElementById("modalForm");
+    const toast = document.getElementById("toast");
+    const msgField = document.getElementById("message");
+
+    let currentMode = "enroll"; // enroll | contact | recruit
+    let currentTarget = "";
+
+    function openModal({title, meta, placeholder, mode, target}){
+      currentMode = mode;
+      currentTarget = target || "";
+      modalTitle.textContent = title;
+      modalMeta.textContent = meta;
+      toast.style.display = "none";
+      modalForm.reset();
+      msgField.placeholder = placeholder;
+      overlay.style.display = "flex";
+      document.body.style.overflow = "hidden";
+      setTimeout(() => document.getElementById("fullName").focus(), 50);
+    }
+
+    function hideModal(){
+      overlay.style.display = "none";
+      document.body.style.overflow = "";
+    }
+
+    closeModalBtn.addEventListener("click", hideModal);
+    cancelBtn.addEventListener("click", hideModal);
+    overlay.addEventListener("click", (e)=>{ if(e.target === overlay) hideModal(); });
+    window.addEventListener("keydown", (e)=>{ if(e.key === "Escape" && overlay.style.display === "flex") hideModal(); });
+
+    // Enroll buttons
+    function enroll(course, price){
+      openModal({
+        title: "Enroll & Pay (Demo)",
+        meta: `${course} • $${price} • Paid Course`,
+        placeholder: "Tell us your preferred start date or any note (demo).",
+        mode: "enroll",
+        target: course
+      });
+    }
+
+    document.querySelectorAll(".jsEnroll").forEach(btn=>{
+      btn.addEventListener("click", ()=>{
+        const card = btn.closest(".programCard");
+        enroll(card.dataset.course, card.dataset.price);
+      });
+    });
+
+    document.getElementById("enrollTop").addEventListener("click", ()=> location.hash="#courses");
+    document.getElementById("enrollNow").addEventListener("click", ()=> location.hash="#courses");
+    document.getElementById("enrollNow2").addEventListener("click", ()=> location.hash="#courses");
+    document.getElementById("enrollProgram").addEventListener("click", ()=> location.hash="#courses");
+    document.getElementById("viewPricing").addEventListener("click", ()=> location.hash="#courses");
+    document.getElementById("viewPricing2").addEventListener("click", ()=> location.hash="#courses");
+    document.getElementById("viewCourses").addEventListener("click", ()=> location.hash="#courses");
+
+    // Contact teacher buttons
+    document.querySelectorAll(".jsContact").forEach(btn=>{
+      btn.addEventListener("click", ()=>{
+        const card = btn.closest(".person");
+        const teacher = card.dataset.teacher;
+        openModal({
+          title: "Contact Teacher (Admin-mediated)",
+          meta: `${teacher} • Request goes to Admin Email`,
+          placeholder: "Describe the role, location, salary range, timeline, and contact details.",
+          mode: "contact",
+          target: teacher
+        });
+      });
+    });
+
+    // Recruit a teacher
+    document.getElementById("recruitBtn").addEventListener("click", ()=>{
+      openModal({
+        title: "Recruit a Teacher (Demo)",
+        meta: "Recruitment Form • Sent to Admin Queue",
+        placeholder: "What teacher role do you need? Location? Timeline? Requirements?",
+        mode: "recruit",
+        target: "Recruitment"
+      });
+    });
+
+    // Fake submit
+    modalForm.addEventListener("submit", (e)=>{
+      e.preventDefault();
+
+      // In real backend:
+      // - enroll: create order + payment reference (Paystack/Flutterwave/Stripe)
+      // - contact: send email to admin / create ticket
+      // - recruit: store form + notify admin
+      toast.style.display = "block";
+
+      // quick close after short delay (optional)
+      setTimeout(()=> hideModal(), 1200);
+    });
+  </script>
+</body>
+</html>
