@@ -1,12 +1,5 @@
 import React, { useEffect } from "react";
-import {
-  HashRouter, // ✅ better for Android/WebView + GitHub Pages
-  Navigate,
-  Route,
-  Routes,
-  useLocation,
-  Link
-} from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
 
 // Public pages
 import HomePage from "./pages/public/HomePage";
@@ -26,26 +19,20 @@ import LoginPage from "./pages/auth/LoginPage";
 import SignupPage from "./pages/auth/SignupPage";
 import AdminLoginPage from "./pages/auth/AdminLoginPage";
 
-// Dashboards (under dashboard folder)
+// Dashboards
 import AdminDashboard from "./pages/dashboard/admin/AdminDashboard";
 import TeacherDashboard from "./pages/dashboard/teacher/TeacherDashboard";
 import FacilitatorDashboard from "./pages/dashboard/facilitator/FacilitatorDashboard";
 
-/**
- * Scroll to top on route change (professional UX)
- * Note: use "auto" for smoother Android WebView performance
- */
+/** Scroll to top on route change */
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, [pathname]);
   return null;
 }
 
-/**
- * Backend-ready protected route (replace with real auth later)
- */
 function ProtectedRoute({
   children,
   role
@@ -53,13 +40,11 @@ function ProtectedRoute({
   children: React.ReactNode;
   role?: "admin" | "teacher" | "facilitator";
 }) {
-  // TODO: replace with real auth
-  const isAuthed = true; // e.g. !!localStorage.getItem("token")
-  const userRole: "admin" | "teacher" | "facilitator" = "admin"; // e.g. from decoded token / API
+  const isAuthed = true; // TODO: replace with real auth
+  const userRole: "admin" | "teacher" | "facilitator" = "admin"; // TODO: replace with real role
 
   if (!isAuthed) return <Navigate to="/login" replace />;
   if (role && userRole !== role) return <Navigate to="/unauthorized" replace />;
-
   return <>{children}</>;
 }
 
@@ -68,9 +53,7 @@ function NotFound() {
     <div style={{ padding: 32, fontFamily: "Arial" }}>
       <h2>404 — Page Not Found</h2>
       <p>The page you are looking for does not exist.</p>
-      <Link to="/" style={{ fontWeight: 800 }}>
-        Go back home
-      </Link>
+      <a href="/" style={{ fontWeight: 800 }}>Go back home</a>
     </div>
   );
 }
@@ -80,20 +63,18 @@ function Unauthorized() {
     <div style={{ padding: 32, fontFamily: "Arial" }}>
       <h2>Unauthorized</h2>
       <p>You don’t have access to this page.</p>
-      <Link to="/" style={{ fontWeight: 800 }}>
-        Go back home
-      </Link>
+      <a href="/" style={{ fontWeight: 800 }}>Go back home</a>
     </div>
   );
 }
 
 export default function App() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <ScrollToTop />
 
       <Routes>
-        {/* ===================== PUBLIC ROUTES ===================== */}
+        {/* Public */}
         <Route path="/" element={<HomePage />} />
         <Route path="/home" element={<Navigate to="/" replace />} />
 
@@ -101,9 +82,7 @@ export default function App() {
         <Route path="/contact" element={<ContactPage />} />
 
         <Route path="/courses" element={<CoursesPage />} />
-        {/* Dynamic course route */}
         <Route path="/courses/:courseId" element={<CourseDetailsPage />} />
-        {/* Optional static fallback */}
         <Route path="/course-details" element={<CourseDetailsPage />} />
 
         <Route path="/marketplace" element={<MarketplacePage />} />
@@ -114,15 +93,16 @@ export default function App() {
         <Route path="/terms" element={<PolicyPage />} />
         <Route path="/cookie-policy" element={<PolicyPage />} />
 
+        {/* Payment flow */}
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/payment" element={<PaymentPage />} />
 
-        {/* ===================== AUTH ROUTES ===================== */}
+        {/* Auth */}
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/admin/login" element={<AdminLoginPage />} />
 
-        {/* ===================== DASHBOARD ROUTES ===================== */}
+        {/* Dashboards */}
         <Route
           path="/dashboard/admin"
           element={
@@ -151,9 +131,9 @@ export default function App() {
         {/* Helpers */}
         <Route path="/unauthorized" element={<Unauthorized />} />
 
-        {/* ===================== FALLBACK ===================== */}
+        {/* Fallback */}
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
