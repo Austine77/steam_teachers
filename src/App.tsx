@@ -1,5 +1,12 @@
 import React, { useEffect } from "react";
-import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
+import {
+  HashRouter, // ✅ better for Android/WebView + GitHub Pages
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+  Link
+} from "react-router-dom";
 
 // Public pages
 import HomePage from "./pages/public/HomePage";
@@ -26,18 +33,18 @@ import FacilitatorDashboard from "./pages/dashboard/facilitator/FacilitatorDashb
 
 /**
  * Scroll to top on route change (professional UX)
+ * Note: use "auto" for smoother Android WebView performance
  */
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, [pathname]);
   return null;
 }
 
 /**
  * Backend-ready protected route (replace with real auth later)
- * - Example: check token from localStorage, cookie, or auth context.
  */
 function ProtectedRoute({
   children,
@@ -61,7 +68,9 @@ function NotFound() {
     <div style={{ padding: 32, fontFamily: "Arial" }}>
       <h2>404 — Page Not Found</h2>
       <p>The page you are looking for does not exist.</p>
-      <a href="/" style={{ fontWeight: 800 }}>Go back home</a>
+      <Link to="/" style={{ fontWeight: 800 }}>
+        Go back home
+      </Link>
     </div>
   );
 }
@@ -71,14 +80,16 @@ function Unauthorized() {
     <div style={{ padding: 32, fontFamily: "Arial" }}>
       <h2>Unauthorized</h2>
       <p>You don’t have access to this page.</p>
-      <a href="/" style={{ fontWeight: 800 }}>Go back home</a>
+      <Link to="/" style={{ fontWeight: 800 }}>
+        Go back home
+      </Link>
     </div>
   );
 }
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <ScrollToTop />
 
       <Routes>
@@ -90,9 +101,9 @@ export default function App() {
         <Route path="/contact" element={<ContactPage />} />
 
         <Route path="/courses" element={<CoursesPage />} />
-        {/* If your course details uses an id/slug, keep this dynamic route */}
+        {/* Dynamic course route */}
         <Route path="/courses/:courseId" element={<CourseDetailsPage />} />
-        {/* Optional static fallback if you already made CourseDetailsPage without params */}
+        {/* Optional static fallback */}
         <Route path="/course-details" element={<CourseDetailsPage />} />
 
         <Route path="/marketplace" element={<MarketplacePage />} />
@@ -100,7 +111,6 @@ export default function App() {
         <Route path="/services" element={<ServicesPage />} />
 
         <Route path="/policy" element={<PolicyPage />} />
-        {/* if you later create these pages, you can replace with real components */}
         <Route path="/terms" element={<PolicyPage />} />
         <Route path="/cookie-policy" element={<PolicyPage />} />
 
@@ -110,8 +120,6 @@ export default function App() {
         {/* ===================== AUTH ROUTES ===================== */}
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
-
-        {/* Admin auth */}
         <Route path="/admin/login" element={<AdminLoginPage />} />
 
         {/* ===================== DASHBOARD ROUTES ===================== */}
@@ -123,7 +131,6 @@ export default function App() {
             </ProtectedRoute>
           }
         />
-
         <Route
           path="/dashboard/teacher"
           element={
@@ -132,7 +139,6 @@ export default function App() {
             </ProtectedRoute>
           }
         />
-
         <Route
           path="/dashboard/facilitator"
           element={
@@ -148,6 +154,6 @@ export default function App() {
         {/* ===================== FALLBACK ===================== */}
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }

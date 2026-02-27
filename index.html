@@ -2,23 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>STEAM ONE Platform — Home</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>STEAM ONE Platform — Microsoft Education</title>
   <style>
     :root{
-      --bg1:#0b2a85;
-      --bg2:#2d7cff;
-      --bg3:#6aa8ff;
+      --navH:72px;
+      --max:1180px;
+
+      --brandBlue:#0b2a85;
+      --brandBlue2:#1f59d1;
+      --brandBlue3:#2d7cff;
+      --sky:#edf4ff;
+
       --card:#ffffff;
       --ink:#0b1530;
       --muted:#5a6b8a;
       --line:rgba(14,35,92,.10);
       --shadow:0 18px 45px rgba(6,16,40,.18);
-      --radius:18px;
+
       --btn:#f59e0b;
       --btn2:#ffb100;
-      --navH:72px;
-      --max:1180px;
+
+      --radius:22px;
       --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
     }
 
@@ -37,21 +42,15 @@
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block}
     button{font-family:inherit}
+    button,a{-webkit-tap-highlight-color:transparent}
+    button{touch-action:manipulation}
 
-    /* Layout helpers */
     .wrap{max-width:var(--max); margin:0 auto; padding:0 18px;}
-    .pill{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.25);
-      background:rgba(255,255,255,.12);
-      color:#fff;
-      font-weight:600;
-      font-size:12px;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      box-shadow: 0 12px 30px rgba(0,0,0,.12);
+    .glass{
+      background: rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.18);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
 
     /* Top Nav */
@@ -68,37 +67,35 @@
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:14px;
+      gap:12px;
     }
+
     .brand{
-      display:flex; align-items:center; gap:10px; min-width:220px;
-      color:#fff;
-      font-weight:900; letter-spacing:.2px;
+      display:flex; align-items:center; gap:10px;
+      color:#fff; font-weight:900; letter-spacing:.2px;
+      min-width:240px;
     }
     .msMark{
       width:26px; height:26px; border-radius:6px;
       display:grid; grid-template-columns:repeat(2,1fr); gap:2px;
       background:rgba(255,255,255,.12);
-      padding:4px;
+      padding:4px; flex:0 0 auto;
     }
     .msMark span{border-radius:2px}
     .msMark span:nth-child(1){background:#F25022}
     .msMark span:nth-child(2){background:#7FBA00}
     .msMark span:nth-child(3){background:#00A4EF}
     .msMark span:nth-child(4){background:#FFB900}
-    .brand small{
-      display:block; font-weight:700; opacity:.85; letter-spacing:0;
-      font-size:11px; margin-top:2px
-    }
+    .brand small{display:block;font-weight:700;opacity:.88;font-size:11px;margin-top:2px}
 
     .nav{
-      display:flex; align-items:center; gap:18px;
+      display:flex; align-items:center; gap:16px;
       color:#eaf1ff;
-      font-weight:700;
+      font-weight:800;
       font-size:13px;
     }
     .nav a{
-      opacity:.9;
+      opacity:.92;
       padding:8px 10px;
       border-radius:999px;
       border:1px solid transparent;
@@ -107,17 +104,13 @@
     .nav a:hover{opacity:1; background:rgba(255,255,255,.10); border-color:rgba(255,255,255,.14)}
     .nav a.active{background:rgba(255,255,255,.14); border-color:rgba(255,255,255,.18); opacity:1}
 
-    .navRight{
-      display:flex; align-items:center; gap:10px;
-    }
-    .timePill{white-space:nowrap}
-
+    .navRight{display:flex; align-items:center; gap:10px;}
     .btn{
       border:0;
       cursor:pointer;
       padding:10px 14px;
       border-radius:12px;
-      font-weight:900;
+      font-weight:1000;
       letter-spacing:.2px;
       box-shadow: 0 16px 30px rgba(0,0,0,.18);
       transition: transform .08s ease, filter .12s ease;
@@ -135,11 +128,80 @@
     }
     .btn:hover{filter:brightness(1.03)}
 
-    /* HERO */
-    .hero{
-      padding:28px 0 10px;
-      position:relative;
+    /* Mobile menu */
+    .menuBtn{
+      display:none;
+      width:44px; height:44px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.20);
+      background: rgba(255,255,255,.10);
+      color:#fff;
+      font-weight:1000;
+      box-shadow:none;
     }
+    .drawerOverlay{
+      position:fixed; inset:0;
+      background: rgba(0,0,0,.55);
+      display:none;
+      z-index:90;
+    }
+    .drawer{
+      position:fixed; top:0; right:0;
+      width:min(360px, 88vw);
+      height:100%;
+      background: rgba(255,255,255,.96);
+      border-left:1px solid rgba(13,39,108,.10);
+      box-shadow: -20px 0 60px rgba(0,0,0,.25);
+      transform: translateX(100%);
+      transition: transform .18s ease;
+      z-index:95;
+      display:flex;
+      flex-direction:column;
+    }
+    .drawer.open{transform: translateX(0)}
+    .drawerHead{
+      padding:14px;
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      border-bottom:1px solid rgba(13,39,108,.10);
+      background: linear-gradient(180deg, rgba(44,114,255,.08), rgba(245,158,11,.06));
+    }
+    .drawerHead strong{color:#0b2a85}
+    .drawerClose{
+      width:40px; height:40px; border-radius:14px;
+      border:1px solid rgba(13,39,108,.12);
+      background: rgba(13,39,108,.06);
+      color:#0b2a85;
+      font-weight:1000;
+    }
+    .drawerNav{padding:12px; display:grid; gap:10px;}
+    .drawerNav a{
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid rgba(13,39,108,.10);
+      background:#fff;
+      font-weight:900;
+      color:#0b2a85;
+      box-shadow: 0 10px 20px rgba(0,0,0,.06);
+    }
+    .drawerNav a.active{
+      border-color: rgba(44,114,255,.40);
+      box-shadow: 0 0 0 3px rgba(44,114,255,.12), 0 10px 20px rgba(0,0,0,.06);
+    }
+    .drawerFoot{
+      margin-top:auto;
+      padding:14px 12px 18px;
+      color:#27406e;
+      font-weight:800;
+      font-size:12px;
+      opacity:.9;
+    }
+
+    /* Pages system */
+    .page{display:none}
+    .page.active{display:block}
+
+    /* Hero area */
+    .heroWrap{padding:22px 0 8px;}
     .heroCard{
       border-radius:28px;
       border:1px solid rgba(255,255,255,.18);
@@ -157,7 +219,7 @@
       padding:26px;
       align-items:center;
     }
-    .hero h1{
+    .heroTitle{
       margin:0 0 10px;
       color:#fff;
       font-size: clamp(26px, 3.2vw, 40px);
@@ -165,79 +227,69 @@
       letter-spacing:.2px;
       text-shadow: 0 12px 35px rgba(0,0,0,.18);
     }
-    .hero p{
+    .heroText{
       margin:0 0 16px;
       color:rgba(255,255,255,.88);
       line-height:1.65;
       max-width: 56ch;
-      font-weight:600;
+      font-weight:650;
       font-size: 14px;
     }
-    .heroActions{display:flex; gap:10px; flex-wrap:wrap; margin: 12px 0 16px}
-    .standards{
-      display:flex; gap:14px; flex-wrap:wrap; align-items:center;
-      margin-top:10px;
-      color:rgba(255,255,255,.88);
-      font-weight:800;
+    .heroActions{display:flex; gap:10px; flex-wrap:wrap; margin: 12px 0 14px}
+
+    .chipRow{
+      display:flex; gap:12px; flex-wrap:wrap; align-items:center;
+      color:rgba(255,255,255,.90);
+      font-weight:900;
       font-size:12px;
+      margin-top:10px;
     }
-    .standards .tag{
+    .chip{
       display:inline-flex; align-items:center; gap:8px;
       padding:7px 10px;
       border-radius:999px;
       background: rgba(255,255,255,.12);
       border: 1px solid rgba(255,255,255,.18);
     }
-    .illustration{
+
+    /* Illustration panel (replace with your real image later) */
+    .illus{
       border-radius:22px;
       border:1px solid rgba(255,255,255,.16);
       background:
-        radial-gradient(420px 180px at 50% 20%, rgba(255,255,255,.22), transparent 60%),
+        radial-gradient(460px 200px at 45% 25%, rgba(255,255,255,.24), transparent 65%),
+        radial-gradient(520px 220px at 75% 50%, rgba(44,114,255,.18), transparent 70%),
         linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.03));
       min-height: 260px;
       position:relative;
       overflow:hidden;
     }
-    .illusBubble{
-      position:absolute; inset:auto;
-      width: 120px; height:120px; border-radius:50%;
-      background: rgba(255,255,255,.12);
-      filter: blur(.2px);
-    }
-    .illusBubble.b1{right:-20px; top:-20px}
-    .illusBubble.b2{left:-30px; bottom:-30px; width:160px; height:160px; background:rgba(255,255,255,.10)}
+    .bubble{position:absolute;border-radius:999px;background:rgba(255,255,255,.12)}
+    .bubble.b1{right:-30px;top:-30px;width:160px;height:160px}
+    .bubble.b2{left:-40px;bottom:-40px;width:220px;height:220px;background:rgba(255,255,255,.10)}
     .illusCard{
-      position:absolute;
-      left:16px; top:16px;
-      right:16px; bottom:16px;
+      position:absolute; inset:16px;
       border-radius:18px;
       background: rgba(255,255,255,.08);
       border:1px solid rgba(255,255,255,.14);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:rgba(255,255,255,.9);
-      font-weight:900;
+      display:flex; align-items:center; justify-content:center;
+      color:rgba(255,255,255,.92);
+      font-weight:1000;
       text-align:center;
       padding:16px;
     }
-    .illusCard span{display:block; font-weight:700; opacity:.9; margin-top:8px; font-size:12px}
+    .illusCard span{display:block; font-weight:800; opacity:.92; margin-top:8px; font-size:12px}
 
-    /* SECTION CONTAINERS */
-    .section{
-      padding:18px 0 6px;
-    }
+    /* White wave section container */
     .panel{
-      background: rgba(255,255,255,.86);
-      border:1px solid rgba(255,255,255,.9);
+      background: rgba(255,255,255,.88);
+      border:1px solid rgba(255,255,255,.95);
       border-radius: 26px;
       box-shadow: var(--shadow);
       overflow:hidden;
+      margin-bottom:16px;
     }
-    .panelHead{
-      padding:18px 18px 0;
-      text-align:center;
-    }
+    .panelHead{padding:18px 18px 0; text-align:center;}
     .panelHead h2{
       margin:0;
       font-size: clamp(18px, 2.3vw, 26px);
@@ -248,15 +300,13 @@
       margin:8px auto 0;
       max-width:72ch;
       color:var(--muted);
-      font-weight:600;
+      font-weight:650;
       line-height:1.6;
       font-size:13px;
     }
 
-    /* Programs cards */
-    .programs{
-      padding:18px;
-    }
+    /* Program cards */
+    .programs{padding:18px}
     .cards3{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
@@ -273,28 +323,36 @@
     .programTop{
       padding:14px 14px 12px;
       color:#fff;
-      font-weight:900;
+      font-weight:1000;
       display:flex;
       align-items:flex-end;
       justify-content:space-between;
       gap:10px;
     }
-    .programTop .ttl{
-      font-size:16px;
-      letter-spacing:.3px;
-    }
-    .programTop .sub{
-      font-size:11px;
-      opacity:.92;
-      font-weight:800;
-      margin-top:2px;
-    }
+    .ttl{font-size:16px; letter-spacing:.3px;}
+    .sub{font-size:11px; opacity:.92; font-weight:900; margin-top:2px;}
     .topBlue{background: linear-gradient(180deg, #1b4ed9, #0b2a85);}
     .topCyan{background: linear-gradient(180deg, #2c72ff, #1240b7);}
     .topOrange{background: linear-gradient(180deg, #ffb100, #f59e0b);}
+
+    .pill{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.25);
+      background:rgba(255,255,255,.12);
+      color:#fff;
+      font-weight:800;
+      font-size:12px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 12px 30px rgba(0,0,0,.12);
+    }
+
     .programBody{padding:14px}
     .checkList{margin:0; padding:0 0 0 18px; color:#334562}
-    .checkList li{margin:8px 0; font-weight:700; font-size:13px}
+    .checkList li{margin:8px 0; font-weight:800; font-size:13px}
+
     .priceRow{
       display:flex; align-items:baseline; justify-content:space-between; gap:10px;
       margin-top:14px;
@@ -302,18 +360,13 @@
       border-top:1px dashed rgba(14,35,92,.14);
     }
     .price{
-      font-weight:1000;
+      font-weight:1100;
       color:#0b2a85;
       font-size:26px;
       letter-spacing:.2px;
     }
-    .price small{font-size:12px; font-weight:800; color:var(--muted)}
-    .access{
-      text-align:right;
-      color:var(--muted);
-      font-weight:800;
-      font-size:11px;
-    }
+    .price small{font-size:12px; font-weight:900; color:var(--muted)}
+    .access{text-align:right; color:var(--muted); font-weight:900; font-size:11px;}
     .payBtn{
       width:100%;
       margin-top:12px;
@@ -322,15 +375,13 @@
       border:1px solid rgba(245,158,11,.35);
       background: linear-gradient(180deg, #ffb100, #f59e0b);
       color:#1b1b1b;
-      font-weight:1000;
+      font-weight:1100;
       cursor:pointer;
       box-shadow: 0 14px 22px rgba(245,158,11,.25);
     }
 
-    /* Enrollment steps */
-    .steps{
-      padding:0 18px 18px;
-    }
+    /* Steps */
+    .steps{padding:0 18px 18px;}
     .stepsBar{
       background: rgba(13,39,108,.06);
       border:1px solid rgba(13,39,108,.10);
@@ -352,11 +403,11 @@
       display:grid; place-items:center;
       background: linear-gradient(180deg, #2c72ff, #1240b7);
       color:#fff;
-      font-weight:1000;
+      font-weight:1100;
       box-shadow: 0 12px 20px rgba(18,64,183,.25);
     }
-    .stepTxt{font-weight:900; color:#19325f; font-size:12px}
-    .stepTxt small{display:block; font-weight:800; color:var(--muted); margin-top:2px}
+    .stepTxt{font-weight:1000; color:#19325f; font-size:12px}
+    .stepTxt small{display:block; font-weight:900; color:var(--muted); margin-top:2px}
 
     /* CTA stripe */
     .ctaStripe{
@@ -375,9 +426,7 @@
     .ctaStripe .ctaBtns{display:flex; justify-content:center; gap:10px; margin-top:12px; flex-wrap:wrap}
 
     /* Marketplace */
-    .market{
-      padding: 0 18px 18px;
-    }
+    .market{ padding: 0 18px 18px; }
     .people{
       display:grid;
       grid-template-columns: repeat(4, 1fr);
@@ -400,17 +449,17 @@
       width:44px; height:44px; border-radius:14px;
       background: linear-gradient(180deg, #2c72ff, #0b2a85);
       display:grid; place-items:center;
-      color:#fff; font-weight:1000;
+      color:#fff; font-weight:1100;
       box-shadow: 0 12px 20px rgba(18,64,183,.22);
       flex:0 0 auto;
     }
-    .personName{font-weight:1000; color:#0b2a85; font-size:13px}
-    .role{color:var(--muted); font-weight:800; font-size:11px; margin-top:2px}
+    .personName{font-weight:1100; color:#0b2a85; font-size:13px}
+    .role{color:var(--muted); font-weight:900; font-size:11px; margin-top:2px}
     .personBody{padding:12px}
     .bullet{
       margin:0; padding:0 0 0 18px;
       color:#334562;
-      font-weight:800;
+      font-weight:900;
       font-size:11px;
       line-height:1.6;
     }
@@ -422,7 +471,7 @@
       border:1px solid rgba(18,64,183,.18);
       background: linear-gradient(180deg, #2c72ff, #1240b7);
       color:#fff;
-      font-weight:1000;
+      font-weight:1100;
       cursor:pointer;
       box-shadow: 0 14px 22px rgba(18,64,183,.22);
     }
@@ -440,10 +489,8 @@
       align-items:center;
     }
     .recruit h4{margin:0; color:#0b2a85; font-size:16px}
-    .recruit p{margin:8px 0 0; color:var(--muted); font-weight:700; line-height:1.6; font-size:12px}
-    .recruit .mini{
-      display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:12px;
-    }
+    .recruit p{margin:8px 0 0; color:var(--muted); font-weight:800; line-height:1.6; font-size:12px}
+    .recruit .mini{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:12px;}
     .iconTag{
       display:inline-flex; align-items:center; gap:10px;
       padding:10px 12px;
@@ -451,7 +498,7 @@
       background:#fff;
       border:1px solid rgba(13,39,108,.10);
       box-shadow: 0 12px 22px rgba(0,0,0,.08);
-      font-weight:900;
+      font-weight:1000;
       color:#0b2a85;
       font-size:12px;
     }
@@ -474,111 +521,40 @@
       text-align:center;
       padding:14px;
       color:#0b2a85;
-      font-weight:1000;
+      font-weight:1100;
     }
-    .recruitArt span{display:block; margin-top:8px; font-weight:800; color:var(--muted); font-size:12px}
-
-    /* Bottom CTA */
-    .bottomCta{
-      margin: 0 18px 18px;
-      border-radius: 22px;
-      padding:18px;
-      color:#fff;
-      background:
-        radial-gradient(700px 220px at 20% 0%, rgba(255,255,255,.20), transparent 60%),
-        linear-gradient(180deg, rgba(11,42,133,.96), rgba(26,98,255,.92));
-      border: 1px solid rgba(255,255,255,.18);
-      box-shadow: 0 20px 50px rgba(0,0,0,.22);
-      text-align:center;
-    }
-    .bottomCta h3{margin:0; font-size:18px; letter-spacing:.2px}
-    .bottomCta p{margin:8px 0 0; opacity:.9; font-weight:700; font-size:12px}
-    .bottomCta .ctaBtns{display:flex; justify-content:center; gap:10px; margin-top:12px; flex-wrap:wrap}
+    .recruitArt span{display:block; margin-top:8px; font-weight:900; color:var(--muted); font-size:12px}
 
     /* Footer */
     footer{
-      color:rgba(255,255,255,.9);
+      color:rgba(255,255,255,.92);
       padding: 18px 0 26px;
       text-align:center;
-      font-weight:700;
+      font-weight:800;
       font-size:12px;
     }
-    footer .fine{opacity:.85; font-weight:700}
-    footer .miniBrand{
-      display:inline-flex; align-items:center; gap:8px; margin-top:8px;
-      opacity:.95;
-    }
+    footer .fine{opacity:.9}
 
-    /* Modal */
-    .modalOverlay{
-      position:fixed; inset:0;
-      background: rgba(0,0,0,.55);
-      display:none;
-      align-items:center;
-      justify-content:center;
-      padding:18px;
-      z-index:100;
-    }
-    .modal{
-      width:min(720px, 100%);
-      border-radius: 22px;
-      background: rgba(255,255,255,.95);
-      border:1px solid rgba(255,255,255,.9);
-      box-shadow: 0 30px 80px rgba(0,0,0,.35);
-      overflow:hidden;
-    }
-    .modalHead{
-      padding:14px 16px;
-      background: linear-gradient(180deg, rgba(44,114,255,.10), rgba(245,158,11,.08));
-      border-bottom: 1px solid rgba(13,39,108,.10);
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-    }
-    .modalHead strong{color:#0b2a85; font-size:14px}
-    .closeX{
-      border:0; cursor:pointer;
-      width:36px; height:36px; border-radius:12px;
-      background: rgba(13,39,108,.08);
-      color:#0b2a85;
-      font-weight:1000;
-    }
-    .modalBody{padding:16px}
-    .formGrid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:12px;
-    }
-    .field label{
-      display:block;
-      font-size:12px;
-      font-weight:900;
-      color:#24407a;
-      margin-bottom:6px;
-    }
-    .field input, .field textarea{
+    /* Form + toast */
+    .formCard{padding:18px}
+    .formGrid{display:grid; grid-template-columns: 1fr 1fr; gap:12px;}
+    .field label{display:block; font-size:12px; font-weight:1000; color:#24407a; margin-bottom:6px;}
+    .field input, .field textarea, .field select{
       width:100%;
       border-radius: 12px;
       border: 1px solid rgba(13,39,108,.14);
       background:#fff;
       padding:10px 12px;
       outline:none;
-      font-weight:700;
+      font-weight:800;
       color:#1d2a4d;
     }
-    .field input:focus, .field textarea:focus{
+    .field textarea{grid-column:1/-1; min-height:120px; resize:vertical;}
+    .field input:focus, .field textarea:focus, .field select:focus{
       border-color: rgba(44,114,255,.45);
       box-shadow: 0 0 0 3px rgba(44,114,255,.14);
     }
-    .field textarea{grid-column: 1 / -1; min-height: 110px; resize: vertical;}
-    .modalActions{
-      margin-top:12px;
-      display:flex;
-      justify-content:flex-end;
-      gap:10px;
-      flex-wrap:wrap;
-    }
+    .actions{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end; margin-top:12px;}
     .toast{
       margin-top:10px;
       display:none;
@@ -587,23 +563,62 @@
       background: rgba(34,197,94,.12);
       border: 1px solid rgba(34,197,94,.25);
       color:#14532d;
-      font-weight:900;
+      font-weight:1000;
       font-size:12px;
+    }
+
+    /* Checkout summary */
+    .summary{
+      background:#fff;
+      border:1px solid rgba(13,39,108,.10);
+      border-radius:18px;
+      box-shadow: 0 14px 28px rgba(0,0,0,.08);
+      overflow:hidden;
+    }
+    .summaryHead{
+      padding:14px;
+      background: linear-gradient(180deg, rgba(44,114,255,.08), rgba(245,158,11,.06));
+      border-bottom:1px solid rgba(13,39,108,.10);
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      font-weight:1000;
+      color:#0b2a85;
+    }
+    .summaryBody{padding:14px}
+    .row{display:flex; justify-content:space-between; gap:10px; margin:10px 0; font-weight:900; color:#24407a}
+    .row small{font-weight:800; color:var(--muted)}
+    .gateway{
+      display:grid; gap:10px; margin-top:12px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .gwBtn{
+      padding:12px;
+      border-radius:14px;
+      border:1px solid rgba(13,39,108,.12);
+      background:#fff;
+      font-weight:1100;
+      cursor:pointer;
+      box-shadow: 0 10px 18px rgba(0,0,0,.06);
+    }
+    .gwBtn.primary{
+      border-color: rgba(245,158,11,.35);
+      background: linear-gradient(180deg, #ffb100, #f59e0b);
+      color:#1b1b1b;
     }
 
     /* Responsive */
     @media (max-width: 980px){
       .heroGrid{grid-template-columns: 1fr; padding:18px}
-      .illustration{min-height: 210px}
-      .cards3{grid-template-columns: 1fr; }
+      .illus{min-height: 210px}
+      .cards3{grid-template-columns: 1fr;}
       .people{grid-template-columns: repeat(2, 1fr);}
       .recruit{grid-template-columns: 1fr;}
       .nav{display:none}
+      .menuBtn{display:inline-grid; place-items:center;}
       .brand{min-width:auto}
+      .gateway{grid-template-columns: 1fr;}
     }
     @media (max-width: 520px){
       .people{grid-template-columns: 1fr;}
-      .step{min-width: 100%;}
       .formGrid{grid-template-columns: 1fr;}
     }
   </style>
@@ -613,7 +628,7 @@
   <!-- Top Nav -->
   <header class="topbar">
     <div class="wrap inner">
-      <a class="brand" href="#home" aria-label="Microsoft Education - STEAM Platform">
+      <a class="brand" href="#/home" data-link aria-label="Microsoft Education - STEAM Platform">
         <div class="msMark" aria-hidden="true">
           <span></span><span></span><span></span><span></span>
         </div>
@@ -623,66 +638,90 @@
         </div>
       </a>
 
-     import { NavLink } from "react-router-dom";
-
-<nav className="nav" aria-label="Primary navigation">
-  <NavLink to="/">Home</NavLink>
-  <NavLink to="/courses">Courses</NavLink>
-  <NavLink to="/marketplace">Marketplace</NavLink>
-  <NavLink to="/services">Services</NavLink>
-  <NavLink to="/about">About</NavLink>
-  <NavLink to="/contact">Contact</NavLink>
-  <NavLink to="/login">Login</NavLink>
-</nav>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#/home" data-link>Home</a>
+        <a href="#/courses" data-link>Courses</a>
+        <a href="#/marketplace" data-link>Marketplace</a>
+        <a href="#/services" data-link>Services</a>
+        <a href="#/about" data-link>About</a>
+        <a href="#/contact" data-link>Contact</a>
+        <a href="#/login" data-link>Login</a>
+      </nav>
 
       <div class="navRight">
+        <button class="btn btnGhost menuBtn" id="menuBtn" aria-label="Open menu">☰</button>
         <button class="btn btnPrimary" id="enrollTop">Enroll Now</button>
       </div>
     </div>
   </header>
 
-  <!-- HERO -->
-  <main id="home" class="hero">
-    <div class="wrap">
-      <section class="heroCard">
-        <div class="heroGrid">
-          <div>
-            <h1>Skilling Teachers Towards<br/>STEAM Excellence</h1>
-            <p>
-              Introductory, Advanced & Expert digital teaching programs for pre-service & in-service teachers worldwide.
-              Built to align with <b>ISTE Standards</b>, <b>UNESCO ICT CFT</b> framework and international <b>PISA</b> standard.
-            </p>
-
-            <div class="heroActions">
-              <button class="btn btnGhost" id="viewPricing">View Pricing</button>
-              <button class="btn btnPrimary" id="enrollNow">Enroll Now</button>
-            </div>
-
-            <div class="standards" aria-label="Standards and research powerhouse">
-              <span class="tag">🟦 Microsoft</span>
-              <span class="tag">📌 ISTE</span>
-              <span class="tag">🏛️ UNESCO ICT CFT</span>
-              <span class="tag">📊 PISA</span>
-            </div>
-          </div>
-
-          <div class="illustration" aria-label="Hero illustration placeholder">
-            <div class="illusBubble b1"></div>
-            <div class="illusBubble b2"></div>
-            <div class="illusCard">
-              Microsoft Education Hero Illustration (Placeholder)
-              <span>Replace this block with your real hero image/illustration.</span>
-            </div>
-          </div>
-        </div>
-      </section>
+  <!-- Mobile Drawer -->
+  <div class="drawerOverlay" id="drawerOverlay" aria-hidden="true"></div>
+  <aside class="drawer" id="drawer" aria-label="Mobile navigation">
+    <div class="drawerHead">
+      <strong>Menu</strong>
+      <button class="drawerClose" id="drawerClose" aria-label="Close menu">✕</button>
     </div>
-  </main>
+    <nav class="drawerNav" id="drawerNav">
+      <a href="#/home" data-link>Home</a>
+      <a href="#/courses" data-link>Courses</a>
+      <a href="#/marketplace" data-link>Marketplace</a>
+      <a href="#/services" data-link>Services</a>
+      <a href="#/about" data-link>About</a>
+      <a href="#/contact" data-link>Contact</a>
+      <a href="#/login" data-link>Login</a>
+      <a href="#/login/admin" data-link>Admin</a>
+      <a href="#/checkout" data-link>Checkout</a>
+      <a href="#/payment" data-link>Payment</a>
+    </nav>
+    <div class="drawerFoot">Microsoft Education branding stays visible across all pages.</div>
+  </aside>
 
-  <!-- Programs -->
-  <section id="courses" class="section">
-    <div class="wrap">
-      <div class="panel">
+  <div class="wrap">
+    <!-- ==================== HOME ==================== -->
+    <main class="page" id="page-home" data-page="home">
+      <div class="heroWrap">
+        <section class="heroCard">
+          <div class="heroGrid">
+            <div>
+              <h1 class="heroTitle">Skilling Teachers Towards<br/>STEAM Excellence</h1>
+              <p class="heroText">
+                Introductory, Advanced & Expert digital teaching programs for pre-service & in-service teachers worldwide.
+              </p>
+
+              <div class="heroActions">
+                <button class="btn btnGhost" data-goto="courses">View Pricing</button>
+                <button class="btn btnPrimary" data-goto="courses">Enroll Now</button>
+              </div>
+
+              <div class="chipRow" aria-label="Standards and research powerhouse">
+                <span class="chip">🟦 Microsoft</span>
+                <span class="chip">📌 ISTE</span>
+                <span class="chip">🏛️ UNESCO ICT CFT</span>
+                <span class="chip">📊 PISA</span>
+              </div>
+            </div>
+
+            <div class="illus" aria-label="Hero illustration placeholder">
+              <div class="bubble b1"></div>
+              <div class="bubble b2"></div>
+              <div class="illusCard">
+                Hero Illustration (Replace with your wireframe image)
+                <span>When you move to React, we’ll use real images in /assets.</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <footer>
+        <div class="fine">© <span id="yearHome"></span> STEAM ONE Platform • All rights reserved</div>
+      </footer>
+    </main>
+
+    <!-- ==================== COURSES ==================== -->
+    <main class="page" id="page-courses" data-page="courses">
+      <section class="panel">
         <div class="panelHead">
           <h2>Our STEAM Certification Programs</h2>
           <p>Choose a level, review requirements, then proceed to secure payment to unlock access and receive login instructions by email.</p>
@@ -703,12 +742,10 @@
                   <li>Digital Literacy</li>
                   <li>Teaching Foundations</li>
                 </ul>
-
                 <div class="priceRow">
                   <div class="price">$599 <small>/ course</small></div>
                   <div class="access">Standard Access<br/>+ Basic Resources</div>
                 </div>
-
                 <button class="payBtn jsEnroll">Enroll & Pay</button>
               </div>
             </article>
@@ -726,12 +763,10 @@
                   <li>Technology Integration</li>
                   <li>Digital Teaching Tools</li>
                 </ul>
-
                 <div class="priceRow">
                   <div class="price">$199 <small>/ course</small></div>
                   <div class="access">Standard Access<br/>+ Toolkits</div>
                 </div>
-
                 <button class="payBtn jsEnroll">Enroll & Pay</button>
               </div>
             </article>
@@ -749,12 +784,10 @@
                   <li>Advanced STEAM</li>
                   <li>Creating Learning Pathways</li>
                 </ul>
-
                 <div class="priceRow">
                   <div class="price">$399 <small>/ course</small></div>
                   <div class="access">Advanced Access<br/>+ Mentorship</div>
                 </div>
-
                 <button class="payBtn jsEnroll">Enroll & Pay</button>
               </div>
             </article>
@@ -764,7 +797,6 @@
         <div class="panelHead" style="padding-top:0">
           <h2 style="margin-top:4px">Simple Enrollment Process</h2>
         </div>
-
         <div class="steps">
           <div class="stepsBar" role="list">
             <div class="step" role="listitem">
@@ -773,7 +805,7 @@
             </div>
             <div class="step" role="listitem">
               <div class="stepNum">2</div>
-              <div class="stepTxt">Secure Payment <small>Paystack/Flutterwave/Stripe</small></div>
+              <div class="stepTxt">Secure Payment <small>Paystack / Flutterwave / Stripe</small></div>
             </div>
             <div class="step" role="listitem">
               <div class="stepNum">3</div>
@@ -789,14 +821,19 @@
         <div class="ctaStripe">
           <h3>Ready to Start Your Certification?</h3>
           <div class="ctaBtns">
-            <button class="btn btnGhost" id="viewPricing2">View Pricing</button>
-            <button class="btn btnPrimary" id="enrollNow2">Enroll Now</button>
+            <button class="btn btnGhost" data-goto="courses">View Pricing</button>
+            <button class="btn btnPrimary" data-goto="courses">Enroll Now</button>
           </div>
         </div>
+      </section>
+    </main>
 
-        <div class="panelHead" style="padding-top:0">
-          <h2 id="marketplace">Certified Teachers Marketplace</h2>
-          <p>After certification, teachers may opt into our marketplace for job placement. “Contact this teacher” sends a request to admin for moderation.</p>
+    <!-- ==================== MARKETPLACE ==================== -->
+    <main class="page" id="page-marketplace" data-page="marketplace">
+      <section class="panel">
+        <div class="panelHead">
+          <h2>Certified Teachers Marketplace</h2>
+          <p>“Contact this teacher” sends a request to admin for moderation (demo).</p>
         </div>
 
         <div class="market">
@@ -871,28 +908,32 @@
           </div>
         </div>
 
-        <div class="panelHead" style="padding-top:0">
-          <h2 id="services">Recruit Certified Teachers</h2>
+        <div class="ctaStripe">
+          <h3>Recruit a Certified Teacher</h3>
+          <div class="ctaBtns">
+            <button class="btn btnPrimary" data-goto="services">Recruit A Teacher</button>
+            <button class="btn btnGhost" data-goto="contact">Contact Admin</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ==================== SERVICES ==================== -->
+    <main class="page" id="page-services" data-page="services">
+      <section class="panel">
+        <div class="panelHead">
+          <h2>Recruit Certified Teachers</h2>
           <p>Fill out a recruitment form to get connected with recommended pedagogical solutions and certified educators.</p>
         </div>
 
         <div class="recruit">
           <div>
             <h4>Recruit a Teacher</h4>
-            <p>
-              Submit your recruitment needs (role, location, timeline). Our admin team will review and recommend certified teachers for your school or organization.
-            </p>
-
+            <p>Submit your recruitment needs (role, location, timeline). Our admin team will review and recommend certified teachers.</p>
             <div class="mini">
-              <div class="iconTag">
-                <div class="icon">📝</div>
-                Fill recruitment form
-              </div>
-              <div class="iconTag">
-                <div class="icon">🎓</div>
-                Pedagogical Solutions
-              </div>
-              <button class="btn btnPrimary" id="recruitBtn">Recruit A Teacher</button>
+              <div class="iconTag"><div class="icon">📝</div> Fill recruitment form</div>
+              <div class="iconTag"><div class="icon">🎓</div> Pedagogical Solutions</div>
+              <button class="btn btnPrimary" data-goto="contact">Recruit A Teacher</button>
             </div>
           </div>
           <div class="recruitArt" aria-label="Recruitment illustration placeholder">
@@ -900,214 +941,326 @@
             <span>Replace with your recruiter banner image.</span>
           </div>
         </div>
+      </section>
+    </main>
 
-        <div class="bottomCta">
-          <h3>Become a Certified 21st Century Educator</h3>
-          <p>Join our community of innovative teachers today.</p>
-          <div class="ctaBtns">
-            <button class="btn btnPrimary" id="enrollProgram">Enroll in STEAM Program</button>
-            <button class="btn btnGhost" id="viewCourses">View Courses</button>
+    <!-- ==================== ABOUT ==================== -->
+    <main class="page" id="page-about" data-page="about">
+      <section class="panel">
+        <div class="panelHead">
+          <h2>About STEAM ONE Platform</h2>
+          <p>Our work complies with ISTE Standards, UNESCO ICT CFT framework and international PISA standard, while Microsoft Education serves as our research powerhouse.</p>
+        </div>
+        <div class="formCard">
+          <div class="summary">
+            <div class="summaryHead">Platform Overview <span style="opacity:.7;font-weight:900">Teacher Training • Certification • Marketplace</span></div>
+            <div class="summaryBody">
+              <div class="row"><span>STEAM ONE</span><small>Introductory modules for pre/in-service teachers</small></div>
+              <div class="row"><span>STEAM TWO</span><small>Technology integration and digital tools</small></div>
+              <div class="row"><span>STEAM THREE</span><small>Advanced/AI-integrated expert educator track</small></div>
+              <div class="actions" style="justify-content:flex-start">
+                <button class="btn btnPrimary" data-goto="courses">View Programs</button>
+                <button class="btn btnGhost" data-goto="home">Back Home</button>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
+    </main>
 
-      <footer id="about">
-        <div class="fine">© <span id="year"></span> STEAM ONE Platform • All rights reserved</div>
-        <div class="miniBrand">
-          <span aria-hidden="true" style="display:inline-grid;grid-template-columns:repeat(2,8px);gap:2px;transform:translateY(1px)">
-            <span style="width:8px;height:8px;background:#F25022;border-radius:2px"></span>
-            <span style="width:8px;height:8px;background:#7FBA00;border-radius:2px"></span>
-            <span style="width:8px;height:8px;background:#00A4EF;border-radius:2px"></span>
-            <span style="width:8px;height:8px;background:#FFB900;border-radius:2px"></span>
-          </span>
-          Microsoft Education (logo placeholder)
+    <!-- ==================== CONTACT ==================== -->
+    <main class="page" id="page-contact" data-page="contact">
+      <section class="panel">
+        <div class="panelHead">
+          <h2>Contact Admin</h2>
+          <p>Send a message (demo). Backend will be connected later.</p>
         </div>
+
+        <div class="formCard">
+          <form id="contactForm">
+            <div class="formGrid">
+              <div class="field">
+                <label for="cName">Full Name</label>
+                <input id="cName" required placeholder="Your name" />
+              </div>
+              <div class="field">
+                <label for="cEmail">Email</label>
+                <input id="cEmail" required placeholder="you@example.com" />
+              </div>
+              <div class="field" style="grid-column:1/-1">
+                <label for="cTopic">Topic</label>
+                <select id="cTopic" required>
+                  <option value="Enrollment">Enrollment</option>
+                  <option value="Recruitment">Recruitment</option>
+                  <option value="Support">Support</option>
+                </select>
+              </div>
+              <div class="field" style="grid-column:1/-1">
+                <label for="cMsg">Message</label>
+                <textarea id="cMsg" required placeholder="Write your message..."></textarea>
+              </div>
+            </div>
+            <div class="actions">
+              <button class="btn btnPrimary" type="submit">Send (Demo)</button>
+              <button class="btn btnGhost" type="button" data-goto="home">Back Home</button>
+            </div>
+            <div class="toast" id="contactToast">✅ Message sent successfully (demo).</div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- ==================== LOGIN ==================== -->
+    <main class="page" id="page-login" data-page="login">
+      <section class="panel">
+        <div class="panelHead">
+          <h2>Login</h2>
+          <p>Demo login page (backend auth will be connected later).</p>
+        </div>
+        <div class="formCard">
+          <form id="loginForm">
+            <div class="formGrid">
+              <div class="field" style="grid-column:1/-1">
+                <label for="lEmail">Email</label>
+                <input id="lEmail" required placeholder="you@example.com" />
+              </div>
+              <div class="field" style="grid-column:1/-1">
+                <label for="lPass">Password</label>
+                <input id="lPass" type="password" required placeholder="********" />
+              </div>
+            </div>
+            <div class="actions">
+              <button class="btn btnPrimary" type="submit">Login (Demo)</button>
+              <button class="btn btnGhost" type="button" data-goto="home">Back Home</button>
+            </div>
+            <div class="toast" id="loginToast">✅ Login submitted (demo).</div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- ==================== CHECKOUT ==================== -->
+    <main class="page" id="page-checkout" data-page="checkout">
+      <section class="panel">
+        <div class="panelHead">
+          <h2>Checkout</h2>
+          <p>Review your course selection, then proceed to Payment.</p>
+        </div>
+
+        <div class="formCard">
+          <div class="summary">
+            <div class="summaryHead">
+              Order Summary
+              <span style="opacity:.75;font-weight:900">Paid Course</span>
+            </div>
+
+            <div class="summaryBody">
+              <div class="row"><span>Selected Course</span><span id="sumCourse">—</span></div>
+              <div class="row"><span>Price</span><span id="sumPrice">—</span></div>
+              <div class="row"><span>Access</span><small id="sumAccess">Standard access</small></div>
+
+              <div class="actions">
+                <button class="btn btnGhost" type="button" data-goto="courses">Change Course</button>
+                <button class="btn btnPrimary" type="button" id="goPayment">Proceed to Payment</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ==================== PAYMENT ==================== -->
+    <main class="page" id="page-payment" data-page="payment">
+      <section class="panel">
+        <div class="panelHead">
+          <h2>Payment</h2>
+          <p>Select a payment gateway (demo). Backend integration placeholder for Paystack/Flutterwave/Stripe.</p>
+        </div>
+
+        <div class="formCard">
+          <div class="summary">
+            <div class="summaryHead">
+              Payment Details
+              <span style="opacity:.75;font-weight:900" id="payCourse">—</span>
+            </div>
+
+            <div class="summaryBody">
+              <div class="row"><span>Amount</span><span id="payAmount">—</span></div>
+
+              <div class="gateway">
+                <button class="gwBtn primary" data-gateway="Paystack">Paystack</button>
+              </div>
+
+              <div style="margin-top:12px" class="actions">
+                <button class="btn btnGhost" type="button" data-goto="checkout">Back to Checkout</button>
+              </div>
+
+              <div class="toast" id="payToast">✅ Payment initiated (demo). Connect real gateway in backend.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div class="fine">© <span id="yearPay"></span> STEAM ONE Platform • All rights reserved</div>
       </footer>
-    </div>
-  </section>
+    </main>
 
-  <!-- Modal -->
-  <div class="modalOverlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal">
-      <div class="modalHead">
-        <strong id="modalTitle">Request</strong>
-        <button class="closeX" id="closeModal" aria-label="Close">✕</button>
-      </div>
-
-      <div class="modalBody">
-        <div class="pill" style="border-color: rgba(44,114,255,.18); background: rgba(44,114,255,.08); color:#0b2a85">
-          <span id="modalMeta">—</span>
-        </div>
-
-        <div style="height:10px"></div>
-
-        <form id="modalForm">
-          <div class="formGrid">
-            <div class="field">
-              <label for="fullName">Full Name</label>
-              <input id="fullName" name="fullName" placeholder="Your name" required />
-            </div>
-            <div class="field">
-              <label for="email">Email</label>
-              <input id="email" name="email" placeholder="you@example.com" required />
-            </div>
-
-            <div class="field">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" placeholder="Write your message..." required></textarea>
-            </div>
-          </div>
-
-          <div class="modalActions">
-            <button type="button" class="btn btnGhost" id="cancelBtn">Cancel</button>
-            <button type="submit" class="btn btnPrimary" id="submitBtn">Send (Demo)</button>
-          </div>
-
-          <div class="toast" id="toast">✅ Sent successfully (demo). Backend will email admin / create order later.</div>
-        </form>
-      </div>
-    </div>
+    <!-- ==================== FOOTER BASE ==================== -->
+    <footer style="padding-top:10px">
+      <div class="fine">Microsoft Education • STEAM ONE Platform</div>
+    </footer>
   </div>
 
   <script>
-    // Nigeria time (Africa/Lagos)
-    function formatNigeriaTime(d){
-      try{
-        return new Intl.DateTimeFormat("en-NG",{
-          timeZone:"Africa/Lagos",
-          weekday:"short",
-          year:"numeric",
-          month:"short",
-          day:"2-digit",
-          hour:"2-digit",
-          minute:"2-digit",
-          second:"2-digit",
-          hour12:true
-        }).format(d);
-      }catch(e){
-        // fallback: UTC+1
-        const utc = d.getTime() + d.getTimezoneOffset()*60000;
-        const lagos = new Date(utc + 60*60000);
-        return lagos.toLocaleString("en-NG");
-      }
+    // ===== Year
+    const y = new Date().getFullYear();
+    document.getElementById("yearHome").textContent = y;
+    document.getElementById("yearPay").textContent = y;
+
+    // ===== Router (show one page only)
+    const pages = Array.from(document.querySelectorAll(".page"));
+    const navLinks = Array.from(document.querySelectorAll("[data-link]"));
+
+    function getRoute(){
+      const raw = location.hash || "#/home";
+      const route = raw.replace("#/", "").trim();
+      return route || "home";
     }
-    const timeEl = document.getElementById("ngTime");
-    function tick(){ timeEl.textContent = formatNigeriaTime(new Date()); }
-    tick(); setInterval(tick, 1000);
 
-    // Year
-    document.getElementById("year").textContent = new Date().getFullYear();
+    function showPage(route){
+      const exists = pages.some(p => p.dataset.page === route);
+      const page = exists ? route : "home";
 
-    // Simple "active" for nav hash links (desktop only)
-    const navLinks = Array.from(document.querySelectorAll(".nav a"));
-    function setActive(){
-      const hash = location.hash || "#home";
-      navLinks.forEach(a => a.classList.toggle("active", a.getAttribute("href") === hash));
+      pages.forEach(p => p.classList.toggle("active", p.dataset.page === page));
+
+      navLinks.forEach(a => {
+        const href = a.getAttribute("href") || "";
+        a.classList.toggle("active", href === `#/${page}`);
+      });
+
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+      closeDrawer();
     }
-    window.addEventListener("hashchange", setActive);
-    setActive();
 
-    // Modal controller
-    const overlay = document.getElementById("modalOverlay");
-    const closeModalBtn = document.getElementById("closeModal");
-    const cancelBtn = document.getElementById("cancelBtn");
-    const modalTitle = document.getElementById("modalTitle");
-    const modalMeta = document.getElementById("modalMeta");
-    const modalForm = document.getElementById("modalForm");
-    const toast = document.getElementById("toast");
-    const msgField = document.getElementById("message");
+    window.addEventListener("hashchange", () => showPage(getRoute()));
 
-    let currentMode = "enroll"; // enroll | contact | recruit
-    let currentTarget = "";
+    document.querySelectorAll("[data-goto]").forEach(el=>{
+      el.addEventListener("click", ()=>{
+        const page = el.getAttribute("data-goto");
+        location.hash = `#/${page}`;
+      });
+    });
 
-    function openModal({title, meta, placeholder, mode, target}){
-      currentMode = mode;
-      currentTarget = target || "";
-      modalTitle.textContent = title;
-      modalMeta.textContent = meta;
-      toast.style.display = "none";
-      modalForm.reset();
-      msgField.placeholder = placeholder;
-      overlay.style.display = "flex";
+    // ===== Mobile Drawer
+    const menuBtn = document.getElementById("menuBtn");
+    const drawer = document.getElementById("drawer");
+    const drawerOverlay = document.getElementById("drawerOverlay");
+    const drawerClose = document.getElementById("drawerClose");
+
+    function openDrawer(){
+      drawerOverlay.style.display = "block";
+      drawer.classList.add("open");
       document.body.style.overflow = "hidden";
-      setTimeout(() => document.getElementById("fullName").focus(), 50);
     }
-
-    function hideModal(){
-      overlay.style.display = "none";
+    function closeDrawer(){
+      drawerOverlay.style.display = "none";
+      drawer.classList.remove("open");
       document.body.style.overflow = "";
     }
 
-    closeModalBtn.addEventListener("click", hideModal);
-    cancelBtn.addEventListener("click", hideModal);
-    overlay.addEventListener("click", (e)=>{ if(e.target === overlay) hideModal(); });
-    window.addEventListener("keydown", (e)=>{ if(e.key === "Escape" && overlay.style.display === "flex") hideModal(); });
+    menuBtn.addEventListener("click", openDrawer);
+    drawerClose.addEventListener("click", closeDrawer);
+    drawerOverlay.addEventListener("click", closeDrawer);
 
-    // Enroll buttons
-    function enroll(course, price){
-      openModal({
-        title: "Enroll & Pay (Demo)",
-        meta: `${course} • $${price} • Paid Course`,
-        placeholder: "Tell us your preferred start date or any note (demo).",
-        mode: "enroll",
-        target: course
-      });
+    // ===== Top CTA
+    document.getElementById("enrollTop").addEventListener("click", () => location.hash = "#/courses");
+
+    // ===== Payment Connection (Enroll -> Checkout -> Payment)
+    const sumCourse = document.getElementById("sumCourse");
+    const sumPrice = document.getElementById("sumPrice");
+    const sumAccess = document.getElementById("sumAccess");
+
+    const payCourse = document.getElementById("payCourse");
+    const payAmount = document.getElementById("payAmount");
+
+    const state = {
+      course: "",
+      price: "",
+      access: ""
+    };
+
+    function computeAccess(course){
+      if (course === "STEAM ONE") return "Standard Access + Basic Resources";
+      if (course === "STEAM TWO") return "Standard Access + Toolkits";
+      if (course === "STEAM THREE") return "Advanced Access + Mentorship";
+      return "Standard access";
+    }
+
+    function setCheckout(course, price){
+      state.course = course;
+      state.price = price;
+      state.access = computeAccess(course);
+
+      sumCourse.textContent = course;
+      sumPrice.textContent = `$${price}`;
+      sumAccess.textContent = state.access;
+
+      payCourse.textContent = course;
+      payAmount.textContent = `$${price}`;
     }
 
     document.querySelectorAll(".jsEnroll").forEach(btn=>{
       btn.addEventListener("click", ()=>{
         const card = btn.closest(".programCard");
-        enroll(card.dataset.course, card.dataset.price);
+        const course = card.dataset.course;
+        const price = card.dataset.price;
+
+        setCheckout(course, price);
+        location.hash = "#/checkout";
       });
     });
 
-    document.getElementById("enrollTop").addEventListener("click", ()=> location.hash="#courses");
-    document.getElementById("enrollNow").addEventListener("click", ()=> location.hash="#courses");
-    document.getElementById("enrollNow2").addEventListener("click", ()=> location.hash="#courses");
-    document.getElementById("enrollProgram").addEventListener("click", ()=> location.hash="#courses");
-    document.getElementById("viewPricing").addEventListener("click", ()=> location.hash="#courses");
-    document.getElementById("viewPricing2").addEventListener("click", ()=> location.hash="#courses");
-    document.getElementById("viewCourses").addEventListener("click", ()=> location.hash="#courses");
+    document.getElementById("goPayment").addEventListener("click", ()=>{
+      if (!state.course) {
+        // fallback if user opened checkout directly
+        setCheckout("STEAM ONE", "599");
+      }
+      location.hash = "#/payment";
+    });
 
-    // Contact teacher buttons
-    document.querySelectorAll(".jsContact").forEach(btn=>{
+    // ===== Gateways demo
+    const payToast = document.getElementById("payToast");
+    document.querySelectorAll("[data-gateway]").forEach(btn=>{
       btn.addEventListener("click", ()=>{
-        const card = btn.closest(".person");
-        const teacher = card.dataset.teacher;
-        openModal({
-          title: "Contact Teacher (Admin-mediated)",
-          meta: `${teacher} • Request goes to Admin Email`,
-          placeholder: "Describe the role, location, salary range, timeline, and contact details.",
-          mode: "contact",
-          target: teacher
-        });
+        const gw = btn.getAttribute("data-gateway");
+        payToast.textContent = `✅ ${gw} payment initiated (demo). Connect real gateway in backend.`;
+        payToast.style.display = "block";
+        setTimeout(()=> payToast.style.display = "none", 2600);
       });
     });
 
-    // Recruit a teacher
-    document.getElementById("recruitBtn").addEventListener("click", ()=>{
-      openModal({
-        title: "Recruit a Teacher (Demo)",
-        meta: "Recruitment Form • Sent to Admin Queue",
-        placeholder: "What teacher role do you need? Location? Timeline? Requirements?",
-        mode: "recruit",
-        target: "Recruitment"
-      });
-    });
-
-    // Fake submit
-    modalForm.addEventListener("submit", (e)=>{
+    // ===== Contact / Login demos
+    const contactForm = document.getElementById("contactForm");
+    const contactToast = document.getElementById("contactToast");
+    contactForm.addEventListener("submit", (e)=>{
       e.preventDefault();
-
-      // In real backend:
-      // - enroll: create order + payment reference (Paystack/Flutterwave/Stripe)
-      // - contact: send email to admin / create ticket
-      // - recruit: store form + notify admin
-      toast.style.display = "block";
-
-      // quick close after short delay (optional)
-      setTimeout(()=> hideModal(), 1200);
+      contactToast.style.display = "block";
+      setTimeout(()=> contactToast.style.display = "none", 2400);
+      contactForm.reset();
     });
+
+    const loginForm = document.getElementById("loginForm");
+    const loginToast = document.getElementById("loginToast");
+    loginForm.addEventListener("submit", (e)=>{
+      e.preventDefault();
+      loginToast.style.display = "block";
+      setTimeout(()=> loginToast.style.display = "none", 2400);
+      loginForm.reset();
+    });
+
+    // initial render
+    showPage(getRoute());
   </script>
 </body>
 </html>
