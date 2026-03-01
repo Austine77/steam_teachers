@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>STEAM ONE Platform — Microsoft Education</title>
+
   <style>
     :root{
       --navH:72px;
@@ -19,6 +20,7 @@
       --muted:#5a6b8a;
       --line:rgba(14,35,92,.10);
       --shadow:0 18px 45px rgba(6,16,40,.18);
+      --shadow2: 0 22px 60px rgba(0,0,0,.18);
 
       --btn:#f59e0b;
       --btn2:#ffb100;
@@ -46,12 +48,6 @@
     button{touch-action:manipulation}
 
     .wrap{max-width:var(--max); margin:0 auto; padding:0 18px;}
-    .glass{
-      background: rgba(255,255,255,.12);
-      border:1px solid rgba(255,255,255,.18);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
 
     /* Top Nav */
     .topbar{
@@ -89,10 +85,11 @@
     .brand small{display:block;font-weight:700;opacity:.88;font-size:11px;margin-top:2px}
 
     .nav{
-      display:flex; align-items:center; gap:16px;
+      display:flex; align-items:center; gap:10px;
       color:#eaf1ff;
-      font-weight:800;
+      font-weight:900;
       font-size:13px;
+      flex-wrap:wrap;
     }
     .nav a{
       opacity:.92;
@@ -100,11 +97,13 @@
       border-radius:999px;
       border:1px solid transparent;
       transition:.15s ease;
+      white-space:nowrap;
     }
     .nav a:hover{opacity:1; background:rgba(255,255,255,.10); border-color:rgba(255,255,255,.14)}
     .nav a.active{background:rgba(255,255,255,.14); border-color:rgba(255,255,255,.18); opacity:1}
 
     .navRight{display:flex; align-items:center; gap:10px;}
+
     .btn{
       border:0;
       cursor:pointer;
@@ -197,7 +196,7 @@
     }
 
     /* Pages system */
-    .page{display:none}
+    .page{display:none; padding-bottom: 10px;}
     .page.active{display:block}
 
     /* Hero area */
@@ -252,7 +251,6 @@
       border: 1px solid rgba(255,255,255,.18);
     }
 
-    /* Illustration panel (replace with your real image later) */
     .illus{
       border-radius:22px;
       border:1px solid rgba(255,255,255,.16);
@@ -280,7 +278,7 @@
     }
     .illusCard span{display:block; font-weight:800; opacity:.92; margin-top:8px; font-size:12px}
 
-    /* White wave section container */
+    /* White section container */
     .panel{
       background: rgba(255,255,255,.88);
       border:1px solid rgba(255,255,255,.95);
@@ -304,8 +302,40 @@
       line-height:1.6;
       font-size:13px;
     }
+    .panelBody{padding:18px;}
 
-    /* Program cards */
+    /* Cards / grids */
+    .grid2{display:grid; grid-template-columns: 1fr 1fr; gap:14px;}
+    .grid3{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px;}
+    .grid4{display:grid; grid-template-columns: repeat(4, 1fr); gap:12px;}
+    .card{
+      background:#fff;
+      border:1px solid rgba(13,39,108,.10);
+      border-radius:18px;
+      box-shadow: 0 14px 28px rgba(0,0,0,.08);
+      padding:14px;
+    }
+    .kicker{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(13,39,108,.10);
+      background: rgba(13,39,108,.06);
+      color:#0b2a85;
+      font-weight:1000;
+      font-size:12px;
+    }
+    .stat{
+      display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
+      padding:14px;
+      border-radius:18px;
+      background: linear-gradient(180deg, rgba(44,114,255,.08), rgba(245,158,11,.06));
+      border:1px solid rgba(13,39,108,.10);
+    }
+    .stat strong{font-size:18px; color:#0b2a85}
+    .stat small{display:block; margin-top:4px; color:var(--muted); font-weight:900}
+
+    /* Programs */
     .programs{padding:18px}
     .cards3{
       display:grid;
@@ -334,7 +364,6 @@
     .topBlue{background: linear-gradient(180deg, #1b4ed9, #0b2a85);}
     .topCyan{background: linear-gradient(180deg, #2c72ff, #1240b7);}
     .topOrange{background: linear-gradient(180deg, #ffb100, #f59e0b);}
-
     .pill{
       display:inline-flex; align-items:center; gap:10px;
       padding:7px 10px;
@@ -348,11 +377,9 @@
       -webkit-backdrop-filter: blur(10px);
       box-shadow: 0 12px 30px rgba(0,0,0,.12);
     }
-
     .programBody{padding:14px}
     .checkList{margin:0; padding:0 0 0 18px; color:#334562}
     .checkList li{margin:8px 0; font-weight:800; font-size:13px}
-
     .priceRow{
       display:flex; align-items:baseline; justify-content:space-between; gap:10px;
       margin-top:14px;
@@ -423,6 +450,7 @@
       text-align:center;
     }
     .ctaStripe h3{margin:0; font-size:18px; letter-spacing:.2px}
+    .ctaStripe p{margin:8px auto 0; max-width:70ch; color:rgba(255,255,255,.88); font-weight:750; font-size:13px; line-height:1.6}
     .ctaStripe .ctaBtns{display:flex; justify-content:center; gap:10px; margin-top:12px; flex-wrap:wrap}
 
     /* Marketplace */
@@ -525,13 +553,43 @@
     }
     .recruitArt span{display:block; margin-top:8px; font-weight:900; color:var(--muted); font-size:12px}
 
+    /* Forms (for Contact + Login + Admin) */
+    .formCard{padding:18px;}
+    .formGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    .field{display:flex; flex-direction:column; gap:6px;}
+    .field label{font-weight:1000; color:#0b2a85; font-size:12px}
+    .field input,.field select,.field textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid rgba(13,39,108,.12);
+      background: rgba(255,255,255,.96);
+      outline:none;
+      font-weight:850;
+      color:#0b1530;
+    }
+    .field textarea{min-height:120px; resize:vertical}
+    .toast{
+      display:none;
+      margin-top:12px;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(16,185,129,.25);
+      background: rgba(16,185,129,.12);
+      color:#0b5130;
+      font-weight:950;
+    }
+
     /* ====== Footer ====== */
     footer{
       width:min(1200px, 100%);
       margin: 18px auto 26px;
       padding: 0 16px;
     }
-
     .footerCard{
       border-radius: var(--radius);
       background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
@@ -539,7 +597,6 @@
       box-shadow: var(--shadow2);
       overflow:hidden;
     }
-
     .footerTop{
       padding: 14px 16px;
       display:flex;
@@ -547,21 +604,19 @@
       justify-content:space-between;
       gap: 12px;
       flex-wrap:wrap;
+      color:#fff;
     }
-
     .fine{
       font-size: 13px;
       font-weight: 800;
       opacity: .95;
       letter-spacing:.2px;
     }
-
     .footerSocial{
       display:flex;
       align-items:center;
       gap: 10px;
     }
-
     .socialIcon{
       width:36px;height:36px;
       display:inline-flex;
@@ -577,22 +632,21 @@
       transform: translateY(-1px);
     }
     .socialIcon svg{ width:20px;height:20px; fill:#fff; }
-
     .footerTime{
       font-weight: 900;
-      font-size: 14px;
+      font-size: 13px;
       letter-spacing:.2px;
       white-space:nowrap;
+      opacity:.95;
     }
-
     .footerBottom{
       border-top: 1px solid rgba(255,255,255,.14);
       padding: 12px 16px 14px;
       display:flex;
       flex-direction:column;
       gap: 10px;
+      color:#fff;
     }
-
     .standardsRow{
       display:flex;
       flex-wrap:wrap;
@@ -600,13 +654,12 @@
       align-items:center;
       justify-content:space-between;
     }
-
     .standardsText{
       display:flex;
       flex-wrap:wrap;
       gap:10px;
       align-items:center;
-      font-weight: 900;
+      font-weight: 700;
       font-size: 12.5px;
       letter-spacing:.2px;
       opacity: .98;
@@ -621,14 +674,12 @@
       border: 1px solid rgba(255,255,255,.18);
       white-space:nowrap;
     }
-
     .logoRow{
       display:flex;
       flex-wrap:wrap;
       gap:10px;
       align-items:center;
     }
-
     .logoBadge{
       display:inline-flex;
       align-items:center;
@@ -644,16 +695,51 @@
       font-size: 12.5px;
       letter-spacing:.2px;
       opacity:.98;
+      color:#fff;
     }
+    .footerLinks{
+      display:grid;
+      grid-template-columns: 1.1fr 1fr 1fr 1fr;
+      gap:12px;
+      margin-top:6px;
+    }
+    .fCol{
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 16px;
+      padding: 12px;
+    }
+    .fCol h5{margin:0 0 8px; font-size:12px; letter-spacing:.2px}
+    .fCol a{
+      display:block;
+      padding:8px 10px;
+      border-radius:12px;
+      border:1px solid transparent;
+      font-weight:800;
+      color:#fff;
+      opacity:.92;
+    }
+    .fCol a:hover{background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.16); opacity:1}
+    .fSmall{color:rgba(255,255,255,.86); font-weight:850; font-size:12px; line-height:1.6}
 
     /* ====== Responsive ====== */
     @media (max-width: 980px){
       .heroGrid{ grid-template-columns: 1fr; }
-      .heroTitle{ font-size: 34px; }
       .cards3{ grid-template-columns: 1fr; }
-      .stepsBar{ grid-template-columns: 1fr; }
-      .navLinks{ display:none; } /* keep clean on mobile */
-      .brand{ font-size: 16px; }
+      .people{ grid-template-columns: 1fr; }
+      .grid4{ grid-template-columns: 1fr 1fr; }
+      .grid3{ grid-template-columns: 1fr; }
+      .grid2{ grid-template-columns: 1fr; }
+      .recruit{ grid-template-columns: 1fr; }
+      .formGrid{ grid-template-columns: 1fr; }
+      .nav{ display:none; }
+      .menuBtn{ display:inline-flex; align-items:center; justify-content:center; }
+      .brand{ min-width:auto; }
+      .footerLinks{ grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 520px){
+      .grid4{ grid-template-columns: 1fr; }
+      .footerLinks{ grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -680,8 +766,7 @@
         <a href="#/about" data-link>About</a>
         <a href="#/contact" data-link>Contact</a>
         <a href="#/login" data-link>Login</a>
-        <a href="#/login/admin" data-link>Admin</a>
-
+        <a href="#/admin" data-link>Admin</a>
       </nav>
 
       <div class="navRight">
@@ -706,16 +791,17 @@
       <a href="#/about" data-link>About</a>
       <a href="#/contact" data-link>Contact</a>
       <a href="#/login" data-link>Login</a>
-      <a href="#/login/admin" data-link>Admin</a>
-      <a href="#/checkout" data-link>Checkout</a>
-      <a href="#/payment" data-link>Payment</a>
+      <a href="#/admin" data-link>Admin</a>
     </nav>
     <div class="drawerFoot">Microsoft Education branding stays visible across all pages.</div>
   </aside>
 
   <div class="wrap">
-    <!-- ==================== HOME ==================== -->
+
+    <!-- ==================== HOME (8 sections) ==================== -->
     <main class="page" id="page-home" data-page="home">
+
+      <!-- 1) HERO -->
       <div class="heroWrap">
         <section class="heroCard">
           <div class="heroGrid">
@@ -742,618 +828,889 @@
               <div class="bubble b1"></div>
               <div class="bubble b2"></div>
               <div class="illusCard">
-                Hero Illustration (Replace with your wireframe image)
-                <span>When you move to React, we’ll use real images in /assets.</span>
+                Home Hero Illustration (Placeholder)
+                <span>Replace with your real banner later.</span>
               </div>
             </div>
           </div>
-        
-      <section class="panel">
-        <div class="panelHead">
-          <h2>Our STEAM Certification Programs</h2>
-          <p>Choose a level, review requirements, then proceed to secure payment to unlock access and receive login instructions by email.</p>
-        </div>
-
-        <div class="programs">
-          <div class="cards3">
-            <article class="programCard" data-course="STEAM ONE" data-price="599">
-              <div class="programTop topBlue">
-                <div>
-                  <div class="ttl">STEAM ONE</div>
-                  <div class="sub">Introductory Courses</div>
-                </div>
-                <div class="pill">Paid</div>
-              </div>
-              <div class="programBody">
-                <ul class="checkList">
-                  <li>Digital Literacy</li>
-                  <li>Teaching Foundations</li>
-                </ul>
-                <div class="priceRow">
-                  <div class="price">$599 <small>/ course</small></div>
-                  <div class="access">Standard Access<br/>+ Basic Resources</div>
-                </div>
-                <button class="payBtn jsEnroll">Enroll & Pay</button>
-              </div>
-            </article>
-
-            <article class="programCard" data-course="STEAM TWO" data-price="199">
-              <div class="programTop topCyan">
-                <div>
-                  <div class="ttl">STEAM TWO</div>
-                  <div class="sub">Technology in Teaching</div>
-                </div>
-                <div class="pill">Paid</div>
-              </div>
-              <div class="programBody">
-                <ul class="checkList">
-                  <li>Technology Integration</li>
-                  <li>Digital Teaching Tools</li>
-                </ul>
-                <div class="priceRow">
-                  <div class="price">$199 <small>/ course</small></div>
-                  <div class="access">Standard Access<br/>+ Toolkits</div>
-                </div>
-                <button class="payBtn jsEnroll">Enroll & Pay</button>
-              </div>
-            </article>
-
-            <article class="programCard" data-course="STEAM THREE" data-price="399">
-              <div class="programTop topOrange">
-                <div>
-                  <div class="ttl">STEAM THREE</div>
-                  <div class="sub">Advanced the Course</div>
-                </div>
-                <div class="pill">Paid</div>
-              </div>
-              <div class="programBody">
-                <ul class="checkList">
-                  <li>Advanced STEAM</li>
-                  <li>Creating Learning Pathways</li>
-                </ul>
-                <div class="priceRow">
-                  <div class="price">$399 <small>/ course</small></div>
-                  <div class="access">Advanced Access<br/>+ Mentorship</div>
-                </div>
-                <button class="payBtn jsEnroll">Enroll & Pay</button>
-              </div>
-            </article>
-          </div>
-        </div>
-
-        <div class="panelHead" style="padding-top:0">
-          <h2 style="margin-top:4px">Simple Enrollment Process</h2>
-        </div>
-        <div class="steps">
-          <div class="stepsBar" role="list">
-            <div class="step" role="listitem">
-              <div class="stepNum">1</div>
-              <div class="stepTxt">Choose Course <small>Pick STEAM ONE–THREE</small></div>
-            </div>
-            <div class="step" role="listitem">
-              <div class="stepNum">2</div>
-              <div class="stepTxt">Secure Payment <small>Paystack / Flutterwave / Stripe</small></div>
-            </div>
-            <div class="step" role="listitem">
-              <div class="stepNum">3</div>
-              <div class="stepTxt">Receive Login <small>Email instructions + start date</small></div>
-            </div>
-            <div class="step" role="listitem">
-              <div class="stepNum">4</div>
-              <div class="stepTxt">Start Learning <small>Complete modules & get certified</small></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="ctaStripe">
-          <h3>Ready to Start Your Certification?</h3>
-          <div class="ctaBtns">
-            <button class="btn btnGhost" data-goto="courses">View Pricing</button>
-            <button class="btn btnPrimary" data-goto="courses">Enroll Now</button>
-          </div>
-</section>
+        </section>
       </div>
 
+      <!-- 2) QUICK STATS -->
       <section class="panel">
         <div class="panelHead">
-          <h2>Certified Teachers Marketplace</h2>
-          <p>“Contact this teacher” sends a request to admin for moderation (demo).</p>
+          <h2>Impact at a Glance</h2>
+          <p>Professional teacher training with global benchmarks—built for real classroom outcomes.</p>
         </div>
-
-        <div class="market">
-          <div class="people">
-            <div class="person" data-teacher="Jane Doe">
-              <div class="personTop">
-                <div class="avatar">JD</div>
-                <div>
-                  <div class="personName">Jane Doe</div>
-                  <div class="role">AI School Teacher</div>
-                </div>
-              </div>
-              <div class="personBody">
-                <ul class="bullet">
-                  <li>Policy & Curriculum Development</li>
-                  <li>Elem. School Teacher</li>
-                </ul>
-                <button class="contactBtn jsContact">Contact This Teacher</button>
-              </div>
-            </div>
-
-            <div class="person" data-teacher="Michael Smith">
-              <div class="personTop">
-                <div class="avatar">MS</div>
-                <div>
-                  <div class="personName">Michael Smith</div>
-                  <div class="role">Middle School Lecturer</div>
-                </div>
-              </div>
-              <div class="personBody">
-                <ul class="bullet">
-                  <li>Technology Integration</li>
-                  <li>Middle School Educator</li>
-                </ul>
-                <button class="contactBtn jsContact">Contact This Teacher</button>
-              </div>
-            </div>
-
-            <div class="person" data-teacher="Laura Kim">
-              <div class="personTop">
-                <div class="avatar">LK</div>
-                <div>
-                  <div class="personName">Laura Kim</div>
-                  <div class="role">Tech School Teacher</div>
-                </div>
-              </div>
-              <div class="personBody">
-                <ul class="bullet">
-                  <li>Digital Transformation</li>
-                  <li>High School Teacher</li>
-                </ul>
-                <button class="contactBtn jsContact">Contact This Teacher</button>
-              </div>
-            </div>
-
-            <div class="person" data-teacher="David Johnson">
-              <div class="personTop">
-                <div class="avatar">DJ</div>
-                <div>
-                  <div class="personName">David Johnson</div>
-                  <div class="role">Digital Educator</div>
-                </div>
-              </div>
-              <div class="personBody">
-                <ul class="bullet">
-                  <li>Lead Learning & STEAM Education</li>
-                  <li>Senior Lecturer</li>
-                </ul>
-                <button class="contactBtn jsContact">Contact This Teacher</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="ctaStripe">
-          <h3>Recruit a Certified Teacher</h3>
-          <div class="ctaBtns">
-            <button class="btn btnPrimary" data-goto="services">Recruit A Teacher</button>
-            <button class="btn btnGhost" data-goto="contact">Contact Admin</button>
+        <div class="panelBody">
+          <div class="grid4">
+            <div class="stat"><div><strong>3</strong><small>Certification Levels</small></div><span class="kicker">STEAM 1–3</span></div>
+            <div class="stat"><div><strong>Paid</strong><small>Access Control</small></div><span class="kicker">Secure</span></div>
+            <div class="stat"><div><strong>Admin</strong><small>Moderated Marketplace</small></div><span class="kicker">Verified</span></div>
+            <div class="stat"><div><strong>Global</strong><small>Standards Alignment</small></div><span class="kicker">ISTE/UNESCO</span></div>
           </div>
         </div>
       </section>
 
-       <section class="panel">
-        <div class="panelHead">
-          <h2>Recruit Certified Teachers</h2>
-          <p>Fill out a recruitment form to get connected with recommended pedagogical solutions and certified educators.</p>
-        </div>
-
-        <div class="recruit">
-          <div>
-            <h4>Recruit a Teacher</h4>
-            <p>Submit your recruitment needs (role, location, timeline). Our admin team will review and recommend certified teachers.</p>
-            <div class="mini">
-              <div class="iconTag"><div class="icon">📝</div> Fill recruitment form</div>
-              <div class="iconTag"><div class="icon">🎓</div> Pedagogical Solutions</div>
-              <button class="btn btnPrimary" data-goto="contact">Recruit A Teacher</button>
-            </div>
-          </div>
-          <div class="recruitArt" aria-label="Recruitment illustration placeholder">
-            Recruitment Illustration (Placeholder)
-            <span>Replace with your recruiter banner image.</span>
-          </div>
-        </div>
-      </section>
-
-       <!-- ===== FOOTER (UPDATED) ===== -->
-      <footer>
-        <div class="footerCard">
-
-          <!-- Top Row: copyright + socials + short time -->
-          <div class="footerTop">
-            <div class="fine">© <span id="yearHome"></span> STEAM ONE Platform • All rights reserved</div>
-
-            <div class="footerSocial" aria-label="Social links">
-              <!-- YouTube -->
-              <a href="#" aria-label="YouTube" class="socialIcon">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M19.6 3H4.4C3 3 2 4 2 5.4v13.2C2 20 3 21 4.4 21h15.2c1.4 0 2.4-1 2.4-2.4V5.4C22 4 21 3 19.6 3zM10 16V8l6 4-6 4z"/>
-                </svg>
-              </a>
-
-              <!-- Facebook -->
-              <a href="#" aria-label="Facebook" class="socialIcon">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M22 12A10 10 0 1 0 10 21.9V14.9H7v-2.9h3V9.4c0-3 1.8-4.7 4.5-4.7 1.3 0 2.7.2 2.7.2v3h-1.5c-1.5 0-2 1-2 2v2.4h3.4l-.5 2.9h-2.9v7A10 10 0 0 0 22 12z"/>
-                </svg>
-              </a>
-
-              <!-- LinkedIn -->
-              <a href="#" aria-label="LinkedIn" class="socialIcon">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M20.4 3H3.6C3.3 3 3 3.3 3 3.6v16.8c0 .3.3.6.6.6h16.8c.3 0 .6-.3.6-.6V3.6c0-.3-.3-.6-.6-.6zM8.4 18H5.7V9h2.7v9zM7 7.8c-.9 0-1.5-.7-1.5-1.5S6.1 4.8 7 4.8s1.5.7 1.5 1.5S7.9 7.8 7 7.8zM18.3 18h-2.7v-4.4c0-1-.4-1.7-1.4-1.7-.8 0-1.2.5-1.4 1-.1.2-.1.5-.1.8V18H10V9h2.7v1.2c.4-.6 1.1-1.5 2.6-1.5 1.9 0 3.3 1.2 3.3 3.8V18z"/>
-                </svg>
-              </a>
-            </div>
-
-            <div id="currentTimeHome" class="footerTime"></div>
-          </div>
-
-
-              <div class="logoRow" aria-label="Logos">
-                <!-- Microsoft (4 squares) -->
-                <div class="logoBadge" title="Microsoft">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <rect x="2" y="2" width="9" height="9" fill="#f35325"></rect>
-                    <rect x="13" y="2" width="9" height="9" fill="#81bc06"></rect>
-                    <rect x="2" y="13" width="9" height="9" fill="#05a6f0"></rect>
-                    <rect x="13" y="13" width="9" height="9" fill="#ffba08"></rect>
-                  </svg>
-                  <span>Microsoft</span>
-                </div>
-
-                <!-- ISTE (simple badge SVG) -->
-                <div class="logoBadge" title="ISTE">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <circle cx="12" cy="12" r="10" fill="rgba(255,255,255,.85)"></circle>
-                    <path d="M7 16V8h2v8H7zm4 0V8h6v2h-4v1h3.6v2H13v1h4v2h-6z" fill="#0b2a85"></path>
-                  </svg>
-                  <span>ISTE</span>
-                </div>
-
-                <!-- UNESCO (temple icon) -->
-                <div class="logoBadge" title="UNESCO ICT CFT">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M12 3 2.5 8.5V10H21.5V8.5L12 3Z" fill="rgba(255,255,255,.90)"></path>
-                    <path d="M4 10h2v9H4v-9zm5 0h2v9H9v-9zm5 0h2v9h-2v-9zm5 0h2v9h-2v-9z" fill="rgba(255,255,255,.78)"></path>
-                    <path d="M3 20h18v2H3v-2z" fill="rgba(255,255,255,.90)"></path>
-                  </svg>
-                  <span>UNESCO</span>
-                </div>
-
-                <!-- PISA (bar chart icon) -->
-                <div class="logoBadge" title="PISA">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <rect x="4" y="11" width="3" height="9" fill="rgba(255,255,255,.90)"></rect>
-                    <rect x="10.5" y="7" width="3" height="13" fill="rgba(255,255,255,.80)"></rect>
-                    <rect x="17" y="4" width="3" height="16" fill="rgba(255,255,255,.70)"></rect>
-                    <path d="M3 20h18v2H3v-2z" fill="rgba(255,255,255,.90)"></path>
-                  </svg>
-                  <span>PISA</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </footer>
-    </main>
-  </div>
-
-  <script>
-    // Year
-    (function(){
-      var y = document.getElementById("yearHome");
-      if(y) y.textContent = new Date().getFullYear();
-    })();
-
-    // Short time format like: 2/28/2026 12:05pm
-    (function(){
-      function pad2(n){ return String(n).padStart(2,'0'); }
-      function formatShort(dt){
-        var m = dt.getMonth() + 1;
-        var d = dt.getDate();
-        var y = dt.getFullYear();
-
-        var h = dt.getHours();
-        var min = dt.getMinutes();
-        var ampm = (h >= 12) ? "pm" : "am";
-        h = h % 12; if(h === 0) h = 12;
-
-        return m + "/" + d + "/" + y + " " + h + ":" + pad2(min) + ampm;
-      }
-
-      function updateTime(){
-        var el = document.getElementById("currentTimeHome");
-        if(!el) return;
-        el.textContent = formatShort(new Date());
-      }
-
-      updateTime();
-      setInterval(updateTime, 1000);
-    })();
-
-    //: enroll buttons (frontend placeholder)
-    document.addEventListener("click", function(e){
-      var btn = e.target.closest(".jsEnroll");
-      if(btn){
-        var card = btn.closest(".programCard");
-        var course = card ? (card.getAttribute("data-course") || "Course") : "Course";
-        var price = card ? (card.getAttribute("data-price") || "") : "";
-        alert("Enroll & Pay (Frontend demo)\n\nCourse: " + course + "\nPrice: $" + price + "\n\nPayment gateway will be connected in backend.");
-      }
-    });
-  </script>
-    </main>
-
-
-
-    <!-- ==================== COURSES ==================== -->
-    <main class="page" id="page-courses" data-page="courses">
+      <!-- 3) PROGRAMS -->
       <section class="panel">
         <div class="panelHead">
           <h2>Our STEAM Certification Programs</h2>
-          <p>Choose a level, review requirements, then proceed to secure payment to unlock access and receive login instructions by email.</p>
+          <p>Choose a level, review requirements, then proceed to paid enrollment (backend will connect payment and onboarding).</p>
         </div>
-
         <div class="programs">
           <div class="cards3">
-            <article class="programCard" data-course="STEAM ONE" data-price="599">
+            <article class="programCard">
               <div class="programTop topBlue">
-                <div>
-                  <div class="ttl">STEAM ONE</div>
-                  <div class="sub">Introductory Courses</div>
-                </div>
+                <div><div class="ttl">STEAM ONE</div><div class="sub">Introductory Courses</div></div>
                 <div class="pill">Paid</div>
               </div>
               <div class="programBody">
                 <ul class="checkList">
-                  <li>Digital Literacy</li>
-                  <li>Teaching Foundations</li>
+                  <li>Digital Literacy</li><li>Teaching Foundations</li><li>Classroom Practice Toolkit</li>
                 </ul>
                 <div class="priceRow">
                   <div class="price">$599 <small>/ course</small></div>
                   <div class="access">Standard Access<br/>+ Basic Resources</div>
                 </div>
-                <button class="payBtn jsEnroll">Enroll & Pay</button>
+                <button class="payBtn" data-goto="courses">Enroll Now</button>
               </div>
             </article>
 
-            <article class="programCard" data-course="STEAM TWO" data-price="199">
+            <article class="programCard">
               <div class="programTop topCyan">
-                <div>
-                  <div class="ttl">STEAM TWO</div>
-                  <div class="sub">Technology in Teaching</div>
-                </div>
+                <div><div class="ttl">STEAM TWO</div><div class="sub">Technology in Teaching</div></div>
                 <div class="pill">Paid</div>
               </div>
               <div class="programBody">
                 <ul class="checkList">
-                  <li>Technology Integration</li>
-                  <li>Digital Teaching Tools</li>
+                  <li>Technology Integration</li><li>Digital Teaching Tools</li><li>Lesson Design Templates</li>
                 </ul>
                 <div class="priceRow">
                   <div class="price">$199 <small>/ course</small></div>
                   <div class="access">Standard Access<br/>+ Toolkits</div>
                 </div>
-                <button class="payBtn jsEnroll">Enroll & Pay</button>
+                <button class="payBtn" data-goto="courses">Enroll Now</button>
               </div>
             </article>
 
-            <article class="programCard" data-course="STEAM THREE" data-price="399">
+            <article class="programCard">
               <div class="programTop topOrange">
-                <div>
-                  <div class="ttl">STEAM THREE</div>
-                  <div class="sub">Advanced the Course</div>
-                </div>
+                <div><div class="ttl">STEAM THREE</div><div class="sub">Advanced / AI-Integrated</div></div>
                 <div class="pill">Paid</div>
               </div>
               <div class="programBody">
                 <ul class="checkList">
-                  <li>Advanced STEAM</li>
-                  <li>Creating Learning Pathways</li>
+                  <li>Advanced STEAM Strategy</li><li>AI for Lesson & Assessment</li><li>Mentorship & Portfolio</li>
                 </ul>
                 <div class="priceRow">
                   <div class="price">$399 <small>/ course</small></div>
                   <div class="access">Advanced Access<br/>+ Mentorship</div>
                 </div>
-                <button class="payBtn jsEnroll">Enroll & Pay</button>
+                <button class="payBtn" data-goto="courses">Enroll Now</button>
               </div>
             </article>
           </div>
         </div>
+      </section>
 
-        <div class="panelHead" style="padding-top:0">
-          <h2 style="margin-top:4px">Simple Enrollment Process</h2>
+      <!-- 4) ENROLLMENT PROCESS -->
+      <section class="panel">
+        <div class="panelHead">
+          <h2>Simple Enrollment Process</h2>
+          <p>From course selection to certification—fast and structured.</p>
         </div>
         <div class="steps">
           <div class="stepsBar" role="list">
-            <div class="step" role="listitem">
-              <div class="stepNum">1</div>
-              <div class="stepTxt">Choose Course <small>Pick STEAM ONE–THREE</small></div>
-            </div>
-            <div class="step" role="listitem">
-              <div class="stepNum">2</div>
-              <div class="stepTxt">Secure Payment <small>Paystack / Flutterwave / Stripe</small></div>
-            </div>
-            <div class="step" role="listitem">
-              <div class="stepNum">3</div>
-              <div class="stepTxt">Receive Login <small>Email instructions + start date</small></div>
-            </div>
-            <div class="step" role="listitem">
-              <div class="stepNum">4</div>
-              <div class="stepTxt">Start Learning <small>Complete modules & get certified</small></div>
-            </div>
+            <div class="step" role="listitem"><div class="stepNum">1</div><div class="stepTxt">Choose Course <small>Pick STEAM ONE–THREE</small></div></div>
+            <div class="step" role="listitem"><div class="stepNum">2</div><div class="stepTxt">Pay & Confirm <small>Gateway connected later</small></div></div>
+            <div class="step" role="listitem"><div class="stepNum">3</div><div class="stepTxt">Receive Login <small>Email onboarding (backend)</small></div></div>
+            <div class="step" role="listitem"><div class="stepNum">4</div><div class="stepTxt">Start Learning <small>Modules + certificate</small></div></div>
           </div>
         </div>
-
         <div class="ctaStripe">
-          <h3>Ready to Start Your Certification?</h3>
+          <h3>Start your certification journey</h3>
+          <p>Structured learning, verified outcomes, and marketplace visibility (where applicable).</p>
           <div class="ctaBtns">
             <button class="btn btnGhost" data-goto="courses">View Pricing</button>
             <button class="btn btnPrimary" data-goto="courses">Enroll Now</button>
           </div>
         </div>
       </section>
-    </main>
 
-    <!-- ==================== MARKETPLACE ==================== -->
-    <main class="page" id="page-marketplace" data-page="marketplace">
+      <!-- 5) MARKETPLACE PREVIEW -->
       <section class="panel">
         <div class="panelHead">
           <h2>Certified Teachers Marketplace</h2>
-          <p>“Contact this teacher” sends a request to admin for moderation (demo).</p>
+          <p>Preview (demo) — full marketplace is a separate page.</p>
         </div>
-
-        <div class="market">
-          <div class="people">
-            <div class="person" data-teacher="Jane Doe">
-              <div class="personTop">
-                <div class="avatar">JD</div>
-                <div>
-                  <div class="personName">Jane Doe</div>
-                  <div class="role">AI School Teacher</div>
-                </div>
-              </div>
-              <div class="personBody">
-                <ul class="bullet">
-                  <li>Policy & Curriculum Development</li>
-                  <li>Elem. School Teacher</li>
-                </ul>
-                <button class="contactBtn jsContact">Contact This Teacher</button>
-              </div>
-            </div>
-
-            <div class="person" data-teacher="Michael Smith">
-              <div class="personTop">
-                <div class="avatar">MS</div>
-                <div>
-                  <div class="personName">Michael Smith</div>
-                  <div class="role">Middle School Lecturer</div>
-                </div>
-              </div>
-              <div class="personBody">
-                <ul class="bullet">
-                  <li>Technology Integration</li>
-                  <li>Middle School Educator</li>
-                </ul>
-                <button class="contactBtn jsContact">Contact This Teacher</button>
-              </div>
-            </div>
-
-            <div class="person" data-teacher="Laura Kim">
-              <div class="personTop">
-                <div class="avatar">LK</div>
-                <div>
-                  <div class="personName">Laura Kim</div>
-                  <div class="role">Tech School Teacher</div>
-                </div>
-              </div>
-              <div class="personBody">
-                <ul class="bullet">
-                  <li>Digital Transformation</li>
-                  <li>High School Teacher</li>
-                </ul>
-                <button class="contactBtn jsContact">Contact This Teacher</button>
-              </div>
-            </div>
-
-            <div class="person" data-teacher="David Johnson">
-              <div class="personTop">
-                <div class="avatar">DJ</div>
-                <div>
-                  <div class="personName">David Johnson</div>
-                  <div class="role">Digital Educator</div>
-                </div>
-              </div>
-              <div class="personBody">
-                <ul class="bullet">
-                  <li>Lead Learning & STEAM Education</li>
-                  <li>Senior Lecturer</li>
-                </ul>
-                <button class="contactBtn jsContact">Contact This Teacher</button>
-              </div>
+        <div class="panelBody">
+          <div class="grid3">
+            <div class="card"><div class="kicker">Verified Profiles</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; line-height:1.75; font-size:13px">Admin-moderated teacher listings for trust and quality.</p></div>
+            <div class="card"><div class="kicker">Recruitment Ready</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; line-height:1.75; font-size:13px">Schools can request recommended matches quickly.</p></div>
+            <div class="card"><div class="kicker">Safe Contact</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; line-height:1.75; font-size:13px">Contact requests go to admin for moderation (backend later).</p></div>
+          </div>
+          <div class="ctaStripe" style="margin-top:14px">
+            <h3>Browse the marketplace</h3>
+            <p>Discover certified educators and submit admin-moderated contact requests.</p>
+            <div class="ctaBtns">
+              <button class="btn btnPrimary" data-goto="marketplace">Open Marketplace</button>
+              <button class="btn btnGhost" data-goto="services">Recruit a Teacher</button>
             </div>
           </div>
         </div>
+      </section>
 
+      <!-- 6) SERVICES PREVIEW -->
+      <section class="panel">
+        <div class="panelHead">
+          <h2>Services for Schools & Organizations</h2>
+          <p>Recruitment, consulting, training deployment and implementation support.</p>
+        </div>
+        <div class="recruit">
+          <div>
+            <h4>Recruit • Train • Transform</h4>
+            <p>Submit your needs (role, location, timeline). Our admin team reviews and recommends certified teachers and solutions.</p>
+            <div class="mini">
+              <div class="iconTag"><div class="icon">📝</div> Recruitment form</div>
+              <div class="iconTag"><div class="icon">🎓</div> Training bundles</div>
+              <div class="iconTag"><div class="icon">🧩</div> Implementation support</div>
+              <button class="btn btnPrimary" data-goto="services">Explore Services</button>
+            </div>
+          </div>
+          <div class="recruitArt">
+            Services Banner (Placeholder)
+            <span>Replace with your services banner image.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7) TESTIMONIALS -->
+      <section class="panel">
+        <div class="panelHead">
+          <h2>What Educators Say</h2>
+          <p>Demo testimonials—replace with real feedback later.</p>
+        </div>
+        <div class="panelBody">
+          <div class="grid3">
+            <div class="card">
+              <div class="kicker">✅ Classroom-ready</div>
+              <p style="margin:10px 0 0; font-weight:900; color:#19325f; line-height:1.7; font-size:13px">
+                “The structure helped me redesign lessons quickly and deliver measurable engagement.”
+              </p>
+              <p style="margin:10px 0 0; font-weight:950; color:var(--muted); font-size:12px">— Verified Teacher (Demo)</p>
+            </div>
+            <div class="card">
+              <div class="kicker">🎓 Strong standards</div>
+              <p style="margin:10px 0 0; font-weight:900; color:#19325f; line-height:1.7; font-size:13px">
+                “Aligning with ISTE/UNESCO gave our school a clear professional direction.”
+              </p>
+              <p style="margin:10px 0 0; font-weight:950; color:var(--muted); font-size:12px">— School Lead (Demo)</p>
+            </div>
+            <div class="card">
+              <div class="kicker">💼 Marketplace value</div>
+              <p style="margin:10px 0 0; font-weight:900; color:#19325f; line-height:1.7; font-size:13px">
+                “Admin-moderated outreach improved trust and reduced spam.”
+              </p>
+              <p style="margin:10px 0 0; font-weight:950; color:var(--muted); font-size:12px">— Recruiter (Demo)</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8) FAQ -->
+      <section class="panel">
+        <div class="panelHead">
+          <h2>Frequently Asked Questions</h2>
+          <p>Short answers—professional and clear.</p>
+        </div>
+        <div class="panelBody">
+          <div class="grid2">
+            <div class="card"><strong style="color:#0b2a85">Do I pay before accessing lessons?</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); line-height:1.7; font-size:13px">Yes. Payment unlocks access (backend integration later).</p></div>
+            <div class="card"><strong style="color:#0b2a85">How does the marketplace contact work?</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); line-height:1.7; font-size:13px">Requests are routed to admin for moderation (backend later).</p></div>
+            <div class="card"><strong style="color:#0b2a85">Can schools enroll staff in bulk?</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); line-height:1.7; font-size:13px">Yes—use Services to request deployment and onboarding.</p></div>
+            <div class="card"><strong style="color:#0b2a85">Is Microsoft the issuer of certification?</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); line-height:1.7; font-size:13px">Microsoft branding is used as a research powerhouse reference; issuance is by your platform.</p></div>
+          </div>
+        </div>
+      </section>
+      <!-- Footer injected by JS -->
+    </main>
+
+    <!-- ==================== COURSES (8 sections) ==================== -->
+    <main class="page" id="page-courses" data-page="courses">
+
+      <!-- 1) HERO -->
+      <div class="heroWrap">
+        <section class="heroCard">
+          <div class="heroGrid">
+            <div>
+              <h1 class="heroTitle">Courses & Pricing<br/>Paid Certification Tracks</h1>
+              <p class="heroText">
+                Choose STEAM ONE, TWO, or THREE. Professional learning outcomes, templates, and certification evidence.
+              </p>
+              <div class="heroActions">
+                <button class="btn btnGhost" data-goto="home">Back Home</button>
+                <button class="btn btnPrimary" data-goto="contact">Need Help?</button>
+              </div>
+              <div class="chipRow">
+                <span class="chip">🔒 Paid Access</span>
+                <span class="chip">📄 Templates</span>
+                <span class="chip">🧪 Assessments</span>
+                <span class="chip">🏅 Certificate</span>
+              </div>
+            </div>
+
+            <div class="illus">
+              <div class="bubble b1"></div><div class="bubble b2"></div>
+              <div class="illusCard">
+                Courses Banner (Placeholder)
+                <span>Keep same style for all pages.</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- 2) PRICING CARDS -->
+      <section class="panel">
+        <div class="panelHead">
+          <h2>Choose Your Track</h2>
+          <p>Prices are placeholders—you can update later.</p>
+        </div>
+        <div class="programs">
+          <div class="cards3">
+            <article class="programCard">
+              <div class="programTop topBlue">
+                <div><div class="ttl">STEAM ONE</div><div class="sub">Introductory Courses</div></div>
+                <div class="pill">Paid</div>
+              </div>
+              <div class="programBody">
+                <ul class="checkList"><li>Digital Literacy</li><li>Teaching Foundations</li><li>Practice Toolkit</li></ul>
+                <div class="priceRow"><div class="price">$599 <small>/ course</small></div><div class="access">Standard Access<br/>+ Basic Resources</div></div>
+                <button class="payBtn jsEnroll" data-course="STEAM ONE" data-price="599">Enroll Now</button>
+              </div>
+            </article>
+
+            <article class="programCard">
+              <div class="programTop topCyan">
+                <div><div class="ttl">STEAM TWO</div><div class="sub">Technology Integration</div></div>
+                <div class="pill">Paid</div>
+              </div>
+              <div class="programBody">
+                <ul class="checkList"><li>Teaching Tools</li><li>Lesson Templates</li><li>Digital Assessments</li></ul>
+                <div class="priceRow"><div class="price">$199 <small>/ course</small></div><div class="access">Standard Access<br/>+ Toolkits</div></div>
+                <button class="payBtn jsEnroll" data-course="STEAM TWO" data-price="199">Enroll Now</button>
+              </div>
+            </article>
+
+            <article class="programCard">
+              <div class="programTop topOrange">
+                <div><div class="ttl">STEAM THREE</div><div class="sub">Advanced / AI-Integrated</div></div>
+                <div class="pill">Paid</div>
+              </div>
+              <div class="programBody">
+                <ul class="checkList"><li>Advanced STEAM Strategy</li><li>AI for Lessons</li><li>Mentorship</li></ul>
+                <div class="priceRow"><div class="price">$399 <small>/ course</small></div><div class="access">Advanced Access<br/>+ Mentorship</div></div>
+                <button class="payBtn jsEnroll" data-course="STEAM THREE" data-price="399">Enroll Now</button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3) COURSE HIGHLIGHTS -->
+      <section class="panel">
+        <div class="panelHead">
+          <h2>What You Will Learn</h2>
+          <p>High-level highlights that match professional standards.</p>
+        </div>
+        <div class="panelBody">
+          <div class="grid3">
+            <div class="card"><div class="kicker">Planning</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; line-height:1.7; font-size:13px">Objective writing, pacing guides, lesson structures, classroom templates.</p></div>
+            <div class="card"><div class="kicker">Delivery</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; line-height:1.7; font-size:13px">Engagement routines, digital tools, collaborative learning strategies.</p></div>
+            <div class="card"><div class="kicker">Assessment</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; line-height:1.7; font-size:13px">Rubrics, quizzes, feedback workflows, performance evidence collection.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4) OUTCOMES -->
+      <section class="panel">
+        <div class="panelHead">
+          <h2>Professional Outcomes</h2>
+          <p>Designed for measurable classroom improvement.</p>
+        </div>
+        <div class="panelBody">
+          <div class="grid2">
+            <div class="card"><strong style="color:#0b2a85">Confidence with digital teaching</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); line-height:1.7; font-size:13px">Use practical tools for content delivery, engagement and tracking.</p></div>
+            <div class="card"><strong style="color:#0b2a85">Portfolio + certification evidence</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); line-height:1.7; font-size:13px">Build reusable lesson artifacts and verification records.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5) ENROLLMENT STEPS -->
+      <section class="panel">
+        <div class="panelHead">
+          <h2>How Enrollment Works</h2>
+          <p>Clear flow, ready for backend integration.</p>
+        </div>
+        <div class="steps">
+          <div class="stepsBar">
+            <div class="step"><div class="stepNum">1</div><div class="stepTxt">Select course <small>Choose a track</small></div></div>
+            <div class="step"><div class="stepNum">2</div><div class="stepTxt">Pay securely <small>Gateway later</small></div></div>
+            <div class="step"><div class="stepNum">3</div><div class="stepTxt">Get access <small>Backend unlocks</small></div></div>
+            <div class="step"><div class="stepNum">4</div><div class="stepTxt">Earn certificate <small>Verified record</small></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6) WHAT YOU RECEIVE -->
+      <section class="panel">
+        <div class="panelHead">
+          <h2>What You Receive</h2>
+          <p>Professional deliverables per learner.</p>
+        </div>
+        <div class="panelBody">
+          <div class="grid4">
+            <div class="card"><div class="kicker">Modules</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Structured learning content and tasks.</p></div>
+            <div class="card"><div class="kicker">Resources</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Toolkits, templates, checklists.</p></div>
+            <div class="card"><div class="kicker">Support</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Facilitator support (backend feature).</p></div>
+            <div class="card"><div class="kicker">Certificate</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Completion certificate & evidence.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7) TRUST & POLICY -->
+      <section class="panel">
+        <div class="panelHead">
+          <h2>Trust & Quality</h2>
+          <p>Standards-aligned design for credibility.</p>
+        </div>
+        <div class="panelBody">
+          <div class="grid3">
+            <div class="card"><div class="kicker">ISTE</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Modern educator competencies and best practice.</p></div>
+            <div class="card"><div class="kicker">UNESCO ICT CFT</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">ICT capacity framework guidance.</p></div>
+            <div class="card"><div class="kicker">PISA</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Outcome benchmark thinking.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8) CTA -->
+      <section class="panel">
         <div class="ctaStripe">
-          <h3>Recruit a Certified Teacher</h3>
+          <h3>Ready to enroll?</h3>
+          <p>Click “Enroll Now” on any plan to proceed (demo).</p>
           <div class="ctaBtns">
-            <button class="btn btnPrimary" data-goto="services">Recruit A Teacher</button>
+            <button class="btn btnPrimary" data-goto="login">Login</button>
             <button class="btn btnGhost" data-goto="contact">Contact Admin</button>
           </div>
         </div>
       </section>
+      <!-- Footer injected by JS -->
     </main>
 
-    <!-- ==================== SERVICES ==================== -->
-    <main class="page" id="page-services" data-page="services">
-      <section class="panel">
-        <div class="panelHead">
-          <h2>Recruit Certified Teachers</h2>
-          <p>Fill out a recruitment form to get connected with recommended pedagogical solutions and certified educators.</p>
-        </div>
+    <!-- ==================== MARKETPLACE (8 sections) ==================== -->
+    <main class="page" id="page-marketplace" data-page="marketplace">
 
-        <div class="recruit">
-          <div>
-            <h4>Recruit a Teacher</h4>
-            <p>Submit your recruitment needs (role, location, timeline). Our admin team will review and recommend certified teachers.</p>
-            <div class="mini">
-              <div class="iconTag"><div class="icon">📝</div> Fill recruitment form</div>
-              <div class="iconTag"><div class="icon">🎓</div> Pedagogical Solutions</div>
-              <button class="btn btnPrimary" data-goto="contact">Recruit A Teacher</button>
+      <!-- 1) HERO -->
+      <div class="heroWrap">
+        <section class="heroCard">
+          <div class="heroGrid">
+            <div>
+              <h1 class="heroTitle">Certified Teachers<br/>Marketplace</h1>
+              <p class="heroText">
+                Discover certified educators and submit admin-moderated contact requests (backend connects full flow later).
+              </p>
+              <div class="heroActions">
+                <button class="btn btnGhost" data-goto="services">Recruit a Teacher</button>
+                <button class="btn btnPrimary" data-goto="contact">Contact Admin</button>
+              </div>
+              <div class="chipRow">
+                <span class="chip">✅ Verified</span>
+                <span class="chip">🛡️ Moderated</span>
+                <span class="chip">💼 Recruitable</span>
+                <span class="chip">📌 Standards-aligned</span>
+              </div>
+            </div>
+            <div class="illus">
+              <div class="bubble b1"></div><div class="bubble b2"></div>
+              <div class="illusCard">
+                Marketplace Banner (Placeholder)
+                <span>Replace with real marketplace image later.</span>
+              </div>
             </div>
           </div>
-          <div class="recruitArt" aria-label="Recruitment illustration placeholder">
-            Recruitment Illustration (Placeholder)
-            <span>Replace with your recruiter banner image.</span>
+        </section>
+      </div>
+
+      <!-- 2) MARKETPLACE VALUE -->
+      <section class="panel">
+        <div class="panelHead">
+          <h2>Why This Marketplace?</h2>
+          <p>Professional marketplace logic for schools, organizations and individuals.</p>
+        </div>
+        <div class="panelBody">
+          <div class="grid3">
+            <div class="card"><div class="kicker">Quality</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; line-height:1.75; font-size:13px">Profiles can be verified before listing visibility.</p></div>
+            <div class="card"><div class="kicker">Trust</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; line-height:1.75; font-size:13px">Contact requests are routed via admin moderation.</p></div>
+            <div class="card"><div class="kicker">Speed</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; line-height:1.75; font-size:13px">Recruitment can be requested in Services for faster matching.</p></div>
           </div>
         </div>
       </section>
-    </main>
 
-    <!-- ==================== ABOUT ==================== -->
-    <main class="page" id="page-about" data-page="about">
+      <!-- 3) FEATURED TEACHERS GRID -->
       <section class="panel">
         <div class="panelHead">
-          <h2>About STEAM ONE Platform</h2>
-          <p>Our work complies with ISTE Standards, UNESCO ICT CFT framework and international PISA standard, while Microsoft Education serves as our research powerhouse.</p>
+          <h2>Featured Teachers</h2>
+          <p>Demo teacher listings (replace with real data later).</p>
         </div>
-        <div class="formCard">
-          <div class="summary">
-            <div class="summaryHead">Platform Overview <span style="opacity:.7;font-weight:900">Teacher Training • Certification • Marketplace</span></div>
-            <div class="summaryBody">
-              <div class="row"><span>STEAM ONE</span><small>Introductory modules for pre/in-service teachers</small></div>
-              <div class="row"><span>STEAM TWO</span><small>Technology integration and digital tools</small></div>
-              <div class="row"><span>STEAM THREE</span><small>Advanced/AI-integrated expert educator track</small></div>
-              <div class="actions" style="justify-content:flex-start">
-                <button class="btn btnPrimary" data-goto="courses">View Programs</button>
-                <button class="btn btnGhost" data-goto="home">Back Home</button>
+        <div class="market">
+          <div class="people">
+            <div class="person" data-teacher="Jane Doe">
+              <div class="personTop"><div class="avatar">JD</div><div><div class="personName">Jane Doe</div><div class="role">AI School Teacher</div></div></div>
+              <div class="personBody">
+                <ul class="bullet"><li>Policy & Curriculum Development</li><li>Elementary School Teacher</li></ul>
+                <button class="contactBtn jsContact">Contact This Teacher</button>
+              </div>
+            </div>
+            <div class="person" data-teacher="Michael Smith">
+              <div class="personTop"><div class="avatar">MS</div><div><div class="personName">Michael Smith</div><div class="role">Middle School Lecturer</div></div></div>
+              <div class="personBody">
+                <ul class="bullet"><li>Technology Integration</li><li>Middle School Educator</li></ul>
+                <button class="contactBtn jsContact">Contact This Teacher</button>
+              </div>
+            </div>
+            <div class="person" data-teacher="Laura Kim">
+              <div class="personTop"><div class="avatar">LK</div><div><div class="personName">Laura Kim</div><div class="role">Tech School Teacher</div></div></div>
+              <div class="personBody">
+                <ul class="bullet"><li>Digital Transformation</li><li>High School Teacher</li></ul>
+                <button class="contactBtn jsContact">Contact This Teacher</button>
+              </div>
+            </div>
+            <div class="person" data-teacher="David Johnson">
+              <div class="personTop"><div class="avatar">DJ</div><div><div class="personName">David Johnson</div><div class="role">Digital Educator</div></div></div>
+              <div class="personBody">
+                <ul class="bullet"><li>STEAM Leadership</li><li>Senior Lecturer</li></ul>
+                <button class="contactBtn jsContact">Contact This Teacher</button>
               </div>
             </div>
           </div>
         </div>
       </section>
-    </main>
 
-    <!-- ==================== CONTACT ==================== -->
-    <main class="page" id="page-contact" data-page="contact">
+      <!-- 4) VERIFICATION -->
       <section class="panel">
         <div class="panelHead">
-          <h2>Contact Admin</h2>
-          <p>Send a message (demo). Backend will be connected later.</p>
+          <h2>Verification & Safety</h2>
+          <p>Built to reduce spam and improve confidence.</p>
         </div>
+        <div class="panelBody">
+          <div class="grid2">
+            <div class="card"><strong style="color:#0b2a85">Admin review</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); line-height:1.7; font-size:13px">Profiles and requests can be reviewed before approval.</p></div>
+            <div class="card"><strong style="color:#0b2a85">Evidence support</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); line-height:1.7; font-size:13px">Certificates + portfolio artifacts can be attached to profiles.</p></div>
+          </div>
+        </div>
+      </section>
 
+      <!-- 5) HOW CONTACT WORKS -->
+      <section class="panel">
+        <div class="panelHead">
+          <h2>How Contact Works</h2>
+          <p>Transparent workflow for schools and individuals.</p>
+        </div>
+        <div class="steps">
+          <div class="stepsBar">
+            <div class="step"><div class="stepNum">1</div><div class="stepTxt">Pick a teacher <small>Select a profile card</small></div></div>
+            <div class="step"><div class="stepNum">2</div><div class="stepTxt">Send request <small>Admin receives</small></div></div>
+            <div class="step"><div class="stepNum">3</div><div class="stepTxt">Admin validates <small>Checks details</small></div></div>
+            <div class="step"><div class="stepNum">4</div><div class="stepTxt">Connection made <small>Email/portal</small></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6) RECRUITMENT CTA -->
+      <section class="panel">
+        <div class="panelHead">
+          <h2>Need Multiple Teachers?</h2>
+          <p>Use Services to submit a recruitment request for faster matching.</p>
+        </div>
+        <div class="ctaStripe">
+          <h3>Recruitment request</h3>
+          <p>Tell us role, location, timeline—admin recommends verified matches.</p>
+          <div class="ctaBtns">
+            <button class="btn btnPrimary" data-goto="services">Go to Services</button>
+            <button class="btn btnGhost" data-goto="contact">Contact Admin</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7) SUCCESS STORIES -->
+      <section class="panel">
+        <div class="panelHead">
+          <h2>Success Stories</h2>
+          <p>Demo content—replace later.</p>
+        </div>
+        <div class="panelBody">
+          <div class="grid3">
+            <div class="card"><div class="kicker">School hiring</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Curated matches for a school request (demo scenario).</p></div>
+            <div class="card"><div class="kicker">Mentorship</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Mentorship support to improve delivery quality (demo).</p></div>
+            <div class="card"><div class="kicker">Deployment</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Training rollout planning for organizations (demo).</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8) FAQ -->
+      <section class="panel">
+        <div class="panelHead">
+          <h2>Marketplace FAQ</h2>
+          <p>Quick clarity.</p>
+        </div>
+        <div class="panelBody">
+          <div class="grid2">
+            <div class="card"><strong style="color:#0b2a85">Do you share contacts directly?</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); font-size:13px; line-height:1.7">No—admin moderation improves trust.</p></div>
+            <div class="card"><strong style="color:#0b2a85">Can I request multiple teachers?</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); font-size:13px; line-height:1.7">Yes—use Services for bulk recruitment.</p></div>
+          </div>
+        </div>
+      </section>
+      <!-- Footer injected by JS -->
+    </main>
+
+    <!-- ==================== SERVICES (8 sections) ==================== -->
+    <main class="page" id="page-services" data-page="services">
+
+      <!-- 1) HERO -->
+      <div class="heroWrap">
+        <section class="heroCard">
+          <div class="heroGrid">
+            <div>
+              <h1 class="heroTitle">Services<br/>For Schools & Organizations</h1>
+              <p class="heroText">
+                Recruitment, consulting, and training deployment—aligned to international frameworks and professional delivery.
+              </p>
+              <div class="heroActions">
+                <button class="btn btnGhost" data-goto="marketplace">Browse Teachers</button>
+                <button class="btn btnPrimary" data-goto="contact">Request Services</button>
+              </div>
+              <div class="chipRow">
+                <span class="chip">🧩 Implementation</span>
+                <span class="chip">🎓 Training</span>
+                <span class="chip">📝 Recruitment</span>
+                <span class="chip">📊 Reporting</span>
+              </div>
+            </div>
+            <div class="illus">
+              <div class="bubble b1"></div><div class="bubble b2"></div>
+              <div class="illusCard">
+                Services Banner (Placeholder)
+                <span>Replace with your services banner later.</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- 2) SERVICE CATEGORIES -->
+      <section class="panel">
+        <div class="panelHead">
+          <h2>Service Categories</h2>
+          <p>Professional offerings that match your platform.</p>
+        </div>
+        <div class="panelBody">
+          <div class="grid3">
+            <div class="card"><div class="kicker">Recruitment</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; line-height:1.7; font-size:13px">Hire verified teachers with admin moderated matching.</p></div>
+            <div class="card"><div class="kicker">Consulting</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; line-height:1.7; font-size:13px">Digital transformation, curriculum support, implementation planning.</p></div>
+            <div class="card"><div class="kicker">Training Deployment</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; line-height:1.7; font-size:13px">Cohort onboarding, staff upskilling, rollout management.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3) RECRUIT BLOCK -->
+      <section class="panel">
+        <div class="panelHead">
+          <h2>Recruit Certified Teachers</h2>
+          <p>Admin reviews your request and recommends matches (backend later).</p>
+        </div>
+        <div class="recruit">
+          <div>
+            <h4>Recruit a Teacher</h4>
+            <p>Submit your recruitment needs (role, location, timeline). Our admin team reviews and recommends certified teachers.</p>
+            <div class="mini">
+              <div class="iconTag"><div class="icon">📝</div> Submit needs</div>
+              <div class="iconTag"><div class="icon">🔎</div> Admin review</div>
+              <div class="iconTag"><div class="icon">🤝</div> Match & connect</div>
+              <button class="btn btnPrimary" data-goto="contact">Start Request</button>
+            </div>
+          </div>
+          <div class="recruitArt">
+            Recruitment Banner (Placeholder)
+            <span>Replace with recruiter image later.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4) CONSULTING PACKAGES -->
+      <section class="panel">
+        <div class="panelHead">
+          <h2>Consulting Packages</h2>
+          <p>Professional school support services.</p>
+        </div>
+        <div class="panelBody">
+          <div class="grid4">
+            <div class="card"><div class="kicker">Audit</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Current state assessment + roadmap.</p></div>
+            <div class="card"><div class="kicker">Curriculum</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Templates, lesson plans, rubrics.</p></div>
+            <div class="card"><div class="kicker">Training</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Staff cohort onboarding + support.</p></div>
+            <div class="card"><div class="kicker">Support</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Implementation monitoring (backend-ready).</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5) IMPLEMENTATION PROCESS -->
+      <section class="panel">
+        <div class="panelHead">
+          <h2>Implementation Process</h2>
+          <p>Clear steps for rollout.</p>
+        </div>
+        <div class="steps">
+          <div class="stepsBar">
+            <div class="step"><div class="stepNum">1</div><div class="stepTxt">Request <small>Submit service need</small></div></div>
+            <div class="step"><div class="stepNum">2</div><div class="stepTxt">Review <small>Admin assessment</small></div></div>
+            <div class="step"><div class="stepNum">3</div><div class="stepTxt">Deploy <small>Training + matching</small></div></div>
+            <div class="step"><div class="stepNum">4</div><div class="stepTxt">Support <small>Ongoing monitoring</small></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6) PARTNERSHIP BENEFITS -->
+      <section class="panel">
+        <div class="panelHead">
+          <h2>Partnership Benefits</h2>
+          <p>Why schools choose structured deployments.</p>
+        </div>
+        <div class="panelBody">
+          <div class="grid2">
+            <div class="card"><strong style="color:#0b2a85">Staff readiness</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); font-size:13px; line-height:1.7">Increase teacher readiness with templates and training.</p></div>
+            <div class="card"><strong style="color:#0b2a85">Measurable outcomes</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); font-size:13px; line-height:1.7">Track performance and improvement (backend reporting later).</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7) CASE STUDIES -->
+      <section class="panel">
+        <div class="panelHead">
+          <h2>Case Studies</h2>
+          <p>Demo placeholders—swap later.</p>
+        </div>
+        <div class="panelBody">
+          <div class="grid3">
+            <div class="card"><div class="kicker">Primary school</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Blended learning pilot rollout with support sessions.</p></div>
+            <div class="card"><div class="kicker">Secondary school</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Tech integration mapping and lesson redesign.</p></div>
+            <div class="card"><div class="kicker">Organization</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Teacher upskilling program with certification incentives.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8) CTA -->
+      <section class="panel">
+        <div class="ctaStripe">
+          <h3>Request services</h3>
+          <p>Tell admin what you need—recruitment, consulting, or deployment support.</p>
+          <div class="ctaBtns">
+            <button class="btn btnPrimary" data-goto="contact">Contact Admin</button>
+            <button class="btn btnGhost" data-goto="marketplace">Browse Teachers</button>
+          </div>
+        </div>
+      </section>
+      <!-- Footer injected by JS -->
+    </main>
+
+    <!-- ==================== ABOUT (8 sections) ==================== -->
+    <main class="page" id="page-about" data-page="about">
+
+      <!-- 1) HERO -->
+      <div class="heroWrap">
+        <section class="heroCard">
+          <div class="heroGrid">
+            <div>
+              <h1 class="heroTitle">About<br/>STEAM ONE Platform</h1>
+              <p class="heroText">
+                Teacher training • certification • marketplace—aligned with ISTE, UNESCO ICT CFT, PISA and Microsoft Education branding.
+              </p>
+              <div class="heroActions">
+                <button class="btn btnGhost" data-goto="courses">View Courses</button>
+                <button class="btn btnPrimary" data-goto="contact">Contact Admin</button>
+              </div>
+              <div class="chipRow">
+                <span class="chip">🎓 Training</span>
+                <span class="chip">🏅 Certification</span>
+                <span class="chip">💼 Marketplace</span>
+                <span class="chip">🟦 Microsoft</span>
+              </div>
+            </div>
+
+            <div class="illus">
+              <div class="bubble b1"></div><div class="bubble b2"></div>
+              <div class="illusCard">
+                About Banner (Placeholder)
+                <span>Replace with your about image later.</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- 2) MISSION + VISION -->
+      <section class="panel">
+        <div class="panelHead">
+          <h2>Mission & Vision</h2>
+          <p>Professional direction and purpose.</p>
+        </div>
+        <div class="panelBody">
+          <div class="grid2">
+            <div class="card">
+              <div class="kicker">Mission</div>
+              <p style="margin:10px 0 0; font-weight:900; color:#19325f; line-height:1.75; font-size:13px">
+                Build confident educators who can deploy digital tools, STEAM methods, and modern classroom practices with measurable outcomes.
+              </p>
+            </div>
+            <div class="card">
+              <div class="kicker">Vision</div>
+              <p style="margin:10px 0 0; font-weight:900; color:#19325f; line-height:1.75; font-size:13px">
+                A verified ecosystem where certified teachers are discoverable, recruitable, and supported through structured professional development.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3) STANDARDS -->
+      <section class="panel">
+        <div class="panelHead">
+          <h2>Standards & Framework Alignment</h2>
+          <p>Designed around professional practice expectations.</p>
+        </div>
+        <div class="panelBody">
+          <div class="grid4">
+            <div class="card"><strong style="color:#0b2a85">ISTE</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); line-height:1.7; font-size:13px">Digital pedagogy and educator competencies.</p></div>
+            <div class="card"><strong style="color:#0b2a85">UNESCO ICT CFT</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); line-height:1.7; font-size:13px">Policy-driven teacher ICT capacity framework.</p></div>
+            <div class="card"><strong style="color:#0b2a85">PISA</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); line-height:1.7; font-size:13px">Benchmarks for learning outcomes and readiness.</p></div>
+            <div class="card"><strong style="color:#0b2a85">Microsoft Education</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); line-height:1.7; font-size:13px">Research powerhouse + branding presence.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4) WHY THREE LEVELS -->
+      <section class="panel">
+        <div class="panelHead">
+          <h2>Why STEAM ONE • TWO • THREE?</h2>
+          <p>A progression path—from beginner to expert.</p>
+        </div>
+        <div class="panelBody">
+          <div class="grid3">
+            <div class="card"><div class="kicker">STEAM ONE</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Foundations, literacy, classroom routines, beginner digital practice.</p></div>
+            <div class="card"><div class="kicker">STEAM TWO</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Technology integration, lesson design, assessments and tools.</p></div>
+            <div class="card"><div class="kicker">STEAM THREE</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Advanced/AI planning, creativity, leadership, mentorship.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5) HOW IT WORKS -->
+      <section class="panel">
+        <div class="panelHead">
+          <h2>How the Platform Works</h2>
+          <p>Simple flow—learn, get certified, become visible (where applicable).</p>
+        </div>
+        <div class="steps">
+          <div class="stepsBar">
+            <div class="step"><div class="stepNum">1</div><div class="stepTxt">Enroll & Pay <small>Paid access control</small></div></div>
+            <div class="step"><div class="stepNum">2</div><div class="stepTxt">Complete Modules <small>Structured content</small></div></div>
+            <div class="step"><div class="stepNum">3</div><div class="stepTxt">Earn Certificate <small>Verified record</small></div></div>
+            <div class="step"><div class="stepNum">4</div><div class="stepTxt">Marketplace Visibility <small>Admin moderated</small></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6) TRUST & GOVERNANCE -->
+      <section class="panel">
+        <div class="panelHead">
+          <h2>Trust & Governance</h2>
+          <p>Moderation and verification principles.</p>
+        </div>
+        <div class="panelBody">
+          <div class="grid2">
+            <div class="card"><strong style="color:#0b2a85">Verification</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); line-height:1.7; font-size:13px">Teacher listings can be verified by admin before publication.</p></div>
+            <div class="card"><strong style="color:#0b2a85">Moderated contact</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); line-height:1.7; font-size:13px">Requests go through admin to reduce spam and improve trust.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7) ROLES -->
+      <section class="panel">
+        <div class="panelHead">
+          <h2>Roles in the System</h2>
+          <p>Role-based dashboards come from backend auth later.</p>
+        </div>
+        <div class="panelBody">
+          <div class="grid3">
+            <div class="card"><div class="kicker">Admin</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Users, moderation, payments reporting (backend later).</p></div>
+            <div class="card"><div class="kicker">Facilitator</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Learning support, cohorts, announcements.</p></div>
+            <div class="card"><div class="kicker">Teacher</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Course access after payment, certificates, marketplace profile.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8) CTA -->
+      <section class="panel">
+        <div class="ctaStripe">
+          <h3>Explore programs and get certified</h3>
+          <p>Choose a level, enroll, complete modules, and earn your certificate.</p>
+          <div class="ctaBtns">
+            <button class="btn btnPrimary" data-goto="courses">View Courses</button>
+            <button class="btn btnGhost" data-goto="marketplace">Browse Marketplace</button>
+          </div>
+        </div>
+      </section>
+      <!-- Footer injected by JS -->
+    </main>
+
+    <!-- ==================== CONTACT (8 sections) ==================== -->
+    <main class="page" id="page-contact" data-page="contact">
+
+      <!-- 1) HERO -->
+      <div class="heroWrap">
+        <section class="heroCard">
+          <div class="heroGrid">
+            <div>
+              <h1 class="heroTitle">Contact Admin<br/>Support & Requests</h1>
+              <p class="heroText">
+                Enrollment, recruitment, partnerships, and support. Backend will connect form submissions later.
+              </p>
+              <div class="heroActions">
+                <button class="btn btnGhost" data-goto="courses">Enroll Now</button>
+                <button class="btn btnPrimary" data-goto="services">Request Services</button>
+              </div>
+              <div class="chipRow">
+                <span class="chip">📩 Support</span>
+                <span class="chip">🧾 Payments</span>
+                <span class="chip">📝 Recruitment</span>
+                <span class="chip">🤝 Partnerships</span>
+              </div>
+            </div>
+            <div class="illus">
+              <div class="bubble b1"></div><div class="bubble b2"></div>
+              <div class="illusCard">
+                Contact Banner (Placeholder)
+                <span>Replace with your contact image later.</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- 2) CONTACT FORM -->
+      <section class="panel">
+        <div class="panelHead">
+          <h2>Send a Message</h2>
+          <p>Clean form UI ready for API connection.</p>
+        </div>
         <div class="formCard">
           <form id="contactForm">
             <div class="formGrid">
@@ -1371,6 +1728,7 @@
                   <option value="Enrollment">Enrollment</option>
                   <option value="Recruitment">Recruitment</option>
                   <option value="Support">Support</option>
+                  <option value="Partnership">Partnership</option>
                 </select>
               </div>
               <div class="field" style="grid-column:1/-1">
@@ -1378,7 +1736,7 @@
                 <textarea id="cMsg" required placeholder="Write your message..."></textarea>
               </div>
             </div>
-            <div class="actions">
+            <div style="display:flex; justify-content:flex-end; gap:10px; flex-wrap:wrap; margin-top:12px;">
               <button class="btn btnPrimary" type="submit">Send (Demo)</button>
               <button class="btn btnGhost" type="button" data-goto="home">Back Home</button>
             </div>
@@ -1386,9 +1744,97 @@
           </form>
         </div>
       </section>
+
+      <!-- 3) CONTACT CHANNELS -->
+      <section class="panel">
+        <div class="panelHead">
+          <h2>Contact Channels</h2>
+          <p>Replace placeholders with real details later.</p>
+        </div>
+        <div class="panelBody">
+          <div class="grid3">
+            <div class="card"><div class="kicker">Email</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; line-height:1.7; font-size:13px">support@steamone.example</p></div>
+            <div class="card"><div class="kicker">Phone</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; line-height:1.7; font-size:13px">+234 xxx xxx xxxx</p></div>
+            <div class="card"><div class="kicker">Office</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; line-height:1.7; font-size:13px">Lagos, Nigeria (Demo)</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4) SUPPORT CATEGORIES -->
+      <section class="panel">
+        <div class="panelHead">
+          <h2>What We Can Help With</h2>
+          <p>Clear categories for professional support.</p>
+        </div>
+        <div class="panelBody">
+          <div class="grid4">
+            <div class="card"><strong style="color:#0b2a85">Enrollment</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); line-height:1.7; font-size:13px">Course selection and onboarding.</p></div>
+            <div class="card"><strong style="color:#0b2a85">Payment</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); line-height:1.7; font-size:13px">Checkout issues and receipts.</p></div>
+            <div class="card"><strong style="color:#0b2a85">Recruitment</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); line-height:1.7; font-size:13px">Teacher matching and requests.</p></div>
+            <div class="card"><strong style="color:#0b2a85">Partnership</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); line-height:1.7; font-size:13px">School and org deployments.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5) QUICK STEPS -->
+      <section class="panel">
+        <div class="panelHead">
+          <h2>Support Steps</h2>
+          <p>Simple and professional workflow.</p>
+        </div>
+        <div class="steps">
+          <div class="stepsBar">
+            <div class="step"><div class="stepNum">1</div><div class="stepTxt">Submit request <small>Contact form</small></div></div>
+            <div class="step"><div class="stepNum">2</div><div class="stepTxt">Admin review <small>Validates details</small></div></div>
+            <div class="step"><div class="stepNum">3</div><div class="stepTxt">Response <small>Email/portal</small></div></div>
+            <div class="step"><div class="stepNum">4</div><div class="stepTxt">Resolution <small>Support completed</small></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6) FAQ -->
+      <section class="panel">
+        <div class="panelHead">
+          <h2>Support FAQ</h2>
+          <p>Common questions.</p>
+        </div>
+        <div class="panelBody">
+          <div class="grid2">
+            <div class="card"><strong style="color:#0b2a85">How do I enroll?</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); font-size:13px; line-height:1.7">Go to Courses and click “Enroll Now” on your plan.</p></div>
+            <div class="card"><strong style="color:#0b2a85">Do you moderate marketplace contact?</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); font-size:13px; line-height:1.7">Yes—requests go via admin (backend later).</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7) COMMUNITY -->
+      <section class="panel">
+        <div class="panelHead">
+          <h2>Community</h2>
+          <p>Optional add-ons for later versions.</p>
+        </div>
+        <div class="panelBody">
+          <div class="grid2">
+            <div class="card"><div class="kicker">Teacher community</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Share best practices and templates (future feature).</p></div>
+            <div class="card"><div class="kicker">Announcements</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Updates, class schedules and certificates (future feature).</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8) CTA -->
+      <section class="panel">
+        <div class="ctaStripe">
+          <h3>Need quick help?</h3>
+          <p>Contact admin and we’ll guide you to the right workflow.</p>
+          <div class="ctaBtns">
+            <button class="btn btnPrimary" data-goto="courses">Enroll Now</button>
+            <button class="btn btnGhost" data-goto="marketplace">Browse Marketplace</button>
+          </div>
+        </div>
+      </section>
+      <!-- Footer injected by JS -->
     </main>
 
-    <!-- ==================== LOGIN ==================== -->
+    <!-- ==================== LOGIN (separate page) ==================== -->
     <main class="page" id="page-login" data-page="login">
       <section class="panel">
         <div class="panelHead">
@@ -1407,7 +1853,7 @@
                 <input id="lPass" type="password" required placeholder="********" />
               </div>
             </div>
-            <div class="actions">
+            <div style="display:flex; justify-content:flex-end; gap:10px; flex-wrap:wrap; margin-top:12px;">
               <button class="btn btnPrimary" type="submit">Login (Demo)</button>
               <button class="btn btnGhost" type="button" data-goto="home">Back Home</button>
             </div>
@@ -1415,99 +1861,193 @@
           </form>
         </div>
       </section>
-    </main>
-
-    <!-- ==================== CHECKOUT ==================== -->
-    <main class="page" id="page-checkout" data-page="checkout">
       <section class="panel">
-        <div class="panelHead">
-          <h2>Checkout</h2>
-          <p>Review your course selection, then proceed to Payment.</p>
-        </div>
-
-        <div class="formCard">
-          <div class="summary">
-            <div class="summaryHead">
-              Order Summary
-              <span style="opacity:.75;font-weight:900">Paid Course</span>
-            </div>
-
-            <div class="summaryBody">
-              <div class="row"><span>Selected Course</span><span id="sumCourse">—</span></div>
-              <div class="row"><span>Price</span><span id="sumPrice">—</span></div>
-              <div class="row"><span>Access</span><small id="sumAccess">Standard access</small></div>
-
-              <div class="actions">
-                <button class="btn btnGhost" type="button" data-goto="courses">Change Course</button>
-                <button class="btn btnPrimary" type="button" id="goPayment">Proceed to Payment</button>
-              </div>
-            </div>
+        <div class="ctaStripe">
+          <h3>Not enrolled yet?</h3>
+          <p>Choose a course level and proceed to paid enrollment to unlock access.</p>
+          <div class="ctaBtns">
+            <button class="btn btnPrimary" data-goto="courses">View Courses</button>
+            <button class="btn btnGhost" data-goto="contact">Contact Admin</button>
           </div>
         </div>
       </section>
+      <!-- Footer injected by JS -->
     </main>
 
-    <!-- ==================== PAYMENT ==================== -->
-    <main class="page" id="page-payment" data-page="payment">
+    <!-- ==================== ADMIN (separate page) ==================== -->
+    <main class="page" id="page-admin" data-page="admin">
       <section class="panel">
         <div class="panelHead">
-          <h2>Payment</h2>
-          <p>Select a payment gateway (demo). Backend integration placeholder for Paystack/Flutterwave/Stripe.</p>
+          <h2>Admin Access</h2>
+          <p>Demo admin access screen. Backend will validate admin roles later.</p>
         </div>
-
         <div class="formCard">
-          <div class="summary">
-            <div class="summaryHead">
-              Payment Details
-              <span style="opacity:.75;font-weight:900" id="payCourse">—</span>
-            </div>
-
-            <div class="summaryBody">
-              <div class="row"><span>Amount</span><span id="payAmount">—</span></div>
-
-              <div class="gateway">
-                <button class="gwBtn primary" data-gateway="Paystack">Paystack</button>
+          <form id="adminForm">
+            <div class="formGrid">
+              <div class="field" style="grid-column:1/-1">
+                <label for="aUser">Admin Username</label>
+                <input id="aUser" required placeholder="admin@example.com" />
               </div>
-
-              <div style="margin-top:12px" class="actions">
-                <button class="btn btnGhost" type="button" data-goto="checkout">Back to Checkout</button>
+              <div class="field" style="grid-column:1/-1">
+                <label for="aPass">Password</label>
+                <input id="aPass" type="password" required placeholder="********" />
               </div>
-
-              <div class="toast" id="payToast">✅ Payment initiated (demo). Connect real gateway in backend.</div>
             </div>
+            <div style="display:flex; justify-content:flex-end; gap:10px; flex-wrap:wrap; margin-top:12px;">
+              <button class="btn btnPrimary" type="submit">Login (Demo)</button>
+              <button class="btn btnGhost" type="button" data-goto="home">Back Home</button>
+            </div>
+            <div class="toast" id="adminToast">✅ Admin login submitted (demo).</div>
+          </form>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panelHead">
+          <h2>Admin Capabilities (Preview)</h2>
+          <p>These are UI placeholders—backend will power real data.</p>
+        </div>
+        <div class="panelBody">
+          <div class="grid3">
+            <div class="card"><div class="kicker">Users</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Approve users, manage roles, view profiles.</p></div>
+            <div class="card"><div class="kicker">Payments</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Payment confirmations and logs (backend later).</p></div>
+            <div class="card"><div class="kicker">Moderation</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Review marketplace contact requests and listings.</p></div>
           </div>
         </div>
       </section>
 
-      <footer>
-        <div class="fine">© <span id="yearPay"></span> STEAM ONE Platform • All rights reserved</div>
-      </footer>
+      <!-- Footer injected by JS -->
     </main>
 
+  </div>
+
+  <!-- ===== Single Footer Template (reused across ALL pages) ===== -->
+  <template id="siteFooterTpl">
+    <footer>
+      <div class="footerCard">
+        <div class="footerTop">
+          <div class="fine">© <span class="yearSlot"></span> STEAM ONE Platform • All rights reserved</div>
+
+          <div class="footerSocial" aria-label="Social links">
+            <a href="#" aria-label="YouTube" class="socialIcon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M19.6 3H4.4C3 3 2 4 2 5.4v13.2C2 20 3 21 4.4 21h15.2c1.4 0 2.4-1 2.4-2.4V5.4C22 4 21 3 19.6 3zM10 16V8l6 4-6 4z"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="Facebook" class="socialIcon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M22 12A10 10 0 1 0 10 21.9V14.9H7v-2.9h3V9.4c0-3 1.8-4.7 4.5-4.7 1.3 0 2.7.2 2.7.2v3h-1.5c-1.5 0-2 1-2 2v2.4h3.4l-.5 2.9h-2.9v7A10 10 0 0 0 22 12z"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="LinkedIn" class="socialIcon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20.4 3H3.6C3.3 3 3 3.3 3 3.6v16.8c0 .3.3.6.6.6h16.8c.3 0 .6-.3.6-.6V3.6c0-.3-.3-.6-.6-.6zM8.4 18H5.7V9h2.7v9zM7 7.8c-.9 0-1.5-.7-1.5-1.5S6.1 4.8 7 4.8s1.5.7 1.5 1.5S7.9 7.8 7 7.8zM18.3 18h-2.7v-4.4c0-1-.4-1.7-1.4-1.7-.8 0-1.2.5-1.4 1-.1.2-.1.5-.1.8V18H10V9h2.7v1.2c.4-.6 1.1-1.5 2.6-1.5 1.9 0 3.3 1.2 3.3 3.8V18z"/>
+              </svg>
+            </a>
+          </div>
+
+          <div class="footerTime"><span class="timeSlot">—</span> (Nigeria Time)</div>
+        </div>
+
+        <div class="footerBottom">
+          <div class="standardsRow">
+            <div class="standardsText">
+              <span class="stdItem">🟦 Microsoft</span>
+              <span class="stdItem">📌 ISTE</span>
+              <span class="stdItem">🏛️ UNESCO ICT CFT</span>
+              <span class="stdItem">📊 PISA</span>
+            </div>
+
+            <div class="logoRow" aria-label="Logos">
+              <div class="logoBadge" title="Microsoft">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="2" y="2" width="9" height="9" fill="#f35325"></rect>
+                  <rect x="13" y="2" width="9" height="9" fill="#81bc06"></rect>
+                  <rect x="2" y="13" width="9" height="9" fill="#05a6f0"></rect>
+                  <rect x="13" y="13" width="9" height="9" fill="#ffba08"></rect>
+                </svg>
+                <span>Microsoft</span>
+              </div>
+              <div class="logoBadge" title="ISTE">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10" fill="rgba(255,255,255,.85)"></circle>
+                  <path d="M7 16V8h2v8H7zm4 0V8h6v2h-4v1h3.6v2H13v1h4v2h-6z" fill="#0b2a85"></path>
+                </svg>
+                <span>ISTE</span>
+              </div>
+              <div class="logoBadge" title="UNESCO ICT CFT">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 3 2.5 8.5V10H21.5V8.5L12 3Z" fill="rgba(255,255,255,.90)"></path>
+                  <path d="M4 10h2v9H4v-9zm5 0h2v9H9v-9zm5 0h2v9h-2v-9zm5 0h2v9h-2v-9z" fill="rgba(255,255,255,.78)"></path>
+                  <path d="M3 20h18v2H3v-2z" fill="rgba(255,255,255,.90)"></path>
+                </svg>
+                <span>UNESCO</span>
+              </div>
+              <div class="logoBadge" title="PISA">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="4" y="11" width="3" height="9" fill="rgba(255,255,255,.90)"></rect>
+                  <rect x="10.5" y="7" width="3" height="13" fill="rgba(255,255,255,.80)"></rect>
+                  <rect x="17" y="4" width="3" height="16" fill="rgba(255,255,255,.70)"></rect>
+                  <path d="M3 20h18v2H3v-2z" fill="rgba(255,255,255,.90)"></path>
+                </svg>
+                <span>PISA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="footerLinks" aria-label="Footer links">
+            <div class="fCol">
+              <h5>Platform</h5>
+              <a href="#/home" data-link>Home</a>
+              <a href="#/courses" data-link>Courses</a>
+              <a href="#/marketplace" data-link>Marketplace</a>
+              <a href="#/services" data-link>Services</a>
+            </div>
+            <div class="fCol">
+              <h5>Company</h5>
+              <a href="#/about" data-link>About</a>
+              <a href="#/contact" data-link>Contact</a>
+              <a href="#/login" data-link>Login</a>
+              <a href="#/admin" data-link>Admin</a>
+            </div>
+            <div class="fCol">
+              <h5>Standards</h5>
+              <div class="fSmall">
+                Our work complies with ISTE Standards, UNESCO ICT CFT framework and international PISA standard, while Microsoft Education serves as our research powerhouse.
+              </div>
+            </div>
+            <div class="fCol">
+              <h5>Action</h5>
+              <a href="#/courses" data-link>Enroll Now</a>
+              <a href="#/services" data-link>Request Services</a>
+              <a href="#/marketplace" data-link>Browse Teachers</a>
+              <a href="#/contact" data-link>Support</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </template>
 
   <script>
-    // ===== Year
-    const y = new Date().getFullYear();
-    document.getElementById("yearHome").textContent = y;
-    document.getElementById("yearPay").textContent = y;
+    function $(sel, root=document){ return root.querySelector(sel); }
+    function $all(sel, root=document){ return Array.from(root.querySelectorAll(sel)); }
 
-    // ===== Router (show one page only)
-    const pages = Array.from(document.querySelectorAll(".page"));
-    const navLinks = Array.from(document.querySelectorAll("[data-link]"));
-
+    // Router: each page works separately (only one visible)
+    const pages = $all(".page");
     function getRoute(){
       const raw = location.hash || "#/home";
       const route = raw.replace("#/", "").trim();
       return route || "home";
     }
-
     function showPage(route){
       const exists = pages.some(p => p.dataset.page === route);
       const page = exists ? route : "home";
 
       pages.forEach(p => p.classList.toggle("active", p.dataset.page === page));
 
-      navLinks.forEach(a => {
+      // highlight nav (exact href match)
+      $all("[data-link]").forEach(a => {
         const href = a.getAttribute("href") || "";
         a.classList.toggle("active", href === `#/${page}`);
       });
@@ -1515,21 +2055,21 @@
       window.scrollTo({ top: 0, left: 0, behavior: "instant" });
       closeDrawer();
     }
-
     window.addEventListener("hashchange", () => showPage(getRoute()));
 
-    document.querySelectorAll("[data-goto]").forEach(el=>{
+    // data-goto helpers
+    $all("[data-goto]").forEach(el=>{
       el.addEventListener("click", ()=>{
         const page = el.getAttribute("data-goto");
         location.hash = `#/${page}`;
       });
     });
 
-    // ===== Mobile Drawer
-    const menuBtn = document.getElementById("menuBtn");
-    const drawer = document.getElementById("drawer");
-    const drawerOverlay = document.getElementById("drawerOverlay");
-    const drawerClose = document.getElementById("drawerClose");
+    // Mobile drawer
+    const menuBtn = $("#menuBtn");
+    const drawer = $("#drawer");
+    const drawerOverlay = $("#drawerOverlay");
+    const drawerClose = $("#drawerClose");
 
     function openDrawer(){
       drawerOverlay.style.display = "block";
@@ -1541,95 +2081,104 @@
       drawer.classList.remove("open");
       document.body.style.overflow = "";
     }
+    menuBtn && menuBtn.addEventListener("click", openDrawer);
+    drawerClose && drawerClose.addEventListener("click", closeDrawer);
+    drawerOverlay && drawerOverlay.addEventListener("click", closeDrawer);
 
-    menuBtn.addEventListener("click", openDrawer);
-    drawerClose.addEventListener("click", closeDrawer);
-    drawerOverlay.addEventListener("click", closeDrawer);
+    // Enroll Now (top button) -> Courses
+    const enrollTop = $("#enrollTop");
+    enrollTop && enrollTop.addEventListener("click", () => location.hash = "#/courses");
 
-    // ===== Top CTA
-    document.getElementById("enrollTop").addEventListener("click", () => location.hash = "#/courses");
-
-    // ===== Payment Connection (Enroll -> Checkout -> Payment)
-    const sumCourse = document.getElementById("sumCourse");
-    const sumPrice = document.getElementById("sumPrice");
-    const sumAccess = document.getElementById("sumAccess");
-
-    const payCourse = document.getElementById("payCourse");
-    const payAmount = document.getElementById("payAmount");
-
-    const state = {
-      course: "",
-      price: "",
-      access: ""
-    };
-
-    function computeAccess(course){
-      if (course === "STEAM ONE") return "Standard Access + Basic Resources";
-      if (course === "STEAM TWO") return "Standard Access + Toolkits";
-      if (course === "STEAM THREE") return "Advanced Access + Mentorship";
-      return "Standard access";
-    }
-
-    function setCheckout(course, price){
-      state.course = course;
-      state.price = price;
-      state.access = computeAccess(course);
-
-      sumCourse.textContent = course;
-      sumPrice.textContent = `$${price}`;
-      sumAccess.textContent = state.access;
-
-      payCourse.textContent = course;
-      payAmount.textContent = `$${price}`;
-    }
-
-    document.querySelectorAll(".jsEnroll").forEach(btn=>{
-      btn.addEventListener("click", ()=>{
-        const card = btn.closest(".programCard");
-        const course = card.dataset.course;
-        const price = card.dataset.price;
-
-        setCheckout(course, price);
-        location.hash = "#/checkout";
+    // Footer injected into ALL pages
+    (function mountFooters(){
+      const tpl = $("#siteFooterTpl");
+      const year = new Date().getFullYear();
+      pages.forEach(p=>{
+        if (p.querySelector("footer")) return;
+        const node = tpl.content.cloneNode(true);
+        p.appendChild(node);
+        p.querySelectorAll(".yearSlot").forEach(el => el.textContent = year);
       });
-    });
+    })();
 
-    document.getElementById("goPayment").addEventListener("click", ()=>{
-      if (!state.course) {
-        // fallback if user opened checkout directly
-        setCheckout("STEAM ONE", "599");
+    // Nigeria time in footer (Africa/Lagos)
+    (function nigeriaTime(){
+      function formatLagos(){
+        const dt = new Date();
+        const fmt = new Intl.DateTimeFormat("en-NG", {
+          timeZone: "Africa/Lagos",
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+          hour: "numeric",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: true
+        });
+        return fmt.format(dt);
       }
-      location.hash = "#/payment";
-    });
+      function tick(){
+        $all(".timeSlot").forEach(el => el.textContent = formatLagos());
+      }
+      tick();
+      setInterval(tick, 1000);
+    })();
 
-    // ===== Gateways
-    const payToast = document.getElementById("payToast");
-    document.querySelectorAll("[data-gateway]").forEach(btn=>{
-      btn.addEventListener("click", ()=>{
-        const gw = btn.getAttribute("data-gateway");
-        payToast.textContent = `✅ ${gw} payment initiated (PayNow). Connect real gateway in backend.`;
-        payToast.style.display = "block";
-        setTimeout(()=> payToast.style.display = "none", 2600);
+    // Contact form (demo)
+    const contactForm = $("#contactForm");
+    const contactToast = $("#contactToast");
+    if (contactForm){
+      contactForm.addEventListener("submit", (e)=>{
+        e.preventDefault();
+        contactToast.style.display = "block";
+        setTimeout(()=> contactToast.style.display = "none", 2400);
+        contactForm.reset();
       });
+    }
+
+    // Login form (demo)
+    const loginForm = $("#loginForm");
+    const loginToast = $("#loginToast");
+    if (loginForm){
+      loginForm.addEventListener("submit", (e)=>{
+        e.preventDefault();
+        loginToast.style.display = "block";
+        setTimeout(()=> loginToast.style.display = "none", 2400);
+        loginForm.reset();
+      });
+    }
+
+    // Admin form (demo)
+    const adminForm = $("#adminForm");
+    const adminToast = $("#adminToast");
+    if (adminForm){
+      adminForm.addEventListener("submit", (e)=>{
+        e.preventDefault();
+        adminToast.style.display = "block";
+        setTimeout(()=> adminToast.style.display = "none", 2400);
+        adminForm.reset();
+      });
+    }
+
+    // Marketplace contact (demo)
+    document.addEventListener("click", function(e){
+      const btn = e.target.closest(".jsContact");
+      if(btn){
+        const card = btn.closest(".person");
+        const teacher = card ? (card.getAttribute("data-teacher") || "Teacher") : "Teacher";
+        alert("Contact Request Sent (Demo)\n\nTeacher: " + teacher + "\n\nAdmin moderation will be connected in backend.");
+      }
     });
 
-    // ===== Contact / Login
-    const contactForm = document.getElementById("contactForm");
-    const contactToast = document.getElementById("contactToast");
-    contactForm.addEventListener("submit", (e)=>{
-      e.preventDefault();
-      contactToast.style.display = "block";
-      setTimeout(()=> contactToast.style.display = "none", 2400);
-      contactForm.reset();
-    });
-
-    const loginForm = document.getElementById("loginForm");
-    const loginToast = document.getElementById("loginToast");
-    loginForm.addEventListener("submit", (e)=>{
-      e.preventDefault();
-      loginToast.style.display = "block";
-      setTimeout(()=> loginToast.style.display = "none", 2400);
-      loginForm.reset();
+    // Courses enroll buttons (demo)
+    document.addEventListener("click", function(e){
+      const b = e.target.closest(".jsEnroll");
+      if(b){
+        const course = b.getAttribute("data-course") || "STEAM ONE";
+        const price = b.getAttribute("data-price") || "0";
+        alert("Enroll Now (Demo)\n\nCourse: " + course + "\nPrice: $" + price + "\n\nPayment + onboarding will be connected in backend.");
+        location.hash = "#/login";
+      }
     });
 
     // initial render
