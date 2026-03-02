@@ -1,0 +1,759 @@
+:root{
+  --ink:#0b1530;
+  --muted:#5a6b8a;
+  --line:rgba(14,35,92,.10);
+
+  --blue1:#0b2a85;
+  --blue2:#1f59d1;
+  --blue3:#2d7cff;
+
+  --shadow:0 18px 45px rgba(6,16,40,.10);
+  --shadow2:0 10px 25px rgba(6,16,40,.10);
+
+  --radius:18px;
+  --radius2:22px;
+
+  --pay:#f59e0b;
+  --pay2:#ffb100;
+
+  --good:#16a34a;
+  --warn:#f59e0b;
+  --danger:#ef4444;
+
+  --max:1180px;
+}
+
+*{ box-sizing:border-box; }
+html, body{ height:100%; }
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+  color:var(--ink);
+  background: linear-gradient(180deg,#eef5ff 0%,#f7fbff 55%,#ffffff 100%);
+}
+
+.cad{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns: 290px 1fr;
+}
+
+/* Sidebar */
+.cadSide{
+  position:sticky;
+  top:0;
+  height:100vh;
+  overflow:auto;
+  padding:18px 14px;
+  background: radial-gradient(1200px 600px at 0% 0%, rgba(45,124,255,.35), transparent 50%),
+              linear-gradient(180deg,#0b2a85 0%,#143a9a 55%,#0b2a85 100%);
+  color:#fff;
+  border-right:1px solid rgba(255,255,255,.12);
+}
+
+.cadBrand{ display:flex; gap:12px; align-items:center; padding:10px 10px 14px; }
+.cadMsLogo{
+  width:40px; height:40px; border-radius:10px;
+  background:
+    linear-gradient(90deg,#f25022 0 50%,#7fba00 50% 100%),
+    linear-gradient(0deg,#00a4ef 0 50%,#ffb900 50% 100%);
+  background-size:50% 50%;
+  background-position:0 0, 100% 0;
+  background-repeat:no-repeat;
+  box-shadow:0 10px 22px rgba(0,0,0,.20);
+}
+.cadBrandText{ line-height:1.1; }
+.cadBrandTop{ font-size:12px; opacity:.9; }
+.cadBrandName{ margin-top:2px; font-weight:1150; letter-spacing:.2px; }
+.cadBrandSteam{ color:#fff; }
+.cadBrandOne{ color:#ffb100; }
+.cadBrandPlatform{ color:#cfe4ff; font-weight:800; }
+
+.cadSideCard{
+  margin:12px 10px 12px;
+  padding:14px;
+  border-radius:18px;
+  background: rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 14px 28px rgba(0,0,0,.18);
+}
+.cadSideTitle{ font-weight:1100; font-size:14px; }
+.cadSideSub{ margin-top:6px; font-size:12px; opacity:.92; line-height:1.45; }
+
+.cadNav{
+  margin:10px 8px 14px;
+  display:grid;
+  gap:6px;
+}
+.cadNavItem{
+  width:100%;
+  text-align:left;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+  color:#fff;
+  padding:10px 12px;
+  border-radius:14px;
+  cursor:pointer;
+  font-weight:850;
+  transition: transform .12s ease, background .12s ease, border-color .12s ease;
+}
+.cadNavItem:hover{ transform: translateY(-1px); background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.18); }
+.cadNavItem.active{ background: rgba(255,255,255,.18); border-color: rgba(255,255,255,.25); }
+
+.cadSideFooter{
+  margin:12px 10px 0;
+  padding:10px 12px;
+  border-top:1px solid rgba(255,255,255,.12);
+  opacity:.95;
+}
+.cadSideFooterRow{ display:flex; gap:8px; align-items:center; font-size:12px; }
+.cadDot{ width:8px; height:8px; border-radius:999px; background:#ffb100; }
+.cadSideFooterCopy{ margin-top:6px; font-size:12px; opacity:.85; }
+
+/* Main */
+.cadMain{ padding:20px 18px 30px; }
+
+.cadTop{
+  max-width: var(--max);
+  margin:0 auto 14px;
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  align-items:flex-start;
+}
+.cadTitle{ font-weight:1150; font-size:20px; letter-spacing:-.2px; }
+.cadSub{ margin-top:3px; color:var(--muted); font-weight:700; }
+.cadTime{ margin-top:10px; font-size:12px; color:var(--muted); font-weight:850; }
+.cadTimeRed{ color: var(--danger); font-weight:1100; }
+
+.cadTopRight{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+.cadSearch{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  background: rgba(255,255,255,.72);
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:10px 12px;
+  box-shadow: var(--shadow2);
+}
+.cadSearchIcon{ opacity:.75; }
+.cadSearch input{
+  border:none;
+  outline:none;
+  background:transparent;
+  min-width:240px;
+  font-weight:750;
+  color:var(--ink);
+}
+
+.cadIconBtn{
+  position:relative;
+  width:42px; height:42px;
+  border-radius:14px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.78);
+  cursor:pointer;
+  box-shadow: var(--shadow2);
+}
+.cadBadge{
+  position:absolute;
+  top:-6px; right:-6px;
+  background:#ef4444;
+  color:#fff;
+  font-size:11px;
+  padding:2px 7px;
+  border-radius:999px;
+  border:2px solid #fff;
+}
+
+.cadUserChip{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:8px 10px;
+  border-radius:16px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.80);
+  cursor:pointer;
+  box-shadow: var(--shadow2);
+}
+.cadUserMiniAvatar{
+  width:34px; height:34px;
+  border-radius:12px;
+  background: linear-gradient(135deg, rgba(45,124,255,.20), rgba(11,42,133,.12));
+  border:1px solid rgba(45,124,255,.25);
+}
+.cadUserText{ display:grid; line-height:1.1; }
+.cadUserName{ font-weight:1100; font-size:12px; }
+.cadUserRole{ font-weight:800; font-size:11px; color:var(--muted); }
+.cadCaret{ opacity:.75; }
+
+/* Stats */
+.cadStats{
+  max-width: var(--max);
+  margin:0 auto 14px;
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap:12px;
+}
+.cadStat{
+  position:relative;
+  overflow:hidden;
+  background: rgba(255,255,255,.82);
+  border:1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow2);
+  padding:12px;
+  display:grid;
+  grid-template-columns: 44px 1fr;
+  gap:10px;
+  align-items:center;
+}
+.cadStat::after{
+  content:"";
+  position:absolute;
+  inset:auto -50px -60px auto;
+  width:160px; height:160px; border-radius:999px;
+  background: radial-gradient(circle at 30% 30%, rgba(45,124,255,.22), transparent 60%);
+}
+.cadStatIco{
+  width:44px; height:44px;
+  border-radius:16px;
+  display:grid; place-items:center;
+  background: rgba(45,124,255,.10);
+  border:1px solid rgba(45,124,255,.18);
+}
+.cadStatLabel{ font-size:12px; color:var(--muted); font-weight:850; }
+.cadStatValue{ font-size:18px; font-weight:1150; margin-top:2px; }
+.cadStatHint{
+  position:absolute;
+  right:10px; top:10px;
+  font-size:11px;
+  font-weight:1100;
+  color:#0b2a85;
+  background: rgba(37,99,235,.10);
+  border:1px solid rgba(37,99,235,.18);
+  padding:4px 8px;
+  border-radius:999px;
+}
+
+/* Grid */
+.cadGrid{
+  max-width: var(--max);
+  margin:0 auto;
+  display:grid;
+  grid-template-columns: 1.05fr 1fr 1.05fr;
+  gap:12px;
+}
+
+/* Card */
+.cadCard{
+  background: rgba(255,255,255,.86);
+  border:1px solid var(--line);
+  border-radius: var(--radius2);
+  box-shadow: var(--shadow);
+  padding:14px;
+  min-width:0;
+}
+.cadCardHead{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:flex-start;
+  padding-bottom:10px;
+  border-bottom:1px solid rgba(14,35,92,.08);
+  margin-bottom:12px;
+}
+.cadH3{ font-weight:1150; font-size:14px; }
+.cadHint{ margin-top:4px; color:var(--muted); font-weight:750; font-size:12px; }
+.cadCardActions{ display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end; }
+
+/* Form */
+.cadForm{ display:grid; gap:10px; }
+.cadField{ display:grid; gap:6px; }
+.cadField span{ color:var(--muted); font-weight:900; font-size:12px; }
+
+.cadField input, .cadField select, .cadField textarea{
+  border-radius:14px;
+  border:1px solid rgba(14,35,92,.12);
+  background: rgba(255,255,255,.95);
+  padding:10px 12px;
+  font-weight:800;
+  outline:none;
+  color: var(--ink);
+}
+.cadField input, .cadField select{ height:44px; }
+.cadRow2{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:10px;
+}
+.cadRow3{
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap:10px;
+  align-items:end;
+}
+
+.cadSla{
+  border-radius:18px;
+  border:1px solid rgba(14,35,92,.10);
+  background: rgba(245,248,255,.55);
+  padding:10px;
+}
+.cadSlaTitle{ font-weight:1150; font-size:12px; }
+.cadSlaRow{ display:flex; gap:6px; flex-wrap:wrap; margin-top:8px; }
+.cadSlaChip{
+  font-size:11px;
+  font-weight:1100;
+  padding:6px 10px;
+  border-radius:999px;
+  background: rgba(37,99,235,.10);
+  border:1px solid rgba(37,99,235,.18);
+  color:#1d4ed8;
+}
+
+/* Attachments */
+.cadAttach{
+  border-radius:18px;
+  border:1px solid rgba(14,35,92,.10);
+  background: rgba(245,248,255,.55);
+  padding:12px;
+}
+.cadAttachTop{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  align-items:flex-start;
+}
+.cadAttachTitle{ font-weight:1150; }
+.cadAttachHint{ margin-top:4px; color:var(--muted); font-weight:800; font-size:12px; }
+.cadAttachBtn{
+  cursor:pointer;
+  padding:10px 12px;
+  border-radius:14px;
+  font-weight:1100;
+  background: rgba(255,255,255,.78);
+  border:1px solid var(--line);
+}
+.cadAttachList{ margin-top:10px; display:grid; gap:8px; }
+.cadAttachEmpty{
+  padding:10px;
+  border-radius:14px;
+  border:1px dashed rgba(14,35,92,.18);
+  background: rgba(255,255,255,.75);
+  color: var(--muted);
+  font-weight:900;
+  font-size:12px;
+}
+
+.cadFile{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 12px;
+  border-radius:14px;
+  border:1px solid rgba(14,35,92,.10);
+  background: rgba(255,255,255,.85);
+}
+.cadFileIco{ opacity:.8; }
+.cadFileName{ flex:1; font-weight:950; font-size:12px; color:var(--ink); }
+.cadFileRemove{
+  border:none;
+  cursor:pointer;
+  background: rgba(239,68,68,.10);
+  border:1px solid rgba(239,68,68,.18);
+  color:#b91c1c;
+  border-radius:12px;
+  padding:6px 10px;
+  font-weight:1100;
+}
+
+.cadFormFoot{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
+.cadFootNote{
+  color: var(--muted);
+  font-weight:800;
+  font-size:12px;
+  line-height:1.5;
+  max-width: 360px;
+}
+
+/* Ticket list */
+.cadList{
+  display:grid;
+  gap:10px;
+  max-height: 690px;
+  overflow:auto;
+  padding-right:4px;
+}
+.cadTicket{
+  text-align:left;
+  width:100%;
+  border:none;
+  cursor:pointer;
+  padding:12px;
+  border-radius:18px;
+  border:1px solid rgba(14,35,92,.10);
+  background: rgba(255,255,255,.86);
+  box-shadow: var(--shadow2);
+  transition: transform .12s ease, border-color .12s ease, background .12s ease;
+}
+.cadTicket:hover{ transform: translateY(-1px); border-color: rgba(31,89,209,.20); }
+.cadTicket.active{
+  background: rgba(37,99,235,.08);
+  border-color: rgba(31,89,209,.28);
+}
+.cadTicketTop{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  align-items:center;
+}
+.cadTicketRef{
+  font-weight:1150;
+  color:#0b2a85;
+  background: rgba(37,99,235,.10);
+  border:1px solid rgba(37,99,235,.18);
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:12px;
+}
+.cadTicketSubject{
+  margin-top:8px;
+  font-weight:1150;
+  color: var(--ink);
+}
+.cadTicketMeta{
+  margin-top:8px;
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.cadChip{
+  font-size:11px;
+  font-weight:1100;
+  padding:6px 10px;
+  border-radius:999px;
+  background: rgba(148,163,184,.18);
+  border:1px solid rgba(148,163,184,.28);
+  color:#334155;
+}
+.cadTicketSmall{
+  color: var(--muted);
+  font-weight:850;
+  font-size:12px;
+}
+.cadTicketTimes{
+  margin-top:8px;
+  color: var(--muted);
+  font-weight:800;
+  font-size:12px;
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.cadSep{ opacity:.6; }
+
+/* Status & Priority */
+.cadStatus{
+  font-size:11px;
+  font-weight:1100;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid transparent;
+}
+.cadStatus.open{ background: rgba(37,99,235,.12); border-color: rgba(37,99,235,.20); color:#1d4ed8; }
+.cadStatus.inreview{ background: rgba(245,158,11,.16); border-color: rgba(245,158,11,.24); color:#9a3412; }
+.cadStatus.resolved{ background: rgba(16,185,129,.14); border-color: rgba(16,185,129,.22); color:#065f46; }
+.cadStatus.closed{ background: rgba(148,163,184,.20); border-color: rgba(148,163,184,.30); color:#334155; }
+
+.cadPriority{
+  font-size:11px;
+  font-weight:1100;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid transparent;
+}
+.cadPriority.low{ background: rgba(148,163,184,.18); border-color: rgba(148,163,184,.28); color:#334155; }
+.cadPriority.medium{ background: rgba(37,99,235,.10); border-color: rgba(37,99,235,.18); color:#1d4ed8; }
+.cadPriority.high{ background: rgba(245,158,11,.16); border-color: rgba(245,158,11,.24); color:#9a3412; }
+.cadPriority.urgent{ background: rgba(239,68,68,.14); border-color: rgba(239,68,68,.22); color:#b91c1c; }
+
+/* Details */
+.cadDetails{
+  display:grid;
+  gap:12px;
+}
+.cadDetailsTop{
+  border-radius:18px;
+  border:1px solid rgba(14,35,92,.10);
+  background: rgba(245,248,255,.55);
+  padding:12px;
+}
+.cadDetailsTitleRow{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  align-items:flex-start;
+  flex-wrap:wrap;
+}
+.cadDetailsTitle{ font-weight:1150; font-size:14px; }
+.cadDetailsMeta{
+  margin-top:8px;
+  color: var(--muted);
+  font-weight:850;
+  font-size:12px;
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.cadDetailsTimes{
+  margin-top:8px;
+  color: var(--muted);
+  font-weight:800;
+  font-size:12px;
+}
+
+.cadDetailsSection{
+  border-radius:18px;
+  border:1px solid rgba(14,35,92,.10);
+  background: rgba(255,255,255,.86);
+  padding:12px;
+}
+.cadSectionTitle{ font-weight:1150; margin-bottom:8px; }
+.cadBubble{
+  border-radius:16px;
+  border:1px solid rgba(14,35,92,.10);
+  background: rgba(245,248,255,.55);
+  padding:10px 12px;
+  color: var(--ink);
+  font-weight:700;
+  line-height:1.6;
+}
+.cadBubble.alt{ background: rgba(37,99,235,.08); }
+.cadBubble.note{ background: rgba(245,158,11,.10); }
+
+.cadAttachMini{ margin-top:10px; }
+.cadMiniEmpty{
+  padding:10px;
+  border-radius:14px;
+  border:1px dashed rgba(14,35,92,.18);
+  background: rgba(255,255,255,.75);
+  color: var(--muted);
+  font-weight:900;
+  font-size:12px;
+}
+.cadMiniFiles{ display:grid; gap:8px; }
+.cadMiniFile{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  align-items:center;
+  padding:10px 12px;
+  border-radius:14px;
+  border:1px solid rgba(14,35,92,.10);
+  background: rgba(255,255,255,.85);
+  font-weight:850;
+  color: var(--muted);
+}
+.cadMiniBtn{
+  border:none;
+  cursor:pointer;
+  padding:8px 10px;
+  border-radius:12px;
+  font-weight:1100;
+  background: rgba(255,255,255,.78);
+  border:1px solid var(--line);
+  color: var(--ink);
+}
+
+/* Admin actions */
+.cadActionGrid{
+  display:grid;
+  grid-template-columns: 220px 1fr;
+  gap:10px;
+  align-items:start;
+}
+.cadQuick{
+  border-radius:16px;
+  border:1px solid rgba(14,35,92,.10);
+  background: rgba(245,248,255,.55);
+  padding:10px;
+}
+.cadQuickTitle{ font-weight:1150; margin-bottom:8px; }
+.cadQuickBtns{ display:flex; gap:8px; flex-wrap:wrap; }
+
+.cadReplyGrid{
+  margin-top:10px;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:10px;
+}
+
+.cadActionsFoot{
+  margin-top:10px;
+  display:flex;
+  justify-content:flex-end;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.cadEmpty{
+  padding:14px;
+  border-radius:18px;
+  border:1px dashed rgba(14,35,92,.18);
+  background: rgba(255,255,255,.75);
+  color: var(--muted);
+  font-weight:900;
+}
+
+.cadDetailsEmpty{
+  padding:14px;
+  border-radius:18px;
+  border:1px dashed rgba(14,35,92,.18);
+  background: rgba(255,255,255,.75);
+  color: var(--muted);
+  font-weight:900;
+}
+
+/* Buttons */
+.cadBtn{
+  border:none;
+  cursor:pointer;
+  padding:10px 12px;
+  border-radius:14px;
+  font-weight:1100;
+  transition: transform .12s ease, opacity .12s ease;
+}
+.cadBtn:active{ transform: translateY(1px); }
+
+.cadBtnGhost{
+  background: rgba(255,255,255,.78);
+  border:1px solid var(--line);
+  color: var(--ink);
+}
+.cadBtnPay{
+  background: linear-gradient(180deg, var(--pay2), var(--pay));
+  color:#1a1204;
+  box-shadow: 0 12px 22px rgba(245,158,11,.25);
+}
+.cadBtnPrimary{
+  background: linear-gradient(180deg,#2d7cff,#1f59d1);
+  color:#fff;
+  box-shadow: 0 12px 22px rgba(31,89,209,.22);
+}
+
+.cadBtnGhostSmall,
+.cadBtnPrimarySmall,
+.cadBtnDangerSmall{
+  padding:8px 10px;
+  border-radius:12px;
+  font-weight:1050;
+  font-size:12px;
+}
+.cadBtnGhostSmall{
+  background: rgba(255,255,255,.78);
+  border:1px solid var(--line);
+  color: var(--ink);
+}
+.cadBtnPrimarySmall{
+  background: linear-gradient(180deg,#2d7cff,#1f59d1);
+  color:#fff;
+}
+.cadBtnDangerSmall{
+  background: linear-gradient(180deg,#ff6b6b,#ef4444);
+  color:#fff;
+}
+.cadBtnDangerOutline{
+  padding:10px 12px;
+  border-radius:14px;
+  font-weight:1100;
+  background: rgba(255,255,255,.78);
+  border:1px solid rgba(239,68,68,.25);
+  color:#b91c1c;
+}
+
+/* Footer */
+.cadFooter{
+  max-width: var(--max);
+  margin: 18px auto 0;
+  padding: 14px 2px 0;
+  border-top:1px solid rgba(14,35,92,.08);
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:center;
+  flex-wrap:wrap;
+  color: var(--muted);
+  font-weight:750;
+  font-size:12px;
+}
+.cadFooterLeft{ display:flex; gap:10px; align-items:center; }
+.cadFooterLogo{
+  width:22px; height:22px; border-radius:6px;
+  background:
+    linear-gradient(90deg,#f25022 0 50%,#7fba00 50% 100%),
+    linear-gradient(0deg,#00a4ef 0 50%,#ffb900 50% 100%);
+  background-size:50% 50%;
+  background-position:0 0, 100% 0;
+  background-repeat:no-repeat;
+  border:1px solid rgba(0,0,0,.05);
+}
+.cadFooterLinks{ display:flex; gap:10px; align-items:center; }
+.cadLinkBtn{
+  border:none;
+  background:transparent;
+  cursor:pointer;
+  color: var(--blue2);
+  font-weight:1100;
+}
+
+/* Toast */
+.cadToast{
+  position:fixed;
+  left:50%;
+  bottom:18px;
+  transform: translateX(-50%);
+  background: rgba(11,21,48,.92);
+  color:#fff;
+  font-weight:900;
+  font-size:13px;
+  padding:10px 14px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.16);
+  box-shadow: 0 18px 45px rgba(0,0,0,.25);
+  z-index:60;
+}
+
+/* Responsive */
+@media (max-width: 1200px){
+  .cadGrid{ grid-template-columns: 1fr; }
+  .cadList{ max-height: 360px; }
+  .cadActionGrid{ grid-template-columns: 1fr; }
+  .cadReplyGrid{ grid-template-columns: 1fr; }
+}
+@media (max-width: 900px){
+  .cad{ grid-template-columns: 1fr; }
+  .cadSide{ position:relative; height:auto; }
+  .cadTop{ flex-direction:column; align-items:stretch; }
+  .cadTopRight{ justify-content:space-between; }
+  .cadSearch input{ min-width: 160px; }
+  .cadRow3{ grid-template-columns: 1fr; }
+  .cadRow2{ grid-template-columns: 1fr; }
+}
