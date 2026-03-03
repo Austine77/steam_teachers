@@ -1,0 +1,117 @@
+.support-root{
+  padding:40px 20px;
+  background:#f4f7fc;
+  min-height:100vh;
+  font-family:system-ui;
+}
+
+.support-header{
+  text-align:center;
+  margin-bottom:30px;
+}
+
+.support-grid{
+  max-width:1100px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(360px,1fr));
+  gap:20px;
+}
+
+.support-card{
+  background:#fff;
+  padding:25px;
+  border-radius:15px;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.support-form{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.support-card input,
+.support-card select,
+.support-card textarea{
+  padding:10px;
+  border-radius:8px;
+  border:1px solid #ccc;
+}
+
+.support-card button{
+  margin-top:8px;
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  background:#0b2a85;
+  color:#fff;
+  cursor:pointer;
+  font-weight:700;
+}
+
+.support-file{
+  font-size:13px;
+  color:#1f59d1;
+  font-weight:700;
+}
+
+.support-empty{
+  padding:12px;
+  background:#f5f7ff;
+  border-radius:10px;
+  color:#555;
+  font-weight:600;
+}
+
+.support-history{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.support-ticket{
+  border:1px solid #e5e7eb;
+  border-radius:12px;
+  padding:12px;
+  background:#fbfcff;
+}
+
+.support-ticket .row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+
+.support-ticket .sub{
+  margin-top:6px;
+  font-weight:700;
+}
+
+.support-ticket .meta{
+  margin-top:6px;
+  font-size:13px;
+  color:#444;
+}
+
+.pill{
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:800;
+}
+
+.pill.high{ background:#ffe5e5; color:#a10000; border:1px solid #ffc9c9; }
+.pill.medium{ background:#fff2d6; color:#8a4b00; border:1px solid #ffe0a3; }
+.pill.low{ background:#e8fff1; color:#0f6b2a; border:1px solid #bff3d3; }
+
+.support-footer{
+  text-align:center;
+  margin-top:40px;
+  padding-top:20px;
+  border-top:1px solid #ddd;
+}

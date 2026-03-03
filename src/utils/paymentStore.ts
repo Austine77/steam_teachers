@@ -54,3 +54,19 @@ export function setProgress(plan: PlanKey, value: number) {
 export function clearProgress() {
   localStorage.removeItem(PROGRESS_KEY);
 }
+
+// utils/paymentStore.ts
+
+export type PlanKey = "STEAM ONE" | "STEAM TWO" | "STEAM THREE";
+
+const KEY = "steam_one_paid_plans";
+
+export function setPaidPlan(plan: PlanKey, status: boolean) {
+  const existing = JSON.parse(localStorage.getItem(KEY) || "{}");
+  existing[plan] = status;
+  localStorage.setItem(KEY, JSON.stringify(existing));
+}
+
+export function getPaidPlans() {
+  return JSON.parse(localStorage.getItem(KEY) || "{}");
+}

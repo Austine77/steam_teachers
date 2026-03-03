@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import "./CourseMarketplacePage.css";
 import { setPaidPlan, type PlanKey } from "../utils/paymentStore";
+
 type Track = "STEAM ONE" | "STEAM TWO" | "STEAM THREE";
 type Level = "Beginner" | "Intermediate" | "Advanced";
 type Badge = "Featured" | "Popular" | "New" | "Recommended";
@@ -51,6 +52,7 @@ function formatNGN(n: number) {
   }).format(n);
 }
 
+// (kept in case you use it later)
 function clamp(n: number, a: number, b: number) {
   return Math.max(a, Math.min(b, n));
 }
@@ -158,7 +160,8 @@ export default function CourseMarketplacePage() {
         ],
         includes: ["AI templates", "Advanced labs", "Portfolio review", "Certificate eligibility", "Recruiter visibility boost"],
       },
-      // Extra courses to make marketplace rich
+
+      // Extra courses
       {
         id: "c_bonus_1",
         title: "Digital Classroom Management",
@@ -232,14 +235,14 @@ export default function CourseMarketplacePage() {
     "Recommended"
   );
 
-  // Wishlist (demo)
+  // Wishlist
   const [wishlist, setWishlist] = useState<Record<string, boolean>>({});
 
   // Details modal
   const [openId, setOpenId] = useState<string | null>(null);
   const selected = useMemo(() => courses.find((c) => c.id === openId) ?? null, [courses, openId]);
 
-  // Checkout modal (demo)
+  // Checkout modal
   const [checkoutOpen, setCheckoutOpen] = useState(false);
   const [payCourse, setPayCourse] = useState<Course | null>(null);
   const [payMethod, setPayMethod] = useState<"Paystack" | "Flutterwave" | "Card">("Paystack");
@@ -250,6 +253,17 @@ export default function CourseMarketplacePage() {
   const showToast = (m: string) => {
     setToast(m);
     setTimeout(() => setToast(null), 1800);
+  };
+
+  // ✅ Teacher -> Facilitator Notifications link sender
+  const sendContactToFacilitatorNotifications = (note: string) => {
+    const teacherName = encodeURIComponent("Teacher User");
+    const teacherPhone = encodeURIComponent("2347072639424"); // change later to real logged-in user phone
+    const msg = encodeURIComponent(note);
+
+    // This will create a ContactRequest in Facilitator NotificationsPage (your earlier code)
+    window.location.href =
+      `/facilitator/notifications?contact=1&teacherName=${teacherName}&teacherPhone=${teacherPhone}&note=${msg}`;
   };
 
   const filtered = useMemo(() => {
@@ -274,7 +288,6 @@ export default function CourseMarketplacePage() {
     if (sort === "Lowest Price") list = list.slice().sort((a, b) => a.price - b.price);
     if (sort === "Highest Rating") list = list.slice().sort((a, b) => b.rating - a.rating);
     if (sort === "Most Learners") list = list.slice().sort((a, b) => b.learners - a.learners);
-    // Recommended: keep original order (already curated)
     return list;
   }, [courses, q, track, level, price, sort]);
 
@@ -285,7 +298,7 @@ export default function CourseMarketplacePage() {
 
   const toggleWish = (id: string) => {
     setWishlist((prev) => ({ ...prev, [id]: !prev[id] }));
-    showToast("Saved to wishlist (demo).");
+    showToast("Saved to wishlist.");
   };
 
   const startCheckout = (course: Course) => {
@@ -296,16 +309,16 @@ export default function CourseMarketplacePage() {
   };
 
   const confirmPayment = () => {
-  if (!payCourse) return;
-  if (!agree) return showToast("Please accept the terms to continue.");
+    if (!payCourse) return;
+    if (!agree) return showToast("Please accept the terms to continue.");
 
-  // Save paid plan to localStorage
-  setPaidPlan(payCourse.track as PlanKey, true);
+    // Save paid plan to localStorage (Teacher Dashboard can read it)
+    setPaidPlan(payCourse.track as PlanKey, true);
 
-  setCheckoutOpen(false);
-  showToast(`✅ Payment initiated for ${payCourse.title} (demo). Plan unlocked on Teacher Dashboard.`);
-  // later: navigate("/teacher-dashboard");
-};
+    setCheckoutOpen(false);
+    showToast(`✅ Payment initiated for ${payCourse.title} (demo). Plan unlocked on Teacher Dashboard.`);
+    // later: navigate("/teacher-dashboard");
+  };
 
   const statCards = useMemo(
     () => [
@@ -391,7 +404,13 @@ export default function CourseMarketplacePage() {
             <button className="mpIconBtn" aria-label="Wishlist" title="Wishlist">
               ❤️ <span className="mpBadge">{Object.values(wishlist).filter(Boolean).length}</span>
             </button>
-            <button className="mpIconBtn" aria-label="Notifications" title="Notifications">
+
+            <button
+              className="mpIconBtn"
+              aria-label="Notifications"
+              title="Notifications"
+              onClick={() => (window.location.href = "/teacher/notifications")}
+            >
               🔔
             </button>
 
@@ -424,9 +443,7 @@ export default function CourseMarketplacePage() {
         <div className="mpHero">
           <div className="mpHeroLeft">
             <div className="mpHeroKicker">Microsoft Education-aligned Professional Programs</div>
-            <h2 className="mpHeroTitle">
-              Upgrade your teaching career with paid STEAM certifications
-            </h2>
+            <h2 className="mpHeroTitle">Upgrade your teaching career with paid STEAM certifications</h2>
             <p className="mpHeroText">
               Enroll in STEAM ONE, TWO, or THREE. Make payment and unlock learning instantly (demo). Certificates are
               issued after completion and verification.
@@ -439,8 +456,21 @@ export default function CourseMarketplacePage() {
               >
                 Enroll STEAM ONE ₦15,000
               </button>
+
               <button className="mpBtn mpBtnGhost" onClick={() => showToast("Explore tracks (demo).")}>
                 Explore Tracks
+              </button>
+
+              {/* ✅ Teacher sends link to Facilitator Notifications */}
+              <button
+                className="mpBtn mpBtnPay"
+                onClick={() =>
+                  sendContactToFacilitatorNotifications(
+                    "Hello Facilitator, I need help choosing the right plan and getting access after payment."
+                  )
+                }
+              >
+                Contact Facilitator
               </button>
             </div>
 
@@ -484,9 +514,7 @@ export default function CourseMarketplacePage() {
                 ))}
               </div>
 
-              <div className="mpHeroNote">
-                ✅ Paystack / Flutterwave / Card placeholders included. Backend integration later.
-              </div>
+              <div className="mpHeroNote">✅ Paystack / Flutterwave / Card placeholders included. Backend integration later.</div>
             </div>
           </div>
         </div>
@@ -616,17 +644,28 @@ export default function CourseMarketplacePage() {
                   <button className="mpBtn mpBtnGhostSmall" onClick={() => openDetails(c.id)}>
                     View Details
                   </button>
+
                   <button className="mpBtn mpBtnPaySmall" onClick={() => startCheckout(c)}>
                     Enroll / Pay
+                  </button>
+
+                  {/* ✅ Teacher sends course-specific request to Facilitator Notifications */}
+                  <button
+                    className="mpBtn mpBtnGhostSmall"
+                    onClick={() =>
+                      sendContactToFacilitatorNotifications(
+                        `Please assist me with enrollment/access for ${c.title} (${c.track}) – ₦${c.price.toLocaleString()}.`
+                      )
+                    }
+                  >
+                    Contact Facilitator
                   </button>
                 </div>
               </div>
             </article>
           ))}
 
-          {filtered.length === 0 && (
-            <div className="mpEmpty">No courses match your search/filters.</div>
-          )}
+          {filtered.length === 0 && <div className="mpEmpty">No courses match your search/filters.</div>}
         </div>
 
         {/* Testimonials + Trust */}
@@ -724,9 +763,15 @@ export default function CourseMarketplacePage() {
             <span>© 2026 STEAM ONE Platform. All rights reserved.</span>
           </div>
           <div className="mpFooterLinks">
-            <button className="mpLinkBtn" onClick={() => alert("Terms (demo)")}>Terms</button>
-            <button className="mpLinkBtn" onClick={() => alert("Privacy (demo)")}>Privacy</button>
-            <button className="mpLinkBtn" onClick={() => alert("Support (demo)")}>Support</button>
+            <button className="mpLinkBtn" onClick={() => alert("Terms (demo)")}>
+              Terms
+            </button>
+            <button className="mpLinkBtn" onClick={() => alert("Privacy (demo)")}>
+              Privacy
+            </button>
+            <button className="mpLinkBtn" onClick={() => alert("Support (demo)")}>
+              Support
+            </button>
           </div>
         </footer>
       </section>
@@ -778,7 +823,9 @@ export default function CourseMarketplacePage() {
                     ))}
                   </div>
 
-                  <div className="mpBTitle" style={{ marginTop: 12 }}>Includes</div>
+                  <div className="mpBTitle" style={{ marginTop: 12 }}>
+                    Includes
+                  </div>
                   <ul className="mpList">
                     {selected.includes.map((i) => (
                       <li key={i}>{i}</li>
@@ -808,6 +855,18 @@ export default function CourseMarketplacePage() {
                   <button className="mpBtn mpBtnPay" onClick={() => startCheckout(selected)}>
                     Enroll / Pay Now
                   </button>
+
+                  <button
+                    className="mpBtn mpBtnGhost"
+                    onClick={() =>
+                      sendContactToFacilitatorNotifications(
+                        `Please assist me with enrollment/access for ${selected.title} (${selected.track}).`
+                      )
+                    }
+                  >
+                    Contact Facilitator
+                  </button>
+
                   <button className="mpBtn mpBtnGhost" onClick={() => toggleWish(selected.id)}>
                     {wishlist[selected.id] ? "❤️ Saved" : "🤍 Add to Wishlist"}
                   </button>
@@ -820,7 +879,9 @@ export default function CourseMarketplacePage() {
             </div>
 
             <div className="mpModalFoot">
-              <button className="mpBtn mpBtnGhost" onClick={closeDetails}>Close</button>
+              <button className="mpBtn mpBtnGhost" onClick={closeDetails}>
+                Close
+              </button>
               <button className="mpBtn mpBtnPrimary" onClick={() => startCheckout(selected)}>
                 Proceed to Payment
               </button>
@@ -928,9 +989,7 @@ export default function CourseMarketplacePage() {
                       Cancel
                     </button>
 
-                    <div className="mpSafe">
-                      🔒 Secure checkout UI. Replace with Paystack/Flutterwave redirect + callback later.
-                    </div>
+                    <div className="mpSafe">🔒 Secure checkout UI. Replace with Paystack/Flutterwave redirect + callback later.</div>
                   </div>
                 </div>
               </div>

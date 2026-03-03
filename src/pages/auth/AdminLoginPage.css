@@ -1,214 +1,76 @@
-.al-root{
+.admin-login-root{
   min-height:100vh;
   display:flex;
-  justify-content:center;
   align-items:center;
-  padding: 26px 12px;
-  background: linear-gradient(180deg,#5668ff,#8392ff);
-  font-family: Arial, Helvetica, sans-serif;
+  justify-content:center;
+  background:linear-gradient(135deg,#0b2a85,#1f59d1);
+  font-family:system-ui;
+  padding:20px;
 }
 
-.al-card{
-  width: 460px;
-  background: rgba(255,255,255,.92);
-  border-radius: 18px;
-  box-shadow: 0 22px 55px rgba(0,0,0,.22);
-  padding: 22px 18px 18px;
-  border: 1px solid rgba(255,255,255,.7);
-}
-
-.al-header{
-  text-align:center;
-  margin-bottom: 12px;
-}
-
-.al-title{
-  margin:0;
-  font-weight:1000;
-  color:#0b2a85;
-  letter-spacing:.2px;
-}
-.al-title span{ color:#f59e0b; }
-
-.al-h1{
-  margin: 12px 0 6px;
-  font-size: 22px;
-  color:#0b1530;
-}
-
-.al-sub{
-  margin:0;
-  color:#5a6b8a;
-  font-weight:800;
-  font-size:13px;
-}
-
-.al-formCard{
+.admin-login-card{
   background:#fff;
-  border-radius: 14px;
-  padding: 16px;
-  border: 1px solid rgba(13,39,108,.10);
-  box-shadow: 0 14px 26px rgba(0,0,0,.10);
-}
-
-.al-label{
-  display:block;
-  margin-top: 10px;
-  margin-bottom: 6px;
-  font-size:12px;
-  font-weight:900;
-  color:#24407a;
-}
-
-.al-req{ color:#ef4444; font-weight:1000; }
-
-.al-inputIcon{
-  position:relative;
-}
-.al-ico{
-  position:absolute;
-  left: 12px;
-  top: 10px;
-  opacity:.75;
-}
-.al-input{
   width:100%;
-  padding: 12px 12px 12px 38px;
-  border-radius: 10px;
-  border: 1px solid rgba(13,39,108,.14);
-  outline:none;
-  font-weight:800;
-  color:#1d2a4d;
-}
-.al-input:focus{
-  border-color: rgba(44,114,255,.45);
-  box-shadow: 0 0 0 3px rgba(44,114,255,.14);
+  max-width:420px;
+  border-radius:20px;
+  box-shadow:0 20px 60px rgba(0,0,0,.25);
+  overflow:hidden;
 }
 
-.al-passRow{
-  margin-top: 10px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-}
-.al-forgot{
-  font-size:12px;
-  font-weight:1000;
-  color:#0b2a85;
-  text-decoration:none;
-}
-.al-forgot:hover{ text-decoration:underline; }
-
-.al-passWrap{
-  position:relative;
-}
-.al-passWrap .al-input{
-  padding-left: 12px;
-}
-.al-eye{
-  position:absolute;
-  right:10px;
-  top: 9px;
-  border:none;
-  background:none;
-  cursor:pointer;
-  font-size: 16px;
-  opacity:.85;
-}
-
-.al-loginBtn{
-  width:100%;
-  margin-top: 14px;
-  padding: 13px 14px;
-  border:none;
-  border-radius: 10px;
-  cursor:pointer;
-  font-weight:1000;
-  background: linear-gradient(90deg,#f59e0b,#ffb100);
-  box-shadow: 0 14px 22px rgba(245,158,11,.22);
-}
-
-.al-changeBtn{
-  width:100%;
-  margin-top: 10px;
-  padding: 12px 14px;
-  border-radius: 10px;
-  border: 1px solid rgba(13,39,108,.14);
-  background: rgba(13,39,108,.04);
-  color:#0b2a85;
-  font-weight:1000;
-  cursor:pointer;
-}
-.al-changeBtn:hover{
-  background: rgba(13,39,108,.07);
-}
-
-.al-support{
-  margin-top: 12px;
+.admin-header{
+  background:#f4f8ff;
+  padding:25px;
   text-align:center;
-  color:#5a6b8a;
-  font-weight:800;
-  font-size:12px;
-  line-height:1.5;
 }
 
-.al-toast{
+.admin-header h2 span{
+  color:#ffb100;
+}
+
+.admin-form{
+  padding:25px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.admin-form input{
+  padding:10px;
+  border-radius:8px;
+  border:1px solid #ccc;
+}
+
+.admin-password-box{
+  display:flex;
+  gap:5px;
+}
+
+.admin-password-box button{
+  border:none;
+  background:#eee;
+  padding:5px 10px;
+  cursor:pointer;
+}
+
+.admin-login-btn{
   margin-top:10px;
-  padding:10px 12px;
-  border-radius: 12px;
-  background: rgba(34,197,94,.12);
-  border: 1px solid rgba(34,197,94,.25);
-  color:#14532d;
-  font-weight:1000;
-  font-size:12px;
+  padding:12px;
+  background:#ffb100;
+  border:none;
+  border-radius:10px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.admin-error{
+  background:#ffe5e5;
+  padding:8px;
+  border-radius:8px;
+  color:#a10000;
+}
+
+.admin-footer{
   text-align:center;
-}
-
-.al-notes{
-  margin-top: 14px;
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  flex-wrap:wrap;
-  color:#5a6b8a;
-  font-weight:900;
-  font-size:12px;
-}
-
-.al-msFooter{
-  margin-top: 14px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:10px;
-  color:#0b2a85;
-  font-weight:1000;
-}
-
-.al-msMark{
-  width:22px; height:22px;
-  border-radius:6px;
-  display:grid;
-  grid-template-columns: repeat(2,1fr);
-  gap:2px;
-  padding:3px;
-  background: rgba(0,0,0,.05);
-}
-.al-msMark span{border-radius:2px}
-.al-msMark span:nth-child(1){background:#F25022}
-.al-msMark span:nth-child(2){background:#7FBA00}
-.al-msMark span:nth-child(3){background:#00A4EF}
-.al-msMark span:nth-child(4){background:#FFB900}
-
-.al-copy{
-  margin-top: 10px;
-  text-align:center;
-  color:#5a6b8a;
-  font-weight:800;
-  font-size:12px;
-}
-
-@media (max-width:520px){
-  .al-card{ width:100%; }
+  padding:20px;
+  background:#f9f9f9;
 }
