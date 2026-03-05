@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./SettingsPage.css";
-import { getPaidPlans, type PlanKey } from "../utils/paymentStore";
+import { getPaidPlans, type PlanKey } from "../../utils/paymentStore";
 
 type Role = "teacher" | "facilitator" | "admin";
 

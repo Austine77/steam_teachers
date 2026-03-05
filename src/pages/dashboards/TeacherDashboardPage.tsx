@@ -8,7 +8,8 @@ import {
   setProgress as saveProgress,
   clearProgress,
   type PlanKey,
-} from "../utils/paymentStore";
+} from "../../utils/paymentStore";
+
 
 type PayMethod = "Paystack" | "Flutterwave" | "Card";
 

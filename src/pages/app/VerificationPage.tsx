@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import "./VerificationPage.css";
-import { getRole } from "../utils/authStore";
+import { getRole } from "../../utils/authStore";
 
 type Role = "teacher" | "facilitator";
 

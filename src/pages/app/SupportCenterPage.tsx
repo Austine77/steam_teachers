@@ -6,8 +6,8 @@ import {
   getTickets,
   type Priority,
   type Ticket,
-} from "../utils/ticketStore";
-import { getRole } from "../utils/authStore";
+} from "../../utils/ticketStore";
+import { getRole } from "../../utils/authStore";
 
 export default function SupportCenterPage() {
   const userEmail = localStorage.getItem("steam_user_email") || "user@example.com";

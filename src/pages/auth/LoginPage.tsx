@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./LoginPage.css";
-import { setSession } from "../utils/authStore"; // role session storage
-
-type TFRole = "teacher" | "facilitator";
+import { setSession } from "../../utils/authStore";
+import { authenticate, type UserRole } from "../../utils/userStore";
 
 function getLagosTimeString() {
   const dt = new Date();
@@ -23,28 +22,22 @@ function getLagosTimeString() {
 }
 
 export default function LoginPage() {
-  // Nigeria time
   const [lagosNow, setLagosNow] = useState(getLagosTimeString());
   useEffect(() => {
-    const t = setInterval(() => setLagosNow(getLagosTimeString()), 1000);
-    return () => clearInterval(t);
+    const t = window.setInterval(() => setLagosNow(getLagosTimeString()), 1000);
+    return () => window.clearInterval(t);
   }, []);
 
-  // Role: Teacher or Facilitator only
-  const [role, setRole] = useState<TFRole>("teacher");
-
-  // Form
+  const [role, setRole] = useState<UserRole>("teacher");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  // UX
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  function goDashboard(r: TFRole) {
-    if (r === "teacher") window.location.href = "/teacher/dashboard";
-    else window.location.href = "/facilitator/dashboard";
+  function goDashboard(r: UserRole) {
+    window.location.href = r === "teacher" ? "/teacher/dashboard" : "/facilitator/dashboard";
   }
 
   function validateEmail(v: string) {
@@ -58,152 +51,89 @@ export default function LoginPage() {
     if (!validateEmail(email)) return setError("Please enter a valid email address.");
     if (password.trim().length < 6) return setError("Password must be at least 6 characters.");
 
-    // FRONTEND ONLY: backend will authenticate later
     setBusy(true);
-    setTimeout(() => {
-      setSession(role); // saves role + logged-in flag (for ProtectedRoute)
-      setBusy(false);
-      goDashboard(role);
-    }, 650);
-  }
+    const res = authenticate(email, password);
+    setBusy(false);
 
-  function googleLogin() {
-    setError(null);
-    setBusy(true);
+    if (!res.ok) return setError(res.error);
 
-    // FRONTEND ONLY placeholder for OAuth
-    setTimeout(() => {
-      setSession(role);
-      setBusy(false);
-      goDashboard(role);
-    }, 650);
+    // Optional: enforce selected role matches account role
+    if (res.user.role !== role) {
+      return setError(`This account is registered as ${res.user.role}. Please switch role and try again.`);
+    }
+
+    setSession(role);
+    goDashboard(role);
   }
 
   return (
     <div className="login-root">
       <div className="login-card">
-        {/* HEADER */}
         <div className="login-header">
           <h2>
             STEAM <span>ONE</span> Platform
           </h2>
-          <h1>Welcome Back!</h1>
-          <p>Teachers and Facilitators can log in to continue learning and managing sessions.</p>
-
-          <div className="login-time">
-            Nigeria Time: <span className="login-timeRed">{lagosNow}</span>
-          </div>
-
-          <div className="login-adminNote">
-            Admin?{" "}
-            <a className="login-adminLink" href="/admin/login">
-              Use Admin Login
-            </a>
-          </div>
+          <h1>Welcome Back</h1>
+          <p>Login as Teacher or Facilitator to continue learning and managing sessions.</p>
+          <div className="timeBadge">Nigeria Time: <strong>{lagosNow}</strong></div>
         </div>
 
-        {/* FORM CARD */}
-        <div className="login-formCard">
-          <h3>Log in (Teacher / Facilitator)</h3>
-
-          {/* ROLE SWITCH */}
-          <div className="login-roleRow" aria-label="Choose account type">
-            <button
-              type="button"
-              className={`login-roleBtn ${role === "teacher" ? "active" : ""}`}
-              onClick={() => setRole("teacher")}
-              disabled={busy}
-            >
-              Teacher
-            </button>
-            <button
-              type="button"
-              className={`login-roleBtn ${role === "facilitator" ? "active" : ""}`}
-              onClick={() => setRole("facilitator")}
-              disabled={busy}
-            >
-              Facilitator
-            </button>
-          </div>
-
-          {/* GOOGLE LOGIN */}
-          <button className="google-btn" onClick={googleLogin} disabled={busy}>
-            <span className="gMark">G</span> Continue with Google
+        {/* Role switch */}
+        <div className="roleSwitch">
+          <button
+            type="button"
+            className={role === "teacher" ? "roleBtn active" : "roleBtn"}
+            onClick={() => setRole("teacher")}
+          >
+            Teacher
           </button>
+          <button
+            type="button"
+            className={role === "facilitator" ? "roleBtn active" : "roleBtn"}
+            onClick={() => setRole("facilitator")}
+          >
+            Facilitator
+          </button>
+        </div>
 
-          <div className="divider">
-            <span>or</span>
+        {error && <div className="errorBox">{error}</div>}
+
+        <form onSubmit={handleLogin} className="login-form">
+          <input
+            type="email"
+            placeholder="Email address"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+
+          <div className="passRow">
+            <input
+              type={showPassword ? "text" : "password"}
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <button type="button" className="eyeBtn" onClick={() => setShowPassword((s) => !s)}>
+              {showPassword ? "Hide" : "Show"}
+            </button>
           </div>
 
-          {error && <div className="login-error">{error}</div>}
+          <button className="login-btn" disabled={busy}>
+            {busy ? "Logging in..." : "Login"}
+          </button>
+        </form>
 
-          {/* EMAIL LOGIN */}
-          <form onSubmit={handleLogin}>
-            <label>Email Address</label>
-            <input
-              type="email"
-              placeholder="info@example.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              disabled={busy}
-              autoComplete="email"
-            />
+        <div className="divider">OR</div>
 
-            <label>Password</label>
+        <a className="linkBtn" href="/signup">
+          Create an account
+        </a>
 
-            <div className="password-box">
-              <input
-                type={showPassword ? "text" : "password"}
-                placeholder="***********"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                disabled={busy}
-                autoComplete="current-password"
-              />
-
-              <button
-                type="button"
-                className="eye-btn"
-                onClick={() => setShowPassword(!showPassword)}
-                disabled={busy}
-                aria-label={showPassword ? "Hide password" : "Show password"}
-              >
-                👁
-              </button>
-            </div>
-
-            <div className="forgot">
-              <a
-                href="#"
-                onClick={(e) => {
-                  e.preventDefault();
-                  alert("Password reset will connect to backend later.");
-                }}
-              >
-                Forgot password?
-              </a>
-            </div>
-
-            <button className="login-btn" disabled={busy}>
-              {busy
-                ? "Please wait..."
-                : `Log In as ${role === "teacher" ? "Teacher" : "Facilitator"}`}
-            </button>
-          </form>
-
-          <p className="signup">
-            Don’t have an account? <a href="/signup">Sign Up</a>
-          </p>
-        </div>
-
-        {/* FOOTER */}
-        <div className="login-footer">
-          <p>Complies with ISTE Standards | UNESCO ICT CFT | PISA Framework</p>
-          <p>© 2026 STEAM ONE Platform</p>
-          <h4>Microsoft Education</h4>
-        </div>
+        <a className="linkBtn ghost" href="/admin/login" style={{ marginTop: 10 }}>
+          Admin Login
+        </a>
       </div>
     </div>
   );

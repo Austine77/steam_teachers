@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import "./CourseMarketplacePage.css";
-import { setPaidPlan, type PlanKey } from "../utils/paymentStore";
+import { setPaidPlan, type PlanKey } from "../../utils/paymentStore";
 
 type Track = "STEAM ONE" | "STEAM TWO" | "STEAM THREE";
 type Level = "Beginner" | "Intermediate" | "Advanced";

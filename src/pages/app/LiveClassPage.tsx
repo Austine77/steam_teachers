@@ -612,7 +612,9 @@ export default function LiveClassPage() {
                 <div className="lcChat">
                   <div className="lcChatBody">
                     {chat.map((m) => {
-                      const mine = (m.role === role) && m.role !== "System";
+                      // If the message role matches the current viewer role, it is "mine".
+                      // ("System" messages will never match role, so no extra check needed.)
+                      const mine = m.role === role;
                       return (
                         <div key={m.id} className={`lcMsg ${mine ? "mine" : ""} ${m.role === "System" ? "sys" : ""}`}>
                           <div className="lcMsgTop">

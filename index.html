@@ -3,30 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>STEAM ONE Platform — Microsoft Education</title>
-
+  <title>STEAM ONE Platform — Online Courses</title>
   <style>
     :root{
-      --navH:72px;
-      --max:1180px;
+      /* Coursera primary blue */
+      --cBlue:#0056D2;
+      --cBlueDark:#0A3EAD;
+      --cBlueSoft:#EAF2FF;
 
-      --brandBlue:#0b2a85;
-      --brandBlue2:#1f59d1;
-      --brandBlue3:#2d7cff;
-      --sky:#edf4ff;
-
+      --bg:#ffffff;
+      --text:#0F172A;
+      --muted:#475569;
+      --line:rgba(15,23,42,.10);
       --card:#ffffff;
-      --ink:#0b1530;
-      --muted:#5a6b8a;
-      --line:rgba(14,35,92,.10);
-      --shadow:0 18px 45px rgba(6,16,40,.18);
-      --shadow2: 0 22px 60px rgba(0,0,0,.18);
 
-      --btn:#f59e0b;
-      --btn2:#ffb100;
+      --shadow: 0 14px 34px rgba(2, 6, 23, .10);
+      --radius: 18px;
 
-      --radius:22px;
-      --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+      --max: 1180px;
+      --navH: 72px;
+
+      --ok:#16a34a;
+      --warn:#f59e0b;
+      --bad:#ef4444;
+
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
     }
 
     *{box-sizing:border-box}
@@ -34,2155 +35,1375 @@
     body{
       margin:0;
       font-family:var(--font);
-      color:var(--ink);
-      background:
-        radial-gradient(1100px 520px at 15% 5%, rgba(255,255,255,.22), transparent 65%),
-        radial-gradient(980px 520px at 85% 10%, rgba(255,255,255,.14), transparent 60%),
-        linear-gradient(180deg, #0a2a84 0%, #1f59d1 35%, #4a86ff 65%, #edf4ff 100%);
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.5;
     }
-
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
+    a{color:inherit; text-decoration:none}
     button{font-family:inherit}
-    button,a{-webkit-tap-highlight-color:transparent}
-    button{touch-action:manipulation}
+    .wrap{min-height:100%; display:flex; flex-direction:column}
 
-    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px;}
-
-    /* Top Nav */
-    .topbar{
+    /* ====== NAV ====== */
+    .nav{
       position:sticky; top:0; z-index:50;
       height:var(--navH);
-      background: rgba(9,33,102,.58);
-      border-bottom:1px solid rgba(255,255,255,.12);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      background:rgba(255,255,255,.92);
+      backdrop-filter:saturate(180%) blur(10px);
+      border-bottom:1px solid var(--line);
     }
-    .topbar .inner{
+    .navInner{
+      max-width:var(--max);
+      margin:0 auto;
       height:100%;
+      padding:0 18px;
       display:flex;
       align-items:center;
-      justify-content:space-between;
-      gap:12px;
+      gap:14px;
     }
-
     .brand{
       display:flex; align-items:center; gap:10px;
-      color:#fff; font-weight:900; letter-spacing:.2px;
-      min-width:240px;
+      min-width: 220px;
     }
-    .msMark{
-      width:26px; height:26px; border-radius:6px;
-      display:grid; grid-template-columns:repeat(2,1fr); gap:2px;
-      background:rgba(255,255,255,.12);
-      padding:4px; flex:0 0 auto;
+    .logoMark{
+      width:34px; height:34px; border-radius:10px;
+      display:grid; place-items:center;
+      background:var(--cBlue);
+      box-shadow:0 10px 22px rgba(0,86,210,.22);
+      color:#fff; font-weight:900;
     }
-    .msMark span{border-radius:2px}
-    .msMark span:nth-child(1){background:#F25022}
-    .msMark span:nth-child(2){background:#7FBA00}
-    .msMark span:nth-child(3){background:#00A4EF}
-    .msMark span:nth-child(4){background:#FFB900}
-    .brand small{display:block;font-weight:700;opacity:.88;font-size:11px;margin-top:2px}
-
-    .nav{
+    .brandText{display:flex; flex-direction:column; line-height:1.1}
+    .brandText strong{font-size:14px; letter-spacing:.2px}
+    .brandText span{font-size:12px; color:var(--muted)}
+    .navLinks{
+      display:flex; align-items:center; gap:14px;
+      flex:1;
+    }
+    .navLinks a{
+      padding:10px 10px;
+      border-radius:12px;
+      color:#0f172a;
+      font-size:14px;
+      font-weight:600;
+    }
+    .navLinks a:hover{background:rgba(2,6,23,.04)}
+    .search{
+      flex:1.2;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      max-width:520px;
+    }
+    .searchBox{
+      width:100%;
       display:flex; align-items:center; gap:10px;
-      color:#eaf1ff;
-      font-weight:900;
-      font-size:13px;
-      flex-wrap:wrap;
-    }
-    .nav a{
-      opacity:.92;
-      padding:8px 10px;
+      padding:10px 12px;
+      border:1px solid var(--line);
       border-radius:999px;
+      background:#fff;
+    }
+    .searchBox input{
+      width:100%;
+      border:0; outline:0;
+      font-size:14px;
+      background:transparent;
+    }
+    .navActions{display:flex; align-items:center; gap:10px}
+    .btn{
       border:1px solid transparent;
-      transition:.15s ease;
+      border-radius:999px;
+      padding:10px 14px;
+      font-weight:800;
+      font-size:14px;
+      cursor:pointer;
+      transition:transform .08s ease, background .15s ease, border-color .15s ease, box-shadow .15s ease;
       white-space:nowrap;
     }
-    .nav a:hover{opacity:1; background:rgba(255,255,255,.10); border-color:rgba(255,255,255,.14)}
-    .nav a.active{background:rgba(255,255,255,.14); border-color:rgba(255,255,255,.18); opacity:1}
-
-    .navRight{display:flex; align-items:center; gap:10px;}
-
-    .btn{
-      border:0;
-      cursor:pointer;
-      padding:10px 14px;
-      border-radius:12px;
-      font-weight:1000;
-      letter-spacing:.2px;
-      box-shadow: 0 16px 30px rgba(0,0,0,.18);
-      transition: transform .08s ease, filter .12s ease;
-    }
-    .btn:active{transform: translateY(1px)}
+    .btn:active{transform:translateY(1px)}
     .btnPrimary{
-      background: linear-gradient(180deg, var(--btn2), var(--btn));
-      color:#1b1b1b;
+      background:var(--cBlue);
+      color:#fff;
+      box-shadow: 0 12px 26px rgba(0,86,210,.22);
     }
+    .btnPrimary:hover{background:var(--cBlueDark)}
     .btnGhost{
-      background: rgba(255,255,255,.14);
-      border:1px solid rgba(255,255,255,.20);
-      color:#fff;
-      box-shadow:none;
-    }
-    .btn:hover{filter:brightness(1.03)}
-
-    /* Mobile menu */
-    .menuBtn{
-      display:none;
-      width:44px; height:44px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.20);
-      background: rgba(255,255,255,.10);
-      color:#fff;
-      font-weight:1000;
-      box-shadow:none;
-    }
-    .drawerOverlay{
-      position:fixed; inset:0;
-      background: rgba(0,0,0,.55);
-      display:none;
-      z-index:90;
-    }
-    .drawer{
-      position:fixed; top:0; right:0;
-      width:min(360px, 88vw);
-      height:100%;
-      background: rgba(255,255,255,.96);
-      border-left:1px solid rgba(13,39,108,.10);
-      box-shadow: -20px 0 60px rgba(0,0,0,.25);
-      transform: translateX(100%);
-      transition: transform .18s ease;
-      z-index:95;
-      display:flex;
-      flex-direction:column;
-    }
-    .drawer.open{transform: translateX(0)}
-    .drawerHead{
-      padding:14px;
-      display:flex; align-items:center; justify-content:space-between; gap:10px;
-      border-bottom:1px solid rgba(13,39,108,.10);
-      background: linear-gradient(180deg, rgba(44,114,255,.08), rgba(245,158,11,.06));
-    }
-    .drawerHead strong{color:#0b2a85}
-    .drawerClose{
-      width:40px; height:40px; border-radius:14px;
-      border:1px solid rgba(13,39,108,.12);
-      background: rgba(13,39,108,.06);
-      color:#0b2a85;
-      font-weight:1000;
-    }
-    .drawerNav{padding:12px; display:grid; gap:10px;}
-    .drawerNav a{
-      padding:12px 12px;
-      border-radius:14px;
-      border:1px solid rgba(13,39,108,.10);
       background:#fff;
-      font-weight:900;
-      color:#0b2a85;
-      box-shadow: 0 10px 20px rgba(0,0,0,.06);
+      color:var(--cBlue);
+      border-color:rgba(0,86,210,.28);
     }
-    .drawerNav a.active{
-      border-color: rgba(44,114,255,.40);
-      box-shadow: 0 0 0 3px rgba(44,114,255,.12), 0 10px 20px rgba(0,0,0,.06);
+    .btnGhost:hover{background:rgba(0,86,210,.06)}
+    .btnLink{
+      background:transparent;
+      color:#0f172a;
+      border-color:transparent;
     }
-    .drawerFoot{
-      margin-top:auto;
-      padding:14px 12px 18px;
-      color:#27406e;
-      font-weight:800;
-      font-size:12px;
-      opacity:.9;
-    }
+    .btnLink:hover{background:rgba(2,6,23,.04)}
 
-    /* Pages system */
-    .page{display:none; padding-bottom: 10px;}
-    .page.active{display:block}
-
-    /* Hero area */
-    .heroWrap{padding:22px 0 8px;}
-    .heroCard{
-      border-radius:28px;
-      border:1px solid rgba(255,255,255,.18);
-      background:
-        radial-gradient(900px 320px at 20% 20%, rgba(255,255,255,.18), transparent 60%),
-        radial-gradient(820px 320px at 80% 10%, rgba(255,255,255,.12), transparent 60%),
-        linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
-      box-shadow: 0 30px 70px rgba(0,0,0,.22);
-      overflow:hidden;
-    }
-    .heroGrid{
+    /* ====== LAYOUT ====== */
+    .main{flex:1}
+    .container{max-width:var(--max); margin:0 auto; padding:0 18px}
+    .section{padding:42px 0}
+    .grid2{
       display:grid;
       grid-template-columns: 1.1fr .9fr;
-      gap:18px;
-      padding:26px;
+      gap:28px;
       align-items:center;
     }
-    .heroTitle{
-      margin:0 0 10px;
-      color:#fff;
-      font-size: clamp(26px, 3.2vw, 40px);
-      line-height:1.12;
-      letter-spacing:.2px;
-      text-shadow: 0 12px 35px rgba(0,0,0,.18);
-    }
-    .heroText{
-      margin:0 0 16px;
-      color:rgba(255,255,255,.88);
-      line-height:1.65;
-      max-width: 56ch;
-      font-weight:650;
-      font-size: 14px;
-    }
-    .heroActions{display:flex; gap:10px; flex-wrap:wrap; margin: 12px 0 14px}
-
-    .chipRow{
-      display:flex; gap:12px; flex-wrap:wrap; align-items:center;
-      color:rgba(255,255,255,.90);
-      font-weight:900;
-      font-size:12px;
-      margin-top:10px;
-    }
-    .chip{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:7px 10px;
-      border-radius:999px;
-      background: rgba(255,255,255,.12);
-      border: 1px solid rgba(255,255,255,.18);
+    @media (max-width: 980px){
+      .grid2{grid-template-columns:1fr; gap:18px}
+      .brand{min-width:auto}
+      .search{display:none}
+      .navLinks{display:none}
     }
 
-    .illus{
-      border-radius:22px;
-      border:1px solid rgba(255,255,255,.16);
+    /* ====== HERO ====== */
+    .hero{
+      padding:44px 0 24px;
       background:
-        radial-gradient(460px 200px at 45% 25%, rgba(255,255,255,.24), transparent 65%),
-        radial-gradient(520px 220px at 75% 50%, rgba(44,114,255,.18), transparent 70%),
-        linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.03));
-      min-height: 260px;
-      position:relative;
-      overflow:hidden;
-    }
-    .bubble{position:absolute;border-radius:999px;background:rgba(255,255,255,.12)}
-    .bubble.b1{right:-30px;top:-30px;width:160px;height:160px}
-    .bubble.b2{left:-40px;bottom:-40px;width:220px;height:220px;background:rgba(255,255,255,.10)}
-    .illusCard{
-      position:absolute; inset:16px;
-      border-radius:18px;
-      background: rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.14);
-      display:flex; align-items:center; justify-content:center;
-      color:rgba(255,255,255,.92);
-      font-weight:1000;
-      text-align:center;
-      padding:16px;
-    }
-    .illusCard span{display:block; font-weight:800; opacity:.92; margin-top:8px; font-size:12px}
-
-    /* White section container */
-    .panel{
-      background: rgba(255,255,255,.88);
-      border:1px solid rgba(255,255,255,.95);
-      border-radius: 26px;
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      margin-bottom:16px;
-    }
-    .panelHead{padding:18px 18px 0; text-align:center;}
-    .panelHead h2{
-      margin:0;
-      font-size: clamp(18px, 2.3vw, 26px);
-      letter-spacing:.2px;
-      color:#0b2a85;
-    }
-    .panelHead p{
-      margin:8px auto 0;
-      max-width:72ch;
-      color:var(--muted);
-      font-weight:650;
-      line-height:1.6;
-      font-size:13px;
-    }
-    .panelBody{padding:18px;}
-
-    /* Cards / grids */
-    .grid2{display:grid; grid-template-columns: 1fr 1fr; gap:14px;}
-    .grid3{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px;}
-    .grid4{display:grid; grid-template-columns: repeat(4, 1fr); gap:12px;}
-    .card{
-      background:#fff;
-      border:1px solid rgba(13,39,108,.10);
-      border-radius:18px;
-      box-shadow: 0 14px 28px rgba(0,0,0,.08);
-      padding:14px;
+        radial-gradient(900px 360px at 20% 10%, rgba(0,86,210,.12), transparent 70%),
+        radial-gradient(900px 420px at 90% 30%, rgba(0,86,210,.08), transparent 70%),
+        linear-gradient(180deg, #fff 0%, #fff 62%, var(--cBlueSoft) 100%);
+      border-bottom:1px solid rgba(0,86,210,.12);
     }
     .kicker{
       display:inline-flex; align-items:center; gap:8px;
-      padding:6px 10px;
+      padding:8px 12px;
       border-radius:999px;
-      border:1px solid rgba(13,39,108,.10);
-      background: rgba(13,39,108,.06);
-      color:#0b2a85;
-      font-weight:1000;
+      background:rgba(0,86,210,.08);
+      color:var(--cBlueDark);
+      font-weight:800;
       font-size:12px;
     }
-    .stat{
-      display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
-      padding:14px;
-      border-radius:18px;
-      background: linear-gradient(180deg, rgba(44,114,255,.08), rgba(245,158,11,.06));
-      border:1px solid rgba(13,39,108,.10);
+    .h1{
+      margin:14px 0 10px;
+      font-size:46px;
+      line-height:1.05;
+      letter-spacing:-.8px;
     }
-    .stat strong{font-size:18px; color:#0b2a85}
-    .stat small{display:block; margin-top:4px; color:var(--muted); font-weight:900}
+    .sub{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:16px;
+      max-width:56ch;
+    }
+    .heroActions{display:flex; gap:10px; flex-wrap:wrap}
+    .heroMeta{
+      margin-top:18px;
+      display:flex; gap:14px; flex-wrap:wrap;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 12px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:#fff;
+    }
 
-    /* Programs */
-    .programs{padding:18px}
-    .cards3{
+    .heroCard{
+      border-radius:var(--radius);
+      background:#fff;
+      border:1px solid rgba(0,86,210,.16);
+      box-shadow: var(--shadow);
+      padding:18px;
+    }
+    .heroCard h3{margin:0 0 10px; font-size:16px}
+    .heroCard p{margin:0 0 12px; color:var(--muted); font-size:13px}
+    .miniRow{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+    }
+    .mini{
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:12px;
+      background:linear-gradient(180deg, #fff, rgba(0,86,210,.04));
+    }
+    .mini strong{display:block; font-size:13px}
+    .mini span{display:block; font-size:12px; color:var(--muted); margin-top:4px}
+    .mini b{color:var(--cBlueDark)}
+    .heroCard .ctaRow{display:flex; gap:10px; margin-top:12px; flex-wrap:wrap}
+    .note{font-size:12px; color:var(--muted); margin-top:10px}
+
+    /* ====== PARTNERS ====== */
+    .partners{
+      padding:18px 0 10px;
+      background:#fff;
+    }
+    .partnersRow{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px; flex-wrap:wrap;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:14px 16px;
+      background:#fff;
+    }
+    .partnersRow small{color:var(--muted); font-weight:700}
+    .logos{display:flex; align-items:center; gap:16px; flex-wrap:wrap; justify-content:flex-end}
+    .logoChip{
+      border:1px solid var(--line);
+      padding:8px 10px;
+      border-radius:999px;
+      font-size:12px;
+      color:#0f172a;
+      background:rgba(2,6,23,.02);
+      font-weight:800;
+    }
+
+    /* ====== FEATURE CARDS ====== */
+    .h2{margin:0 0 10px; font-size:28px; letter-spacing:-.3px}
+    .lead{margin:0; color:var(--muted); max-width:72ch}
+    .cardGrid{
+      margin-top:16px;
       display:grid;
       grid-template-columns: repeat(3, 1fr);
       gap:14px;
     }
-    .programCard{
-      background:var(--card);
+    @media (max-width: 980px){ .cardGrid{grid-template-columns:1fr} }
+    .card{
       border:1px solid var(--line);
-      border-radius:20px;
-      box-shadow: 0 14px 34px rgba(0,0,0,.10);
-      overflow:hidden;
-      position:relative;
-    }
-    .programTop{
-      padding:14px 14px 12px;
-      color:#fff;
-      font-weight:1000;
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap:10px;
-    }
-    .ttl{font-size:16px; letter-spacing:.3px;}
-    .sub{font-size:11px; opacity:.92; font-weight:900; margin-top:2px;}
-    .topBlue{background: linear-gradient(180deg, #1b4ed9, #0b2a85);}
-    .topCyan{background: linear-gradient(180deg, #2c72ff, #1240b7);}
-    .topOrange{background: linear-gradient(180deg, #ffb100, #f59e0b);}
-    .pill{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:7px 10px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.25);
-      background:rgba(255,255,255,.12);
-      color:#fff;
-      font-weight:800;
-      font-size:12px;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      box-shadow: 0 12px 30px rgba(0,0,0,.12);
-    }
-    .programBody{padding:14px}
-    .checkList{margin:0; padding:0 0 0 18px; color:#334562}
-    .checkList li{margin:8px 0; font-weight:800; font-size:13px}
-    .priceRow{
-      display:flex; align-items:baseline; justify-content:space-between; gap:10px;
-      margin-top:14px;
-      padding-top:12px;
-      border-top:1px dashed rgba(14,35,92,.14);
-    }
-    .price{
-      font-weight:1100;
-      color:#0b2a85;
-      font-size:26px;
-      letter-spacing:.2px;
-    }
-    .price small{font-size:12px; font-weight:900; color:var(--muted)}
-    .access{text-align:right; color:var(--muted); font-weight:900; font-size:11px;}
-    .payBtn{
-      width:100%;
-      margin-top:12px;
-      padding:10px 12px;
-      border-radius:12px;
-      border:1px solid rgba(245,158,11,.35);
-      background: linear-gradient(180deg, #ffb100, #f59e0b);
-      color:#1b1b1b;
-      font-weight:1100;
-      cursor:pointer;
-      box-shadow: 0 14px 22px rgba(245,158,11,.25);
-    }
-
-    /* Steps */
-    .steps{padding:0 18px 18px;}
-    .stepsBar{
-      background: rgba(13,39,108,.06);
-      border:1px solid rgba(13,39,108,.10);
-      border-radius: 18px;
-      padding:12px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      justify-content:space-between;
-      align-items:center;
-    }
-    .step{
-      display:flex; align-items:center; gap:10px;
-      min-width: 210px;
-      flex: 1 1 220px;
-    }
-    .stepNum{
-      width:30px; height:30px; border-radius:10px;
-      display:grid; place-items:center;
-      background: linear-gradient(180deg, #2c72ff, #1240b7);
-      color:#fff;
-      font-weight:1100;
-      box-shadow: 0 12px 20px rgba(18,64,183,.25);
-    }
-    .stepTxt{font-weight:1000; color:#19325f; font-size:12px}
-    .stepTxt small{display:block; font-weight:900; color:var(--muted); margin-top:2px}
-
-    /* CTA stripe */
-    .ctaStripe{
-      margin: 12px 18px 18px;
-      border-radius: 22px;
-      padding:18px;
-      color:#fff;
-      background:
-        radial-gradient(700px 200px at 20% 0%, rgba(255,255,255,.22), transparent 62%),
-        linear-gradient(180deg, rgba(11,42,133,.95), rgba(23,83,214,.92));
-      border: 1px solid rgba(255,255,255,.18);
-      box-shadow: 0 20px 50px rgba(0,0,0,.22);
-      text-align:center;
-    }
-    .ctaStripe h3{margin:0; font-size:18px; letter-spacing:.2px}
-    .ctaStripe p{margin:8px auto 0; max-width:70ch; color:rgba(255,255,255,.88); font-weight:750; font-size:13px; line-height:1.6}
-    .ctaStripe .ctaBtns{display:flex; justify-content:center; gap:10px; margin-top:12px; flex-wrap:wrap}
-
-    /* Marketplace */
-    .market{ padding: 0 18px 18px; }
-    .people{
-      display:grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap:12px;
-    }
-    .person{
       background:#fff;
-      border:1px solid rgba(13,39,108,.10);
-      border-radius:18px;
-      overflow:hidden;
-      box-shadow: 0 14px 28px rgba(0,0,0,.10);
-    }
-    .personTop{
-      padding:12px;
-      display:flex; gap:10px; align-items:center;
-      background: linear-gradient(180deg, rgba(44,114,255,.08), rgba(245,158,11,.06));
-      border-bottom:1px solid rgba(13,39,108,.08);
-    }
-    .avatar{
-      width:44px; height:44px; border-radius:14px;
-      background: linear-gradient(180deg, #2c72ff, #0b2a85);
-      display:grid; place-items:center;
-      color:#fff; font-weight:1100;
-      box-shadow: 0 12px 20px rgba(18,64,183,.22);
-      flex:0 0 auto;
-    }
-    .personName{font-weight:1100; color:#0b2a85; font-size:13px}
-    .role{color:var(--muted); font-weight:900; font-size:11px; margin-top:2px}
-    .personBody{padding:12px}
-    .bullet{
-      margin:0; padding:0 0 0 18px;
-      color:#334562;
-      font-weight:900;
-      font-size:11px;
-      line-height:1.6;
-    }
-    .contactBtn{
-      margin-top:12px;
-      width:100%;
-      padding:10px 12px;
-      border-radius:12px;
-      border:1px solid rgba(18,64,183,.18);
-      background: linear-gradient(180deg, #2c72ff, #1240b7);
-      color:#fff;
-      font-weight:1100;
-      cursor:pointer;
-      box-shadow: 0 14px 22px rgba(18,64,183,.22);
-    }
-
-    /* Recruit block */
-    .recruit{
-      margin: 0 18px 18px;
-      border-radius: 22px;
+      border-radius:var(--radius);
       padding:16px;
-      background: rgba(13,39,108,.06);
-      border:1px solid rgba(13,39,108,.10);
+      box-shadow: 0 10px 24px rgba(2,6,23,.05);
+    }
+    .card .icon{
+      width:38px; height:38px; border-radius:14px;
+      background:rgba(0,86,210,.10);
+      display:grid; place-items:center;
+      color:var(--cBlueDark);
+      font-weight:900;
+      margin-bottom:10px;
+    }
+    .card h4{margin:0 0 6px; font-size:16px}
+    .card p{margin:0; color:var(--muted); font-size:13px}
+
+    /* ====== COURSES ====== */
+    .tabs{
+      margin-top:14px;
+      display:flex; gap:10px; flex-wrap:wrap;
+    }
+    .tab{
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:#fff;
+      font-weight:800;
+      font-size:13px;
+      cursor:pointer;
+    }
+    .tab.active{
+      border-color:rgba(0,86,210,.35);
+      background:rgba(0,86,210,.08);
+      color:var(--cBlueDark);
+    }
+    .courseGrid{
+      margin-top:14px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    @media (max-width: 980px){ .courseGrid{grid-template-columns:1fr} }
+    .course{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      overflow:hidden;
+      background:#fff;
+      box-shadow: 0 10px 24px rgba(2,6,23,.06);
+      display:flex; flex-direction:column;
+      min-height: 250px;
+    }
+    .courseTop{
+      padding:14px 14px 10px;
+      background:linear-gradient(180deg, rgba(0,86,210,.10), transparent);
+      border-bottom:1px solid rgba(0,86,210,.10);
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      font-size:12px; font-weight:900;
+      color:var(--cBlueDark);
+      background:rgba(0,86,210,.08);
+      padding:6px 10px;
+      border-radius:999px;
+    }
+    .courseTitle{
+      margin:10px 0 6px;
+      font-size:16px;
+      letter-spacing:-.2px;
+    }
+    .courseMeta{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .courseBody{padding:12px 14px; display:flex; flex-direction:column; gap:10px; flex:1}
+    .priceRow{display:flex; align-items:center; justify-content:space-between; gap:10px}
+    .price{
+      font-size:18px;
+      font-weight:1000;
+      letter-spacing:-.2px;
+    }
+    .muted{color:var(--muted); font-size:12px}
+    .courseActions{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-top:auto;
+    }
+    .btnSmall{padding:10px 12px; font-size:13px}
+    .btnOutline{
+      background:#fff;
+      color:#0f172a;
+      border-color:var(--line);
+    }
+    .btnOutline:hover{background:rgba(2,6,23,.04)}
+    .btnDanger{
+      background:#fff;
+      color:var(--bad);
+      border-color:rgba(239,68,68,.28);
+    }
+    .btnDanger:hover{background:rgba(239,68,68,.06)}
+
+    /* ====== CTA BAND ====== */
+    .ctaBand{
+      border-radius:calc(var(--radius) + 6px);
+      background: linear-gradient(120deg, var(--cBlue) 0%, #1B74FF 55%, #3B82F6 100%);
+      color:#fff;
+      padding:18px;
       display:grid;
       grid-template-columns: 1.1fr .9fr;
       gap:14px;
       align-items:center;
+      box-shadow: 0 18px 40px rgba(0,86,210,.20);
+      border:1px solid rgba(255,255,255,.20);
     }
-    .recruit h4{margin:0; color:#0b2a85; font-size:16px}
-    .recruit p{margin:8px 0 0; color:var(--muted); font-weight:800; line-height:1.6; font-size:12px}
-    .recruit .mini{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:12px;}
-    .iconTag{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:10px 12px;
-      border-radius:16px;
+    @media (max-width: 980px){ .ctaBand{grid-template-columns:1fr} }
+    .ctaBand h3{margin:0 0 6px; font-size:18px}
+    .ctaBand p{margin:0; opacity:.92; font-size:13px}
+    .ctaBand .ctaBtns{display:flex; gap:10px; justify-content:flex-end; flex-wrap:wrap}
+    .btnWhite{
       background:#fff;
-      border:1px solid rgba(13,39,108,.10);
-      box-shadow: 0 12px 22px rgba(0,0,0,.08);
-      font-weight:1000;
-      color:#0b2a85;
+      color:var(--cBlueDark);
+      border-color:rgba(255,255,255,.6);
+      box-shadow: 0 10px 22px rgba(2,6,23,.15);
+    }
+    .btnWhite:hover{background:rgba(255,255,255,.92)}
+    .btnGlass{
+      background:rgba(255,255,255,.14);
+      color:#fff;
+      border-color:rgba(255,255,255,.25);
+    }
+    .btnGlass:hover{background:rgba(255,255,255,.20)}
+
+    /* ====== FOOTER ====== */
+    footer{
+      border-top:1px solid var(--line);
+      background:#0b1220;
+      color:#e5e7eb;
+      margin-top:36px;
+    }
+    .footTop{padding:34px 0}
+    .footGrid{
+      display:grid;
+      grid-template-columns: 1.2fr 1fr 1fr 1fr;
+      gap:16px;
+    }
+    @media (max-width: 980px){ .footGrid{grid-template-columns:1fr 1fr; } }
+    @media (max-width: 520px){ .footGrid{grid-template-columns:1fr; } }
+    .footBrand{
+      display:flex; gap:12px; align-items:flex-start;
+    }
+    .footBrand .logoMark{width:40px; height:40px; border-radius:14px}
+    .footBrand h4{margin:0 0 6px; font-size:14px}
+    .footBrand p{margin:0; color:rgba(229,231,235,.78); font-size:13px}
+    .footCol h5{margin:0 0 10px; font-size:13px; letter-spacing:.2px}
+    .footCol a{
+      display:block;
+      padding:8px 0;
+      color:rgba(229,231,235,.78);
+      font-size:13px;
+    }
+    .footCol a:hover{color:#fff}
+    .footBottom{
+      border-top:1px solid rgba(255,255,255,.08);
+      padding:14px 0;
+      color:rgba(229,231,235,.74);
       font-size:12px;
     }
-    .icon{
-      width:30px; height:30px; border-radius:12px;
-      display:grid; place-items:center;
-      background: linear-gradient(180deg, #ffb100, #f59e0b);
-      box-shadow: 0 10px 18px rgba(245,158,11,.25);
+    .footBottomRow{
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      flex-wrap:wrap;
     }
-    .recruitArt{
-      border-radius:18px;
-      background:
-        radial-gradient(420px 180px at 60% 20%, rgba(44,114,255,.20), transparent 60%),
-        linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,.55));
-      border: 1px solid rgba(13,39,108,.10);
-      min-height: 140px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding:14px;
-      color:#0b2a85;
-      font-weight:1100;
+    .timePill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
+      color:#fff;
+      font-weight:800;
     }
-    .recruitArt span{display:block; margin-top:8px; font-weight:900; color:var(--muted); font-size:12px}
 
-    /* Forms (for Contact + Login + Admin) */
-    .formCard{padding:18px;}
+    /* ====== MODALS ====== */
+    .overlay{
+      position:fixed; inset:0;
+      background:rgba(2,6,23,.56);
+      display:none;
+      align-items:center; justify-content:center;
+      padding:18px;
+      z-index:80;
+    }
+    .overlay.show{display:flex}
+    .modal{
+      width:min(720px, 100%);
+      border-radius:22px;
+      background:#fff;
+      border:1px solid rgba(2,6,23,.10);
+      box-shadow: 0 30px 90px rgba(0,0,0,.30);
+      overflow:hidden;
+    }
+    .modalHead{
+      padding:14px 16px;
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      border-bottom:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(0,86,210,.06), #fff);
+    }
+    .modalHead strong{font-size:14px}
+    .x{
+      width:38px; height:38px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:#fff;
+      cursor:pointer;
+      font-weight:900;
+    }
+    .modalBody{padding:16px}
     .formGrid{
       display:grid;
       grid-template-columns: 1fr 1fr;
       gap:12px;
     }
-    .field{display:flex; flex-direction:column; gap:6px;}
-    .field label{font-weight:1000; color:#0b2a85; font-size:12px}
-    .field input,.field select,.field textarea{
+    @media (max-width: 720px){ .formGrid{grid-template-columns:1fr} }
+    .field label{display:block; font-size:12px; font-weight:900; margin-bottom:6px; color:#0f172a}
+    .field input, .field select, .field textarea{
       width:100%;
       padding:12px 12px;
       border-radius:14px;
-      border:1px solid rgba(13,39,108,.12);
-      background: rgba(255,255,255,.96);
-      outline:none;
-      font-weight:850;
-      color:#0b1530;
+      border:1px solid var(--line);
+      outline:0;
+      font-size:14px;
     }
-    .field textarea{min-height:120px; resize:vertical}
-    .toast{
-      display:none;
+    .field textarea{min-height:110px; resize:vertical}
+    .modalActions{
       margin-top:12px;
+      display:flex; align-items:center; justify-content:flex-end; gap:10px;
+      flex-wrap:wrap;
+    }
+    .hint{
+      margin-top:10px;
       padding:10px 12px;
       border-radius:14px;
-      border:1px solid rgba(16,185,129,.25);
-      background: rgba(16,185,129,.12);
-      color:#0b5130;
-      font-weight:950;
+      background:rgba(2,6,23,.04);
+      border:1px dashed rgba(2,6,23,.10);
+      color:var(--muted);
+      font-size:12px;
     }
 
-    /* ====== Footer ====== */
-    footer{
-      width:min(1200px, 100%);
-      margin: 18px auto 26px;
-      padding: 0 16px;
-    }
-    .footerCard{
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
-      border: 1px solid rgba(255,255,255,.18);
-      box-shadow: var(--shadow2);
-      overflow:hidden;
-    }
-    .footerTop{
-      padding: 14px 16px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 12px;
-      flex-wrap:wrap;
-      color:#fff;
-    }
-    .fine{
-      font-size: 13px;
-      font-weight: 800;
-      opacity: .95;
-      letter-spacing:.2px;
-    }
-    .footerSocial{
-      display:flex;
-      align-items:center;
-      gap: 10px;
-    }
-    .socialIcon{
-      width:36px;height:36px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      border-radius: 12px;
-      background: rgba(255,255,255,.10);
-      border: 1px solid rgba(255,255,255,.18);
-      transition:.18s ease;
-    }
-    .socialIcon:hover{
-      background: rgba(255,255,255,.16);
-      transform: translateY(-1px);
-    }
-    .socialIcon svg{ width:20px;height:20px; fill:#fff; }
-    .footerTime{
-      font-weight: 900;
-      font-size: 13px;
-      letter-spacing:.2px;
-      white-space:nowrap;
-      opacity:.95;
-    }
-    .footerBottom{
-      border-top: 1px solid rgba(255,255,255,.14);
-      padding: 12px 16px 14px;
-      display:flex;
-      flex-direction:column;
-      gap: 10px;
-      color:#fff;
-    }
-    .standardsRow{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      align-items:center;
-      justify-content:space-between;
-    }
-    .standardsText{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      align-items:center;
-      font-weight: 700;
-      font-size: 12.5px;
-      letter-spacing:.2px;
-      opacity: .98;
-    }
-    .stdItem{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding: 8px 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.10);
-      border: 1px solid rgba(255,255,255,.18);
-      white-space:nowrap;
-    }
-    .logoRow{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      align-items:center;
-    }
-    .logoBadge{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding: 8px 10px;
-      border-radius: 12px;
-      background: rgba(255,255,255,.10);
-      border: 1px solid rgba(255,255,255,.18);
-    }
-    .logoBadge svg{ width:18px; height:18px; display:block; }
-    .logoBadge span{
-      font-weight: 900;
-      font-size: 12.5px;
-      letter-spacing:.2px;
-      opacity:.98;
-      color:#fff;
-    }
-    .footerLinks{
-      display:grid;
-      grid-template-columns: 1.1fr 1fr 1fr 1fr;
-      gap:12px;
-      margin-top:6px;
-    }
-    .fCol{
-      background: rgba(255,255,255,.10);
-      border: 1px solid rgba(255,255,255,.16);
-      border-radius: 16px;
-      padding: 12px;
-    }
-    .fCol h5{margin:0 0 8px; font-size:12px; letter-spacing:.2px}
-    .fCol a{
-      display:block;
-      padding:8px 10px;
-      border-radius:12px;
-      border:1px solid transparent;
-      font-weight:800;
-      color:#fff;
-      opacity:.92;
-    }
-    .fCol a:hover{background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.16); opacity:1}
-    .fSmall{color:rgba(255,255,255,.86); font-weight:850; font-size:12px; line-height:1.6}
-
-    /* ====== Responsive ====== */
-    @media (max-width: 980px){
-      .heroGrid{ grid-template-columns: 1fr; }
-      .cards3{ grid-template-columns: 1fr; }
-      .people{ grid-template-columns: 1fr; }
-      .grid4{ grid-template-columns: 1fr 1fr; }
-      .grid3{ grid-template-columns: 1fr; }
-      .grid2{ grid-template-columns: 1fr; }
-      .recruit{ grid-template-columns: 1fr; }
-      .formGrid{ grid-template-columns: 1fr; }
-      .nav{ display:none; }
-      .menuBtn{ display:inline-flex; align-items:center; justify-content:center; }
-      .brand{ min-width:auto; }
-      .footerLinks{ grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 520px){
-      .grid4{ grid-template-columns: 1fr; }
-      .footerLinks{ grid-template-columns: 1fr; }
-    }
+    /* tiny */
+    .sr{position:absolute; left:-9999px}
   </style>
 </head>
 
 <body>
-  <!-- Top Nav -->
-  <header class="topbar">
-    <div class="wrap inner">
-      <a class="brand" href="#/home" data-link aria-label="Microsoft Education - STEAM Platform">
-        <div class="msMark" aria-hidden="true">
-          <span></span><span></span><span></span><span></span>
-        </div>
-        <div>
-          Microsoft Education
-          <small>STEAM Teacher Certification Platform</small>
+<div class="wrap">
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="navInner">
+      <a class="brand" href="#" data-scroll="top">
+        <div class="logoMark">S1</div>
+        <div class="brandText">
+          <strong>STEAM ONE Platform</strong>
+          <span>Microsoft Steam Teachers</span>
         </div>
       </a>
 
-      <nav class="nav" aria-label="Primary navigation">
-        <a href="#/home" data-link>Home</a>
-        <a href="#/courses" data-link>Courses</a>
-        <a href="#/marketplace" data-link>Marketplace</a>
-        <a href="#/services" data-link>Services</a>
-        <a href="#/about" data-link>About</a>
-        <a href="#/contact" data-link>Contact</a>
-        <a href="#/login" data-link>Login</a>
-        <a href="#/admin" data-link>Admin</a>
+      <nav class="navLinks" aria-label="Primary">
+        <a href="#" data-scroll="courses">Courses</a>
+        <a href="#" data-scroll="marketplace">Marketplace</a>
+        <a href="#" data-scroll="services">Services</a>
+        <a href="#" data-scroll="about">About</a>
+        <a href="#" data-scroll="contact">Contact</a>
       </nav>
 
-      <div class="navRight">
-        <button class="btn btnGhost menuBtn" id="menuBtn" aria-label="Open menu">☰</button>
-        <button class="btn btnPrimary" id="enrollTop">Enroll Now</button>
+      <div class="search" aria-label="Search courses">
+        <div class="searchBox">
+          <span aria-hidden="true">🔎</span>
+          <input id="q" placeholder="What do you want to learn?" />
+        </div>
+      </div>
+
+      <div class="navActions">
+        <button class="btn btnLink" id="btnLogin">Log In</button>
+        <button class="btn btnPrimary" id="btnSignup">Join for Free</button>
       </div>
     </div>
   </header>
 
-  <!-- Mobile Drawer -->
-  <div class="drawerOverlay" id="drawerOverlay" aria-hidden="true"></div>
-  <aside class="drawer" id="drawer" aria-label="Mobile navigation">
-    <div class="drawerHead">
-      <strong>Menu</strong>
-      <button class="drawerClose" id="drawerClose" aria-label="Close menu">✕</button>
-    </div>
-    <nav class="drawerNav" id="drawerNav">
-      <a href="#/home" data-link>Home</a>
-      <a href="#/courses" data-link>Courses</a>
-      <a href="#/marketplace" data-link>Marketplace</a>
-      <a href="#/services" data-link>Services</a>
-      <a href="#/about" data-link>About</a>
-      <a href="#/contact" data-link>Contact</a>
-      <a href="#/login" data-link>Login</a>
-      <a href="#/admin" data-link>Admin</a>
-    </nav>
-    <div class="drawerFoot">Microsoft Education branding stays visible across all pages.</div>
-  </aside>
-
-  <div class="wrap">
-
-    <!-- ==================== HOME (8 sections) ==================== -->
-    <main class="page" id="page-home" data-page="home">
-
-      <!-- 1) HERO -->
-      <div class="heroWrap">
-        <section class="heroCard">
-          <div class="heroGrid">
-            <div>
-              <h1 class="heroTitle">Skilling Teachers Towards<br/>STEAM Excellence</h1>
-              <p class="heroText">
-                Introductory, Advanced & Expert digital teaching programs for pre-service & in-service teachers worldwide.
-              </p>
-
-              <div class="heroActions">
-                <button class="btn btnGhost" data-goto="courses">View Pricing</button>
-                <button class="btn btnPrimary" data-goto="courses">Enroll Now</button>
-              </div>
-
-              <div class="chipRow" aria-label="Standards and research powerhouse">
-                <span class="chip">🟦 Microsoft</span>
-                <span class="chip">📌 ISTE</span>
-                <span class="chip">🏛️ UNESCO ICT CFT</span>
-                <span class="chip">📊 PISA</span>
-              </div>
+  <main class="main" id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <div class="grid2">
+          <div>
+            <span class="kicker">🎓 Learn. Certify. Get verified.</span>
+            <h1 class="h1">Online courses and teacher certifications—built for modern classrooms.</h1>
+            <p class="sub">
+              A Coursera-style learning experience for STEAM teachers and facilitators.
+              Explore paid certification tracks, join a verified marketplace, and build classroom-ready skills.
+            </p>
+            <div class="heroActions">
+              <button class="btn btnPrimary" data-scroll="courses">Explore Courses</button>
+              <button class="btn btnGhost" data-scroll="marketplace">Find Certified Teachers</button>
+              <button class="btn btnLink" id="btnAdminLogin">Admin Login</button>
             </div>
 
-            <div class="illus" aria-label="Hero illustration placeholder">
-              <div class="bubble b1"></div>
-              <div class="bubble b2"></div>
-              <div class="illusCard">
-                Home Hero Illustration (Placeholder)
-                <span>Replace with your real banner later.</span>
-              </div>
+            <div class="heroMeta">
+              <span class="pill">✅ Role-based access</span>
+              <span class="pill">💳 Checkout ready</span>
+              <span class="pill">📩 Contact teacher link</span>
+              <span class="pill">🕒 Nigeria time footer</span>
             </div>
           </div>
-        </section>
+
+          <aside class="heroCard" aria-label="Quick actions">
+            <h3>Quick start</h3>
+            <p>Choose a role and continue. Works as a demo without backend (localStorage).</p>
+
+            <div class="miniRow">
+              <div class="mini">
+                <strong>Teacher</strong>
+                <span>Enroll in a plan and go to <b>Teacher Dashboard</b>.</span>
+              </div>
+              <div class="mini">
+                <strong>Facilitator</strong>
+                <span>Log in and go to <b>Facilitator Dashboard</b>.</span>
+              </div>
+            </div>
+
+            <div class="ctaRow">
+              <button class="btn btnPrimary btnSmall" id="btnEnroll">Enroll Now</button>
+              <button class="btn btnGhost btnSmall" id="btnContactTeacher">Contact Teacher</button>
+            </div>
+
+            <div class="note">
+              Admin access is locked: <b>OyoTechHub / EduProject2025</b>.
+            </div>
+          </aside>
+        </div>
       </div>
+    </section>
 
-      <!-- 2) QUICK STATS -->
-      <section class="panel">
-        <div class="panelHead">
-          <h2>Impact at a Glance</h2>
-          <p>Professional teacher training with global benchmarks—built for real classroom outcomes.</p>
-        </div>
-        <div class="panelBody">
-          <div class="grid4">
-            <div class="stat"><div><strong>3</strong><small>Certification Levels</small></div><span class="kicker">STEAM 1–3</span></div>
-            <div class="stat"><div><strong>Paid</strong><small>Access Control</small></div><span class="kicker">Secure</span></div>
-            <div class="stat"><div><strong>Admin</strong><small>Moderated Marketplace</small></div><span class="kicker">Verified</span></div>
-            <div class="stat"><div><strong>Global</strong><small>Standards Alignment</small></div><span class="kicker">ISTE/UNESCO</span></div>
+    <!-- PARTNERS -->
+    <section class="partners">
+      <div class="container">
+        <div class="partnersRow">
+          <small>Aligned with global benchmarks and modern teaching standards</small>
+          <div class="logos" aria-label="Standards">
+            <span class="logoChip">Microsoft Education</span>
+            <span class="logoChip">ISTE</span>
+            <span class="logoChip">UNESCO ICT CFT</span>
+            <span class="logoChip">PISA</span>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- 3) PROGRAMS -->
-      <section class="panel">
-        <div class="panelHead">
-          <h2>Our STEAM Certification Programs</h2>
-          <p>Choose a level, review requirements, then proceed to paid enrollment (backend will connect payment and onboarding).</p>
-        </div>
-        <div class="programs">
-          <div class="cards3">
-            <article class="programCard">
-              <div class="programTop topBlue">
-                <div><div class="ttl">STEAM ONE</div><div class="sub">Introductory Courses</div></div>
-                <div class="pill">Paid</div>
-              </div>
-              <div class="programBody">
-                <ul class="checkList">
-                  <li>Digital Literacy</li><li>Teaching Foundations</li><li>Classroom Practice Toolkit</li>
-                </ul>
-                <div class="priceRow">
-                  <div class="price">₦15,000 <small>/ course</small></div>
-                  <div class="access">Standard Access<br/>+ Basic Resources</div>
-                </div>
-                <button class="payBtn" data-goto="courses">Enroll Now</button>
-              </div>
-            </article>
+    <!-- VALUE -->
+    <section class="section" id="services">
+      <div class="container">
+        <h2 class="h2">A professional learning platform for teachers</h2>
+        <p class="lead">
+          Structured certification tracks, marketplace-ready profiles, and classroom-first skill building—wrapped in a Coursera-style experience.
+        </p>
 
-            <article class="programCard">
-              <div class="programTop topCyan">
-                <div><div class="ttl">STEAM TWO</div><div class="sub">Technology in Teaching</div></div>
-                <div class="pill">Paid</div>
-              </div>
-              <div class="programBody">
-                <ul class="checkList">
-                  <li>Technology Integration</li><li>Digital Teaching Tools</li><li>Lesson Design Templates</li>
-                </ul>
-                <div class="priceRow">
-                  <div class="price">₦20,000<small>/ course</small></div>
-                  <div class="access">Standard Access<br/>+ Toolkits</div>
-                </div>
-                <button class="payBtn" data-goto="courses">Enroll Now</button>
-              </div>
-            </article>
+        <div class="cardGrid">
+          <article class="card">
+            <div class="icon">🏅</div>
+            <h4>Certification Tracks</h4>
+            <p>STEAM ONE, TWO, THREE—progress from foundation to advanced AI-integrated teaching.</p>
+          </article>
+          <article class="card">
+            <div class="icon">🧑‍🏫</div>
+            <h4>Verified Teacher Marketplace</h4>
+            <p>Publish profiles, accept contact requests, and connect with schools and recruiters.</p>
+          </article>
+          <article class="card">
+            <div class="icon">📊</div>
+            <h4>Dashboard Experience</h4>
+            <p>Separate dashboards for Teachers, Facilitators, and Admin—role-based by design.</p>
+          </article>
+        </div>
 
-            <article class="programCard">
-              <div class="programTop topOrange">
-                <div><div class="ttl">STEAM THREE</div><div class="sub">Advanced / AI-Integrated</div></div>
-                <div class="pill">Paid</div>
-              </div>
-              <div class="programBody">
-                <ul class="checkList">
-                  <li>Advanced STEAM Strategy</li><li>AI for Lesson & Assessment</li><li>Mentorship & Portfolio</li>
-                </ul>
-                <div class="priceRow">
-                  <div class="price">₦25,000<small>/ course</small></div>
-                  <div class="access">Advanced Access<br/>+ Mentorship</div>
-                </div>
-                <button class="payBtn" data-goto="courses">Enroll Now</button>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- 4) ENROLLMENT PROCESS -->
-      <section class="panel">
-        <div class="panelHead">
-          <h2>Simple Enrollment Process</h2>
-          <p>From course selection to certification—fast and structured.</p>
-        </div>
-        <div class="steps">
-          <div class="stepsBar" role="list">
-            <div class="step" role="listitem"><div class="stepNum">1</div><div class="stepTxt">Choose Course <small>Pick STEAM ONE–THREE</small></div></div>
-            <div class="step" role="listitem"><div class="stepNum">2</div><div class="stepTxt">Pay & Confirm <small>Gateway connected later</small></div></div>
-            <div class="step" role="listitem"><div class="stepNum">3</div><div class="stepTxt">Receive Login <small>Email onboarding (backend)</small></div></div>
-            <div class="step" role="listitem"><div class="stepNum">4</div><div class="stepTxt">Start Learning <small>Modules + certificate</small></div></div>
-          </div>
-        </div>
-        <div class="ctaStripe">
-          <h3>Start your certification journey</h3>
-          <p>Structured learning, verified outcomes, and marketplace visibility (where applicable).</p>
-          <div class="ctaBtns">
-            <button class="btn btnGhost" data-goto="courses">View Pricing</button>
-            <button class="btn btnPrimary" data-goto="courses">Enroll Now</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- 5) MARKETPLACE PREVIEW -->
-      <section class="panel">
-        <div class="panelHead">
-          <h2>Certified Teachers Marketplace</h2>
-          <p>Preview (demo) — full marketplace is a separate page.</p>
-        </div>
-        <div class="panelBody">
-          <div class="grid3">
-            <div class="card"><div class="kicker">Verified Profiles</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; line-height:1.75; font-size:13px">Admin-moderated teacher listings for trust and quality.</p></div>
-            <div class="card"><div class="kicker">Recruitment Ready</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; line-height:1.75; font-size:13px">Schools can request recommended matches quickly.</p></div>
-            <div class="card"><div class="kicker">Safe Contact</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; line-height:1.75; font-size:13px">Contact requests go to admin for moderation (backend later).</p></div>
-          </div>
-          <div class="ctaStripe" style="margin-top:14px">
-            <h3>Browse the marketplace</h3>
-            <p>Discover certified educators and submit admin-moderated contact requests.</p>
+        <div class="section" style="padding:20px 0 0">
+          <div class="ctaBand">
+            <div>
+              <h3>Start learning today</h3>
+              <p>Enroll in a plan, complete modules, and unlock your dashboard experience (demo-ready).</p>
+            </div>
             <div class="ctaBtns">
-              <button class="btn btnPrimary" data-goto="marketplace">Open Marketplace</button>
-              <button class="btn btnGhost" data-goto="services">Recruit a Teacher</button>
+              <button class="btn btnWhite" id="btnCtaEnroll">Enroll in a Plan</button>
+              <button class="btn btnGlass" data-scroll="courses">Browse courses</button>
             </div>
           </div>
         </div>
-      </section>
 
-      <!-- 6) SERVICES PREVIEW -->
-      <section class="panel">
-        <div class="panelHead">
-          <h2>Services for Schools & Organizations</h2>
-          <p>Recruitment, consulting, training deployment and implementation support.</p>
-        </div>
-        <div class="recruit">
-          <div>
-            <h4>Recruit • Train • Transform</h4>
-            <p>Submit your needs (role, location, timeline). Our admin team reviews and recommends certified teachers and solutions.</p>
-            <div class="mini">
-              <div class="iconTag"><div class="icon">📝</div> Recruitment form</div>
-              <div class="iconTag"><div class="icon">🎓</div> Training bundles</div>
-              <div class="iconTag"><div class="icon">🧩</div> Implementation support</div>
-              <button class="btn btnPrimary" data-goto="services">Explore Services</button>
-            </div>
-          </div>
-          <div class="recruitArt">
-            Services Banner (Placeholder)
-            <span>Replace with your services banner image.</span>
-          </div>
-        </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- 7) TESTIMONIALS -->
-      <section class="panel">
-        <div class="panelHead">
-          <h2>What Educators Say</h2>
-          <p>Demo testimonials—replace with real feedback later.</p>
-        </div>
-        <div class="panelBody">
-          <div class="grid3">
-            <div class="card">
-              <div class="kicker">✅ Classroom-ready</div>
-              <p style="margin:10px 0 0; font-weight:900; color:#19325f; line-height:1.7; font-size:13px">
-                “The structure helped me redesign lessons quickly and deliver measurable engagement.”
-              </p>
-              <p style="margin:10px 0 0; font-weight:950; color:var(--muted); font-size:12px">— Verified Teacher (Demo)</p>
-            </div>
-            <div class="card">
-              <div class="kicker">🎓 Strong standards</div>
-              <p style="margin:10px 0 0; font-weight:900; color:#19325f; line-height:1.7; font-size:13px">
-                “Aligning with ISTE and UNESCO standards gave our school a clear professional direction.”
-              </p>
-              <p style="margin:10px 0 0; font-weight:950; color:var(--muted); font-size:12px">— School Lead (Demo)</p>
-            </div>
-            <div class="card">
-              <div class="kicker">💼 Marketplace value</div>
-              <p style="margin:10px 0 0; font-weight:900; color:#19325f; line-height:1.7; font-size:13px">
-                “Admin-moderated outreach improved trust and reduced spam.”
-              </p>
-              <p style="margin:10px 0 0; font-weight:950; color:var(--muted); font-size:12px">— Recruiter (Demo)</p>
-            </div>
-          </div>
-        </div>
-      </section>
+    <!-- COURSES -->
+    <section class="section" id="courses">
+      <div class="container">
+        <h2 class="h2">Popular certification programs</h2>
+        <p class="lead">Choose a track. Prices are demo values in NGN (you can replace later).</p>
 
-      <!-- 8) FAQ -->
-      <section class="panel">
-        <div class="panelHead">
-          <h2>Frequently Asked Questions</h2>
-          <p>Short answers—professional and clear.</p>
+        <div class="tabs" role="tablist" aria-label="Course filters">
+          <button class="tab active" data-filter="all">All</button>
+          <button class="tab" data-filter="steam">STEAM Tracks</button>
+          <button class="tab" data-filter="tools">Digital Tools</button>
+          <button class="tab" data-filter="ai">AI & Advanced</button>
         </div>
-        <div class="panelBody">
-          <div class="grid2">
-            <div class="card"><strong style="color:#0b2a85">Do I pay before accessing lessons?</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); line-height:1.7; font-size:13px">Yes. Payment unlocks access (backend integration later).</p></div>
-            <div class="card"><strong style="color:#0b2a85">How does the marketplace contact work?</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); line-height:1.7; font-size:13px">Requests are routed to admin for moderation (backend later).</p></div>
-            <div class="card"><strong style="color:#0b2a85">Can schools enroll staff in bulk?</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); line-height:1.7; font-size:13px">Yes—use Services to request deployment and onboarding.</p></div>
-            <div class="card"><strong style="color:#0b2a85">Is Microsoft the issuer of certification?</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); line-height:1.7; font-size:13px">Microsoft branding is used as a research powerhouse reference; issuance is by your platform.</p></div>
-          </div>
+
+        <div class="courseGrid" id="courseGrid">
+          <!-- filled by JS -->
         </div>
-      </section>
-      <!-- Footer injected by JS -->
-    </main>
+      </div>
+    </section>
 
-    <!-- ==================== COURSES (8 sections) ==================== -->
-    <main class="page" id="page-courses" data-page="courses">
+    <!-- MARKETPLACE -->
+    <section class="section" id="marketplace">
+      <div class="container">
+        <h2 class="h2">Certified Teachers Marketplace</h2>
+        <p class="lead">Find verified teachers and contact them with a shareable request link.</p>
 
-      <!-- 1) HERO -->
-      <div class="heroWrap">
-        <section class="heroCard">
-          <div class="heroGrid">
+        <div class="cardGrid">
+          <article class="card">
+            <div class="icon">✅</div>
+            <h4>Verified Profiles</h4>
+            <p>Only certified teachers appear here in the final system (demo shows sample profiles).</p>
+          </article>
+          <article class="card">
+            <div class="icon">📩</div>
+            <h4>Contact Teacher</h4>
+            <p>One click generates a request link and opens email/WhatsApp for easy sharing.</p>
+          </article>
+          <article class="card">
+            <div class="icon">🧾</div>
+            <h4>Admin-mediated Requests</h4>
+            <p>Requests can be routed to admin for review in your backend version.</p>
+          </article>
+        </div>
+
+        <div class="section" style="padding:18px 0 0">
+          <div class="ctaBand" style="background:linear-gradient(120deg,#0b1220,#111827)">
             <div>
-              <h1 class="heroTitle">Courses & Pricing<br/>Paid Certification Tracks</h1>
-              <p class="heroText">
-                Choose STEAM ONE, TWO, or THREE. Professional learning outcomes, templates, and certification evidence.
-              </p>
-              <div class="heroActions">
-                <button class="btn btnGhost" data-goto="home">Back Home</button>
-                <button class="btn btnPrimary" data-goto="contact">Need Help?</button>
-              </div>
-              <div class="chipRow">
-                <span class="chip">🔒 Paid Access</span>
-                <span class="chip">📄 Templates</span>
-                <span class="chip">🧪 Assessments</span>
-                <span class="chip">🏅 Certificate</span>
-              </div>
+              <h3>Need a teacher for your school?</h3>
+              <p>Send a request link to a teacher or to the admin team for follow-up.</p>
             </div>
-
-            <div class="illus">
-              <div class="bubble b1"></div><div class="bubble b2"></div>
-              <div class="illusCard">
-                Courses Banner (Placeholder)
-                <span>Keep same style for all pages.</span>
-              </div>
+            <div class="ctaBtns">
+              <button class="btn btnWhite" id="btnMarketContact">Contact a Teacher</button>
+              <button class="btn btnGlass" data-scroll="contact">Contact Admin</button>
             </div>
           </div>
-        </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="container">
+        <h2 class="h2">About STEAM ONE</h2>
+        <p class="lead">
+          STEAM ONE Platform supports teachers and facilitators with professional development aligned to modern education standards.
+          It is designed for Nigeria and global classrooms, with role-based dashboards and a certification marketplace.
+        </p>
+
+        <div class="cardGrid">
+          <article class="card">
+            <div class="icon">🌍</div>
+            <h4>Built for real classrooms</h4>
+            <p>Practical teaching strategies, lesson-ready tools, and measurable classroom outcomes.</p>
+          </article>
+          <article class="card">
+            <div class="icon">🧠</div>
+            <h4>Standards-aligned</h4>
+            <p>Designed around ISTE, UNESCO ICT CFT, and other global education benchmarks.</p>
+          </article>
+          <article class="card">
+            <div class="icon">🔒</div>
+            <h4>Role-based access</h4>
+            <p>Teachers, Facilitators, and Admin each see what they need—nothing more.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="container">
+        <h2 class="h2">Contact</h2>
+        <p class="lead">Questions, partnerships, support requests—send a message and we’ll follow up.</p>
+
+        <div class="card" style="margin-top:14px">
+          <div class="formGrid">
+            <div class="field">
+              <label for="cName">Full name</label>
+              <input id="cName" placeholder="Your name" />
+            </div>
+            <div class="field">
+              <label for="cEmail">Email</label>
+              <input id="cEmail" type="email" placeholder="you@example.com" />
+            </div>
+            <div class="field" style="grid-column:1/-1">
+              <label for="cMsg">Message</label>
+              <textarea id="cMsg" placeholder="Type your message..."></textarea>
+            </div>
+          </div>
+          <div class="modalActions" style="justify-content:flex-start">
+            <button class="btn btnPrimary" id="btnSendContact">Send Message</button>
+            <button class="btn btnGhost" id="btnContactTeacher2">Contact Teacher</button>
+          </div>
+          <div class="hint">
+            This demo uses <b>mailto:</b> to send messages without a backend.
+            When you connect backend later, you can replace this with API calls.
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footTop">
+        <div class="footGrid">
+          <div class="footBrand">
+            <div class="logoMark">S1</div>
+            <div>
+              <h4>STEAM ONE Platform</h4>
+              <p>
+                Coursera-style learning experience for teacher certification, marketplace access,
+                and role-based dashboards.
+              </p>
+            </div>
+          </div>
+
+          <div class="footCol">
+            <h5>Platform</h5>
+            <a href="#" data-scroll="courses">Courses</a>
+            <a href="#" data-scroll="marketplace">Marketplace</a>
+            <a href="#" data-scroll="services">Services</a>
+            <a href="#" id="footLogin">Log In</a>
+          </div>
+
+          <div class="footCol">
+            <h5>Company</h5>
+            <a href="#" data-scroll="about">About</a>
+            <a href="#" data-scroll="contact">Contact</a>
+            <a href="#" id="footAdmin">Admin Login</a>
+            <a href="#" id="footPolicy">Privacy Policy</a>
+          </div>
+
+          <div class="footCol">
+            <h5>Support</h5>
+            <a href="#" id="footHelp">Help Center</a>
+            <a href="#" id="footStatus">System Status</a>
+            <a href="#" id="footEmail">Email Support</a>
+            <a href="#" id="footWhatsApp">WhatsApp Support</a>
+          </div>
+        </div>
       </div>
 
-      <!-- 2) PRICING CARDS -->
-      <section class="panel">
-        <div class="panelHead">
-          <h2>Choose Your Track</h2>
-          <p>Prices are placeholders—you can update later.</p>
+      <div class="footBottom">
+        <div class="footBottomRow">
+          <div>© <span id="year"></span> STEAM ONE Platform. All rights reserved.</div>
+          <div class="timePill">🕒 Nigeria Time: <span id="ngTime">--:--:--</span></div>
         </div>
-        <div class="programs">
-          <div class="cards3">
-            <article class="programCard">
-              <div class="programTop topBlue">
-                <div><div class="ttl">STEAM ONE</div><div class="sub">Introductory Courses</div></div>
-                <div class="pill">Paid</div>
-              </div>
-              <div class="programBody">
-                <ul class="checkList"><li>Digital Literacy</li><li>Teaching Foundations</li><li>Practice Toolkit</li></ul>
-                <div class="priceRow"><div class="price">₦15,000 <small>/ course</small></div><div class="access">Standard Access<br/>+ Basic Resources</div></div>
-                <button class="payBtn jsEnroll" data-course="STEAM ONE" data-price="15000">Enroll Now</button>
-              </div>
-            </article>
+      </div>
+    </div>
+  </footer>
 
-            <article class="programCard">
-              <div class="programTop topCyan">
-                <div><div class="ttl">STEAM TWO</div><div class="sub">Technology Integration</div></div>
-                <div class="pill">Paid</div>
-              </div>
-              <div class="programBody">
-                <ul class="checkList"><li>Teaching Tools</li><li>Lesson Templates</li><li>Digital Assessments</li></ul>
-                <div class="priceRow"><div class="price">₦20,000 <small>/ course</small></div><div class="access">Standard Access<br/>+ Toolkits</div></div>
-                <button class="payBtn jsEnroll" data-course="STEAM TWO" data-price="20000">Enroll Now</button>
-              </div>
-            </article>
+</div>
 
-            <article class="programCard">
-              <div class="programTop topOrange">
-                <div><div class="ttl">STEAM THREE</div><div class="sub">Advanced / AI-Integrated</div></div>
-                <div class="pill">Paid</div>
-              </div>
-              <div class="programBody">
-                <ul class="checkList"><li>Advanced STEAM Strategy</li><li>AI for Lessons</li><li>Mentorship</li></ul>
-                <div class="priceRow"><div class="price">₦25,000 <small>/ course</small></div><div class="access">Advanced Access<br/>+ Mentorship</div></div>
-                <button class="payBtn jsEnroll" data-course="STEAM THREE" data-price="25000">Enroll Now</button>
-              </div>
-            </article>
-          </div>
+<!-- ====== MODALS ====== -->
+<div class="overlay" id="overlayLogin" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+    <div class="modalHead">
+      <strong id="loginTitle">Log in</strong>
+      <button class="x" data-close="overlayLogin" aria-label="Close">✕</button>
+    </div>
+    <div class="modalBody">
+      <div class="formGrid">
+        <div class="field">
+          <label for="loginRole">Role</label>
+          <select id="loginRole">
+            <option value="teacher">Teacher</option>
+            <option value="facilitator">Facilitator</option>
+            <option value="admin">Admin</option>
+          </select>
         </div>
-      </section>
-
-      <!-- 3) COURSE HIGHLIGHTS -->
-      <section class="panel">
-        <div class="panelHead">
-          <h2>What You Will Learn</h2>
-          <p>High-level highlights that match professional standards.</p>
+        <div class="field">
+          <label for="loginEmail">Email / Username</label>
+          <input id="loginEmail" placeholder="you@example.com" />
         </div>
-        <div class="panelBody">
-          <div class="grid3">
-            <div class="card"><div class="kicker">Planning</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; line-height:1.7; font-size:13px">Objective writing, pacing guides, lesson structures, classroom templates.</p></div>
-            <div class="card"><div class="kicker">Delivery</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; line-height:1.7; font-size:13px">Engagement routines, digital tools, collaborative learning strategies.</p></div>
-            <div class="card"><div class="kicker">Assessment</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; line-height:1.7; font-size:13px">Rubrics, quizzes, feedback workflows, performance evidence collection.</p></div>
-          </div>
+        <div class="field">
+          <label for="loginPass">Password</label>
+          <input id="loginPass" type="password" placeholder="••••••••" />
         </div>
-      </section>
-
-      <!-- 4) OUTCOMES -->
-      <section class="panel">
-        <div class="panelHead">
-          <h2>Professional Outcomes</h2>
-          <p>Designed for measurable classroom improvement.</p>
+        <div class="field">
+          <label for="loginRemember">Remember</label>
+          <select id="loginRemember">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
         </div>
-        <div class="panelBody">
-          <div class="grid2">
-            <div class="card"><strong style="color:#0b2a85">Confidence with digital teaching</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); line-height:1.7; font-size:13px">Use practical tools for content delivery, engagement and tracking.</p></div>
-            <div class="card"><strong style="color:#0b2a85">Portfolio + certification evidence</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); line-height:1.7; font-size:13px">Build reusable lesson artifacts and verification records.</p></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 5) ENROLLMENT STEPS -->
-      <section class="panel">
-        <div class="panelHead">
-          <h2>How Enrollment Works</h2>
-          <p>Clear flow, ready for backend integration.</p>
-        </div>
-        <div class="steps">
-          <div class="stepsBar">
-            <div class="step"><div class="stepNum">1</div><div class="stepTxt">Select course <small>Choose a track</small></div></div>
-            <div class="step"><div class="stepNum">2</div><div class="stepTxt">Pay securely <small>Gateway later</small></div></div>
-            <div class="step"><div class="stepNum">3</div><div class="stepTxt">Get access <small>Backend unlocks</small></div></div>
-            <div class="step"><div class="stepNum">4</div><div class="stepTxt">Earn certificate <small>Verified record</small></div></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 6) WHAT YOU RECEIVE -->
-      <section class="panel">
-        <div class="panelHead">
-          <h2>What You Receive</h2>
-          <p>Professional deliverables per learner.</p>
-        </div>
-        <div class="panelBody">
-          <div class="grid4">
-            <div class="card"><div class="kicker">Modules</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Structured learning content and tasks.</p></div>
-            <div class="card"><div class="kicker">Resources</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Toolkits, templates, checklists.</p></div>
-            <div class="card"><div class="kicker">Support</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Facilitator support (backend feature).</p></div>
-            <div class="card"><div class="kicker">Certificate</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Completion certificate & evidence.</p></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 7) TRUST & POLICY -->
-      <section class="panel">
-        <div class="panelHead">
-          <h2>Trust & Quality</h2>
-          <p>Standards-aligned design for credibility.</p>
-        </div>
-        <div class="panelBody">
-          <div class="grid3">
-            <div class="card"><div class="kicker">ISTE</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Modern educator competencies and best practice.</p></div>
-            <div class="card"><div class="kicker">UNESCO ICT CFT</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">ICT capacity framework guidance.</p></div>
-            <div class="card"><div class="kicker">PISA</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Outcome benchmark thinking.</p></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 8) CTA -->
-      <section class="panel">
-        <div class="ctaStripe">
-          <h3>Ready to enroll?</h3>
-          <p>Click “Enroll Now” on any plan to proceed (demo).</p>
-          <div class="ctaBtns">
-            <button class="btn btnPrimary" data-goto="login">Login</button>
-            <button class="btn btnGhost" data-goto="contact">Contact Admin</button>
-          </div>
-        </div>
-      </section>
-      <!-- Footer injected by JS -->
-    </main>
-
-    <!-- ==================== MARKETPLACE (8 sections) ==================== -->
-    <main class="page" id="page-marketplace" data-page="marketplace">
-
-      <!-- 1) HERO -->
-      <div class="heroWrap">
-        <section class="heroCard">
-          <div class="heroGrid">
-            <div>
-              <h1 class="heroTitle">Certified Teachers<br/>Marketplace</h1>
-              <p class="heroText">
-                Discover certified educators and submit admin-moderated contact requests (backend connects full flow later).
-              </p>
-              <div class="heroActions">
-                <button class="btn btnGhost" data-goto="services">Recruit a Teacher</button>
-                <button class="btn btnPrimary" data-goto="contact">Contact Admin</button>
-              </div>
-              <div class="chipRow">
-                <span class="chip">✅ Verified</span>
-                <span class="chip">🛡️ Moderated</span>
-                <span class="chip">💼 Recruitable</span>
-                <span class="chip">📌 Standards-aligned</span>
-              </div>
-            </div>
-            <div class="illus">
-              <div class="bubble b1"></div><div class="bubble b2"></div>
-              <div class="illusCard">
-                Marketplace Banner (Placeholder)
-                <span>Replace with real marketplace image later.</span>
-              </div>
-            </div>
-          </div>
-        </section>
       </div>
 
-      <!-- 2) MARKETPLACE VALUE -->
-      <section class="panel">
-        <div class="panelHead">
-          <h2>Why This Marketplace?</h2>
-          <p>Professional marketplace logic for schools, organizations and individuals.</p>
-        </div>
-        <div class="panelBody">
-          <div class="grid3">
-            <div class="card"><div class="kicker">Quality</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; line-height:1.75; font-size:13px">Profiles can be verified before listing visibility.</p></div>
-            <div class="card"><div class="kicker">Trust</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; line-height:1.75; font-size:13px">Contact requests are routed via admin moderation.</p></div>
-            <div class="card"><div class="kicker">Speed</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; line-height:1.75; font-size:13px">Recruitment can be requested in Services for faster matching.</p></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 3) FEATURED TEACHERS GRID -->
-      <section class="panel">
-        <div class="panelHead">
-          <h2>Featured Teachers</h2>
-          <p>Demo teacher listings (replace with real data later).</p>
-        </div>
-        <div class="market">
-          <div class="people">
-            <div class="person" data-teacher="Jane Doe">
-              <div class="personTop"><div class="avatar">JD</div><div><div class="personName">Jane Doe</div><div class="role">AI School Teacher</div></div></div>
-              <div class="personBody">
-                <ul class="bullet"><li>Policy & Curriculum Development</li><li>Elementary School Teacher</li></ul>
-                <button class="contactBtn jsContact">Contact This Teacher</button>
-              </div>
-            </div>
-            <div class="person" data-teacher="Michael Smith">
-              <div class="personTop"><div class="avatar">MS</div><div><div class="personName">Michael Smith</div><div class="role">Middle School Lecturer</div></div></div>
-              <div class="personBody">
-                <ul class="bullet"><li>Technology Integration</li><li>Middle School Educator</li></ul>
-                <button class="contactBtn jsContact">Contact This Teacher</button>
-              </div>
-            </div>
-            <div class="person" data-teacher="Laura Kim">
-              <div class="personTop"><div class="avatar">LK</div><div><div class="personName">Laura Kim</div><div class="role">Tech School Teacher</div></div></div>
-              <div class="personBody">
-                <ul class="bullet"><li>Digital Transformation</li><li>High School Teacher</li></ul>
-                <button class="contactBtn jsContact">Contact This Teacher</button>
-              </div>
-            </div>
-            <div class="person" data-teacher="David Johnson">
-              <div class="personTop"><div class="avatar">DJ</div><div><div class="personName">David Johnson</div><div class="role">Digital Educator</div></div></div>
-              <div class="personBody">
-                <ul class="bullet"><li>STEAM Leadership</li><li>Senior Lecturer</li></ul>
-                <button class="contactBtn jsContact">Contact This Teacher</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 4) VERIFICATION -->
-      <section class="panel">
-        <div class="panelHead">
-          <h2>Verification & Safety</h2>
-          <p>Built to reduce spam and improve confidence.</p>
-        </div>
-        <div class="panelBody">
-          <div class="grid2">
-            <div class="card"><strong style="color:#0b2a85">Admin review</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); line-height:1.7; font-size:13px">Profiles and requests can be reviewed before approval.</p></div>
-            <div class="card"><strong style="color:#0b2a85">Evidence support</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); line-height:1.7; font-size:13px">Certificates + portfolio artifacts can be attached to profiles.</p></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 5) HOW CONTACT WORKS -->
-      <section class="panel">
-        <div class="panelHead">
-          <h2>How Contact Works</h2>
-          <p>Transparent workflow for schools and individuals.</p>
-        </div>
-        <div class="steps">
-          <div class="stepsBar">
-            <div class="step"><div class="stepNum">1</div><div class="stepTxt">Pick a teacher <small>Select a profile card</small></div></div>
-            <div class="step"><div class="stepNum">2</div><div class="stepTxt">Send request <small>Admin receives</small></div></div>
-            <div class="step"><div class="stepNum">3</div><div class="stepTxt">Admin validates <small>Checks details</small></div></div>
-            <div class="step"><div class="stepNum">4</div><div class="stepTxt">Connection made <small>Email/portal</small></div></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 6) RECRUITMENT CTA -->
-      <section class="panel">
-        <div class="panelHead">
-          <h2>Need Multiple Teachers?</h2>
-          <p>Use Services to submit a recruitment request for faster matching.</p>
-        </div>
-        <div class="ctaStripe">
-          <h3>Recruitment request</h3>
-          <p>Tell us role, location, timeline—admin recommends verified matches.</p>
-          <div class="ctaBtns">
-            <button class="btn btnPrimary" data-goto="services">Go to Services</button>
-            <button class="btn btnGhost" data-goto="contact">Contact Admin</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- 7) SUCCESS STORIES -->
-      <section class="panel">
-        <div class="panelHead">
-          <h2>Success Stories</h2>
-          <p>Demo content—replace later.</p>
-        </div>
-        <div class="panelBody">
-          <div class="grid3">
-            <div class="card"><div class="kicker">School hiring</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Curated matches for a school request (demo scenario).</p></div>
-            <div class="card"><div class="kicker">Mentorship</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Mentorship support to improve delivery quality (demo).</p></div>
-            <div class="card"><div class="kicker">Deployment</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Training rollout planning for organizations (demo).</p></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 8) FAQ -->
-      <section class="panel">
-        <div class="panelHead">
-          <h2>Marketplace FAQ</h2>
-          <p>Quick clarity.</p>
-        </div>
-        <div class="panelBody">
-          <div class="grid2">
-            <div class="card"><strong style="color:#0b2a85">Do you share contacts directly?</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); font-size:13px; line-height:1.7">No—admin moderation improves trust.</p></div>
-            <div class="card"><strong style="color:#0b2a85">Can I request multiple teachers?</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); font-size:13px; line-height:1.7">Yes—use Services for bulk recruitment.</p></div>
-          </div>
-        </div>
-      </section>
-      <!-- Footer injected by JS -->
-    </main>
-
-    <!-- ==================== SERVICES (8 sections) ==================== -->
-    <main class="page" id="page-services" data-page="services">
-
-      <!-- 1) HERO -->
-      <div class="heroWrap">
-        <section class="heroCard">
-          <div class="heroGrid">
-            <div>
-              <h1 class="heroTitle">Services<br/>For Schools & Organizations</h1>
-              <p class="heroText">
-                Recruitment, consulting, and training deployment—aligned to international frameworks and professional delivery.
-              </p>
-              <div class="heroActions">
-                <button class="btn btnGhost" data-goto="marketplace">Browse Teachers</button>
-                <button class="btn btnPrimary" data-goto="contact">Request Services</button>
-              </div>
-              <div class="chipRow">
-                <span class="chip">🧩 Implementation</span>
-                <span class="chip">🎓 Training</span>
-                <span class="chip">📝 Recruitment</span>
-                <span class="chip">📊 Reporting</span>
-              </div>
-            </div>
-            <div class="illus">
-              <div class="bubble b1"></div><div class="bubble b2"></div>
-              <div class="illusCard">
-                Services Banner (Placeholder)
-                <span>Replace with your services banner later.</span>
-              </div>
-            </div>
-          </div>
-        </section>
+      <div class="modalActions">
+        <button class="btn btnGhost" data-close="overlayLogin">Cancel</button>
+        <button class="btn btnPrimary" id="doLogin">Continue</button>
       </div>
 
-      <!-- 2) SERVICE CATEGORIES -->
-      <section class="panel">
-        <div class="panelHead">
-          <h2>Service Categories</h2>
-          <p>Professional offerings that match your platform.</p>
-        </div>
-        <div class="panelBody">
-          <div class="grid3">
-            <div class="card"><div class="kicker">Recruitment</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; line-height:1.7; font-size:13px">Hire verified teachers with admin moderated matching.</p></div>
-            <div class="card"><div class="kicker">Consulting</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; line-height:1.7; font-size:13px">Digital transformation, curriculum support, implementation planning.</p></div>
-            <div class="card"><div class="kicker">Training Deployment</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; line-height:1.7; font-size:13px">Cohort onboarding, staff upskilling, rollout management.</p></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 3) RECRUIT BLOCK -->
-      <section class="panel">
-        <div class="panelHead">
-          <h2>Recruit Certified Teachers</h2>
-          <p>Admin reviews your request and recommends matches (backend later).</p>
-        </div>
-        <div class="recruit">
-          <div>
-            <h4>Recruit a Teacher</h4>
-            <p>Submit your recruitment needs (role, location, timeline). Our admin team reviews and recommends certified teachers.</p>
-            <div class="mini">
-              <div class="iconTag"><div class="icon">📝</div> Submit needs</div>
-              <div class="iconTag"><div class="icon">🔎</div> Admin review</div>
-              <div class="iconTag"><div class="icon">🤝</div> Match & connect</div>
-              <button class="btn btnPrimary" data-goto="contact">Start Request</button>
-            </div>
-          </div>
-          <div class="recruitArt">
-            Recruitment Banner (Placeholder)
-            <span>Replace with recruiter image later.</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- 4) CONSULTING PACKAGES -->
-      <section class="panel">
-        <div class="panelHead">
-          <h2>Consulting Packages</h2>
-          <p>Professional school support services.</p>
-        </div>
-        <div class="panelBody">
-          <div class="grid4">
-            <div class="card"><div class="kicker">Audit</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Current state assessment + roadmap.</p></div>
-            <div class="card"><div class="kicker">Curriculum</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Templates, lesson plans, rubrics.</p></div>
-            <div class="card"><div class="kicker">Training</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Staff cohort onboarding + support.</p></div>
-            <div class="card"><div class="kicker">Support</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Implementation monitoring (backend-ready).</p></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 5) IMPLEMENTATION PROCESS -->
-      <section class="panel">
-        <div class="panelHead">
-          <h2>Implementation Process</h2>
-          <p>Clear steps for rollout.</p>
-        </div>
-        <div class="steps">
-          <div class="stepsBar">
-            <div class="step"><div class="stepNum">1</div><div class="stepTxt">Request <small>Submit service need</small></div></div>
-            <div class="step"><div class="stepNum">2</div><div class="stepTxt">Review <small>Admin assessment</small></div></div>
-            <div class="step"><div class="stepNum">3</div><div class="stepTxt">Deploy <small>Training + matching</small></div></div>
-            <div class="step"><div class="stepNum">4</div><div class="stepTxt">Support <small>Ongoing monitoring</small></div></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 6) PARTNERSHIP BENEFITS -->
-      <section class="panel">
-        <div class="panelHead">
-          <h2>Partnership Benefits</h2>
-          <p>Why schools choose structured deployments.</p>
-        </div>
-        <div class="panelBody">
-          <div class="grid2">
-            <div class="card"><strong style="color:#0b2a85">Staff readiness</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); font-size:13px; line-height:1.7">Increase teacher readiness with templates and training.</p></div>
-            <div class="card"><strong style="color:#0b2a85">Measurable outcomes</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); font-size:13px; line-height:1.7">Track performance and improvement (backend reporting later).</p></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 7) CASE STUDIES -->
-      <section class="panel">
-        <div class="panelHead">
-          <h2>Case Studies</h2>
-          <p>Demo placeholders—swap later.</p>
-        </div>
-        <div class="panelBody">
-          <div class="grid3">
-            <div class="card"><div class="kicker">Primary school</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Blended learning pilot rollout with support sessions.</p></div>
-            <div class="card"><div class="kicker">Secondary school</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Tech integration mapping and lesson redesign.</p></div>
-            <div class="card"><div class="kicker">Organization</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Teacher upskilling program with certification incentives.</p></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 8) CTA -->
-      <section class="panel">
-        <div class="ctaStripe">
-          <h3>Request services</h3>
-          <p>Tell admin what you need—recruitment, consulting, or deployment support.</p>
-          <div class="ctaBtns">
-            <button class="btn btnPrimary" data-goto="contact">Contact Admin</button>
-            <button class="btn btnGhost" data-goto="marketplace">Browse Teachers</button>
-          </div>
-        </div>
-      </section>
-      <!-- Footer injected by JS -->
-    </main>
-
-    <!-- ==================== ABOUT (8 sections) ==================== -->
-    <main class="page" id="page-about" data-page="about">
-
-      <!-- 1) HERO -->
-      <div class="heroWrap">
-        <section class="heroCard">
-          <div class="heroGrid">
-            <div>
-              <h1 class="heroTitle">About<br/>STEAM ONE Platform</h1>
-              <p class="heroText">
-                Teacher training • certification • marketplace—aligned with ISTE, UNESCO ICT CFT, PISA and Microsoft Education branding.
-              </p>
-              <div class="heroActions">
-                <button class="btn btnGhost" data-goto="courses">View Courses</button>
-                <button class="btn btnPrimary" data-goto="contact">Contact Admin</button>
-              </div>
-              <div class="chipRow">
-                <span class="chip">🎓 Training</span>
-                <span class="chip">🏅 Certification</span>
-                <span class="chip">💼 Marketplace</span>
-                <span class="chip">🟦 Microsoft</span>
-              </div>
-            </div>
-
-            <div class="illus">
-              <div class="bubble b1"></div><div class="bubble b2"></div>
-              <div class="illusCard">
-                About Banner (Placeholder)
-                <span>Replace with your about image later.</span>
-              </div>
-            </div>
-          </div>
-        </section>
+      <div class="hint">
+        Admin is locked: <b>OyoTechHub</b> / <b>EduProject2025</b>.
+        Teacher/Facilitator login is demo-only (any email/password works) and routes to role dashboards.
       </div>
-
-      <!-- 2) MISSION + VISION -->
-      <section class="panel">
-        <div class="panelHead">
-          <h2>Mission & Vision</h2>
-          <p>Professional direction and purpose.</p>
-        </div>
-        <div class="panelBody">
-          <div class="grid2">
-            <div class="card">
-              <div class="kicker">Mission</div>
-              <p style="margin:10px 0 0; font-weight:900; color:#19325f; line-height:1.75; font-size:13px">
-                Build confident educators who can deploy digital tools, STEAM methods, and modern classroom practices with measurable outcomes.
-              </p>
-            </div>
-            <div class="card">
-              <div class="kicker">Vision</div>
-              <p style="margin:10px 0 0; font-weight:900; color:#19325f; line-height:1.75; font-size:13px">
-                A verified ecosystem where certified teachers are discoverable, recruitable, and supported through structured professional development.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 3) STANDARDS -->
-      <section class="panel">
-        <div class="panelHead">
-          <h2>Standards & Framework Alignment</h2>
-          <p>Designed around professional practice expectations.</p>
-        </div>
-        <div class="panelBody">
-          <div class="grid4">
-            <div class="card"><strong style="color:#0b2a85">ISTE</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); line-height:1.7; font-size:13px">Digital pedagogy and educator competencies.</p></div>
-            <div class="card"><strong style="color:#0b2a85">UNESCO ICT CFT</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); line-height:1.7; font-size:13px">Policy-driven teacher ICT capacity framework.</p></div>
-            <div class="card"><strong style="color:#0b2a85">PISA</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); line-height:1.7; font-size:13px">Benchmarks for learning outcomes and readiness.</p></div>
-            <div class="card"><strong style="color:#0b2a85">Microsoft Education</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); line-height:1.7; font-size:13px">Research powerhouse + branding presence.</p></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 4) WHY THREE LEVELS -->
-      <section class="panel">
-        <div class="panelHead">
-          <h2>Why STEAM ONE • TWO • THREE?</h2>
-          <p>A progression path—from beginner to expert.</p>
-        </div>
-        <div class="panelBody">
-          <div class="grid3">
-            <div class="card"><div class="kicker">STEAM ONE</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Foundations, literacy, classroom routines, beginner digital practice.</p></div>
-            <div class="card"><div class="kicker">STEAM TWO</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Technology integration, lesson design, assessments and tools.</p></div>
-            <div class="card"><div class="kicker">STEAM THREE</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Advanced/AI planning, creativity, leadership, mentorship.</p></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 5) HOW IT WORKS -->
-      <section class="panel">
-        <div class="panelHead">
-          <h2>How the Platform Works</h2>
-          <p>Simple flow—learn, get certified, become visible (where applicable).</p>
-        </div>
-        <div class="steps">
-          <div class="stepsBar">
-            <div class="step"><div class="stepNum">1</div><div class="stepTxt">Enroll & Pay <small>Paid access control</small></div></div>
-            <div class="step"><div class="stepNum">2</div><div class="stepTxt">Complete Modules <small>Structured content</small></div></div>
-            <div class="step"><div class="stepNum">3</div><div class="stepTxt">Earn Certificate <small>Verified record</small></div></div>
-            <div class="step"><div class="stepNum">4</div><div class="stepTxt">Marketplace Visibility <small>Admin moderated</small></div></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 6) TRUST & GOVERNANCE -->
-      <section class="panel">
-        <div class="panelHead">
-          <h2>Trust & Governance</h2>
-          <p>Moderation and verification principles.</p>
-        </div>
-        <div class="panelBody">
-          <div class="grid2">
-            <div class="card"><strong style="color:#0b2a85">Verification</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); line-height:1.7; font-size:13px">Teacher listings can be verified by admin before publication.</p></div>
-            <div class="card"><strong style="color:#0b2a85">Moderated contact</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); line-height:1.7; font-size:13px">Requests go through admin to reduce spam and improve trust.</p></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 7) ROLES -->
-      <section class="panel">
-        <div class="panelHead">
-          <h2>Roles in the System</h2>
-          <p>Role-based dashboards come from backend auth later.</p>
-        </div>
-        <div class="panelBody">
-          <div class="grid3">
-            <div class="card"><div class="kicker">Admin</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Users, moderation, payments reporting (backend later).</p></div>
-            <div class="card"><div class="kicker">Facilitator</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Learning support, cohorts, announcements.</p></div>
-            <div class="card"><div class="kicker">Teacher</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Course access after payment, certificates, marketplace profile.</p></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 8) CTA -->
-      <section class="panel">
-        <div class="ctaStripe">
-          <h3>Explore programs and get certified</h3>
-          <p>Choose a level, enroll, complete modules, and earn your certificate.</p>
-          <div class="ctaBtns">
-            <button class="btn btnPrimary" data-goto="courses">View Courses</button>
-            <button class="btn btnGhost" data-goto="marketplace">Browse Marketplace</button>
-          </div>
-        </div>
-      </section>
-      <!-- Footer injected by JS -->
-    </main>
-
-    <!-- ==================== CONTACT (8 sections) ==================== -->
-    <main class="page" id="page-contact" data-page="contact">
-
-      <!-- 1) HERO -->
-      <div class="heroWrap">
-        <section class="heroCard">
-          <div class="heroGrid">
-            <div>
-              <h1 class="heroTitle">Contact Admin<br/>Support & Requests</h1>
-              <p class="heroText">
-                Enrollment, recruitment, partnerships, and support. Backend will connect form submissions later.
-              </p>
-              <div class="heroActions">
-                <button class="btn btnGhost" data-goto="courses">Enroll Now</button>
-                <button class="btn btnPrimary" data-goto="services">Request Services</button>
-              </div>
-              <div class="chipRow">
-                <span class="chip">📩 Support</span>
-                <span class="chip">🧾 Payments</span>
-                <span class="chip">📝 Recruitment</span>
-                <span class="chip">🤝 Partnerships</span>
-              </div>
-            </div>
-            <div class="illus">
-              <div class="bubble b1"></div><div class="bubble b2"></div>
-              <div class="illusCard">
-                Contact Banner (Placeholder)
-                <span>Replace with your contact image later.</span>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-
-      <!-- 2) CONTACT FORM -->
-      <section class="panel">
-        <div class="panelHead">
-          <h2>Send a Message</h2>
-          <p>Clean form UI ready for API connection.</p>
-        </div>
-        <div class="formCard">
-          <form id="contactForm">
-            <div class="formGrid">
-              <div class="field">
-                <label for="cName">Full Name</label>
-                <input id="cName" required placeholder="Your name" />
-              </div>
-              <div class="field">
-                <label for="cEmail">Email</label>
-                <input id="cEmail" required placeholder="you@example.com" />
-              </div>
-              <div class="field" style="grid-column:1/-1">
-                <label for="cTopic">Topic</label>
-                <select id="cTopic" required>
-                  <option value="Enrollment">Enrollment</option>
-                  <option value="Recruitment">Recruitment</option>
-                  <option value="Support">Support</option>
-                  <option value="Partnership">Partnership</option>
-                </select>
-              </div>
-              <div class="field" style="grid-column:1/-1">
-                <label for="cMsg">Message</label>
-                <textarea id="cMsg" required placeholder="Write your message..."></textarea>
-              </div>
-            </div>
-            <div style="display:flex; justify-content:flex-end; gap:10px; flex-wrap:wrap; margin-top:12px;">
-              <button class="btn btnPrimary" type="submit">Send (Demo)</button>
-              <button class="btn btnGhost" type="button" data-goto="home">Back Home</button>
-            </div>
-            <div class="toast" id="contactToast">✅ Message sent successfully (demo).</div>
-          </form>
-        </div>
-      </section>
-
-      <!-- 3) CONTACT CHANNELS -->
-      <section class="panel">
-        <div class="panelHead">
-          <h2>Contact Channels</h2>
-          <p>Replace placeholders with real details later.</p>
-        </div>
-        <div class="panelBody">
-          <div class="grid3">
-            <div class="card"><div class="kicker">Email</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; line-height:1.7; font-size:13px">support@steamone.example</p></div>
-            <div class="card"><div class="kicker">Phone</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; line-height:1.7; font-size:13px">+234 xxx xxx xxxx</p></div>
-            <div class="card"><div class="kicker">Office</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; line-height:1.7; font-size:13px">Lagos, Nigeria (Demo)</p></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 4) SUPPORT CATEGORIES -->
-      <section class="panel">
-        <div class="panelHead">
-          <h2>What We Can Help With</h2>
-          <p>Clear categories for professional support.</p>
-        </div>
-        <div class="panelBody">
-          <div class="grid4">
-            <div class="card"><strong style="color:#0b2a85">Enrollment</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); line-height:1.7; font-size:13px">Course selection and onboarding.</p></div>
-            <div class="card"><strong style="color:#0b2a85">Payment</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); line-height:1.7; font-size:13px">Checkout issues and receipts.</p></div>
-            <div class="card"><strong style="color:#0b2a85">Recruitment</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); line-height:1.7; font-size:13px">Teacher matching and requests.</p></div>
-            <div class="card"><strong style="color:#0b2a85">Partnership</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); line-height:1.7; font-size:13px">School and org deployments.</p></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 5) QUICK STEPS -->
-      <section class="panel">
-        <div class="panelHead">
-          <h2>Support Steps</h2>
-          <p>Simple and professional workflow.</p>
-        </div>
-        <div class="steps">
-          <div class="stepsBar">
-            <div class="step"><div class="stepNum">1</div><div class="stepTxt">Submit request <small>Contact form</small></div></div>
-            <div class="step"><div class="stepNum">2</div><div class="stepTxt">Admin review <small>Validates details</small></div></div>
-            <div class="step"><div class="stepNum">3</div><div class="stepTxt">Response <small>Email/portal</small></div></div>
-            <div class="step"><div class="stepNum">4</div><div class="stepTxt">Resolution <small>Support completed</small></div></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 6) FAQ -->
-      <section class="panel">
-        <div class="panelHead">
-          <h2>Support FAQ</h2>
-          <p>Common questions.</p>
-        </div>
-        <div class="panelBody">
-          <div class="grid2">
-            <div class="card"><strong style="color:#0b2a85">How do I enroll?</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); font-size:13px; line-height:1.7">Go to Courses and click “Enroll Now” on your plan.</p></div>
-            <div class="card"><strong style="color:#0b2a85">Do you moderate marketplace contact?</strong><p style="margin:8px 0 0; font-weight:850; color:var(--muted); font-size:13px; line-height:1.7">Yes—requests go via admin (backend later).</p></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 7) COMMUNITY -->
-      <section class="panel">
-        <div class="panelHead">
-          <h2>Community</h2>
-          <p>Optional add-ons for later versions.</p>
-        </div>
-        <div class="panelBody">
-          <div class="grid2">
-            <div class="card"><div class="kicker">Teacher community</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Share best practices and templates (future feature).</p></div>
-            <div class="card"><div class="kicker">Announcements</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Updates, class schedules and certificates (future feature).</p></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 8) CTA -->
-      <section class="panel">
-        <div class="ctaStripe">
-          <h3>Need quick help?</h3>
-          <p>Contact admin and we’ll guide you to the right workflow.</p>
-          <div class="ctaBtns">
-            <button class="btn btnPrimary" data-goto="courses">Enroll Now</button>
-            <button class="btn btnGhost" data-goto="marketplace">Browse Marketplace</button>
-          </div>
-        </div>
-      </section>
-      <!-- Footer injected by JS -->
-    </main>
-
-    <!-- ==================== LOGIN (separate page) ==================== -->
-    <main class="page" id="page-login" data-page="login">
-      <section class="panel">
-        <div class="panelHead">
-          <h2>Login</h2>
-          <p>Demo login page (backend auth will be connected later).</p>
-        </div>
-        <div class="formCard">
-          <form id="loginForm">
-            <div class="formGrid">
-              <div class="field" style="grid-column:1/-1">
-                <label for="lEmail">Email</label>
-                <input id="lEmail" required placeholder="you@example.com" />
-              </div>
-              <div class="field" style="grid-column:1/-1">
-                <label for="lPass">Password</label>
-                <input id="lPass" type="password" required placeholder="********" />
-              </div>
-            </div>
-            <div style="display:flex; justify-content:flex-end; gap:10px; flex-wrap:wrap; margin-top:12px;">
-              <button class="btn btnPrimary" type="submit">Login</button>
-              <button class="btn btnGhost" type="button" data-goto="home">Back Home</button>
-            </div>
-            <div class="toast" id="loginToast">✅ Login submitted.</div>
-          </form>
-        </div>
-      </section>
-      <section class="panel">
-        <div class="ctaStripe">
-          <h3>Not enrolled yet?</h3>
-          <p>Choose a course level and proceed to paid enrollment to unlock access.</p>
-          <div class="ctaBtns">
-            <button class="btn btnPrimary" data-goto="courses">View Courses</button>
-            <button class="btn btnGhost" data-goto="contact">Contact Admin</button>
-          </div>
-        </div>
-      </section>
-      <!-- Footer injected by JS -->
-    </main>
-
-    <!-- ==================== ADMIN (separate page) ==================== -->
-    <main class="page" id="page-admin" data-page="admin">
-      <section class="panel">
-        <div class="panelHead">
-          <h2>Admin Access</h2>
-          <p>Demo admin access screen. Backend will validate admin roles later.</p>
-        </div>
-        <div class="formCard">
-          <form id="adminForm">
-            <div class="formGrid">
-              <div class="field" style="grid-column:1/-1">
-                <label for="aUser">Admin Username</label>
-                <input id="aUser" required placeholder="admin@example.com" />
-              </div>
-              <div class="field" style="grid-column:1/-1">
-                <label for="aPass">Password</label>
-                <input id="aPass" type="password" required placeholder="********" />
-              </div>
-            </div>
-            <div style="display:flex; justify-content:flex-end; gap:10px; flex-wrap:wrap; margin-top:12px;">
-              <button class="btn btnPrimary" type="submit">Login (Demo)</button>
-              <button class="btn btnGhost" type="button" data-goto="home">Back Home</button>
-            </div>
-            <div class="toast" id="adminToast">✅ Admin login submitted (demo).</div>
-          </form>
-        </div>
-      </section>
-
-      <section class="panel">
-        <div class="panelHead">
-          <h2>Admin Capabilities (Preview)</h2>
-          <p>These are UI placeholders—backend will power real data.</p>
-        </div>
-        <div class="panelBody">
-          <div class="grid3">
-            <div class="card"><div class="kicker">Users</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Approve users, manage roles, view profiles.</p></div>
-            <div class="card"><div class="kicker">Payments</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Payment confirmations and logs (backend later).</p></div>
-            <div class="card"><div class="kicker">Moderation</div><p style="margin:10px 0 0; font-weight:900; color:#19325f; font-size:13px; line-height:1.7">Review marketplace contact requests and listings.</p></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Footer injected by JS -->
-    </main>
-
+    </div>
   </div>
+</div>
 
-  <!-- ===== Single Footer Template (reused across ALL pages) ===== -->
-  <template id="siteFooterTpl">
-    <footer>
-      <div class="footerCard">
-        <div class="footerTop">
-          <div class="fine">© <span class="yearSlot"></span> STEAM ONE Platform • All rights reserved</div>
-
-          <div class="footerSocial" aria-label="Social links">
-            <a href="#" aria-label="YouTube" class="socialIcon">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M19.6 3H4.4C3 3 2 4 2 5.4v13.2C2 20 3 21 4.4 21h15.2c1.4 0 2.4-1 2.4-2.4V5.4C22 4 21 3 19.6 3zM10 16V8l6 4-6 4z"/>
-              </svg>
-            </a>
-            <a href="#" aria-label="Facebook" class="socialIcon">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M22 12A10 10 0 1 0 10 21.9V14.9H7v-2.9h3V9.4c0-3 1.8-4.7 4.5-4.7 1.3 0 2.7.2 2.7.2v3h-1.5c-1.5 0-2 1-2 2v2.4h3.4l-.5 2.9h-2.9v7A10 10 0 0 0 22 12z"/>
-              </svg>
-            </a>
-            <a href="#" aria-label="LinkedIn" class="socialIcon">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M20.4 3H3.6C3.3 3 3 3.3 3 3.6v16.8c0 .3.3.6.6.6h16.8c.3 0 .6-.3.6-.6V3.6c0-.3-.3-.6-.6-.6zM8.4 18H5.7V9h2.7v9zM7 7.8c-.9 0-1.5-.7-1.5-1.5S6.1 4.8 7 4.8s1.5.7 1.5 1.5S7.9 7.8 7 7.8zM18.3 18h-2.7v-4.4c0-1-.4-1.7-1.4-1.7-.8 0-1.2.5-1.4 1-.1.2-.1.5-.1.8V18H10V9h2.7v1.2c.4-.6 1.1-1.5 2.6-1.5 1.9 0 3.3 1.2 3.3 3.8V18z"/>
-              </svg>
-            </a>
+<div class="overlay" id="overlayCheckout" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="coTitle">
+    <div class="modalHead">
+      <strong id="coTitle">Checkout</strong>
+      <button class="x" data-close="overlayCheckout" aria-label="Close">✕</button>
+    </div>
+    <div class="modalBody">
+      <div class="card" style="box-shadow:none; margin:0; border-radius:18px">
+        <div style="display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap">
+          <div>
+            <div class="badge">💳 Payment checkout</div>
+            <div class="courseTitle" id="coName" style="margin-top:8px">Course</div>
+            <div class="courseMeta" id="coDesc">Description</div>
           </div>
-
-          <div class="footerTime"><span class="timeSlot">—</span> (Nigeria Time)</div>
+          <div style="text-align:right">
+            <div class="muted">Amount</div>
+            <div class="price" id="coPrice">₦0</div>
+          </div>
         </div>
 
-        <div class="footerBottom">
-          <div class="standardsRow">
-            <div class="standardsText">
-              <span class="stdItem">🟦 Microsoft</span>
-              <span class="stdItem">📌 ISTE</span>
-              <span class="stdItem">🏛️ UNESCO ICT CFT</span>
-              <span class="stdItem">📊 PISA</span>
-            </div>
+        <div class="hint" style="margin-top:12px">
+          Demo checkout: click <b>Pay & Continue</b> to simulate success. Replace with Paystack/Flutterwave/Stripe later.
+        </div>
 
-            <div class="logoRow" aria-label="Logos">
-              <div class="logoBadge" title="Microsoft">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <rect x="2" y="2" width="9" height="9" fill="#f35325"></rect>
-                  <rect x="13" y="2" width="9" height="9" fill="#81bc06"></rect>
-                  <rect x="2" y="13" width="9" height="9" fill="#05a6f0"></rect>
-                  <rect x="13" y="13" width="9" height="9" fill="#ffba08"></rect>
-                </svg>
-                <span>Microsoft</span>
-              </div>
-              <div class="logoBadge" title="ISTE">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <circle cx="12" cy="12" r="10" fill="rgba(255,255,255,.85)"></circle>
-                  <path d="M7 16V8h2v8H7zm4 0V8h6v2h-4v1h3.6v2H13v1h4v2h-6z" fill="#0b2a85"></path>
-                </svg>
-                <span>ISTE</span>
-              </div>
-              <div class="logoBadge" title="UNESCO ICT CFT">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M12 3 2.5 8.5V10H21.5V8.5L12 3Z" fill="rgba(255,255,255,.90)"></path>
-                  <path d="M4 10h2v9H4v-9zm5 0h2v9H9v-9zm5 0h2v9h-2v-9zm5 0h2v9h-2v-9z" fill="rgba(255,255,255,.78)"></path>
-                  <path d="M3 20h18v2H3v-2z" fill="rgba(255,255,255,.90)"></path>
-                </svg>
-                <span>UNESCO</span>
-              </div>
-              <div class="logoBadge" title="PISA">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <rect x="4" y="11" width="3" height="9" fill="rgba(255,255,255,.90)"></rect>
-                  <rect x="10.5" y="7" width="3" height="13" fill="rgba(255,255,255,.80)"></rect>
-                  <rect x="17" y="4" width="3" height="16" fill="rgba(255,255,255,.70)"></rect>
-                  <path d="M3 20h18v2H3v-2z" fill="rgba(255,255,255,.90)"></path>
-                </svg>
-                <span>PISA</span>
-              </div>
-            </div>
+        <div class="formGrid" style="margin-top:12px">
+          <div class="field">
+            <label for="coRole">Enroll as</label>
+            <select id="coRole">
+              <option value="teacher">Teacher</option>
+              <option value="facilitator">Facilitator</option>
+            </select>
           </div>
+          <div class="field">
+            <label for="coEmail">Email</label>
+            <input id="coEmail" type="email" placeholder="you@example.com" />
+          </div>
+          <div class="field" style="grid-column:1/-1">
+            <label for="coNote">Notes (optional)</label>
+            <input id="coNote" placeholder="e.g., School name, class level, expectations..." />
+          </div>
+        </div>
 
-          <div class="footerLinks" aria-label="Footer links">
-            <div class="fCol">
-              <h5>Platform</h5>
-              <a href="#/home" data-link>Home</a>
-              <a href="#/courses" data-link>Courses</a>
-              <a href="#/marketplace" data-link>Marketplace</a>
-              <a href="#/services" data-link>Services</a>
-            </div>
-            <div class="fCol">
-              <h5>Company</h5>
-              <a href="#/about" data-link>About</a>
-              <a href="#/contact" data-link>Contact</a>
-              <a href="#/login" data-link>Login</a>
-              <a href="#/admin" data-link>Admin</a>
-            </div>
-            <div class="fCol">
-              <h5>Standards</h5>
-              <div class="fSmall">
-                Our work complies with ISTE Standards, UNESCO ICT CFT framework and international PISA standard, while Microsoft Education serves as our research powerhouse.
-              </div>
-            </div>
-            <div class="fCol">
-              <h5>Action</h5>
-              <a href="#/courses" data-link>Enroll Now</a>
-              <a href="#/services" data-link>Request Services</a>
-              <a href="#/marketplace" data-link>Browse Teachers</a>
-              <a href="#/contact" data-link>Support</a>
-            </div>
-          </div>
+        <div class="modalActions">
+          <button class="btn btnGhost" data-close="overlayCheckout">Cancel</button>
+          <button class="btn btnPrimary" id="payNow">Pay & Continue</button>
         </div>
       </div>
-    </footer>
-  </template>
+    </div>
+  </div>
+</div>
 
-  <script>
-    function $(sel, root=document){ return root.querySelector(sel); }
-    function $all(sel, root=document){ return Array.from(root.querySelectorAll(sel)); }
+<div class="overlay" id="overlayContactTeacher" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="ctTitle">
+    <div class="modalHead">
+      <strong id="ctTitle">Contact a Teacher</strong>
+      <button class="x" data-close="overlayContactTeacher" aria-label="Close">✕</button>
+    </div>
+    <div class="modalBody">
+      <div class="formGrid">
+        <div class="field">
+          <label for="ctYourName">Your name</label>
+          <input id="ctYourName" placeholder="Your name" />
+        </div>
+        <div class="field">
+          <label for="ctYourEmail">Your email</label>
+          <input id="ctYourEmail" type="email" placeholder="you@example.com" />
+        </div>
+        <div class="field">
+          <label for="ctTeacherEmail">Teacher email</label>
+          <input id="ctTeacherEmail" type="email" placeholder="teacher@example.com" />
+        </div>
+        <div class="field">
+          <label for="ctChannel">Send via</label>
+          <select id="ctChannel">
+            <option value="email">Email</option>
+            <option value="whatsapp">WhatsApp (link)</option>
+          </select>
+        </div>
+        <div class="field" style="grid-column:1/-1">
+          <label for="ctMessage">Message</label>
+          <textarea id="ctMessage" placeholder="Write your message..."></textarea>
+        </div>
+      </div>
 
-    // Router: each page works separately (only one visible)
-    const pages = $all(".page");
-    function getRoute(){
-      const raw = location.hash || "#/home";
-      const route = raw.replace("#/", "").trim();
-      return route || "home";
+      <div class="hint" id="ctLinkBox">
+        Your request link will appear here after you click “Generate & Send”.
+      </div>
+
+      <div class="modalActions">
+        <button class="btn btnGhost" data-close="overlayContactTeacher">Cancel</button>
+        <button class="btn btnPrimary" id="ctSend">Generate & Send</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  /**************
+   * ROUTES (edit to match your React router paths)
+   **************/
+  const ROUTES = {
+    teacherDashboard: "/TeacherDashboardPage",
+    facilitatorDashboard: "/FacilitatorDashboardPage",
+    adminDashboard: "/AdminDashboardPage",
+    privacyPolicy: "/PrivacyPolicyPage",
+  };
+
+  /**************
+   * DATA
+   **************/
+  const COURSES = [
+    {
+      id: "steam-one",
+      tag: "STEAM Track",
+      title: "STEAM ONE — Foundations for Digital Teaching",
+      desc: "Introductory modules for pre‑service and in‑service teachers.",
+      price: 25000,
+      filter: "steam"
+    },
+    {
+      id: "steam-two",
+      tag: "STEAM Track",
+      title: "STEAM TWO — Technology Integration for Classrooms",
+      desc: "Tools, planning, and delivery strategies for modern teaching.",
+      price: 45000,
+      filter: "steam"
+    },
+    {
+      id: "steam-three",
+      tag: "AI & Advanced",
+      title: "STEAM THREE — Advanced & AI‑Integrated Expert Level",
+      desc: "Advanced teaching workflows, analytics, and AI-supported instruction.",
+      price: 75000,
+      filter: "ai"
+    },
+    {
+      id: "ms-edu",
+      tag: "Digital Tools",
+      title: "Microsoft Education — Classroom Productivity Essentials",
+      desc: "Practical toolkits for lesson delivery, collaboration, and assessment.",
+      price: 18000,
+      filter: "tools"
+    },
+    {
+      id: "assessment",
+      tag: "Digital Tools",
+      title: "Assessment & Feedback — Evidence‑based teaching",
+      desc: "Formative strategies, rubrics, and learner progress tracking.",
+      price: 22000,
+      filter: "tools"
+    },
+    {
+      id: "ai-safety",
+      tag: "AI & Advanced",
+      title: "AI for Educators — Safety, Ethics & Lesson Design",
+      desc: "Responsible AI use, classroom policy, and lesson integration.",
+      price: 32000,
+      filter: "ai"
     }
-    function showPage(route){
-      const exists = pages.some(p => p.dataset.page === route);
-      const page = exists ? route : "home";
+  ];
 
-      pages.forEach(p => p.classList.toggle("active", p.dataset.page === page));
-
-      // highlight nav (exact href match)
-      $all("[data-link]").forEach(a => {
-        const href = a.getAttribute("href") || "";
-        a.classList.toggle("active", href === `#/${page}`);
-      });
-
-      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-      closeDrawer();
+  function naira(n){
+    try{
+      return new Intl.NumberFormat("en-NG", {style:"currency", currency:"NGN", maximumFractionDigits:0}).format(n);
+    }catch(e){
+      return "₦" + String(n);
     }
-    window.addEventListener("hashchange", () => showPage(getRoute()));
+  }
 
-    // data-goto helpers
-    $all("[data-goto]").forEach(el=>{
-      el.addEventListener("click", ()=>{
-        const page = el.getAttribute("data-goto");
-        location.hash = `#/${page}`;
-      });
+  /**************
+   * RENDER COURSES
+   **************/
+  const courseGrid = document.getElementById("courseGrid");
+  function renderCourses(filter="all"){
+    const items = (filter==="all") ? COURSES : COURSES.filter(c => c.filter===filter);
+    courseGrid.innerHTML = items.map(c => `
+      <article class="course" data-course="${c.id}">
+        <div class="courseTop">
+          <span class="badge">📘 ${c.tag}</span>
+          <h3 class="courseTitle">${c.title}</h3>
+          <p class="courseMeta">${c.desc}</p>
+        </div>
+        <div class="courseBody">
+          <div class="priceRow">
+            <div>
+              <div class="muted">Price</div>
+              <div class="price">${naira(c.price)}</div>
+              <div class="muted">One-time (demo)</div>
+            </div>
+            <div class="muted">⭐ 4.${Math.floor(Math.random()*6)+3} • ${Math.floor(Math.random()*900)+100} reviews</div>
+          </div>
+
+          <div class="courseActions">
+            <button class="btn btnPrimary btnSmall" data-enroll="${c.id}">Enroll Now</button>
+            <button class="btn btnOutline btnSmall" data-details="${c.id}">Course Details</button>
+            <button class="btn btnDanger btnSmall" data-contact="${c.id}">Contact Teacher</button>
+          </div>
+        </div>
+      </article>
+    `).join("");
+  }
+  renderCourses();
+
+  /**************
+   * TABS
+   **************/
+  document.querySelectorAll(".tab").forEach(t=>{
+    t.addEventListener("click", ()=>{
+      document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
+      t.classList.add("active");
+      renderCourses(t.dataset.filter || "all");
     });
+  });
 
-    // Mobile drawer
-    const menuBtn = $("#menuBtn");
-    const drawer = $("#drawer");
-    const drawerOverlay = $("#drawerOverlay");
-    const drawerClose = $("#drawerClose");
-
-    function openDrawer(){
-      drawerOverlay.style.display = "block";
-      drawer.classList.add("open");
-      document.body.style.overflow = "hidden";
-    }
-    function closeDrawer(){
-      drawerOverlay.style.display = "none";
-      drawer.classList.remove("open");
-      document.body.style.overflow = "";
-    }
-    menuBtn && menuBtn.addEventListener("click", openDrawer);
-    drawerClose && drawerClose.addEventListener("click", closeDrawer);
-    drawerOverlay && drawerOverlay.addEventListener("click", closeDrawer);
-
-    // Enroll Now (top button) -> Courses
-    const enrollTop = $("#enrollTop");
-    enrollTop && enrollTop.addEventListener("click", () => location.hash = "#/courses");
-
-    // Footer injected into ALL pages
-    (function mountFooters(){
-      const tpl = $("#siteFooterTpl");
-      const year = new Date().getFullYear();
-      pages.forEach(p=>{
-        if (p.querySelector("footer")) return;
-        const node = tpl.content.cloneNode(true);
-        p.appendChild(node);
-        p.querySelectorAll(".yearSlot").forEach(el => el.textContent = year);
-      });
-    })();
-
-    // Nigeria time in footer (Africa/Lagos)
-    (function nigeriaTime(){
-      function formatLagos(){
-        const dt = new Date();
-        const fmt = new Intl.DateTimeFormat("en-NG", {
-          timeZone: "Africa/Lagos",
-          year: "numeric",
-          month: "2-digit",
-          day: "2-digit",
-          hour: "numeric",
-          minute: "2-digit",
-          second: "2-digit",
-          hour12: true
-        });
-        return fmt.format(dt);
-      }
-      function tick(){
-        $all(".timeSlot").forEach(el => el.textContent = formatLagos());
-      }
-      tick();
-      setInterval(tick, 1000);
-    })();
-
-    // Contact form (demo)
-    const contactForm = $("#contactForm");
-    const contactToast = $("#contactToast");
-    if (contactForm){
-      contactForm.addEventListener("submit", (e)=>{
-        e.preventDefault();
-        contactToast.style.display = "block";
-        setTimeout(()=> contactToast.style.display = "none", 2400);
-        contactForm.reset();
-      });
-    }
-
-    // Login form (demo)
-    const loginForm = $("#loginForm");
-    const loginToast = $("#loginToast");
-    if (loginForm){
-      loginForm.addEventListener("submit", (e)=>{
-        e.preventDefault();
-        loginToast.style.display = "block";
-        setTimeout(()=> loginToast.style.display = "none", 2400);
-        loginForm.reset();
-      });
-    }
-
-    // Admin form (demo)
-    const adminForm = $("#adminForm");
-    const adminToast = $("#adminToast");
-    if (adminForm){
-      adminForm.addEventListener("submit", (e)=>{
-        e.preventDefault();
-        adminToast.style.display = "block";
-        setTimeout(()=> adminToast.style.display = "none", 2400);
-        adminForm.reset();
-      });
-    }
-
-    // Marketplace contact (demo)
-    document.addEventListener("click", function(e){
-      const btn = e.target.closest(".jsContact");
-      if(btn){
-        const card = btn.closest(".person");
-        const teacher = card ? (card.getAttribute("data-teacher") || "Teacher") : "Teacher";
-        alert("Contact Request Sent (Demo)\n\nTeacher: " + teacher + "\n\nAdmin moderation will be connected in backend.");
-      }
+  /**************
+   * SCROLL LINKS
+   **************/
+  function scrollToId(id){
+    if(id==="top"){ window.scrollTo({top:0, behavior:"smooth"}); return; }
+    const el = document.getElementById(id);
+    if(el){ el.scrollIntoView({behavior:"smooth", block:"start"}); }
+  }
+  document.querySelectorAll("[data-scroll]").forEach(a=>{
+    a.addEventListener("click", (e)=>{
+      e.preventDefault();
+      scrollToId(a.dataset.scroll);
     });
+  });
 
-    // Courses enroll buttons (demo)
-    document.addEventListener("click", function(e){
-      const b = e.target.closest(".jsEnroll");
-      if(b){
-        const course = b.getAttribute("data-course") || "STEAM ONE";
-        const price = b.getAttribute("data-price") || "0";
-        alert("Enroll Now \n\nCourse: " + course + "\nPrice: $" + price + "\n\nPayment + onboarding will be connected in backend.");
-        location.hash = "#/login";
-      }
+  /**************
+   * MODAL HELPERS
+   **************/
+  function openModal(id){
+    const el = document.getElementById(id);
+    if(!el) return;
+    el.classList.add("show");
+    el.setAttribute("aria-hidden","false");
+  }
+  function closeModal(id){
+    const el = document.getElementById(id);
+    if(!el) return;
+    el.classList.remove("show");
+    el.setAttribute("aria-hidden","true");
+  }
+  document.querySelectorAll("[data-close]").forEach(b=>{
+    b.addEventListener("click", ()=> closeModal(b.dataset.close));
+  });
+  document.querySelectorAll(".overlay").forEach(o=>{
+    o.addEventListener("click", (e)=>{ if(e.target===o) closeModal(o.id); });
+  });
+
+  /**************
+   * LOGIN / SIGNUP (Demo)
+   **************/
+  const btnLogin = document.getElementById("btnLogin");
+  const btnSignup = document.getElementById("btnSignup");
+  const footLogin = document.getElementById("footLogin");
+  [btnLogin, btnSignup, footLogin].forEach(b=>{
+    if(!b) return;
+    b.addEventListener("click", ()=> openModal("overlayLogin"));
+  });
+
+  const btnAdminLogin = document.getElementById("btnAdminLogin");
+  const footAdmin = document.getElementById("footAdmin");
+  [btnAdminLogin, footAdmin].forEach(b=>{
+    if(!b) return;
+    b.addEventListener("click", ()=>{
+      openModal("overlayLogin");
+      document.getElementById("loginRole").value = "admin";
+      document.getElementById("loginEmail").value = "";
+      document.getElementById("loginPass").value = "";
     });
+  });
 
-    // initial render
-    showPage(getRoute());
-  </script>
+  document.getElementById("doLogin").addEventListener("click", ()=>{
+    const role = document.getElementById("loginRole").value;
+    const email = (document.getElementById("loginEmail").value || "").trim();
+    const pass = (document.getElementById("loginPass").value || "").trim();
+
+    if(role === "admin"){
+      const ok = (email === "OyoTechHub" && pass === "EduProject2025");
+      if(!ok){
+        alert("Invalid admin credentials. Use: OyoTechHub / EduProject2025");
+        return;
+      }
+      localStorage.setItem("steamone_role","admin");
+      closeModal("overlayLogin");
+      window.location.href = ROUTES.adminDashboard;
+      return;
+    }
+
+    if(!email || !pass){
+      alert("Please enter email and password.");
+      return;
+    }
+    localStorage.setItem("steamone_role", role);
+    localStorage.setItem("steamone_user", email);
+    closeModal("overlayLogin");
+    window.location.href = (role === "facilitator") ? ROUTES.facilitatorDashboard : ROUTES.teacherDashboard;
+  });
+
+  /**************
+   * CHECKOUT
+   **************/
+  let checkoutCourse = null;
+
+  function openCheckout(courseId){
+    const course = COURSES.find(c=>c.id===courseId) || COURSES[0];
+    checkoutCourse = course;
+    document.getElementById("coName").textContent = course.title;
+    document.getElementById("coDesc").textContent = course.desc;
+    document.getElementById("coPrice").textContent = naira(course.price);
+    document.getElementById("coEmail").value = (localStorage.getItem("steamone_user") || "");
+    document.getElementById("coRole").value = "teacher";
+    openModal("overlayCheckout");
+  }
+
+  document.getElementById("courseGrid").addEventListener("click", (e)=>{
+    const t = e.target.closest("button");
+    if(!t) return;
+
+    if(t.dataset.enroll){
+      openCheckout(t.dataset.enroll);
+      return;
+    }
+    if(t.dataset.details){
+      alert("Course Details (demo):\n\n" + (COURSES.find(c=>c.id===t.dataset.details)?.title || "Course"));
+      return;
+    }
+    if(t.dataset.contact){
+      openContactTeacher(t.dataset.contact);
+      return;
+    }
+  });
+
+  document.getElementById("btnEnroll").addEventListener("click", ()=> openCheckout("steam-one"));
+  document.getElementById("btnCtaEnroll").addEventListener("click", ()=> openCheckout("steam-two"));
+
+  document.getElementById("payNow").addEventListener("click", ()=>{
+    const role = document.getElementById("coRole").value;
+    const email = (document.getElementById("coEmail").value || "").trim();
+    if(!email){
+      alert("Please enter your email to continue.");
+      return;
+    }
+    // Save a demo receipt
+    const receipt = {
+      id: "rcpt_" + Math.random().toString(16).slice(2),
+      courseId: checkoutCourse?.id || null,
+      courseName: checkoutCourse?.title || "Course",
+      amount: checkoutCourse?.price || 0,
+      role,
+      email,
+      note: (document.getElementById("coNote").value || "").trim(),
+      createdAt: new Date().toISOString()
+    };
+    const list = JSON.parse(localStorage.getItem("steamone_receipts") || "[]");
+    list.unshift(receipt);
+    localStorage.setItem("steamone_receipts", JSON.stringify(list));
+    localStorage.setItem("steamone_role", role);
+    localStorage.setItem("steamone_user", email);
+
+    closeModal("overlayCheckout");
+
+    // Redirect to role dashboard
+    window.location.href = (role === "facilitator") ? ROUTES.facilitatorDashboard : ROUTES.teacherDashboard;
+  });
+
+  /**************
+   * CONTACT TEACHER (generates shareable link)
+   **************/
+  function buildRequestLink(payload){
+    // Works in static HTML. In React, you can route /request?...
+    const params = new URLSearchParams(payload);
+    return location.origin + location.pathname.replace(/\?.*$/, "") + "#contact-request?" + params.toString();
+  }
+
+  function openContactTeacher(courseId){
+    const course = COURSES.find(c=>c.id===courseId) || COURSES[0];
+    document.getElementById("ctMessage").value =
+`Hello, I would like to contact a certified teacher for:
+- Program: ${course.title}
+- Request: (Write your need here)
+
+Thank you.`;
+    document.getElementById("ctLinkBox").textContent = "Your request link will appear here after you click “Generate & Send”.";
+    openModal("overlayContactTeacher");
+  }
+
+  const btnContactTeacher = document.getElementById("btnContactTeacher");
+  const btnMarketContact = document.getElementById("btnMarketContact");
+  const btnContactTeacher2 = document.getElementById("btnContactTeacher2");
+  [btnContactTeacher, btnMarketContact, btnContactTeacher2].forEach(b=>{
+    if(!b) return;
+    b.addEventListener("click", ()=> openContactTeacher("steam-one"));
+  });
+
+  document.getElementById("ctSend").addEventListener("click", ()=>{
+    const yourName = (document.getElementById("ctYourName").value || "").trim();
+    const yourEmail = (document.getElementById("ctYourEmail").value || "").trim();
+    const teacherEmail = (document.getElementById("ctTeacherEmail").value || "").trim();
+    const channel = document.getElementById("ctChannel").value;
+    const message = (document.getElementById("ctMessage").value || "").trim();
+
+    if(!yourName || !yourEmail || !message){
+      alert("Please fill your name, your email, and a message.");
+      return;
+    }
+
+    const payload = {
+      from: yourName,
+      email: yourEmail,
+      teacher: teacherEmail || "teacher@example.com",
+      ts: Date.now().toString()
+    };
+    const link = buildRequestLink(payload);
+    document.getElementById("ctLinkBox").textContent = "Request link: " + link;
+
+    // Store request (demo)
+    const req = { ...payload, message, link, createdAt: new Date().toISOString() };
+    const reqs = JSON.parse(localStorage.getItem("steamone_teacher_requests") || "[]");
+    reqs.unshift(req);
+    localStorage.setItem("steamone_teacher_requests", JSON.stringify(reqs));
+
+    if(channel === "whatsapp"){
+      const waText = encodeURIComponent(message + "\n\nRequest link: " + link);
+      // If teacher phone exists, replace with wa.me/<number>
+      window.open("https://wa.me/?text=" + waText, "_blank");
+      closeModal("overlayContactTeacher");
+      return;
+    }
+
+    const subject = encodeURIComponent("Teacher Contact Request — STEAM ONE Platform");
+    const body = encodeURIComponent(message + "\n\nRequest link: " + link);
+    const to = encodeURIComponent(teacherEmail || "teacher@example.com");
+    window.location.href = "mailto:" + to + "?subject=" + subject + "&body=" + body;
+    closeModal("overlayContactTeacher");
+  });
+
+  /**************
+   * CONTACT FORM (mailto)
+   **************/
+  document.getElementById("btnSendContact").addEventListener("click", ()=>{
+    const name = (document.getElementById("cName").value || "").trim();
+    const email = (document.getElementById("cEmail").value || "").trim();
+    const msg = (document.getElementById("cMsg").value || "").trim();
+
+    if(!name || !email || !msg){
+      alert("Please fill your name, email, and message.");
+      return;
+    }
+    const subject = encodeURIComponent("Contact — STEAM ONE Platform");
+    const body = encodeURIComponent("Name: " + name + "\nEmail: " + email + "\n\n" + msg);
+    window.location.href = "mailto:support@steamone.example?subject=" + subject + "&body=" + body;
+  });
+
+  /**************
+   * Footer links
+   **************/
+  document.getElementById("footPolicy").addEventListener("click", (e)=>{ e.preventDefault(); window.location.href = ROUTES.privacyPolicy; });
+  document.getElementById("footHelp").addEventListener("click", (e)=>{ e.preventDefault(); alert("Help Center (demo)"); });
+  document.getElementById("footStatus").addEventListener("click", (e)=>{ e.preventDefault(); alert("System Status (demo)"); });
+  document.getElementById("footEmail").addEventListener("click", (e)=>{ e.preventDefault(); window.location.href = "mailto:support@steamone.example"; });
+  document.getElementById("footWhatsApp").addEventListener("click", (e)=>{ e.preventDefault(); window.open("https://wa.me/?text=" + encodeURIComponent("Hello STEAM ONE Support"), "_blank"); });
+
+  /**************
+   * Search (simple highlight / filter)
+   **************/
+  document.getElementById("q").addEventListener("input", (e)=>{
+    const q = (e.target.value || "").trim().toLowerCase();
+    if(!q){ renderCourses(document.querySelector(".tab.active")?.dataset.filter || "all"); return; }
+    const activeFilter = document.querySelector(".tab.active")?.dataset.filter || "all";
+    const base = (activeFilter==="all") ? COURSES : COURSES.filter(c=>c.filter===activeFilter);
+    const items = base.filter(c => (c.title + " " + c.desc + " " + c.tag).toLowerCase().includes(q));
+    courseGrid.innerHTML = items.map(c => `
+      <article class="course" data-course="${c.id}">
+        <div class="courseTop">
+          <span class="badge">📘 ${c.tag}</span>
+          <h3 class="courseTitle">${c.title}</h3>
+          <p class="courseMeta">${c.desc}</p>
+        </div>
+        <div class="courseBody">
+          <div class="priceRow">
+            <div>
+              <div class="muted">Price</div>
+              <div class="price">${naira(c.price)}</div>
+              <div class="muted">One-time (demo)</div>
+            </div>
+            <div class="muted">⭐ 4.${Math.floor(Math.random()*6)+3} • ${Math.floor(Math.random()*900)+100} reviews</div>
+          </div>
+
+          <div class="courseActions">
+            <button class="btn btnPrimary btnSmall" data-enroll="${c.id}">Enroll Now</button>
+            <button class="btn btnOutline btnSmall" data-details="${c.id}">Course Details</button>
+            <button class="btn btnDanger btnSmall" data-contact="${c.id}">Contact Teacher</button>
+          </div>
+        </div>
+      </article>
+    `).join("");
+  });
+
+  /**************
+   * Footer time: Nigeria (Africa/Lagos)
+   **************/
+  document.getElementById("year").textContent = new Date().getFullYear();
+  function tickNigeriaTime(){
+    try{
+      const fmt = new Intl.DateTimeFormat("en-GB", {
+        timeZone: "Africa/Lagos",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        day: "2-digit",
+        month: "short",
+        year: "numeric"
+      });
+      document.getElementById("ngTime").textContent = fmt.format(new Date());
+    }catch(e){
+      document.getElementById("ngTime").textContent = new Date().toLocaleString();
+    }
+  }
+  tickNigeriaTime();
+  setInterval(tickNigeriaTime, 1000);
+</script>
 </body>
 </html>

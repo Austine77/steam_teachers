@@ -1,6 +1,7 @@
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import Logo from "@/components/Logo";
 import NigeriaTime from "@/components/NigeriaTime";
+import Footer from "@/components/Footer";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -18,12 +19,12 @@ const nav = [
   { to: "/login", label: "Login" },
   { to: "/signup", label: "Sign Up" },
 
-  { to: "/dashboard/teacher", label: "Teacher Dashboard" },
-  { to: "/dashboard/facilitator", label: "Facilitator Dashboard" },
-  { to: "/dashboard/admin", label: "Admin Dashboard" },
-  { to: "/app/attendance", label: "Attendance" },
-  { to: "/app/assignments", label: "Assignments" },
-  { to: "/app/support", label: "Support Center" }
+  { to: "/teacher/dashboard", label: "Teacher Dashboard" },
+  { to: "/facilitator/dashboard", label: "Facilitator Dashboard" },
+  { to: "/admin/dashboard", label: "Admin Dashboard" },
+  { to: "/teacher/attendance", label: "Attendance" },
+  { to: "/teacher/assignments", label: "Assignments" },
+  { to: "/support", label: "Support Center" }
 ];
 
 function crumbs(pathname: string) {
@@ -78,6 +79,7 @@ export default function AppShell() {
         </header>
         <div className="page">
           <Outlet />
+          <Footer />
         </div>
       </main>
     </div>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./AdminLoginPage.css";
-import { setAdminSession } from "../utils/authStore";
+import { setAdminSession } from "../../utils/authStore";
 
 const ADMIN_USERNAME = "OyoTechHub";
 const ADMIN_PASSWORD = "EduProject2026";
@@ -10,52 +10,67 @@ export default function AdminLoginPage() {
   const [password, setPassword] = useState("");
   const [err, setErr] = useState<string | null>(null);
   const [show, setShow] = useState(false);
+  const [busy, setBusy] = useState(false);
 
-  function submit(e: React.FormEvent) {
+  function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setErr(null);
 
-    if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
-      setAdminSession();
-      window.location.href = "/admin/dashboard";
-      return;
-    }
-    setErr("Invalid admin credentials.");
+    if (!username.trim() || !password) return setErr("Enter username and password.");
+
+    setBusy(true);
+    const ok = username.trim() === ADMIN_USERNAME && password === ADMIN_PASSWORD;
+    setBusy(false);
+
+    if (!ok) return setErr("Invalid admin credentials.");
+
+    setAdminSession();
+    window.location.href = "/admin/dashboard";
   }
 
   return (
-    <div className="admin-login-root">
-      <div className="admin-login-card">
-        <div className="admin-header">
-          <h2>STEAM <span>ONE</span> Platform</h2>
-          <h1>Admin Login</h1>
-          <p>Authorized access only</p>
+    <div className="admin-root">
+      <div className="admin-card">
+        <div className="admin-head">
+          <h2>Admin Login</h2>
+          <p>Authorized administrators only.</p>
         </div>
 
-        <form onSubmit={submit} className="admin-form">
-          {err && <div className="admin-error">{err}</div>}
+        {err && <div className="admin-error">{err}</div>}
 
-          <label>Admin Username</label>
-          <input value={username} onChange={(e)=>setUsername(e.target.value)} placeholder="Enter username" required />
+        <form onSubmit={handleSubmit} className="admin-form">
+          <label>
+            Username
+            <input value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Admin username" />
+          </label>
 
-          <label>Password</label>
-          <div className="admin-password-box">
-            <input
-              type={show ? "text" : "password"}
-              value={password}
-              onChange={(e)=>setPassword(e.target.value)}
-              placeholder="Enter password"
-              required
-            />
-            <button type="button" onClick={() => setShow(!show)} aria-label="toggle password">👁</button>
-          </div>
+          <label>
+            Password
+            <div className="admin-pass">
+              <input
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Admin password"
+                type={show ? "text" : "password"}
+              />
+              <button type="button" className="admin-eye" onClick={() => setShow((s) => !s)}>
+                {show ? "Hide" : "Show"}
+              </button>
+            </div>
+          </label>
 
-          <button className="admin-login-btn">Login as Admin</button>
+          <button className="admin-btn" disabled={busy}>
+            {busy ? "Signing in..." : "Login"}
+          </button>
         </form>
 
-        <div className="admin-footer">
-          <p>Microsoft Education | ISTE | UNESCO ICT CFT | PISA</p>
-          <p>© 2026 STEAM ONE Platform</p>
+        <div className="admin-links">
+          <a href="/login">Teacher/Facilitator Login</a>
+          <a href="/">Back Home</a>
+        </div>
+
+        <div className="admin-hint">
+          <strong>Default Admin:</strong> {ADMIN_USERNAME} / {ADMIN_PASSWORD}
         </div>
       </div>
     </div>

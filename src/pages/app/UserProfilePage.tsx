@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import "./UserProfilePage.css";
-import { getRole, clearSession } from "../utils/authStore";
+import { getRole, clearSession } from "../../utils/authStore";
 
 type Role = "teacher" | "facilitator";
 
