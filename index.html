@@ -977,6 +977,48 @@
   </div>
 </div>
 
+
+<div class="overlay" id="overlaySignup" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="signupTitle">
+    <div class="modalHead">
+      <strong id="signupTitle">Create your account</strong>
+      <button class="x" data-close="overlaySignup" aria-label="Close">✕</button>
+    </div>
+    <div class="modalBody">
+      <div class="formGrid">
+        <div class="field">
+          <label for="signupRole">Role</label>
+          <select id="signupRole">
+            <option value="teacher">Teacher</option>
+            <option value="facilitator">Facilitator</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="signupName">Full name</label>
+          <input id="signupName" placeholder="Your full name" />
+        </div>
+        <div class="field">
+          <label for="signupEmail">Email</label>
+          <input id="signupEmail" type="email" placeholder="you@example.com" />
+        </div>
+        <div class="field">
+          <label for="signupPass">Password</label>
+          <input id="signupPass" type="password" placeholder="Create password" />
+        </div>
+      </div>
+
+      <div class="modalActions">
+        <button class="btn btnGhost" data-close="overlaySignup">Cancel</button>
+        <button class="btn btnPrimary" id="doSignup">Create Account</button>
+      </div>
+
+      <div class="hint">
+        Demo signup saves the user in <b>localStorage</b> and redirects by role. Teachers open the <b>Teacher Dashboard</b>. Facilitators open the <b>Facilitator Dashboard</b>.
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
   /**************
    * ROUTES (edit to match your React router paths)
@@ -1138,10 +1180,13 @@
   const btnLogin = document.getElementById("btnLogin");
   const btnSignup = document.getElementById("btnSignup");
   const footLogin = document.getElementById("footLogin");
-  [btnLogin, btnSignup, footLogin].forEach(b=>{
+  [btnLogin, footLogin].forEach(b=>{
     if(!b) return;
     b.addEventListener("click", ()=> openModal("overlayLogin"));
   });
+  if(btnSignup){
+    btnSignup.addEventListener("click", ()=> openModal("overlaySignup"));
+  }
 
   const btnAdminLogin = document.getElementById("btnAdminLogin");
   const footAdmin = document.getElementById("footAdmin");
@@ -1179,6 +1224,35 @@
     localStorage.setItem("steamone_role", role);
     localStorage.setItem("steamone_user", email);
     closeModal("overlayLogin");
+    window.location.href = (role === "facilitator") ? ROUTES.facilitatorDashboard : ROUTES.teacherDashboard;
+  });
+
+  document.getElementById("doSignup").addEventListener("click", ()=>{
+    const role = document.getElementById("signupRole").value;
+    const name = (document.getElementById("signupName").value || "").trim();
+    const email = (document.getElementById("signupEmail").value || "").trim();
+    const pass = (document.getElementById("signupPass").value || "").trim();
+
+    if(!name || !email || !pass){
+      alert("Please fill your full name, email, and password.");
+      return;
+    }
+
+    const users = JSON.parse(localStorage.getItem("steamone_users") || "[]");
+    users.unshift({
+      id: "usr_" + Math.random().toString(16).slice(2),
+      role,
+      name,
+      email,
+      password: pass,
+      createdAt: new Date().toISOString()
+    });
+    localStorage.setItem("steamone_users", JSON.stringify(users));
+    localStorage.setItem("steamone_role", role);
+    localStorage.setItem("steamone_user", email);
+    localStorage.setItem("steamone_name", name);
+
+    closeModal("overlaySignup");
     window.location.href = (role === "facilitator") ? ROUTES.facilitatorDashboard : ROUTES.teacherDashboard;
   });
 
