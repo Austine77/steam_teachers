@@ -440,6 +440,85 @@
   }
 }
 
+
+
+    .menuToggle{display:none;align-items:center;justify-content:center;width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:#fff;color:#0f172a;font-size:18px;cursor:pointer;flex:0 0 auto}
+    .menuToggle:hover{background:rgba(0,86,210,.06)}
+
+    @media (max-width:980px){
+      :root{--navH:auto}
+      .nav{position:sticky}
+      .navInner{padding:10px 14px 12px;gap:10px}
+      .navTop{flex-wrap:nowrap;align-items:center;justify-content:space-between}
+      .brand{min-width:0;flex:1;max-width:calc(100% - 108px)}
+      .brandText strong{font-size:13px}
+      .brandText span{font-size:11px}
+      .menuToggle{display:inline-flex}
+      .navActions{display:none}
+      .navBottom{display:none;justify-content:stretch}
+      .navLinks{display:none;flex-direction:column;align-items:stretch;gap:8px;width:100%;padding-top:4px}
+      .navLinks a,.navActions a,.navActions button{width:100%;text-align:center}
+      .nav.open .navTop{flex-wrap:wrap}
+      .nav.open .navLinks{display:flex;order:3;flex:1 0 100%}
+      .nav.open .navActions{display:flex;order:4;flex-direction:column;width:100%}
+      .nav.open .navBottom{display:flex;order:5;flex:1 0 100%}
+      .search{width:100%}
+      .searchBox{border-radius:16px;padding:10px 12px}
+      .hero{padding:28px 0 18px}
+      .h1{font-size:34px;line-height:1.12}
+      .sub{font-size:15px}
+      .container{padding:0 14px}
+      .section{padding:30px 0}
+      .heroCard,.card,.homeCourseCard,.course,.authCard{border-radius:18px}
+      .miniRow{grid-template-columns:1fr}
+      .partnersRow{padding:12px}
+      .logos{gap:14px}
+      .imageShowcaseGrid.fourInLine{grid-template-columns:repeat(2,1fr)}
+      .imageCard img{height:240px}
+      .imageCardBody{padding:18px}
+      .imageCardBody h4{font-size:20px}
+      .ctaBand{padding:16px}
+      .ctaBand .ctaBtns{justify-content:flex-start}
+      .footTop{padding:28px 0}
+      .footBottomRow{align-items:flex-start}
+    }
+
+    @media (max-width:720px){
+      .h1{font-size:30px}
+      .h2{font-size:24px}
+      .authCard{padding:18px}
+      .heroActions,.heroMeta,.courseActions,.homeCourseActions,.authActions,.modalActions,.ctaBand .ctaBtns{flex-direction:column;align-items:stretch}
+      .heroActions .btn,.courseActions .btn,.homeCourseActions .btn,.authActions .btn,.modalActions .btn,.ctaBand .ctaBtns .btn{width:100%;justify-content:center}
+      .btn{min-height:46px}
+      .priceRow,.homeCourseMeta{align-items:flex-start;flex-direction:column}
+      .quickStartImageWrap img{height:200px}
+      .imageShowcaseGrid.fourInLine,.logos{grid-template-columns:1fr}
+      .imageCard img{height:200px}
+      .plainLogo{max-width:110px;height:52px}
+      .logoBox{padding:16px 12px}
+      .logoLine{font-size:13px}
+      .footGrid{grid-template-columns:1fr}
+      .timePill{width:100%;justify-content:center}
+    }
+
+    @media (max-width:480px){
+      .navInner{padding:10px 12px 12px}
+      .container{padding:0 12px}
+      .brand{gap:8px}
+      .logoMark{width:32px;height:32px;border-radius:9px}
+      .brandText strong{font-size:12px}
+      .brandText span{font-size:10px}
+      .menuToggle{width:42px;height:42px}
+      .h1{font-size:26px;letter-spacing:-.4px}
+      .sub,.lead{font-size:14px}
+      .heroCard,.card,.homeCourseCard,.course,.authCard,.partnersRow{padding-left:14px;padding-right:14px}
+      .courseTop,.courseBody,.homeCourseCardTop,.homeCourseCardBody,.imageCardBody{padding-left:14px;padding-right:14px}
+      .imageCardBody h4{font-size:18px}
+      .imageCardBody p,.card p,.homeCourseCard p,.courseMeta,.authSub{font-size:13px}
+      .homeCoursePrice,.price{font-size:20px}
+      .field input,.field select,.field textarea{padding:12px 11px;font-size:16px}
+    }
+
   </style>
 </head>
 <body>
@@ -463,6 +542,8 @@
           <a href="#page=about" data-page-link="about">About</a>
           <a href="#page=contact" data-page-link="contact">Contact</a>
         </nav>
+
+        <button class="menuToggle" id="menuToggle" type="button" aria-label="Toggle menu" aria-expanded="false">☰</button>
 
         <div class="navActions">
           <a class="btn btnLink" href="#page=login" data-page-link="login">Log In</a>
@@ -553,7 +634,7 @@
     <div class="imageShowcaseGrid fourInLine">
       <article class="imageCard">
         <a class="imageLink" href="https://www.microsoft.com/en-us/education" target="_blank" rel="noopener noreferrer" aria-label="Open Microsoft Education website">
-          <img src="images/microsoft-logo.png" alt="Microsoft Education classroom">
+          <img src="images/microsoft-logo1.png" alt="Microsoft Education classroom">
         </a>
         <div class="imageCardBody">
           <h4>Microsoft Education</h4>
@@ -565,7 +646,7 @@
 
       <article class="imageCard">
         <a class="imageLink" href="https://iste.org/standards" target="_blank" rel="noopener noreferrer" aria-label="Open ISTE Standards website">
-          <img src="images/iste-logo.png" alt="ISTE Education training">
+          <img src="images/iste-logo1.png" alt="ISTE Education training">
         </a>
         <div class="imageCardBody">
           <h4>ISTE Education</h4>
@@ -577,7 +658,7 @@
 
       <article class="imageCard">
         <a class="imageLink" href="https://www.unesco.org/en/digital-competencies-skills/ict-cft" target="_blank" rel="noopener noreferrer" aria-label="Open UNESCO ICT CFT website">
-          <img src="images/unesco-ict-cft-logo.png" alt="UNESCO ICT CFT education program">
+          <img src="images/unesco-ict-cft-logo1.png" alt="UNESCO ICT CFT education program">
         </a>
         <div class="imageCardBody">
           <h4>UNESCO ICT CFT</h4>
@@ -589,7 +670,7 @@
       
        <article class="imageCard">
   <a class="imageLink" href="https://trcn.gov.ng/" target="_blank" rel="noopener noreferrer" aria-label="Open TRCN website">
-    <img src="images/trcn-logo.png" alt="TRCN Nigeria teacher registration and professional standards">
+    <img src="images/trcn-logo1.png" alt="TRCN Nigeria teacher registration and professional standards">
   </a>
   <div class="imageCardBody">
     <h4>TRCN Nigeria</h4>
@@ -601,7 +682,7 @@
 
       <article class="imageCard">
         <a class="imageLink" href="https://www.oecd.org/en/about/programmes/pisa.html" target="_blank" rel="noopener noreferrer" aria-label="Open OECD PISA website">
-          <img src="images/pisa-logo.png" alt="PISA education excellence">
+          <img src="images/pisa-logo1.png" alt="PISA education excellence">
         </a>
         <div class="imageCardBody">
           <h4>PISA Education</h4>
@@ -970,6 +1051,32 @@
 </div>
 
 <script>
+
+  const nav = document.querySelector(".nav");
+  const menuToggle = document.getElementById("menuToggle");
+
+  function closeMenu(){
+    nav?.classList.remove("open");
+    if(menuToggle) menuToggle.setAttribute("aria-expanded", "false");
+  }
+
+  function toggleMenu(){
+    if(!nav || !menuToggle) return;
+    const next = !nav.classList.contains("open");
+    nav.classList.toggle("open", next);
+    menuToggle.setAttribute("aria-expanded", String(next));
+  }
+
+  menuToggle?.addEventListener("click", toggleMenu);
+  window.addEventListener("resize", ()=>{
+    if(window.innerWidth > 980) closeMenu();
+  });
+  document.querySelectorAll('[data-page-link]').forEach(link => {
+    link.addEventListener('click', () => {
+      if(window.innerWidth <= 980) closeMenu();
+    });
+  });
+
   const ROUTES = {
     teacherDashboard: "/TeacherDashboardPage",
     facilitatorDashboard: "/FacilitatorDashboardPage",
@@ -1161,7 +1268,7 @@ Click OK to make payment and open Teacher Dashboard.`);
     const user = (document.getElementById("adminUser").value || "").trim();
     const pass = (document.getElementById("adminPass").value || "").trim();
     if(user !== "OyoTechHub" || pass !== "EduProject2025"){
-      alert("Invalid admin credentials. Use: OyoTechHub / EduProject2025");
+      alert("");
       return;
     }
     localStorage.setItem("steamone_role", "admin");
