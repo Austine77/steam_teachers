@@ -519,6 +519,2006 @@
       .field input,.field select,.field textarea{padding:12px 11px;font-size:16px}
     }
 
+
+    .teamSlider{
+  display:flex;
+  gap:18px;
+  overflow-x:auto;
+  padding:6px 2px 10px;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+}
+
+.teamSlider::-webkit-scrollbar{
+  height:10px;
+}
+
+.teamSlider::-webkit-scrollbar-thumb{
+  background:rgba(11,42,133,.25);
+  border-radius:999px;
+}
+
+.teamSlideCard{
+  min-width:280px;
+  max-width:280px;
+  flex:0 0 280px;
+  background:#fff;
+  border:1px solid rgba(14,35,92,.10);
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 10px 30px rgba(6,16,40,.08);
+  scroll-snap-align:start;
+}
+
+.teamSlideImage{
+  display:block;
+  width:100%;
+  height:220px;
+  overflow:hidden;
+}
+
+.teamSlideImage img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.teamSlideBody{
+  padding:16px;
+}
+
+.teamSlideBody h4{
+  margin:0 0 10px;
+  font-size:18px;
+  color:#0b1530;
+}
+
+.teamSlideBody p{
+  margin:0;
+  color:#5a6b8a;
+  line-height:1.6;
+}
+
+.developerShowcaseBlock{
+  margin-top:28px;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+
+.developerShowcaseHead{
+  max-width:900px;
+}
+
+.developerShowcaseHead h3{
+  margin:0 0 10px;
+  color:#0b1530;
+  font-size:clamp(22px,3vw,32px);
+}
+
+.developerShowcaseHead p{
+  margin:0;
+  color:#5a6b8a;
+  line-height:1.7;
+}
+
+.developerSliderRow{
+  display:flex;
+  gap:18px;
+  overflow-x:auto;
+  padding:4px 2px 10px;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+}
+
+.developerSliderRow::-webkit-scrollbar{
+  height:10px;
+}
+
+.developerSliderRow::-webkit-scrollbar-thumb{
+  background:rgba(11,42,133,.22);
+  border-radius:999px;
+}
+
+.developerImageCard{
+  flex:0 0 calc((100% - 90px) / 6);
+  min-width:220px;
+  background:#fff;
+  border:1px solid rgba(14,35,92,.10);
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 10px 28px rgba(6,16,40,.08);
+  scroll-snap-align:start;
+}
+
+.developerImageLink{
+  display:block;
+  width:100%;
+  height:180px;
+  overflow:hidden;
+}
+
+.developerImageLink img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.developerImageBody{
+  padding:14px 14px 16px;
+}
+
+.developerImageBody h4{
+  margin:0 0 8px;
+  font-size:16px;
+  color:#0b1530;
+}
+
+.developerImageBody p{
+  margin:0;
+  font-size:14px;
+  line-height:1.6;
+  color:#5a6b8a;
+}
+
+@media (max-width: 1280px){
+  .developerImageCard{
+    flex:0 0 240px;
+  }
+}
+
+@media (max-width: 768px){
+  .developerShowcaseBlock{
+    margin-top:22px;
+  }
+
+  .developerImageLink{
+    height:170px;
+  }
+}
+
+.footerPartnerLogos{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:18px;
+}
+
+.footerLogoLink{
+  width:56px;
+  height:56px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#ffffff;
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:14px;
+  padding:8px;
+  box-shadow:0 8px 24px rgba(0,0,0,.10);
+  transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.footerLogoLink:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 28px rgba(0,0,0,.16);
+  border-color:rgba(255,255,255,.35);
+}
+
+.footerLogoLink img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+}
+
+.socialLink{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  text-decoration:none;
+  color:inherit;
+  margin-bottom:12px;
+  transition:transform .2s ease, opacity .2s ease;
+}
+
+.socialLink:hover{
+  transform:translateX(3px);
+  opacity:.92;
+}
+
+.socialIcon{
+  width:38px;
+  height:38px;
+  border-radius:12px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.14);
+  flex-shrink:0;
+}
+
+.socialIcon svg{
+  width:19px;
+  height:19px;
+  fill:currentColor;
+}
+
+.footGrid{
+  display:grid;
+  grid-template-columns:1.35fr .8fr .8fr .8fr .9fr;
+  gap:28px;
+}
+
+.footBrand p{
+  margin-top:8px;
+  line-height:1.7;
+}
+
+.footCol h5{
+  margin-bottom:14px;
+}
+
+.footCol a{
+  display:block;
+  margin-bottom:10px;
+  text-decoration:none;
+}
+
+@media (max-width: 1100px){
+  .footGrid{
+    grid-template-columns:1fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 760px){
+  .footGrid{
+    grid-template-columns:1fr;
+  }
+
+  .footerPartnerLogos{
+    gap:10px;
+  }
+
+  .footerLogoLink{
+    width:52px;
+    height:52px;
+  }
+
+  .socialLink{
+    margin-bottom:10px;
+  }
+}
+
+.socialInlineRow{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.socialInlineLink{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  text-decoration:none;
+  color:inherit;
+  padding:8px 12px;
+  border-radius:999px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.14);
+  transition:transform .2s ease, opacity .2s ease, background .2s ease;
+}
+
+.socialInlineLink:hover{
+  transform:translateY(-2px);
+  opacity:.95;
+  background:rgba(255,255,255,.14);
+}
+
+.socialIcon{
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.14);
+  flex-shrink:0;
+}
+
+.socialIcon svg{
+  width:18px;
+  height:18px;
+  fill:currentColor;
+}
+
+@media (max-width: 640px){
+  .socialInlineRow{
+    gap:10px;
+  }
+
+  .socialInlineLink{
+    padding:8px 10px;
+  }
+
+  .socialInlineLink span:last-child{
+    font-size:14px;
+  }
+}
+
+.coursesHeroBand{
+  padding:32px 24px;
+  background:linear-gradient(135deg, #f4f8ff 0%, #ffffff 100%);
+}
+
+.coursesHeroInner{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:28px;
+  align-items:center;
+}
+
+.coursesHeroText h2{
+  margin:10px 0 14px;
+  font-size:clamp(28px, 4vw, 44px);
+  line-height:1.15;
+  color:#0b1530;
+}
+
+.coursesHeroText p{
+  margin:0 0 20px;
+  color:#5a6b8a;
+  line-height:1.75;
+  max-width:680px;
+}
+
+.coursesMiniTag{
+  display:inline-flex;
+  align-items:center;
+  padding:8px 14px;
+  border-radius:999px;
+  background:#eaf2ff;
+  color:#0b2a85;
+  font-weight:700;
+  font-size:13px;
+  letter-spacing:.2px;
+}
+
+.coursesHeroActions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.coursesHeroImage{
+  min-height:360px;
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 18px 50px rgba(6,16,40,.14);
+}
+
+.coursesHeroImage img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.coursesFeatureStrip{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:18px;
+  padding:28px 24px 8px;
+}
+
+.coursesFeatureCard{
+  background:#fff;
+  border:1px solid rgba(14,35,92,.10);
+  border-radius:22px;
+  padding:24px 20px;
+  box-shadow:0 12px 30px rgba(6,16,40,.08);
+}
+
+.coursesFeatureIcon{
+  font-size:28px;
+  margin-bottom:12px;
+}
+
+.coursesFeatureCard h3{
+  margin:0 0 10px;
+  font-size:20px;
+  color:#0b1530;
+}
+
+.coursesFeatureCard p{
+  margin:0;
+  color:#5a6b8a;
+  line-height:1.7;
+}
+
+.coursesPathSection{
+  padding:34px 24px;
+}
+
+.coursesPathHeader{
+  max-width:820px;
+  margin-bottom:22px;
+}
+
+.coursesPathHeader h2{
+  margin:10px 0 12px;
+  font-size:clamp(26px, 3.5vw, 40px);
+  color:#0b1530;
+}
+
+.coursesPathHeader p{
+  margin:0;
+  color:#5a6b8a;
+  line-height:1.75;
+}
+
+.coursesPathGrid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:20px;
+}
+
+.coursesPathCard{
+  background:linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+  border:1px solid rgba(14,35,92,.10);
+  border-radius:24px;
+  padding:24px;
+  box-shadow:0 14px 34px rgba(6,16,40,.08);
+}
+
+.coursesPathBadge{
+  display:inline-block;
+  margin-bottom:14px;
+  padding:7px 12px;
+  border-radius:999px;
+  background:#0b2a85;
+  color:#fff;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.3px;
+}
+
+.coursesPathCard h3{
+  margin:0 0 12px;
+  color:#0b1530;
+  font-size:22px;
+}
+
+.coursesPathCard p{
+  margin:0 0 16px;
+  color:#5a6b8a;
+  line-height:1.75;
+}
+
+.pathLink{
+  color:#0b2a85;
+  font-weight:700;
+  text-decoration:none;
+}
+
+.coursesWhySection{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:28px;
+  align-items:center;
+  padding:24px;
+  background:#f8fbff;
+}
+
+.coursesWhyText h2{
+  margin:10px 0 14px;
+  font-size:clamp(26px, 3.5vw, 40px);
+  color:#0b1530;
+}
+
+.coursesWhyText p{
+  margin:0 0 18px;
+  color:#5a6b8a;
+  line-height:1.75;
+}
+
+.coursesWhyList{
+  margin:0;
+  padding-left:20px;
+  color:#0b1530;
+}
+
+.coursesWhyList li{
+  margin-bottom:10px;
+  line-height:1.65;
+}
+
+.coursesWhyImage{
+  min-height:350px;
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 18px 45px rgba(6,16,40,.12);
+}
+
+.coursesWhyImage img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.coursesCTASection{
+  padding:34px 24px 46px;
+}
+
+.coursesCTABox{
+  background:linear-gradient(135deg, #0b2a85 0%, #1f59d1 100%);
+  color:#fff;
+  border-radius:28px;
+  padding:34px 28px;
+  box-shadow:0 18px 50px rgba(11,42,133,.22);
+}
+
+.coursesCTABox .coursesMiniTag{
+  background:rgba(255,255,255,.14);
+  color:#fff;
+}
+
+.coursesCTABox h2{
+  margin:14px 0 12px;
+  font-size:clamp(28px, 4vw, 42px);
+  line-height:1.15;
+}
+
+.coursesCTABox p{
+  margin:0 0 20px;
+  max-width:760px;
+  line-height:1.75;
+  color:rgba(255,255,255,.92);
+}
+
+.coursesCTAActions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+@media (max-width: 1100px){
+  .coursesHeroInner,
+  .coursesWhySection,
+  .coursesPathGrid,
+  .coursesFeatureStrip{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media (max-width: 760px){
+  .coursesHeroInner,
+  .coursesWhySection,
+  .coursesPathGrid,
+  .coursesFeatureStrip{
+    grid-template-columns:1fr;
+  }
+
+  .coursesHeroBand,
+  .coursesPathSection,
+  .coursesWhySection,
+  .coursesCTASection,
+  .coursesFeatureStrip{
+    padding-left:16px;
+    padding-right:16px;
+  }
+
+  .coursesHeroImage,
+  .coursesWhyImage{
+    min-height:260px;
+  }
+}
+
+.marketHeroBand{
+  padding:34px 24px;
+  background:linear-gradient(135deg,#f7faff 0%,#ffffff 100%);
+}
+
+.marketHeroInner{
+  display:grid;
+  grid-template-columns:1.08fr .92fr;
+  gap:28px;
+  align-items:center;
+}
+
+.marketMiniTag{
+  display:inline-flex;
+  align-items:center;
+  padding:8px 14px;
+  border-radius:999px;
+  background:#eaf2ff;
+  color:#0b2a85;
+  font-weight:700;
+  font-size:13px;
+  letter-spacing:.2px;
+}
+
+.marketHeroText h2{
+  margin:12px 0 14px;
+  font-size:clamp(28px,4vw,44px);
+  line-height:1.14;
+  color:#0b1530;
+}
+
+.marketHeroText p{
+  margin:0 0 20px;
+  color:#5a6b8a;
+  line-height:1.75;
+  max-width:680px;
+}
+
+.marketHeroActions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.marketHeroImage{
+  min-height:360px;
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 18px 50px rgba(6,16,40,.14);
+}
+
+.marketHeroImage img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.marketStatsStrip{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+  padding:10px 24px 28px;
+}
+
+.marketStatCard{
+  background:#fff;
+  border:1px solid rgba(14,35,92,.10);
+  border-radius:22px;
+  padding:24px 20px;
+  box-shadow:0 12px 30px rgba(6,16,40,.07);
+}
+
+.marketStatCard h3{
+  margin:0 0 8px;
+  color:#0b1530;
+  font-size:18px;
+}
+
+.marketStatCard strong{
+  display:block;
+  margin-bottom:10px;
+  font-size:34px;
+  color:#0b2a85;
+}
+
+.marketStatCard p{
+  margin:0;
+  color:#5a6b8a;
+  line-height:1.7;
+}
+
+.marketBenefitsSection{
+  padding:34px 24px;
+  background:#f8fbff;
+}
+
+.marketBenefitsHeader{
+  max-width:820px;
+  margin-bottom:22px;
+}
+
+.marketBenefitsHeader h2{
+  margin:10px 0 12px;
+  font-size:clamp(26px,3.5vw,40px);
+  color:#0b1530;
+}
+
+.marketBenefitsHeader p{
+  margin:0;
+  color:#5a6b8a;
+  line-height:1.75;
+}
+
+.marketBenefitsGrid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.marketBenefitCard{
+  background:#fff;
+  border:1px solid rgba(14,35,92,.10);
+  border-radius:22px;
+  padding:22px 20px;
+  box-shadow:0 12px 30px rgba(6,16,40,.07);
+}
+
+.marketBenefitIcon{
+  font-size:28px;
+  margin-bottom:12px;
+}
+
+.marketBenefitCard h4{
+  margin:0 0 10px;
+  color:#0b1530;
+  font-size:20px;
+}
+
+.marketBenefitCard p{
+  margin:0;
+  color:#5a6b8a;
+  line-height:1.7;
+}
+
+.marketProfilesSection{
+  padding:34px 24px;
+}
+
+.marketProfilesHeader{
+  margin-bottom:22px;
+}
+
+.marketProfilesHeader h2{
+  margin:10px 0 0;
+  font-size:clamp(26px,3.5vw,40px);
+  color:#0b1530;
+}
+
+.marketProfilesGrid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.marketProfileCard{
+  background:#fff;
+  border:1px solid rgba(14,35,92,.10);
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 14px 34px rgba(6,16,40,.08);
+}
+
+.marketProfileCard img{
+  width:100%;
+  height:250px;
+  object-fit:cover;
+  display:block;
+}
+
+.marketProfileBody{
+  padding:18px 18px 20px;
+}
+
+.marketProfileBody h4{
+  margin:0 0 10px;
+  color:#0b1530;
+  font-size:21px;
+}
+
+.marketProfileBody p{
+  margin:0 0 14px;
+  color:#5a6b8a;
+  line-height:1.7;
+}
+
+.marketProfileBody a{
+  color:#0b2a85;
+  font-weight:700;
+  text-decoration:none;
+}
+
+.marketProcessSection{
+  padding:34px 24px;
+  background:linear-gradient(135deg,#ffffff 0%,#f7faff 100%);
+}
+
+.marketProcessText{
+  max-width:820px;
+  margin-bottom:22px;
+}
+
+.marketProcessText h2{
+  margin:10px 0 12px;
+  font-size:clamp(26px,3.5vw,40px);
+  color:#0b1530;
+}
+
+.marketProcessText p{
+  margin:0;
+  color:#5a6b8a;
+  line-height:1.75;
+}
+
+.marketProcessSteps{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.marketStepCard{
+  background:#fff;
+  border:1px solid rgba(14,35,92,.10);
+  border-radius:22px;
+  padding:24px;
+  box-shadow:0 12px 30px rgba(6,16,40,.07);
+}
+
+.marketStepCard span{
+  display:inline-flex;
+  width:46px;
+  height:46px;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:#0b2a85;
+  color:#fff;
+  font-weight:800;
+  margin-bottom:14px;
+}
+
+.marketStepCard h4{
+  margin:0 0 10px;
+  color:#0b1530;
+  font-size:21px;
+}
+
+.marketStepCard p{
+  margin:0;
+  color:#5a6b8a;
+  line-height:1.7;
+}
+
+.marketTrustBand{
+  padding:26px 24px;
+}
+
+.marketTrustInner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  padding:30px 28px;
+  border-radius:28px;
+  background:linear-gradient(135deg,#0b2a85 0%,#1f59d1 100%);
+  color:#fff;
+  box-shadow:0 18px 50px rgba(11,42,133,.22);
+}
+
+.marketTrustBand .marketMiniTag{
+  background:rgba(255,255,255,.14);
+  color:#fff;
+}
+
+.marketTrustInner h2{
+  margin:12px 0;
+  font-size:clamp(26px,3.8vw,40px);
+  line-height:1.15;
+}
+
+.marketTrustInner p{
+  margin:0;
+  max-width:760px;
+  color:rgba(255,255,255,.92);
+  line-height:1.75;
+}
+
+.marketTrustActions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.marketFinalCTA{
+  padding:10px 24px 46px;
+}
+
+.marketFinalBox{
+  background:#fff;
+  border:1px solid rgba(14,35,92,.10);
+  border-radius:28px;
+  padding:34px 28px;
+  box-shadow:0 16px 42px rgba(6,16,40,.08);
+}
+
+.marketFinalBox h2{
+  margin:12px 0;
+  font-size:clamp(28px,4vw,42px);
+  color:#0b1530;
+  line-height:1.15;
+}
+
+.marketFinalBox p{
+  margin:0 0 20px;
+  color:#5a6b8a;
+  line-height:1.75;
+  max-width:760px;
+}
+
+.marketFinalActions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+@media (max-width:1100px){
+  .marketHeroInner,
+  .marketBenefitsGrid,
+  .marketStatsStrip,
+  .marketProcessSteps{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .marketProfilesGrid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .marketTrustInner{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+}
+
+@media (max-width:760px){
+  .marketHeroInner,
+  .marketBenefitsGrid,
+  .marketStatsStrip,
+  .marketProfilesGrid,
+  .marketProcessSteps{
+    grid-template-columns:1fr;
+  }
+
+  .marketHeroBand,
+  .marketStatsStrip,
+  .marketBenefitsSection,
+  .marketProfilesSection,
+  .marketProcessSection,
+  .marketTrustBand,
+  .marketFinalCTA{
+    padding-left:16px;
+    padding-right:16px;
+  }
+
+  .marketHeroImage{
+    min-height:260px;
+  }
+
+  .marketProfileCard img{
+    height:220px;
+  }
+
+  .marketTrustInner,
+  .marketFinalBox{
+    padding:24px 20px;
+  }
+}
+
+.servicesHeroBand{
+  padding:34px 24px;
+  background:linear-gradient(135deg,#f7faff 0%,#ffffff 100%);
+}
+
+.servicesHeroInner{
+  display:grid;
+  grid-template-columns:1.08fr .92fr;
+  gap:28px;
+  align-items:center;
+}
+
+.servicesMiniTag{
+  display:inline-flex;
+  align-items:center;
+  padding:8px 14px;
+  border-radius:999px;
+  background:#eaf2ff;
+  color:#0b2a85;
+  font-weight:700;
+  font-size:13px;
+  letter-spacing:.2px;
+}
+
+.servicesHeroText h2{
+  margin:12px 0 14px;
+  font-size:clamp(28px,4vw,44px);
+  line-height:1.14;
+  color:#0b1530;
+}
+
+.servicesHeroText p{
+  margin:0 0 20px;
+  color:#5a6b8a;
+  line-height:1.75;
+  max-width:680px;
+}
+
+.servicesHeroActions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.servicesHeroImage{
+  min-height:360px;
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 18px 50px rgba(6,16,40,.14);
+}
+
+.servicesHeroImage img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.servicesHighlightsStrip{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+  padding:10px 24px 28px;
+}
+
+.servicesHighlightCard{
+  background:#fff;
+  border:1px solid rgba(14,35,92,.10);
+  border-radius:22px;
+  padding:24px 20px;
+  box-shadow:0 12px 30px rgba(6,16,40,.07);
+}
+
+.servicesHighlightIcon{
+  font-size:28px;
+  margin-bottom:12px;
+}
+
+.servicesHighlightCard h3{
+  margin:0 0 10px;
+  color:#0b1530;
+  font-size:20px;
+}
+
+.servicesHighlightCard p{
+  margin:0;
+  color:#5a6b8a;
+  line-height:1.7;
+}
+
+.servicesOfferSection{
+  padding:34px 24px;
+  background:#f8fbff;
+}
+
+.servicesOfferHeader{
+  max-width:820px;
+  margin-bottom:22px;
+}
+
+.servicesOfferHeader h2{
+  margin:10px 0 12px;
+  font-size:clamp(26px,3.5vw,40px);
+  color:#0b1530;
+}
+
+.servicesOfferHeader p{
+  margin:0;
+  color:#5a6b8a;
+  line-height:1.75;
+}
+
+.servicesOfferGrid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.servicesOfferCard{
+  background:#fff;
+  border:1px solid rgba(14,35,92,.10);
+  border-radius:22px;
+  padding:22px 20px;
+  box-shadow:0 12px 30px rgba(6,16,40,.07);
+}
+
+.servicesOfferCard h4{
+  margin:0 0 10px;
+  color:#0b1530;
+  font-size:20px;
+}
+
+.servicesOfferCard p{
+  margin:0 0 14px;
+  color:#5a6b8a;
+  line-height:1.7;
+}
+
+.servicesOfferCard a{
+  color:#0b2a85;
+  font-weight:700;
+  text-decoration:none;
+}
+
+.servicesExpertiseSection{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:28px;
+  align-items:center;
+  padding:34px 24px;
+}
+
+.servicesExpertiseText h2{
+  margin:10px 0 14px;
+  font-size:clamp(26px,3.5vw,40px);
+  color:#0b1530;
+}
+
+.servicesExpertiseText p{
+  margin:0 0 18px;
+  color:#5a6b8a;
+  line-height:1.75;
+}
+
+.servicesExpertiseList{
+  margin:0;
+  padding-left:20px;
+  color:#0b1530;
+}
+
+.servicesExpertiseList li{
+  margin-bottom:10px;
+  line-height:1.65;
+}
+
+.servicesExpertiseImage{
+  min-height:350px;
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 18px 45px rgba(6,16,40,.12);
+}
+
+.servicesExpertiseImage img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.servicesProcessSection{
+  padding:34px 24px;
+  background:linear-gradient(135deg,#ffffff 0%,#f7faff 100%);
+}
+
+.servicesProcessHeader{
+  margin-bottom:22px;
+}
+
+.servicesProcessHeader h2{
+  margin:10px 0 0;
+  font-size:clamp(26px,3.5vw,40px);
+  color:#0b1530;
+}
+
+.servicesProcessGrid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+
+.servicesProcessCard{
+  background:#fff;
+  border:1px solid rgba(14,35,92,.10);
+  border-radius:22px;
+  padding:24px;
+  box-shadow:0 12px 30px rgba(6,16,40,.07);
+}
+
+.servicesProcessCard span{
+  display:inline-flex;
+  width:46px;
+  height:46px;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:#0b2a85;
+  color:#fff;
+  font-weight:800;
+  margin-bottom:14px;
+}
+
+.servicesProcessCard h4{
+  margin:0 0 10px;
+  color:#0b1530;
+  font-size:21px;
+}
+
+.servicesProcessCard p{
+  margin:0;
+  color:#5a6b8a;
+  line-height:1.7;
+}
+
+.servicesAudienceSection{
+  padding:34px 24px;
+  background:#f8fbff;
+}
+
+.servicesAudienceHeader{
+  margin-bottom:22px;
+}
+
+.servicesAudienceHeader h2{
+  margin:10px 0 0;
+  font-size:clamp(26px,3.5vw,40px);
+  color:#0b1530;
+}
+
+.servicesAudienceGrid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.servicesAudienceCard{
+  background:#fff;
+  border:1px solid rgba(14,35,92,.10);
+  border-radius:22px;
+  padding:22px 20px;
+  box-shadow:0 12px 30px rgba(6,16,40,.07);
+}
+
+.servicesAudienceIcon{
+  font-size:28px;
+  margin-bottom:12px;
+}
+
+.servicesAudienceCard h4{
+  margin:0 0 10px;
+  color:#0b1530;
+  font-size:20px;
+}
+
+.servicesAudienceCard p{
+  margin:0;
+  color:#5a6b8a;
+  line-height:1.7;
+}
+
+.servicesTrustBand{
+  padding:26px 24px;
+}
+
+.servicesTrustInner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  padding:30px 28px;
+  border-radius:28px;
+  background:linear-gradient(135deg,#0b2a85 0%,#1f59d1 100%);
+  color:#fff;
+  box-shadow:0 18px 50px rgba(11,42,133,.22);
+}
+
+.servicesTrustBand .servicesMiniTag{
+  background:rgba(255,255,255,.14);
+  color:#fff;
+}
+
+.servicesTrustInner h2{
+  margin:12px 0;
+  font-size:clamp(26px,3.8vw,40px);
+  line-height:1.15;
+}
+
+.servicesTrustInner p{
+  margin:0;
+  max-width:760px;
+  color:rgba(255,255,255,.92);
+  line-height:1.75;
+}
+
+.servicesTrustActions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.servicesFinalCTA{
+  padding:10px 24px 46px;
+}
+
+.servicesFinalBox{
+  background:#fff;
+  border:1px solid rgba(14,35,92,.10);
+  border-radius:28px;
+  padding:34px 28px;
+  box-shadow:0 16px 42px rgba(6,16,40,.08);
+}
+
+.servicesFinalBox h2{
+  margin:12px 0;
+  font-size:clamp(28px,4vw,42px);
+  color:#0b1530;
+  line-height:1.15;
+}
+
+.servicesFinalBox p{
+  margin:0 0 20px;
+  color:#5a6b8a;
+  line-height:1.75;
+  max-width:760px;
+}
+
+.servicesFinalActions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+@media (max-width:1100px){
+  .servicesHeroInner,
+  .servicesOfferGrid,
+  .servicesHighlightsStrip,
+  .servicesProcessGrid,
+  .servicesAudienceGrid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .servicesTrustInner{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+}
+
+@media (max-width:760px){
+  .servicesHeroInner,
+  .servicesOfferGrid,
+  .servicesExpertiseSection,
+  .servicesHighlightsStrip,
+  .servicesProcessGrid,
+  .servicesAudienceGrid{
+    grid-template-columns:1fr;
+  }
+
+  .servicesHeroBand,
+  .servicesHighlightsStrip,
+  .servicesOfferSection,
+  .servicesExpertiseSection,
+  .servicesProcessSection,
+  .servicesAudienceSection,
+  .servicesTrustBand,
+  .servicesFinalCTA{
+    padding-left:16px;
+    padding-right:16px;
+  }
+
+  .servicesHeroImage,
+  .servicesExpertiseImage{
+    min-height:260px;
+  }
+
+  .servicesTrustInner,
+  .servicesFinalBox{
+    padding:24px 20px;
+  }
+}
+
+.aboutHeroBand{
+  padding:34px 24px;
+  background:linear-gradient(135deg,#f7faff 0%,#ffffff 100%);
+}
+
+.aboutHeroInner{
+  display:grid;
+  grid-template-columns:1.08fr .92fr;
+  gap:28px;
+  align-items:center;
+}
+
+.aboutMiniTag{
+  display:inline-flex;
+  align-items:center;
+  padding:8px 14px;
+  border-radius:999px;
+  background:#eaf2ff;
+  color:#0b2a85;
+  font-weight:700;
+  font-size:13px;
+  letter-spacing:.2px;
+}
+
+.aboutHeroText h2{
+  margin:12px 0 14px;
+  font-size:clamp(28px,4vw,44px);
+  line-height:1.14;
+  color:#0b1530;
+}
+
+.aboutHeroText p{
+  margin:0 0 20px;
+  color:#5a6b8a;
+  line-height:1.75;
+  max-width:680px;
+}
+
+.aboutHeroActions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.aboutHeroImage{
+  min-height:360px;
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 18px 50px rgba(6,16,40,.14);
+}
+
+.aboutHeroImage img,
+.aboutMissionImage img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.aboutStatsStrip{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+  padding:10px 24px 28px;
+}
+
+.aboutStatCard,
+.aboutValueCard,
+.aboutStandardCard,
+.aboutJourneyCard,
+.aboutAudienceCard{
+  background:#fff;
+  border:1px solid rgba(14,35,92,.10);
+  border-radius:22px;
+  padding:24px 20px;
+  box-shadow:0 12px 30px rgba(6,16,40,.07);
+}
+
+.aboutStatCard h3{
+  margin:0 0 8px;
+  color:#0b1530;
+  font-size:18px;
+}
+
+.aboutStatCard strong{
+  display:block;
+  margin-bottom:10px;
+  font-size:34px;
+  color:#0b2a85;
+}
+
+.aboutStatCard p,
+.aboutValueCard p,
+.aboutStandardCard p,
+.aboutJourneyCard p,
+.aboutAudienceCard p{
+  margin:0;
+  color:#5a6b8a;
+  line-height:1.7;
+}
+
+.aboutMissionSection{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:28px;
+  align-items:center;
+  padding:34px 24px;
+  background:#f8fbff;
+}
+
+.aboutMissionText h2,
+.aboutValuesHeader h2,
+.aboutStandardsHeader h2,
+.aboutGalleryHeader h2,
+.aboutJourneyHeader h2,
+.aboutAudienceHeader h2,
+.aboutTrustInner h2,
+.aboutFinalBox h2{
+  margin:10px 0 12px;
+  font-size:clamp(26px,3.5vw,40px);
+  color:#0b1530;
+}
+
+.aboutMissionText p,
+.aboutStandardsHeader p,
+.aboutGalleryHeader p,
+.aboutJourneyHeader p,
+.aboutTrustInner p,
+.aboutFinalBox p{
+  margin:0 0 18px;
+  color:#5a6b8a;
+  line-height:1.75;
+}
+
+.aboutMissionList{
+  margin:0;
+  padding-left:20px;
+  color:#0b1530;
+}
+
+.aboutMissionList li{
+  margin-bottom:10px;
+  line-height:1.65;
+}
+
+.aboutMissionImage{
+  min-height:350px;
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 18px 45px rgba(6,16,40,.12);
+}
+
+.aboutValuesSection,
+.aboutStandardsSection,
+.aboutJourneySection,
+.aboutAudienceSection{
+  padding:34px 24px;
+}
+
+.aboutValuesHeader,
+.aboutStandardsHeader,
+.aboutGalleryHeader,
+.aboutJourneyHeader,
+.aboutAudienceHeader{
+  max-width:860px;
+  margin-bottom:22px;
+}
+
+.aboutValuesGrid,
+.aboutStandardsGrid,
+.aboutJourneyGrid,
+.aboutAudienceGrid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.aboutValueIcon,
+.aboutAudienceIcon{
+  font-size:28px;
+  margin-bottom:12px;
+}
+
+.aboutValueCard h4,
+.aboutStandardCard h4,
+.aboutJourneyCard h4,
+.aboutAudienceCard h4{
+  margin:0 0 10px;
+  color:#0b1530;
+  font-size:20px;
+}
+
+.aboutStandardCard a{
+  display:inline-block;
+  margin-top:14px;
+  color:#0b2a85;
+  font-weight:700;
+  text-decoration:none;
+}
+
+.aboutGallerySection{
+  padding:34px 24px;
+  background:linear-gradient(135deg,#ffffff 0%,#f7faff 100%);
+}
+
+.aboutSliderRow{
+  display:flex;
+  gap:18px;
+  overflow-x:auto;
+  padding:6px 2px 14px;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  margin-bottom:8px;
+}
+
+.aboutSliderRow::-webkit-scrollbar{
+  height:10px;
+}
+
+.aboutSliderRow::-webkit-scrollbar-thumb{
+  background:rgba(11,42,133,.22);
+  border-radius:999px;
+}
+
+.aboutSlideCard{
+  flex:0 0 calc((100% - 72px) / 5);
+  min-width:230px;
+  background:#fff;
+  border:1px solid rgba(14,35,92,.10);
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 12px 30px rgba(6,16,40,.07);
+  scroll-snap-align:start;
+}
+
+.aboutSlideImage{
+  display:block;
+  width:100%;
+  height:180px;
+  overflow:hidden;
+}
+
+.aboutSlideImage img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.aboutSlideBody{
+  padding:16px;
+}
+
+.aboutSlideBody h4{
+  margin:0 0 8px;
+  color:#0b1530;
+  font-size:17px;
+}
+
+.aboutSlideBody p{
+  margin:0;
+  color:#5a6b8a;
+  line-height:1.65;
+  font-size:14px;
+}
+
+.aboutJourneyCard span{
+  display:inline-flex;
+  width:46px;
+  height:46px;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:#0b2a85;
+  color:#fff;
+  font-weight:800;
+  margin-bottom:14px;
+}
+
+.aboutTrustBand{
+  padding:26px 24px;
+}
+
+.aboutTrustInner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  padding:30px 28px;
+  border-radius:28px;
+  background:linear-gradient(135deg,#0b2a85 0%,#1f59d1 100%);
+  color:#fff;
+  box-shadow:0 18px 50px rgba(11,42,133,.22);
+}
+
+.aboutTrustBand .aboutMiniTag{
+  background:rgba(255,255,255,.14);
+  color:#fff;
+}
+
+.aboutTrustInner p{
+  max-width:760px;
+  color:rgba(255,255,255,.92);
+}
+
+.aboutTrustActions,
+.aboutFinalActions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.aboutFinalCTA{
+  padding:10px 24px 46px;
+}
+
+.aboutFinalBox{
+  background:#fff;
+  border:1px solid rgba(14,35,92,.10);
+  border-radius:28px;
+  padding:34px 28px;
+  box-shadow:0 16px 42px rgba(6,16,40,.08);
+}
+
+@media (max-width:1100px){
+  .aboutHeroInner,
+  .aboutMissionSection,
+  .aboutStatsStrip,
+  .aboutValuesGrid,
+  .aboutStandardsGrid,
+  .aboutJourneyGrid,
+  .aboutAudienceGrid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .aboutTrustInner{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+}
+
+@media (max-width:760px){
+  .aboutHeroInner,
+  .aboutMissionSection,
+  .aboutStatsStrip,
+  .aboutValuesGrid,
+  .aboutStandardsGrid,
+  .aboutJourneyGrid,
+  .aboutAudienceGrid{
+    grid-template-columns:1fr;
+  }
+
+  .aboutHeroBand,
+  .aboutStatsStrip,
+  .aboutMissionSection,
+  .aboutValuesSection,
+  .aboutStandardsSection,
+  .aboutGallerySection,
+  .aboutJourneySection,
+  .aboutAudienceSection,
+  .aboutTrustBand,
+  .aboutFinalCTA{
+    padding-left:16px;
+    padding-right:16px;
+  }
+
+  .aboutHeroImage,
+  .aboutMissionImage{
+    min-height:260px;
+  }
+
+  .aboutSlideCard{
+    flex:0 0 240px;
+  }
+
+  .aboutTrustInner,
+  .aboutFinalBox{
+    padding:24px 20px;
+  }
+}
+
+.contactHeroBand{
+  padding:34px 24px;
+  background:linear-gradient(135deg,#f7faff 0%,#ffffff 100%);
+}
+
+.contactHeroInner{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:28px;
+  align-items:center;
+}
+
+.contactMiniTag{
+  display:inline-flex;
+  align-items:center;
+  padding:8px 14px;
+  border-radius:999px;
+  background:#eaf2ff;
+  color:#0b2a85;
+  font-weight:700;
+  font-size:13px;
+  letter-spacing:.2px;
+}
+
+.contactHeroText h2{
+  margin:12px 0 14px;
+  font-size:clamp(28px,4vw,44px);
+  line-height:1.14;
+  color:#0b1530;
+}
+
+.contactHeroText p{
+  margin:0 0 20px;
+  color:#5a6b8a;
+  line-height:1.75;
+  max-width:680px;
+}
+
+.contactHeroActions,
+.contactFinalActions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.contactHeroCard{
+  background:#fff;
+  border:1px solid rgba(14,35,92,.10);
+  border-radius:24px;
+  padding:24px;
+  box-shadow:0 14px 34px rgba(6,16,40,.08);
+}
+
+.contactHeroCard h3{
+  margin:0 0 16px;
+  color:#0b1530;
+  font-size:22px;
+}
+
+.contactHeroList{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+.contactHeroList div{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.contactHeroList strong{
+  color:#0b1530;
+}
+
+.contactHeroList span{
+  color:#5a6b8a;
+  line-height:1.6;
+}
+
+.contactInfoSection{
+  padding:28px 24px;
+}
+
+.contactInfoGrid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.contactInfoCard{
+  background:#fff;
+  border:1px solid rgba(14,35,92,.10);
+  border-radius:22px;
+  padding:22px 20px;
+  box-shadow:0 12px 30px rgba(6,16,40,.07);
+}
+
+.contactInfoIcon{
+  font-size:28px;
+  margin-bottom:12px;
+}
+
+.contactInfoCard h4{
+  margin:0 0 10px;
+  color:#0b1530;
+  font-size:20px;
+}
+
+.contactInfoCard p{
+  margin:0 0 12px;
+  color:#5a6b8a;
+  line-height:1.7;
+}
+
+.contactInfoCard a,
+.contactInfoCard span{
+  color:#0b2a85;
+  font-weight:700;
+  text-decoration:none;
+}
+
+.contactMapSection{
+  padding:34px 24px;
+  background:#f8fbff;
+}
+
+.contactMapText{
+  max-width:760px;
+  margin-bottom:20px;
+}
+
+.contactMapText h2{
+  margin:10px 0 12px;
+  font-size:clamp(26px,3.5vw,40px);
+  color:#0b1530;
+}
+
+.contactMapText p{
+  margin:0;
+  color:#5a6b8a;
+  line-height:1.75;
+}
+
+.contactMapWrap{
+  width:100%;
+  min-height:420px;
+  border-radius:26px;
+  overflow:hidden;
+  border:1px solid rgba(14,35,92,.10);
+  box-shadow:0 18px 45px rgba(6,16,40,.10);
+  background:#fff;
+}
+
+.contactMapWrap iframe{
+  width:100%;
+  height:420px;
+  border:0;
+  display:block;
+}
+
+.contactFinalCTA{
+  padding:34px 24px 46px;
+}
+
+.contactFinalBox{
+  background:linear-gradient(135deg,#0b2a85 0%,#1f59d1 100%);
+  color:#fff;
+  border-radius:28px;
+  padding:34px 28px;
+  box-shadow:0 18px 50px rgba(11,42,133,.22);
+}
+
+.contactFinalBox .contactMiniTag{
+  background:rgba(255,255,255,.14);
+  color:#fff;
+}
+
+.contactFinalBox h2{
+  margin:14px 0 12px;
+  font-size:clamp(28px,4vw,42px);
+  line-height:1.15;
+}
+
+.contactFinalBox p{
+  margin:0 0 20px;
+  max-width:760px;
+  line-height:1.75;
+  color:rgba(255,255,255,.92);
+}
+
+@media (max-width:1100px){
+  .contactHeroInner,
+  .contactInfoGrid{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media (max-width:760px){
+  .contactHeroInner,
+  .contactInfoGrid{
+    grid-template-columns:1fr;
+  }
+
+  .contactHeroBand,
+  .contactInfoSection,
+  .contactMapSection,
+  .contactFinalCTA{
+    padding-left:16px;
+    padding-right:16px;
+  }
+
+  .contactMapWrap,
+  .contactMapWrap iframe{
+    min-height:300px;
+    height:300px;
+  }
+
+  .contactHeroCard,
+  .contactFinalBox{
+    padding:24px 20px;
+  }
+}
   </style>
 </head>
 <body>
@@ -568,10 +2568,10 @@
     <div class="container">
       <div class="grid2">
         <div>
-  <span class="kicker">STEAM ONE Platform</span>
-  <h1 class="h1">Professional online courses and teacher certifications for modern digital classrooms.</h1>
-  <p class="sub">A professional learning platform for teachers and facilitators, designed to build practical classroom skills through structured certification tracks, technology integration, and verified professional growth aligned with today’s education standards.</p>
-</div>
+          <span class="kicker">STEAM ONE Platform</span>
+          <h1 class="h1">Professional online courses and teacher certifications for modern digital classrooms.</h1>
+          <p class="sub">A professional learning platform for teachers and facilitators, designed to build practical classroom skills through structured certification tracks, technology integration, and verified professional growth aligned with today’s education standards.</p>
+        </div>
 
         <aside class="heroCard" aria-label="Quick actions">
           <h3>Quick start</h3>
@@ -591,109 +2591,193 @@
     </div>
   </section>
 
- <section class="partners">
-  <div class="container">
-    <div class="partnersRow">
-      <div class="logos" aria-label="Standards logos">
-        <a class="logoLink logoBox" href="https://www.microsoft.com/en-us/education" target="_blank" rel="noopener noreferrer" aria-label="Visit Microsoft Education website">
-          <img src="images/micro2026.png" alt="Microsoft Logo" class="plainLogo">
-          <span class="logoLine">Microsoft Education</span>
-        </a>
+  <section class="partners">
+    <div class="container">
+      <div class="partnersRow">
+        <div class="logos" aria-label="Standards logos">
+          <a class="logoLink logoBox" href="https://www.microsoft.com/en-us/education" target="_blank" rel="noopener noreferrer" aria-label="Visit Microsoft Education website">
+            <img src="images/micro2026.png" alt="Microsoft Logo" class="plainLogo">
+            <span class="logoLine">Microsoft Education</span>
+          </a>
 
-        <a class="logoLink logoBox" href="https://iste.org/" target="_blank" rel="noopener noreferrer" aria-label="Visit ISTE website">
-          <img src="images/iste2026.png" alt="ISTE Logo" class="plainLogo">
-          <span class="logoLine">ISTE Standards</span>
-        </a>
+          <a class="logoLink logoBox" href="https://iste.org/" target="_blank" rel="noopener noreferrer" aria-label="Visit ISTE website">
+            <img src="images/iste2026.png" alt="ISTE Logo" class="plainLogo">
+            <span class="logoLine">ISTE Standards</span>
+          </a>
 
-        <a class="logoLink logoBox" href="https://www.unesco.org/en/digital-competencies-skills/ict-cft" target="_blank" rel="noopener noreferrer" aria-label="Visit UNESCO ICT CFT website">
-          <img src="images/unesco2026.png" alt="UNESCO ICT CFT Logo" class="plainLogo">
-          <span class="logoLine">UNESCO ICT CFT</span>
-        </a>
+          <a class="logoLink logoBox" href="https://www.unesco.org/en/digital-competencies-skills/ict-cft" target="_blank" rel="noopener noreferrer" aria-label="Visit UNESCO ICT CFT website">
+            <img src="images/unesco2026.png" alt="UNESCO ICT CFT Logo" class="plainLogo">
+            <span class="logoLine">UNESCO ICT CFT</span>
+          </a>
 
-        <a class="logoLink logoBox" href="https://www.oecd.org/en/about/programmes/pisa.html" target="_blank" rel="noopener noreferrer" aria-label="Visit OECD PISA website">
-          <img src="images/pisa2026.png" alt="PISA Logo" class="plainLogo">
-          <span class="logoLine">OECD PISA</span>
-        </a>
+          <a class="logoLink logoBox" href="https://www.oecd.org/en/about/programmes/pisa.html" target="_blank" rel="noopener noreferrer" aria-label="Visit OECD PISA website">
+            <img src="images/pisa2026.png" alt="PISA Logo" class="plainLogo">
+            <span class="logoLine">OECD PISA</span>
+          </a>
 
-        <a class="logoLink logoBox" href="https://trcn.gov.ng/" target="_blank" rel="noopener noreferrer" aria-label="Visit TRCN website">
-          <img src="images/trcn2026.png" alt="TRCN Logo" class="plainLogo">
-          <span class="logoLine">TRCN Nigeria</span>
-        </a>
+          <a class="logoLink logoBox" href="https://trcn.gov.ng/" target="_blank" rel="noopener noreferrer" aria-label="Visit TRCN website">
+            <img src="images/trcn2026.png" alt="TRCN Logo" class="plainLogo">
+            <span class="logoLine">TRCN Nigeria</span>
+          </a>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <section class="section imageShowcaseSection">
-  <div class="container">
-    <h2 class="h2">Education standards and classroom excellence</h2>
-    <p class="lead">
-      Explore four professional education areas that support digital transformation, teaching quality, teacher competency, and international learning impact.
-    </p>
+    <div class="container">
+      <h2 class="h2">Education standards and classroom excellence</h2>
+      <p class="lead">
+        Explore four professional education areas that support digital transformation, teaching quality, teacher competency, and international learning impact.
+      </p>
 
-    <div class="imageShowcaseGrid fourInLine">
-      <article class="imageCard">
-        <a class="imageLink" href="https://www.microsoft.com/en-us/education" target="_blank" rel="noopener noreferrer" aria-label="Open Microsoft Education website">
-          <img src="images/microsoft.png" alt="Microsoft Education classroom">
-        </a>
-        <div class="imageCardBody">
-          <h4>Microsoft Education</h4>
-          <p>
-            Microsoft Education provides professional teaching and digital learning support for modern classrooms by helping educators combine strong pedagogy with powerful technology tools.
-          </p>
-        </div>
-      </article>
+      <div class="imageShowcaseGrid fourInLine">
+        <article class="imageCard">
+          <a class="imageLink" href="https://www.microsoft.com/en-us/education" target="_blank" rel="noopener noreferrer" aria-label="Open Microsoft Education website">
+            <img src="images/microsoft.png" alt="Microsoft Education classroom">
+          </a>
+          <div class="imageCardBody">
+            <h4>Microsoft Education</h4>
+            <p>
+              Microsoft Education provides professional teaching and digital learning support for modern classrooms by helping educators combine strong pedagogy with powerful technology tools.
+            </p>
+          </div>
+        </article>
 
-      <article class="imageCard">
-        <a class="imageLink" href="https://iste.org/standards" target="_blank" rel="noopener noreferrer" aria-label="Open ISTE Standards website">
-          <img src="images/iste.png" alt="ISTE Education training">
-        </a>
-        <div class="imageCardBody">
-          <h4>ISTE Education</h4>
-          <p>
-            ISTE Education promotes standards-based digital teaching practice for educators and facilitators who want to use technology in ways that truly improve learning.
-          </p>
-        </div>
-      </article>
+        <article class="imageCard">
+          <a class="imageLink" href="https://iste.org/standards" target="_blank" rel="noopener noreferrer" aria-label="Open ISTE Standards website">
+            <img src="images/iste.png" alt="ISTE Education training">
+          </a>
+          <div class="imageCardBody">
+            <h4>ISTE Education</h4>
+            <p>
+              ISTE Education promotes standards-based digital teaching practice for educators and facilitators who want to use technology in ways that truly improve learning.
+            </p>
+          </div>
+        </article>
 
-      <article class="imageCard">
-        <a class="imageLink" href="https://www.unesco.org/en/digital-competencies-skills/ict-cft" target="_blank" rel="noopener noreferrer" aria-label="Open UNESCO ICT CFT website">
-          <img src="images/unesco.png" alt="UNESCO ICT CFT education program">
-        </a>
-        <div class="imageCardBody">
-          <h4>UNESCO ICT CFT</h4>
-          <p>
-            UNESCO ICT CFT, which stands for UNESCO Information and Communication Technology Competency Framework for Teachers, supports teacher competency development through structured ICT integration.
-          </p>
-        </div>
-      </article>
+        <article class="imageCard">
+          <a class="imageLink" href="https://www.unesco.org/en/digital-competencies-skills/ict-cft" target="_blank" rel="noopener noreferrer" aria-label="Open UNESCO ICT CFT website">
+            <img src="images/unesco.png" alt="UNESCO ICT CFT education program">
+          </a>
+          <div class="imageCardBody">
+            <h4>UNESCO ICT CFT</h4>
+            <p>
+              UNESCO ICT CFT, which stands for UNESCO Information and Communication Technology Competency Framework for Teachers, supports teacher competency development through structured ICT integration.
+            </p>
+          </div>
+        </article>
       
-       <article class="imageCard">
-  <a class="imageLink" href="https://trcn.gov.ng/" target="_blank" rel="noopener noreferrer" aria-label="Open TRCN website">
-    <img src="images/trcn.png" alt="TRCN Nigeria teacher registration and professional standards">
-  </a>
-  <div class="imageCardBody">
-    <h4>TRCN Nigeria</h4>
-    <p>
-      TRCN, the Teachers Registration Council of Nigeria, supports teacher professionalism, registration, certification, and licensing while promoting strong teaching standards and professional growth across the education sector.
-    </p>
-  </div>
-</article>
+        <article class="imageCard">
+          <a class="imageLink" href="https://trcn.gov.ng/" target="_blank" rel="noopener noreferrer" aria-label="Open TRCN website">
+            <img src="images/trcn.png" alt="TRCN Nigeria teacher registration and professional standards">
+          </a>
+          <div class="imageCardBody">
+            <h4>TRCN Nigeria</h4>
+            <p>
+              TRCN, the Teachers Registration Council of Nigeria, supports teacher professionalism, registration, certification, and licensing while promoting strong teaching standards and professional growth across the education sector.
+            </p>
+          </div>
+        </article>
 
-      <article class="imageCard">
-        <a class="imageLink" href="https://www.oecd.org/en/about/programmes/pisa.html" target="_blank" rel="noopener noreferrer" aria-label="Open OECD PISA website">
-          <img src="images/pisa.png" alt="PISA education excellence">
-        </a>
-        <div class="imageCardBody">
-          <h4>PISA Education</h4>
-          <p>
-            PISA Education represents international classroom quality, assessment readiness, and learner impact by focusing on how well students can apply knowledge in practical and real-life situations.
-          </p>
-        </div>
-      </article>
+        <article class="imageCard">
+          <a class="imageLink" href="https://www.oecd.org/en/about/programmes/pisa.html" target="_blank" rel="noopener noreferrer" aria-label="Open OECD PISA website">
+            <img src="images/pisa.png" alt="PISA education excellence">
+          </a>
+          <div class="imageCardBody">
+            <h4>PISA Education</h4>
+            <p>
+              PISA Education represents international classroom quality, assessment readiness, and learner impact by focusing on how well students can apply knowledge in practical and real-life situations.
+            </p>
+          </div>
+        </article>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <!-- OUR TEAM SECTION ADDED ONLY -->
+  <section class="section">
+    <div class="container">
+      <h2 class="h2">Our Team — STEAM Teachers Training Platform</h2>
+      <p class="lead">
+        STEAM Teachers Training Team has been working together with TRCN and other African higher education teams to support teacher development, professional collaboration, and stronger classroom impact across the education sector.
+      </p>
+
+      <div class="teamSlider" aria-label="Our team gallery">
+        <article class="teamSlideCard">
+          <a class="teamSlideImage" href="https://trcn.gov.ng/" target="_blank" rel="noopener noreferrer" aria-label="Open TRCN official website">
+            <img src="images/steam-a.jpeg" alt="Former DG TRCN with STEAM Teachers Training team">
+          </a>
+          <div class="teamSlideBody">
+            <h4>Former DG, TRCN</h4>
+            <p>
+              Professional engagement and educational collaboration with leadership connected to teacher development, standards, and national education growth.
+            </p>
+          </div>
+        </article>
+
+        <article class="teamSlideCard">
+          <a class="teamSlideImage" href="https://trcn.gov.ng/" target="_blank" rel="noopener noreferrer" aria-label="Open TRCN official website">
+            <img src="images/steam-b.jpeg" alt="STEAM Teachers Training Platform team meeting">
+          </a>
+          <div class="teamSlideBody">
+            <h4>STEAM Training Team</h4>
+            <p>
+              Our team continues to build teacher-focused learning opportunities that support practical digital teaching and certification growth.
+            </p>
+          </div>
+        </article>
+
+        <article class="teamSlideCard">
+          <a class="teamSlideImage" href="https://trcn.gov.ng/" target="_blank" rel="noopener noreferrer" aria-label="Open TRCN official website">
+            <img src="images/steam-c.jpeg" alt="STEAM team with African higher education partners">
+          </a>
+          <div class="teamSlideBody">
+            <h4>African Higher Education Collaboration</h4>
+            <p>
+              Working together with other African higher education teams to promote innovation, quality teaching, and professional excellence.
+            </p>
+          </div>
+        </article>
+
+        <article class="teamSlideCard">
+          <a class="teamSlideImage" href="https://trcn.gov.ng/" target="_blank" rel="noopener noreferrer" aria-label="Open TRCN official website">
+            <img src="images/steam-d.jpeg" alt="Teacher training partnership session">
+          </a>
+          <div class="teamSlideBody">
+            <h4>Teacher Development Partnership</h4>
+            <p>
+              Shared teacher training sessions designed to strengthen classroom practice, leadership, and modern educational delivery.
+            </p>
+          </div>
+        </article>
+
+        <article class="teamSlideCard">
+          <a class="teamSlideImage" href="https://trcn.gov.ng/" target="_blank" rel="noopener noreferrer" aria-label="Open TRCN official website">
+            <img src="images/steam-f.jpeg" alt="Professional education team collaboration">
+          </a>
+          <div class="teamSlideBody">
+            <h4>Professional Education Team</h4>
+            <p>
+              Shared teacher training sessions designed to strengthen classroom practice, leadership, and modern educational delivery.
+            </p>
+          </div>
+        </article>
+
+        <article class="teamSlideCard">
+          <a class="teamSlideImage" href="https://trcn.gov.ng/" target="_blank" rel="noopener noreferrer" aria-label="Open TRCN official website">
+            <img src="images/steam-g.jpeg" alt="Professional education team collaboration">
+          </a>
+          <div class="teamSlideBody">
+            <h4>Professional Education Team</h4>
+            <p>
+              A committed team working across professional networks to support teacher certification, educational impact, and sustainable growth.
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
 
   <section class="section">
     <div class="container">
@@ -792,109 +2876,1257 @@
         </article>
       </div>
 
-      <div class="section" style="padding:20px 0 0">
-        <div class="ctaBand">
+     <div class="section" style="padding:20px 0 0">
+  <div class="ctaBand">
+    <div>
+      <h3>Start learning today</h3>
+      <p>Enroll in a plan, complete modules, and unlock your dashboard experience (demo-ready).</p>
+    </div>
+    <div class="ctaBtns">
+      <a class="btn btnWhite" href="#page=joinfree" data-page-link="joinfree">Teacher Sign Up</a>
+      <a class="btn btnGlass" href="#page=courses" data-page-link="courses">Browse courses</a>
+    </div>
+  </div>
+
+  <!-- Developer / Partner Images Section -->
+  <div class="developerShowcaseBlock">
+    <div class="developerShowcaseHead">
+      <h3>Software Development and Higher Education Collaboration</h3>
+      <p>
+        Our STEAM Teachers Training Platform continues to grow through practical software development,
+        digital learning collaboration, and strong academic partnerships across African higher education communities.
+      </p>
+    </div>
+
+    <!-- First Line -->
+    <div class="developerSliderRow" aria-label="Top developer and partner images slider">
+      <article class="developerImageCard">
+        <a class="developerImageLink" href="https://www.byui.edu/computer-science-engineering/" target="_blank" rel="noopener noreferrer" aria-label="Open BYU-Idaho Computer Science and Engineering Department">
+          <img src="images/sch-1.png" alt="Brigham Young University Idaho Software Development Department">
+        </a>
+        <div class="developerImageBody">
+          <h4>BYU–Idaho Software Development</h4>
+          <p>Professional software development learning and computing innovation for future-ready digital solutions.</p>
+        </div>
+      </article>
+
+      <article class="developerImageCard">
+        <a class="developerImageLink" href="https://www.unilag.edu.ng/" target="_blank" rel="noopener noreferrer" aria-label="Open University of Lagos website">
+          <img src="images/sch-2.png" alt="University of Lagos academic collaboration">
+        </a>
+        <div class="developerImageBody">
+          <h4>University of Lagos</h4>
+          <p>Academic collaboration that supports innovation, digital transformation, and educational excellence.</p>
+        </div>
+      </article>
+
+      <article class="developerImageCard">
+        <a class="developerImageLink" href="https://www.ui.edu.ng/" target="_blank" rel="noopener noreferrer" aria-label="Open University of Ibadan website">
+          <img src="images/sch-3.png" alt="University of Ibadan higher education partnership">
+        </a>
+        <div class="developerImageBody">
+          <h4>University of Ibadan</h4>
+          <p>Supporting stronger professional learning and higher education partnership through shared innovation.</p>
+        </div>
+      </article>
+
+      <article class="developerImageCard">
+        <a class="developerImageLink" href="https://www.covenantuniversity.edu.ng/" target="_blank" rel="noopener noreferrer" aria-label="Open Covenant University website">
+          <img src="images/sch-4.png" alt="Covenant University education technology collaboration">
+        </a>
+        <div class="developerImageBody">
+          <h4>Covenant University</h4>
+          <p>Promoting technology-driven education, digital research, and impactful professional development.</p>
+        </div>
+      </article>
+
+      <article class="developerImageCard">
+        <a class="developerImageLink" href="https://oauife.edu.ng/" target="_blank" rel="noopener noreferrer" aria-label="Open Obafemi Awolowo University website">
+          <img src="images/sch-5.png" alt="Obafemi Awolowo University collaboration team">
+        </a>
+        <div class="developerImageBody">
+          <h4>Obafemi Awolowo University</h4>
+          <p>Strengthening digital education and academic collaboration for sustainable teacher development.</p>
+        </div>
+      </article>
+
+      <article class="developerImageCard">
+        <a class="developerImageLink" href="https://abu.edu.ng/" target="_blank" rel="noopener noreferrer" aria-label="Open Ahmadu Bello University website">
+          <img src="images/sch-6.png" alt="Ahmadu Bello University software and education partnership">
+        </a>
+        <div class="developerImageBody">
+          <h4>Ahmadu Bello University</h4>
+          <p>Building stronger digital learning systems through practical education and software collaboration.</p>
+        </div>
+      </article>
+    </div>
+
+    <!-- Second Line -->
+    <div class="developerSliderRow" aria-label="Bottom developer and partner images slider">
+      <article class="developerImageCard">
+        <a class="developerImageLink" href="https://www.ug.edu.gh/" target="_blank" rel="noopener noreferrer" aria-label="Open University of Ghana website">
+          <img src="images/sch-7.png" alt="University of Ghana higher education partnership">
+        </a>
+        <div class="developerImageBody">
+          <h4>University of Ghana</h4>
+          <p>Cross-border academic partnership supporting digital teaching, research, and professional growth.</p>
+        </div>
+      </article>
+
+      <article class="developerImageCard">
+        <a class="developerImageLink" href="https://www.uonbi.ac.ke/" target="_blank" rel="noopener noreferrer" aria-label="Open University of Nairobi website">
+          <img src="images/sch-8.png" alt="University of Nairobi education innovation team">
+        </a>
+        <div class="developerImageBody">
+          <h4>University of Nairobi</h4>
+          <p>Encouraging innovation-led learning and stronger educational collaboration across Africa.</p>
+        </div>
+      </article>
+
+      <article class="developerImageCard">
+        <a class="developerImageLink" href="https://www.mak.ac.ug/" target="_blank" rel="noopener noreferrer" aria-label="Open Makerere University website">
+          <img src="images/sch-9.png" alt="Makerere University software learning collaboration">
+        </a>
+        <div class="developerImageBody">
+          <h4>Makerere University</h4>
+          <p>Supporting practical software learning, digital teaching capacity, and institutional collaboration.</p>
+        </div>
+      </article>
+
+      <article class="developerImageCard">
+        <a class="developerImageLink" href="https://ur.ac.rw/" target="_blank" rel="noopener noreferrer" aria-label="Open University of Rwanda website">
+          <img src="images/sch-10.png" alt="University of Rwanda education technology collaboration">
+        </a>
+        <div class="developerImageBody">
+          <h4>University of Rwanda</h4>
+          <p>Driving educational innovation and stronger learning impact through partnership and technology.</p>
+        </div>
+      </article>
+
+      <article class="developerImageCard">
+        <a class="developerImageLink" href="https://www.up.ac.za/" target="_blank" rel="noopener noreferrer" aria-label="Open University of Pretoria website">
+          <img src="images/sch-11.png" alt="University of Pretoria academic partnership">
+        </a>
+        <div class="developerImageBody">
+          <h4>University of Pretoria</h4>
+          <p>Enhancing higher education collaboration with a focus on digital growth and academic excellence.</p>
+        </div>
+      </article>
+
+      <article class="developerImageCard">
+        <a class="developerImageLink" href="https://www.sun.ac.za/" target="_blank" rel="noopener noreferrer" aria-label="Open Stellenbosch University website">
+          <img src="images/sch-12.png" alt="Stellenbosch University digital education collaboration">
+        </a>
+        <div class="developerImageBody">
+          <h4>Stellenbosch University</h4>
+          <p>Advancing professional learning, software innovation, and educational transformation.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>
+ </section>
+    </section>
+
+   <section class="page" id="page-courses">
+  <section class="section">
+    <div class="container">
+      <h2 class="h2">Popular certification programs</h2>
+      <p class="lead">Choose a track. Prices are demo values in NGN (you can replace later).</p>
+      <div class="tabs" role="tablist" aria-label="Course filters">
+        <button class="tab active" data-filter="all">All</button>
+        <button class="tab" data-filter="steam">STEAM Tracks</button>
+        <button class="tab" data-filter="tools">Digital Tools</button>
+        <button class="tab" data-filter="ai">AI & Advanced</button>
+      </div>
+      <div class="courseGrid" id="courseGrid"></div>
+    </div>
+  </section>
+
+  <!-- ADDED SECTION 1 -->
+  <section class="coursesHeroBand">
+    <div class="coursesHeroInner">
+      <div class="coursesHeroText">
+        <span class="coursesMiniTag">Professional Teacher Growth</span>
+        <h2>Build classroom confidence through structured certification learning</h2>
+        <p>
+          Explore professional teacher development programs designed to improve digital teaching,
+          classroom delivery, lesson design, assessment practice, and modern educational leadership.
+        </p>
+        <div class="coursesHeroActions">
+          <a class="btn btnPrimary" href="#page=joinfree" data-page-link="joinfree">Start Learning</a>
+          <a class="btn btnGhost" href="#page=login" data-page-link="login">Login</a>
+        </div>
+      </div>
+      <div class="coursesHeroImage">
+        <img src="images/courses-hero.jpg" alt="Teachers learning in a digital classroom">
+      </div>
+    </div>
+  </section>
+
+  <!-- ADDED SECTION 2 -->
+  <section class="coursesFeatureStrip">
+    <article class="coursesFeatureCard">
+      <div class="coursesFeatureIcon">📘</div>
+      <h3>Foundation Learning</h3>
+      <p>Start with introductory certification tracks that build confidence in modern classroom teaching.</p>
+    </article>
+
+    <article class="coursesFeatureCard">
+      <div class="coursesFeatureIcon">💻</div>
+      <h3>Digital Tools Mastery</h3>
+      <p>Learn practical classroom tools for collaboration, content delivery, and learner engagement.</p>
+    </article>
+
+    <article class="coursesFeatureCard">
+      <div class="coursesFeatureIcon">🤖</div>
+      <h3>AI Teaching Practice</h3>
+      <p>Understand how AI can support teaching quality, planning, creativity, and assessment workflows.</p>
+    </article>
+
+    <article class="coursesFeatureCard">
+      <div class="coursesFeatureIcon">🏅</div>
+      <h3>Professional Certification</h3>
+      <p>Complete structured learning pathways that support recognition and career advancement.</p>
+    </article>
+  </section>
+
+  <!-- ADDED SECTION 3 -->
+  <section class="coursesPathSection">
+    <div class="coursesPathHeader">
+      <span class="coursesMiniTag">Certification Pathway</span>
+      <h2>Three clear levels for teacher development</h2>
+      <p>
+        Progress from beginner to expert level with a pathway that supports teacher growth,
+        digital transformation, and stronger classroom impact.
+      </p>
+    </div>
+
+    <div class="coursesPathGrid">
+      <article class="coursesPathCard">
+        <span class="coursesPathBadge">STEAM ONE</span>
+        <h3>Introductory Level</h3>
+        <p>
+          A beginner-friendly pathway for teachers who want to understand digital teaching,
+          structured pedagogy, and practical classroom technology use.
+        </p>
+        <a class="pathLink" href="#page=joinfree" data-page-link="joinfree">Enroll as Teacher</a>
+      </article>
+
+      <article class="coursesPathCard">
+        <span class="coursesPathBadge">STEAM TWO</span>
+        <h3>Technology Integration Level</h3>
+        <p>
+          Focused on digital classroom tools, teaching strategy, lesson improvement,
+          and stronger learner engagement through guided professional development.
+        </p>
+        <a class="pathLink" href="#page=joinfree" data-page-link="joinfree">Choose This Plan</a>
+      </article>
+
+      <article class="coursesPathCard">
+        <span class="coursesPathBadge">STEAM THREE</span>
+        <h3>Advanced and AI-Integrated Expert Level</h3>
+        <p>
+          An advanced pathway for educators who want to integrate AI, analytics,
+          and expert teaching workflows into modern education practice.
+        </p>
+        <a class="pathLink" href="#page=joinfree" data-page-link="joinfree">Start Expert Track</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- ADDED SECTION 4 -->
+  <section class="coursesWhySection">
+    <div class="coursesWhyText">
+      <span class="coursesMiniTag">Why Learn Here</span>
+      <h2>Designed for teachers, facilitators, and future-ready classrooms</h2>
+      <p>
+        Our course experience is built to support practical learning, flexible access,
+        and role-based educational growth. Each course is designed to help users move
+        from training into real classroom application.
+      </p>
+
+      <ul class="coursesWhyList">
+        <li>Structured certification tracks for teacher growth</li>
+        <li>Professional design that supports modern learning</li>
+        <li>Marketplace and dashboard readiness after progress</li>
+        <li>Flexible learning flow for teachers and facilitators</li>
+      </ul>
+    </div>
+
+    <div class="coursesWhyImage">
+      <img src="images/courses-why.jpg" alt="Professional teacher development learning environment">
+    </div>
+  </section>
+
+  <!-- ADDED SECTION 5 -->
+  <section class="coursesCTASection">
+    <div class="coursesCTABox">
+      <span class="coursesMiniTag">Start Your Journey</span>
+      <h2>Ready to grow your teaching career?</h2>
+      <p>
+        Join the STEAM ONE Platform to access certification programs, digital teaching tools,
+        facilitator support, and a professional learning experience built for classroom impact.
+      </p>
+      <div class="coursesCTAActions">
+        <a class="btn btnPrimary" href="#page=joinfree" data-page-link="joinfree">Join for Free</a>
+        <a class="btn btnOutline" href="#page=contact" data-page-link="contact">Contact Us</a>
+      </div>
+    </div>
+  </section>
+</section>
+
+  <section class="page" id="page-marketplace">
+  <section class="section">
+    <div class="container">
+      <h2 class="h2">Certified Teachers Marketplace</h2>
+      <p class="lead">Find verified teachers and contact them with a shareable request link.</p>
+      <div class="cardGrid">
+        <article class="card"><div class="icon">✅</div><h4>Verified Profiles</h4><p>Only certified teachers appear here in the final system (demo shows sample profiles).</p></article>
+        <article class="card"><div class="icon">📩</div><h4>Contact Teacher</h4><p>One click generates a request link and opens email/WhatsApp for easy sharing.</p></article>
+        <article class="card"><div class="icon">🧾</div><h4>Admin-mediated Requests</h4><p>Requests can be routed to admin for review in your backend version.</p></article>
+      </div>
+      <div class="section" style="padding:18px 0 0">
+        <div class="ctaBand" style="background:linear-gradient(120deg,#0b1220,#111827)">
           <div>
-            <h3>Start learning today</h3>
-            <p>Enroll in a plan, complete modules, and unlock your dashboard experience (demo-ready).</p>
+            <h3>Need a teacher for your school?</h3>
+            <p>Send a request link to a teacher or to the admin team for follow-up.</p>
           </div>
           <div class="ctaBtns">
-            <a class="btn btnWhite" href="#page=joinfree" data-page-link="joinfree">Teacher Sign Up</a>
-            <a class="btn btnGlass" href="#page=courses" data-page-link="courses">Browse courses</a>
+            <a class="btn btnWhite" href="#page=contact" data-page-link="contact">Contact a Teacher</a>
+            <a class="btn btnGlass" href="#page=contact" data-page-link="contact">Contact Admin</a>
           </div>
         </div>
       </div>
     </div>
   </section>
-    </section>
 
-    <section class="page" id="page-courses">
-      <section class="section">
-        <div class="container">
-          <h2 class="h2">Popular certification programs</h2>
-          <p class="lead">Choose a track. Prices are demo values in NGN (you can replace later).</p>
-          <div class="tabs" role="tablist" aria-label="Course filters">
-            <button class="tab active" data-filter="all">All</button>
-            <button class="tab" data-filter="steam">STEAM Tracks</button>
-            <button class="tab" data-filter="tools">Digital Tools</button>
-            <button class="tab" data-filter="ai">AI & Advanced</button>
-          </div>
-          <div class="courseGrid" id="courseGrid"></div>
+  <!-- ADDED SECTION 1 -->
+  <section class="marketHeroBand">
+    <div class="marketHeroInner">
+      <div class="marketHeroText">
+        <span class="marketMiniTag">Verified Teaching Network</span>
+        <h2>Connect with certified educators for schools, training, and classroom support</h2>
+        <p>
+          The STEAM ONE Marketplace helps institutions, parents, and education partners
+          discover qualified teachers with verified profiles, professional skills, and
+          strong digital teaching readiness.
+        </p>
+        <div class="marketHeroActions">
+          <a class="btn btnPrimary" href="#page=contact" data-page-link="contact">Request a Teacher</a>
+          <a class="btn btnGhost" href="#page=joinfree" data-page-link="joinfree">Join as Teacher</a>
         </div>
-      </section>
-    </section>
+      </div>
+      <div class="marketHeroImage">
+        <img src="images/marketplace-hero.jpg" alt="Certified teachers marketplace professionals">
+      </div>
+    </div>
+  </section>
 
-    <section class="page" id="page-marketplace">
-      <section class="section">
-        <div class="container">
-          <h2 class="h2">Certified Teachers Marketplace</h2>
-          <p class="lead">Find verified teachers and contact them with a shareable request link.</p>
-          <div class="cardGrid">
-            <article class="card"><div class="icon">✅</div><h4>Verified Profiles</h4><p>Only certified teachers appear here in the final system (demo shows sample profiles).</p></article>
-            <article class="card"><div class="icon">📩</div><h4>Contact Teacher</h4><p>One click generates a request link and opens email/WhatsApp for easy sharing.</p></article>
-            <article class="card"><div class="icon">🧾</div><h4>Admin-mediated Requests</h4><p>Requests can be routed to admin for review in your backend version.</p></article>
-          </div>
-          <div class="section" style="padding:18px 0 0">
-            <div class="ctaBand" style="background:linear-gradient(120deg,#0b1220,#111827)">
-              <div>
-                <h3>Need a teacher for your school?</h3>
-                <p>Send a request link to a teacher or to the admin team for follow-up.</p>
-              </div>
-              <div class="ctaBtns">
-                <a class="btn btnWhite" href="#page=contact" data-page-link="contact">Contact a Teacher</a>
-                <a class="btn btnGlass" href="#page=contact" data-page-link="contact">Contact Admin</a>
-              </div>
-            </div>
-          </div>
+  <!-- ADDED SECTION 2 -->
+  <section class="marketStatsStrip">
+    <article class="marketStatCard">
+      <h3>Verified Teachers</h3>
+      <strong>100+</strong>
+      <p>Professional teacher profiles ready for visibility and engagement.</p>
+    </article>
+
+    <article class="marketStatCard">
+      <h3>Schools Supported</h3>
+      <strong>50+</strong>
+      <p>Institutions can connect with qualified teachers for classroom impact.</p>
+    </article>
+
+    <article class="marketStatCard">
+      <h3>Request Links</h3>
+      <strong>Fast</strong>
+      <p>Simple contact flow through email, WhatsApp, or admin support channels.</p>
+    </article>
+
+    <article class="marketStatCard">
+      <h3>Profile Quality</h3>
+      <strong>Trusted</strong>
+      <p>Professional presentation built for recruitment and teacher discovery.</p>
+    </article>
+  </section>
+
+  <!-- ADDED SECTION 3 -->
+  <section class="marketBenefitsSection">
+    <div class="marketBenefitsHeader">
+      <span class="marketMiniTag">Marketplace Benefits</span>
+      <h2>Why schools and education partners use this marketplace</h2>
+      <p>
+        This section is designed to help users understand the value of a structured,
+        trusted, and education-focused teacher marketplace.
+      </p>
+    </div>
+
+    <div class="marketBenefitsGrid">
+      <article class="marketBenefitCard">
+        <div class="marketBenefitIcon">🎓</div>
+        <h4>Qualified Teacher Discovery</h4>
+        <p>Find teachers with clear professional presentation, certification visibility, and classroom strengths.</p>
+      </article>
+
+      <article class="marketBenefitCard">
+        <div class="marketBenefitIcon">🏫</div>
+        <h4>School Recruitment Support</h4>
+        <p>Schools can identify teachers for immediate opportunities, interviews, and long-term staffing needs.</p>
+      </article>
+
+      <article class="marketBenefitCard">
+        <div class="marketBenefitIcon">🌍</div>
+        <h4>Wider Education Reach</h4>
+        <p>Promote collaboration across local and international education communities through trusted profiles.</p>
+      </article>
+
+      <article class="marketBenefitCard">
+        <div class="marketBenefitIcon">📱</div>
+        <h4>Easy Contact Experience</h4>
+        <p>Generate direct contact requests through familiar communication channels for faster follow-up.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ADDED SECTION 4 -->
+  <section class="marketProfilesSection">
+    <div class="marketProfilesHeader">
+      <span class="marketMiniTag">Featured Marketplace Profiles</span>
+      <h2>Sample professional teacher categories</h2>
+    </div>
+
+    <div class="marketProfilesGrid">
+      <article class="marketProfileCard">
+        <img src="images/market-teacher-1.jpg" alt="STEM classroom teacher profile">
+        <div class="marketProfileBody">
+          <h4>STEM Classroom Teacher</h4>
+          <p>Supports science, technology, and practical digital learning in modern classrooms.</p>
+          <a href="#page=contact" data-page-link="contact">Contact Category</a>
         </div>
-      </section>
-    </section>
+      </article>
+
+      <article class="marketProfileCard">
+        <img src="images/market-teacher-2.jpg" alt="Digital literacy facilitator profile">
+        <div class="marketProfileBody">
+          <h4>Digital Literacy Facilitator</h4>
+          <p>Helps learners and schools build digital confidence and classroom technology readiness.</p>
+          <a href="#page=contact" data-page-link="contact">Request Facilitator</a>
+        </div>
+      </article>
+
+      <article class="marketProfileCard">
+        <img src="images/market-teacher-3.jpg" alt="AI and innovation teacher profile">
+        <div class="marketProfileBody">
+          <h4>AI and Innovation Teacher</h4>
+          <p>Focused on advanced learning strategy, AI-supported teaching, and innovation practice.</p>
+          <a href="#page=contact" data-page-link="contact">Send Request</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ADDED SECTION 5 -->
+  <section class="marketProcessSection">
+    <div class="marketProcessText">
+      <span class="marketMiniTag">How It Works</span>
+      <h2>A simple process for finding and contacting teachers</h2>
+      <p>
+        The marketplace flow is made to be easy for visitors, schools, and recruitment teams.
+        Browse, choose, send a request, and continue the conversation through the right channel.
+      </p>
+    </div>
+
+    <div class="marketProcessSteps">
+      <article class="marketStepCard">
+        <span>01</span>
+        <h4>Browse Profiles</h4>
+        <p>Explore teacher categories, specialties, and verified professional presentation.</p>
+      </article>
+      <article class="marketStepCard">
+        <span>02</span>
+        <h4>Choose a Teacher</h4>
+        <p>Select the profile or category that best matches your school or learning need.</p>
+      </article>
+      <article class="marketStepCard">
+        <span>03</span>
+        <h4>Send Request</h4>
+        <p>Use direct contact links or admin support to begin communication professionally.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ADDED SECTION 6 -->
+  <section class="marketTrustBand">
+    <div class="marketTrustInner">
+      <div>
+        <span class="marketMiniTag">Professional Trust</span>
+        <h2>Built to support teacher visibility, school confidence, and better education matching</h2>
+        <p>
+          The marketplace is positioned as a reliable environment where certified educators
+          and education stakeholders can connect with confidence and clarity.
+        </p>
+      </div>
+      <div class="marketTrustActions">
+        <a class="btn btnWhite" href="#page=about" data-page-link="about">Learn More</a>
+        <a class="btn btnGlass" href="#page=services" data-page-link="services">View Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADDED SECTION 7 -->
+  <section class="marketFinalCTA">
+    <div class="marketFinalBox">
+      <span class="marketMiniTag">Marketplace Access</span>
+      <h2>Ready to join the Certified Teachers Marketplace?</h2>
+      <p>
+        Sign up as a teacher to build your profile, or contact the platform team to request
+        a professional educator for your school, training program, or academic support project.
+      </p>
+      <div class="marketFinalActions">
+        <a class="btn btnPrimary" href="#page=joinfree" data-page-link="joinfree">Create Teacher Profile</a>
+        <a class="btn btnOutline" href="#page=contact" data-page-link="contact">Contact Platform Team</a>
+      </div>
+    </div>
+  </section>
+</section>
 
     <section class="page" id="page-services">
-      <section class="section">
-        <div class="container">
-          <h2 class="h2">A professional learning platform for teachers</h2>
-          <p class="lead">Structured certification tracks, marketplace-ready profiles, and classroom-first skill building—wrapped in a Coursera-style experience.</p>
-          <div class="cardGrid">
-            <article class="card"><div class="icon">🏅</div><h4>Certification Tracks</h4><p>STEAM ONE, TWO, THREE—progress from foundation to advanced AI-integrated teaching.</p></article>
-            <article class="card"><div class="icon">🧑‍🏫</div><h4>Verified Teacher Marketplace</h4><p>Publish profiles, accept contact requests, and connect with schools and recruiters.</p></article>
-            <article class="card"><div class="icon">📊</div><h4>Dashboard Experience</h4><p>Separate dashboards for Teachers, Facilitators, and Admin—role-based by design.</p></article>
-          </div>
-        </div>
-      </section>
-    </section>
+  <section class="section">
+    <div class="container">
+      <h2 class="h2">A professional learning platform for teachers</h2>
+      <p class="lead">Structured certification tracks, marketplace-ready profiles, and classroom-first skill building—wrapped in a Coursera-style experience.</p>
+      <div class="cardGrid">
+        <article class="card"><div class="icon">🏅</div><h4>Certification Tracks</h4><p>STEAM ONE, TWO, THREE—progress from foundation to advanced AI-integrated teaching.</p></article>
+        <article class="card"><div class="icon">🧑‍🏫</div><h4>Verified Teacher Marketplace</h4><p>Publish profiles, accept contact requests, and connect with schools and recruiters.</p></article>
+        <article class="card"><div class="icon">📊</div><h4>Dashboard Experience</h4><p>Separate dashboards for Teachers, Facilitators, and Admin—role-based by design.</p></article>
+      </div>
+    </div>
+  </section>
 
-    <section class="page" id="page-about">
-      <section class="section">
-        <div class="container">
-          <h2 class="h2">About STEAM ONE</h2>
-          <p class="lead">STEAM ONE Platform supports teachers and facilitators with professional development aligned to modern education standards. It is designed for Nigeria and global classrooms, with role-based dashboards and a certification marketplace.</p>
-          <div class="cardGrid">
-            <article class="card"><div class="icon">🌍</div><h4>Built for real classrooms</h4><p>Practical teaching strategies, lesson-ready tools, and measurable classroom outcomes.</p></article>
-            <article class="card"><div class="icon">🧠</div><h4>Standards-aligned</h4><p>Designed around ISTE, UNESCO ICT CFT, and other global education benchmarks.</p></article>
-            <article class="card"><div class="icon">🔒</div><h4>Role-based access</h4><p>Teachers, Facilitators, and Admin each see what they need—nothing more.</p></article>
-          </div>
+  <!-- ADDED SECTION 1 -->
+  <section class="servicesHeroBand">
+    <div class="servicesHeroInner">
+      <div class="servicesHeroText">
+        <span class="servicesMiniTag">Professional Services</span>
+        <h2>Education support services built for teachers, schools, and learning organizations</h2>
+        <p>
+          Our services are designed to strengthen teacher development, digital classroom delivery,
+          recruitment support, academic consulting, and professional education growth across modern learning environments.
+        </p>
+        <div class="servicesHeroActions">
+          <a class="btn btnPrimary" href="#page=contact" data-page-link="contact">Request a Service</a>
+          <a class="btn btnGhost" href="#page=about" data-page-link="about">Learn More</a>
         </div>
-      </section>
-    </section>
+      </div>
+      <div class="servicesHeroImage">
+        <img src="images/services-hero.jpg" alt="Professional education services and training support">
+      </div>
+    </div>
+  </section>
+
+  <!-- ADDED SECTION 2 -->
+  <section class="servicesHighlightsStrip">
+    <article class="servicesHighlightCard">
+      <div class="servicesHighlightIcon">🎓</div>
+      <h3>Teacher Training</h3>
+      <p>Professional development sessions designed for practical classroom growth and certification readiness.</p>
+    </article>
+
+    <article class="servicesHighlightCard">
+      <div class="servicesHighlightIcon">💻</div>
+      <h3>Digital Integration</h3>
+      <p>Support for using digital tools, platforms, and workflows in modern learning environments.</p>
+    </article>
+
+    <article class="servicesHighlightCard">
+      <div class="servicesHighlightIcon">🏫</div>
+      <h3>School Support</h3>
+      <p>Education services that help institutions improve teaching quality and professional classroom systems.</p>
+    </article>
+
+    <article class="servicesHighlightCard">
+      <div class="servicesHighlightIcon">📈</div>
+      <h3>Growth Strategy</h3>
+      <p>Guidance for teacher improvement, learning structure, and stronger educational outcomes.</p>
+    </article>
+  </section>
+
+  <!-- ADDED SECTION 3 -->
+  <section class="servicesOfferSection">
+    <div class="servicesOfferHeader">
+      <span class="servicesMiniTag">What We Offer</span>
+      <h2>Core services that match the STEAM ONE Platform vision</h2>
+      <p>
+        These services are structured to support institutions, facilitators, teachers, and
+        education stakeholders with practical and scalable solutions.
+      </p>
+    </div>
+
+    <div class="servicesOfferGrid">
+      <article class="servicesOfferCard">
+        <h4>Teacher Certification Guidance</h4>
+        <p>Support learners through certification pathways with clear academic and practical direction.</p>
+        <a href="#page=courses" data-page-link="courses">View Courses</a>
+      </article>
+
+      <article class="servicesOfferCard">
+        <h4>Facilitator Training Support</h4>
+        <p>Help facilitators strengthen session delivery, communication, and structured academic support.</p>
+        <a href="#page=login" data-page-link="login">Facilitator Access</a>
+      </article>
+
+      <article class="servicesOfferCard">
+        <h4>Teacher Recruitment Services</h4>
+        <p>Connect schools and institutions with qualified educators through the verified marketplace system.</p>
+        <a href="#page=marketplace" data-page-link="marketplace">Open Marketplace</a>
+      </article>
+
+      <article class="servicesOfferCard">
+        <h4>Digital Classroom Consulting</h4>
+        <p>Provide practical guidance for educational technology, teaching systems, and online delivery improvement.</p>
+        <a href="#page=contact" data-page-link="contact">Book Consultation</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- ADDED SECTION 4 -->
+  <section class="servicesExpertiseSection">
+    <div class="servicesExpertiseText">
+      <span class="servicesMiniTag">Professional Expertise</span>
+      <h2>Built around real education needs and classroom impact</h2>
+      <p>
+        Our service structure supports the realities of teaching, learning, school systems,
+        and digital transformation. Each service is designed to move beyond theory into practical educational use.
+      </p>
+      <ul class="servicesExpertiseList">
+        <li>Teacher-centered professional development</li>
+        <li>Institutional and school support solutions</li>
+        <li>Recruitment and verified profile visibility</li>
+        <li>Practical digital teaching and learning systems</li>
+      </ul>
+    </div>
+
+    <div class="servicesExpertiseImage">
+      <img src="images/services-expertise.jpg" alt="Education consulting and digital classroom support">
+    </div>
+  </section>
+
+  <!-- ADDED SECTION 5 -->
+  <section class="servicesProcessSection">
+    <div class="servicesProcessHeader">
+      <span class="servicesMiniTag">Service Process</span>
+      <h2>How our service flow works</h2>
+    </div>
+
+    <div class="servicesProcessGrid">
+      <article class="servicesProcessCard">
+        <span>01</span>
+        <h4>Identify the Need</h4>
+        <p>Choose the service area that matches your teacher, school, or platform support goal.</p>
+      </article>
+
+      <article class="servicesProcessCard">
+        <span>02</span>
+        <h4>Send a Request</h4>
+        <p>Reach out through the contact page to discuss the exact support or collaboration required.</p>
+      </article>
+
+      <article class="servicesProcessCard">
+        <span>03</span>
+        <h4>Receive Guidance</h4>
+        <p>Get structured service support, educational consultation, or platform-related follow-up.</p>
+      </article>
+
+      <article class="servicesProcessCard">
+        <span>04</span>
+        <h4>Implement and Grow</h4>
+        <p>Apply the support received to improve teaching, recruitment, systems, or educational outcomes.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ADDED SECTION 6 -->
+  <section class="servicesAudienceSection">
+    <div class="servicesAudienceHeader">
+      <span class="servicesMiniTag">Who We Serve</span>
+      <h2>Designed for different education stakeholders</h2>
+    </div>
+
+    <div class="servicesAudienceGrid">
+      <article class="servicesAudienceCard">
+        <div class="servicesAudienceIcon">🧑‍🏫</div>
+        <h4>Teachers</h4>
+        <p>Professional training, certification direction, and classroom advancement support.</p>
+      </article>
+
+      <article class="servicesAudienceCard">
+        <div class="servicesAudienceIcon">👨‍🏫</div>
+        <h4>Facilitators</h4>
+        <p>Structured learning support tools and better delivery systems for guided teaching.</p>
+      </article>
+
+      <article class="servicesAudienceCard">
+        <div class="servicesAudienceIcon">🏢</div>
+        <h4>Schools</h4>
+        <p>Recruitment support, digital learning guidance, and teacher development services.</p>
+      </article>
+
+      <article class="servicesAudienceCard">
+        <div class="servicesAudienceIcon">🌍</div>
+        <h4>Education Partners</h4>
+        <p>Collaboration opportunities, learning support, and academic service integration.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ADDED SECTION 7 -->
+  <section class="servicesTrustBand">
+    <div class="servicesTrustInner">
+      <div>
+        <span class="servicesMiniTag">Trusted Platform Services</span>
+        <h2>Professional support that aligns with your educational goals</h2>
+        <p>
+          Whether you need training, recruitment support, or consulting guidance, our platform services
+          are designed to provide clear, useful, and education-focused value.
+        </p>
+      </div>
+      <div class="servicesTrustActions">
+        <a class="btn btnWhite" href="#page=contact" data-page-link="contact">Contact Us</a>
+        <a class="btn btnGlass" href="#page=marketplace" data-page-link="marketplace">Explore Marketplace</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADDED SECTION 8 -->
+  <section class="servicesFinalCTA">
+    <div class="servicesFinalBox">
+      <span class="servicesMiniTag">Get Started</span>
+      <h2>Ready to use our education services?</h2>
+      <p>
+        Contact the STEAM ONE Platform team to request training, consultation, recruitment support,
+        or professional academic collaboration tailored to your education needs.
+      </p>
+      <div class="servicesFinalActions">
+        <a class="btn btnPrimary" href="#page=contact" data-page-link="contact">Request Now</a>
+        <a class="btn btnOutline" href="#page=courses" data-page-link="courses">Browse Courses</a>
+      </div>
+    </div>
+  </section>
+</section>
+
+   <section class="page" id="page-about">
+  <section class="section">
+    <div class="container">
+      <h2 class="h2">About STEAM ONE</h2>
+      <p class="lead">STEAM ONE Platform supports teachers and facilitators with professional development aligned to modern education standards. It is designed for Nigeria and global classrooms, with role-based dashboards and a certification marketplace.</p>
+      <div class="cardGrid">
+        <article class="card"><div class="icon">🌍</div><h4>Built for real classrooms</h4><p>Practical teaching strategies, lesson-ready tools, and measurable classroom outcomes.</p></article>
+        <article class="card"><div class="icon">🧠</div><h4>Standards-aligned</h4><p>Designed around ISTE, UNESCO ICT CFT, and other global education benchmarks.</p></article>
+        <article class="card"><div class="icon">🔒</div><h4>Role-based access</h4><p>Teachers, Facilitators, and Admin each see what they need—nothing more.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="aboutHeroBand">
+    <div class="aboutHeroInner">
+      <div class="aboutHeroText">
+        <span class="aboutMiniTag">About Our Platform</span>
+        <h2>Professional teacher development for modern classrooms and future-ready education</h2>
+        <p>
+          STEAM ONE Platform is built to support teachers, facilitators, institutions, and education partners
+          through practical professional development, digital learning readiness, certification pathways,
+          and a strong academic growth experience.
+        </p>
+        <div class="aboutHeroActions">
+          <a class="btn btnPrimary" href="#page=courses" data-page-link="courses">Explore Courses</a>
+          <a class="btn btnGhost" href="#page=contact" data-page-link="contact">Contact Us</a>
+        </div>
+      </div>
+      <div class="aboutHeroImage">
+        <img src="images/about-hero.jpg" alt="STEAM ONE professional teacher development team">
+      </div>
+    </div>
+  </section>
+
+  <section class="aboutStatsStrip">
+    <article class="aboutStatCard">
+      <h3>Teacher Growth</h3>
+      <strong>Practical</strong>
+      <p>Focused on classroom-ready professional development and measurable teaching impact.</p>
+    </article>
+    <article class="aboutStatCard">
+      <h3>Digital Learning</h3>
+      <strong>Modern</strong>
+      <p>Supports today’s classroom tools, systems, and professional digital teaching workflows.</p>
+    </article>
+    <article class="aboutStatCard">
+      <h3>Certification</h3>
+      <strong>Structured</strong>
+      <p>Progressive learning pathways for teachers, facilitators, and education communities.</p>
+    </article>
+    <article class="aboutStatCard">
+      <h3>Marketplace</h3>
+      <strong>Trusted</strong>
+      <p>Professional profile visibility and teacher discovery for schools and recruiters.</p>
+    </article>
+  </section>
+
+  <section class="aboutMissionSection">
+    <div class="aboutMissionText">
+      <span class="aboutMiniTag">Mission and Vision</span>
+      <h2>A platform designed to strengthen teaching, learning, and education collaboration</h2>
+      <p>
+        Our mission is to help teachers and facilitators grow with confidence through structured learning,
+        digital tools, professional standards, and stronger access to meaningful opportunities in education.
+      </p>
+      <ul class="aboutMissionList">
+        <li>Support practical classroom excellence</li>
+        <li>Promote professional teacher certification</li>
+        <li>Encourage digital teaching confidence</li>
+        <li>Connect educators with wider opportunities</li>
+      </ul>
+    </div>
+    <div class="aboutMissionImage">
+      <img src="images/about-mission.jpg" alt="Teacher mission and vision collaboration">
+    </div>
+  </section>
+
+  <section class="aboutValuesSection">
+    <div class="aboutValuesHeader">
+      <span class="aboutMiniTag">Core Values</span>
+      <h2>What guides the STEAM ONE Platform</h2>
+    </div>
+
+    <div class="aboutValuesGrid">
+      <article class="aboutValueCard">
+        <div class="aboutValueIcon">🎯</div>
+        <h4>Purpose</h4>
+        <p>Everything is designed to support real teacher growth and meaningful classroom results.</p>
+      </article>
+      <article class="aboutValueCard">
+        <div class="aboutValueIcon">🤝</div>
+        <h4>Collaboration</h4>
+        <p>We value educational teamwork across teachers, schools, and partner communities.</p>
+      </article>
+      <article class="aboutValueCard">
+        <div class="aboutValueIcon">💡</div>
+        <h4>Innovation</h4>
+        <p>We promote modern teaching practice, digital readiness, and continuous improvement.</p>
+      </article>
+      <article class="aboutValueCard">
+        <div class="aboutValueIcon">📚</div>
+        <h4>Professional Learning</h4>
+        <p>We believe strong learning structures create stronger educators and learning environments.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="aboutStandardsSection">
+    <div class="aboutStandardsHeader">
+      <span class="aboutMiniTag">Education Standards</span>
+      <h2>Aligned with strong education and teaching frameworks</h2>
+      <p>
+        STEAM ONE is positioned around respected education and teacher-development references that support
+        digital capacity building, learning quality, and professional teaching standards. Microsoft Education,
+        ISTE, UNESCO ICT CFT, and TRCN each provide relevant resources or frameworks for educators. :contentReference[oaicite:1]{index=1}
+      </p>
+    </div>
+
+    <div class="aboutStandardsGrid">
+      <article class="aboutStandardCard">
+        <h4>Microsoft Education</h4>
+        <p>Technology and professional learning support for schools and educators.</p>
+        <a href="https://www.microsoft.com/en-us/education" target="_blank" rel="noopener noreferrer">Visit Site</a>
+      </article>
+      <article class="aboutStandardCard">
+        <h4>ISTE Standards</h4>
+        <p>A widely adopted framework for effective technology use in learning.</p>
+        <a href="https://iste.org/standards" target="_blank" rel="noopener noreferrer">Visit Site</a>
+      </article>
+      <article class="aboutStandardCard">
+        <h4>UNESCO ICT CFT</h4>
+        <p>A framework guiding teacher ICT competencies and digital capacity building.</p>
+        <a href="https://www.unesco.org/en/digital-competencies-skills/ict-cft" target="_blank" rel="noopener noreferrer">Visit Site</a>
+      </article>
+      <article class="aboutStandardCard">
+        <h4>TRCN Nigeria</h4>
+        <p>Professional registration, certification, and teacher standards in Nigeria.</p>
+        <a href="https://trcn.gov.ng/" target="_blank" rel="noopener noreferrer">Visit Site</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="aboutGallerySection">
+    <div class="aboutGalleryHeader">
+      <span class="aboutMiniTag">Education and Team Gallery</span>
+      <h2>Professional education institutions, standards, and collaboration teams</h2>
+      <p>Four sliding rows with five images each for education and team visibility.</p>
+    </div>
+
+    <!-- LINE 1 -->
+    <div class="aboutSliderRow" aria-label="Education and standards slider row one">
+      <article class="aboutSlideCard">
+        <a class="aboutSlideImage" href="https://www.microsoft.com/en-us/education" target="_blank" rel="noopener noreferrer">
+          <img src="images/about-microsoft-1.jpg" alt="Microsoft Education collaboration">
+        </a>
+        <div class="aboutSlideBody"><h4>Microsoft Education</h4><p>Digital tools and teaching support for modern classrooms.</p></div>
+      </article>
+
+      <article class="aboutSlideCard">
+        <a class="aboutSlideImage" href="https://iste.org/" target="_blank" rel="noopener noreferrer">
+          <img src="images/about-iste-1.jpg" alt="ISTE education standards team">
+        </a>
+        <div class="aboutSlideBody"><h4>ISTE Education</h4><p>Standards-focused innovation for educators and learning leaders.</p></div>
+      </article>
+
+      <article class="aboutSlideCard">
+        <a class="aboutSlideImage" href="https://www.unesco.org/en/digital-competencies-skills/ict-cft" target="_blank" rel="noopener noreferrer">
+          <img src="images/about-unesco-1.jpg" alt="UNESCO ICT CFT teacher development">
+        </a>
+        <div class="aboutSlideBody"><h4>UNESCO ICT CFT</h4><p>Teacher ICT competency support and policy-aligned development.</p></div>
+      </article>
+
+      <article class="aboutSlideCard">
+        <a class="aboutSlideImage" href="https://trcn.gov.ng/" target="_blank" rel="noopener noreferrer">
+          <img src="images/about-trcn-1.jpg" alt="TRCN teacher professional standards">
+        </a>
+        <div class="aboutSlideBody"><h4>TRCN Nigeria</h4><p>Teacher registration, licensing, and professional standards.</p></div>
+      </article>
+
+      <article class="aboutSlideCard">
+        <a class="aboutSlideImage" href="https://learn.microsoft.com/en-us/training/educator-center/" target="_blank" rel="noopener noreferrer">
+          <img src="images/about-microsoft-2.jpg" alt="Microsoft educator center">
+        </a>
+        <div class="aboutSlideBody"><h4>Educator Learning</h4><p>Professional development resources for education growth.</p></div>
+      </article>
+    </div>
+
+    <!-- LINE 2 -->
+    <div class="aboutSliderRow" aria-label="Education and standards slider row two">
+      <article class="aboutSlideCard">
+        <a class="aboutSlideImage" href="https://iste.org/standards/educators" target="_blank" rel="noopener noreferrer">
+          <img src="images/about-iste-2.jpg" alt="ISTE educator standards">
+        </a>
+        <div class="aboutSlideBody"><h4>ISTE Educators</h4><p>Guidance for stronger digital pedagogy and learning impact.</p></div>
+      </article>
+
+      <article class="aboutSlideCard">
+        <a class="aboutSlideImage" href="https://iste.org/educator-certification" target="_blank" rel="noopener noreferrer">
+          <img src="images/about-iste-3.jpg" alt="ISTE educator certification">
+        </a>
+        <div class="aboutSlideBody"><h4>ISTE Certification</h4><p>Globally recognized pedagogy-focused educator credential.</p></div>
+      </article>
+
+      <article class="aboutSlideCard">
+        <a class="aboutSlideImage" href="https://www.unesco.org/en/articles/unesco-ict-competency-framework-teachers" target="_blank" rel="noopener noreferrer">
+          <img src="images/about-unesco-2.jpg" alt="UNESCO teacher competency framework">
+        </a>
+        <div class="aboutSlideBody"><h4>UNESCO Framework</h4><p>Teacher digital competencies for pre-service and in-service growth.</p></div>
+      </article>
+
+      <article class="aboutSlideCard">
+        <a class="aboutSlideImage" href="https://trcn.gov.ng/certification-and-licensing" target="_blank" rel="noopener noreferrer">
+          <img src="images/about-trcn-2.jpg" alt="TRCN certification and licensing">
+        </a>
+        <div class="aboutSlideBody"><h4>Certification and Licensing</h4><p>Professional documentation and teacher licensing support.</p></div>
+      </article>
+
+      <article class="aboutSlideCard">
+        <a class="aboutSlideImage" href="https://www.microsoft.com/en-us/microsoft-learn" target="_blank" rel="noopener noreferrer">
+          <img src="images/about-microsoft-3.jpg" alt="Microsoft learn training">
+        </a>
+        <div class="aboutSlideBody"><h4>Microsoft Learn</h4><p>Learning pathways and digital skill development resources.</p></div>
+      </article>
+    </div>
+
+    <!-- LINE 3 -->
+    <div class="aboutSliderRow" aria-label="Education and teams slider row three">
+      <article class="aboutSlideCard">
+        <a class="aboutSlideImage" href="#page=services" data-page-link="services">
+          <img src="images/about-team-1.jpg" alt="STEAM ONE services team">
+        </a>
+        <div class="aboutSlideBody"><h4>Services Team</h4><p>Professional support team helping education communities grow.</p></div>
+      </article>
+
+      <article class="aboutSlideCard">
+        <a class="aboutSlideImage" href="#page=marketplace" data-page-link="marketplace">
+          <img src="images/about-team-2.jpg" alt="STEAM ONE marketplace team">
+        </a>
+        <div class="aboutSlideBody"><h4>Marketplace Team</h4><p>Supporting verified teacher visibility and recruitment access.</p></div>
+      </article>
+
+      <article class="aboutSlideCard">
+        <a class="aboutSlideImage" href="#page=courses" data-page-link="courses">
+          <img src="images/about-team-3.jpg" alt="STEAM ONE course team">
+        </a>
+        <div class="aboutSlideBody"><h4>Course Team</h4><p>Building practical learning experiences for teachers and facilitators.</p></div>
+      </article>
+
+      <article class="aboutSlideCard">
+        <a class="aboutSlideImage" href="#page=about" data-page-link="about">
+          <img src="images/about-team-4.jpg" alt="STEAM ONE leadership and collaboration">
+        </a>
+        <div class="aboutSlideBody"><h4>Leadership Team</h4><p>Driving strategy, growth, and educational collaboration.</p></div>
+      </article>
+
+      <article class="aboutSlideCard">
+        <a class="aboutSlideImage" href="#page=contact" data-page-link="contact">
+          <img src="images/about-team-5.jpg" alt="STEAM ONE outreach team">
+        </a>
+        <div class="aboutSlideBody"><h4>Outreach Team</h4><p>Connecting with schools, teachers, and learning partners.</p></div>
+      </article>
+    </div>
+
+    <!-- LINE 4 -->
+    <div class="aboutSliderRow" aria-label="Education and teams slider row four">
+      <article class="aboutSlideCard">
+        <a class="aboutSlideImage" href="#page=joinfree" data-page-link="joinfree">
+          <img src="images/about-team-6.jpg" alt="Teacher onboarding support team">
+        </a>
+        <div class="aboutSlideBody"><h4>Onboarding Team</h4><p>Helping new teachers begin their learning and certification journey.</p></div>
+      </article>
+
+      <article class="aboutSlideCard">
+        <a class="aboutSlideImage" href="#page=login" data-page-link="login">
+          <img src="images/about-team-7.jpg" alt="Facilitator support team">
+        </a>
+        <div class="aboutSlideBody"><h4>Facilitator Support</h4><p>Supporting structured session delivery and learner guidance.</p></div>
+      </article>
+
+      <article class="aboutSlideCard">
+        <a class="aboutSlideImage" href="#page=services" data-page-link="services">
+          <img src="images/about-team-8.jpg" alt="Consulting and innovation team">
+        </a>
+        <div class="aboutSlideBody"><h4>Consulting Team</h4><p>Providing digital education and professional support services.</p></div>
+      </article>
+
+      <article class="aboutSlideCard">
+        <a class="aboutSlideImage" href="#page=marketplace" data-page-link="marketplace">
+          <img src="images/about-team-9.jpg" alt="Teacher recruitment support team">
+        </a>
+        <div class="aboutSlideBody"><h4>Recruitment Support</h4><p>Bridging schools and qualified teachers through trusted systems.</p></div>
+      </article>
+
+      <article class="aboutSlideCard">
+        <a class="aboutSlideImage" href="#page=contact" data-page-link="contact">
+          <img src="images/about-team-10.jpg" alt="Education partnership team">
+        </a>
+        <div class="aboutSlideBody"><h4>Partnership Team</h4><p>Growing meaningful academic and institutional relationships.</p></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="aboutJourneySection">
+    <div class="aboutJourneyHeader">
+      <span class="aboutMiniTag">Our Journey</span>
+      <h2>Built to support real teacher progress and long-term education value</h2>
+      <p>
+        STEAM ONE is not just a learning page. It is designed as a complete teacher-growth experience
+        with training, professional identity, and future opportunity built into one platform.
+      </p>
+    </div>
+
+    <div class="aboutJourneyGrid">
+      <article class="aboutJourneyCard">
+        <span>01</span>
+        <h4>Learn</h4>
+        <p>Teachers begin with structured courses and practical certification pathways.</p>
+      </article>
+      <article class="aboutJourneyCard">
+        <span>02</span>
+        <h4>Grow</h4>
+        <p>Users build confidence through modern teaching systems and guided support.</p>
+      </article>
+      <article class="aboutJourneyCard">
+        <span>03</span>
+        <h4>Showcase</h4>
+        <p>Qualified teachers gain visibility through dashboards and marketplace presence.</p>
+      </article>
+      <article class="aboutJourneyCard">
+        <span>04</span>
+        <h4>Connect</h4>
+        <p>Schools and partners connect with educators through professional channels.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="aboutAudienceSection">
+    <div class="aboutAudienceHeader">
+      <span class="aboutMiniTag">Who We Serve</span>
+      <h2>Designed for a broad education community</h2>
+    </div>
+
+    <div class="aboutAudienceGrid">
+      <article class="aboutAudienceCard">
+        <div class="aboutAudienceIcon">🧑‍🏫</div>
+        <h4>Teachers</h4>
+        <p>For teachers seeking certification, growth, and stronger classroom confidence.</p>
+      </article>
+      <article class="aboutAudienceCard">
+        <div class="aboutAudienceIcon">👨‍🏫</div>
+        <h4>Facilitators</h4>
+        <p>For facilitators who guide learning, communication, and structured academic support.</p>
+      </article>
+      <article class="aboutAudienceCard">
+        <div class="aboutAudienceIcon">🏫</div>
+        <h4>Schools</h4>
+        <p>For institutions looking for teacher support, recruitment, and digital growth.</p>
+      </article>
+      <article class="aboutAudienceCard">
+        <div class="aboutAudienceIcon">🌍</div>
+        <h4>Education Partners</h4>
+        <p>For academic bodies and learning communities building stronger collaboration.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="aboutTrustBand">
+    <div class="aboutTrustInner">
+      <div>
+        <span class="aboutMiniTag">Professional Trust</span>
+        <h2>Built with strong educational direction and practical value</h2>
+        <p>
+          The STEAM ONE Platform experience is designed to feel professional, useful, and clearly aligned
+          with modern teaching realities, standards, and future-facing educational needs.
+        </p>
+      </div>
+      <div class="aboutTrustActions">
+        <a class="btn btnWhite" href="#page=courses" data-page-link="courses">View Programs</a>
+        <a class="btn btnGlass" href="#page=services" data-page-link="services">Explore Services</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="aboutFinalCTA">
+    <div class="aboutFinalBox">
+      <span class="aboutMiniTag">Join the Mission</span>
+      <h2>Ready to grow with STEAM ONE Platform?</h2>
+      <p>
+        Start your professional journey with a platform designed for teachers, facilitators,
+        schools, and education communities that want stronger teaching and broader learning impact.
+      </p>
+      <div class="aboutFinalActions">
+        <a class="btn btnPrimary" href="#page=joinfree" data-page-link="joinfree">Join for Free</a>
+        <a class="btn btnOutline" href="#page=contact" data-page-link="contact">Contact Team</a>
+      </div>
+    </div>
+  </section>
+</section>
 
     <section class="page" id="page-contact">
-      <section class="section">
-        <div class="container">
-          <h2 class="h2">Contact</h2>
-          <p class="lead">Questions, partnerships, support requests—send a message and we’ll follow up.</p>
-          <div class="card" style="margin-top:14px">
-            <div class="formGrid">
-              <div class="field"><label for="cName">Full name</label><input id="cName" placeholder="Your name" /></div>
-              <div class="field"><label for="cEmail">Email</label><input id="cEmail" type="email" placeholder="you@example.com" /></div>
-              <div class="field" style="grid-column:1/-1"><label for="cMsg">Message</label><textarea id="cMsg" placeholder="Type your message..."></textarea></div>
-            </div>
-            <div class="modalActions"><button class="btn btnPrimary" id="btnSendContact">Send Message</button></div>
-            <div class="hint">This demo uses <b>mailto:</b> to send messages without a backend. When you connect backend later, you can replace this with API calls.</div>
-          </div>
+  <section class="section">
+    <div class="container">
+      <h2 class="h2">Contact</h2>
+      <p class="lead">Questions, partnerships, support requests—send a message and we’ll follow up.</p>
+      <div class="card" style="margin-top:14px">
+        <div class="formGrid">
+          <div class="field"><label for="cName">Full name</label><input id="cName" placeholder="Your name" /></div>
+          <div class="field"><label for="cEmail">Email</label><input id="cEmail" type="email" placeholder="you@example.com" /></div>
+          <div class="field" style="grid-column:1/-1"><label for="cMsg">Message</label><textarea id="cMsg" placeholder="Type your message..."></textarea></div>
         </div>
-      </section>
-    </section>
+        <div class="modalActions"><button class="btn btnPrimary" id="btnSendContact">Send Message</button></div>
+        <div class="hint">This demo uses <b>mailto:</b> to send messages without a backend. When you connect backend later, you can replace this with API calls.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADDED SECTION 1 -->
+  <section class="contactHeroBand">
+    <div class="contactHeroInner">
+      <div class="contactHeroText">
+        <span class="contactMiniTag">Professional Contact</span>
+        <h2>Let’s connect for support, partnerships, and education collaboration</h2>
+        <p>
+          Reach out to the STEAM ONE Platform team for teacher support, school partnerships,
+          service requests, training collaboration, recruitment inquiries, and platform guidance.
+        </p>
+        <div class="contactHeroActions">
+          <a class="btn btnPrimary" href="mailto:info@steamoneplatform.com">Email Us</a>
+          <a class="btn btnGhost" href="https://wa.me/2340000000000" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        </div>
+      </div>
+      <div class="contactHeroCard">
+        <h3>Contact Highlights</h3>
+        <div class="contactHeroList">
+          <div><strong>Email Support</strong><span>Fast response for questions and guidance</span></div>
+          <div><strong>Partnership Requests</strong><span>Collaboration with schools and education teams</span></div>
+          <div><strong>Training Enquiries</strong><span>Programs, services, and certification support</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADDED SECTION 2 -->
+  <section class="contactInfoSection">
+    <div class="contactInfoGrid">
+      <article class="contactInfoCard">
+        <div class="contactInfoIcon">📧</div>
+        <h4>Email Address</h4>
+        <p>Use your official support or business email here.</p>
+        <a href="mailto:info@steamoneplatform.com">info@steamoneplatform.com</a>
+      </article>
+
+      <article class="contactInfoCard">
+        <div class="contactInfoIcon">📱</div>
+        <h4>WhatsApp Support</h4>
+        <p>Replace this number with your real support line later.</p>
+        <a href="https://wa.me/2340000000000" target="_blank" rel="noopener noreferrer">+234 000 000 0000</a>
+      </article>
+
+      <article class="contactInfoCard">
+        <div class="contactInfoIcon">🏢</div>
+        <h4>Office Address</h4>
+        <p>Add your office address or training center location here.</p>
+        <span>Oyo State, Nigeria</span>
+      </article>
+
+      <article class="contactInfoCard">
+        <div class="contactInfoIcon">🕒</div>
+        <h4>Working Hours</h4>
+        <p>Professional communication hours for support and enquiries.</p>
+        <span>Mon - Fri | 9:00 AM - 5:00 PM</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- ADDED SECTION 3 -->
+  <section class="contactMapSection">
+    <div class="contactMapText">
+      <span class="contactMiniTag">Our Location</span>
+      <h2>Find us on the map</h2>
+      <p>
+        This is a Google Map placeholder. Replace the iframe <b>src</b> link later
+        with your real Google Map embed link for your office, school, or support center.
+      </p>
+    </div>
+
+    <div class="contactMapWrap">
+      <iframe
+        src="https://www.google.com/maps?q=Lagos%2C%20Nigeria&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen
+        title="Google Map Location Placeholder">
+      </iframe>
+    </div>
+  </section>
+
+  <!-- ADDED SECTION 4 -->
+  <section class="contactFinalCTA">
+    <div class="contactFinalBox">
+      <span class="contactMiniTag">Start a Conversation</span>
+      <h2>We are ready to hear from you</h2>
+      <p>
+        Contact us for teacher development support, institutional partnerships,
+        recruitment requests, digital education services, or platform enquiries.
+      </p>
+      <div class="contactFinalActions">
+        <a class="btn btnPrimary" href="mailto:info@steamoneplatform.com">Send Email</a>
+        <a class="btn btnOutline" href="#page=services" data-page-link="services">View Services</a>
+      </div>
+    </div>
+  </section>
+</section>
 
     <section class="page" id="page-login">
       <section class="authWrap">
@@ -1007,47 +4239,97 @@
     </section>
   </main>
 
-  <footer>
-    <div class="container">
-      <div class="footTop">
-        <div class="footGrid">
-          <div class="footBrand">
-            <div class="logoMark">S1</div>
-            <div>
-              <h4>STEAM ONE Platform</h4>
-              <p>Coursera-style learning experience for teacher certification, marketplace access, and role-based dashboards.</p>
+<footer>
+  <div class="container">
+    <div class="footTop">
+      <div class="footGrid">
+        <div class="footBrand">
+
+            <div class="footerPartnerLogos" aria-label="Professional education partners">
+              <a class="footerLogoLink" href="https://www.microsoft.com/en-us/education" target="_blank" rel="noopener noreferrer" aria-label="Microsoft Education">
+                <img src="images/microsoft-logo.png" alt="Microsoft Education Logo">
+              </a>
+
+              <a class="footerLogoLink" href="https://iste.org/" target="_blank" rel="noopener noreferrer" aria-label="ISTE">
+                <img src="images/iste-logo.png" alt="ISTE Logo">
+              </a>
+
+              <a class="footerLogoLink" href="https://trcn.gov.ng/" target="_blank" rel="noopener noreferrer" aria-label="TRCN Nigeria">
+                <img src="images/trcn-logo.png" alt="TRCN Logo">
+              </a>
+
+              <a class="footerLogoLink" href="https://www.unesco.org/en/digital-competencies-skills/ict-cft" target="_blank" rel="noopener noreferrer" aria-label="UNESCO ICT CFT">
+                <img src="images/unesco-logo.png" alt="UNESCO ICT CFT Logo">
+              </a>
             </div>
           </div>
-          <div class="footCol">
-            <h5>Platform</h5>
-            <a href="#page=home" data-page-link="home">Home</a>
-            <a href="#page=courses" data-page-link="courses">Courses</a>
-            <a href="#page=marketplace" data-page-link="marketplace">Marketplace</a>
-            <a href="#page=services" data-page-link="services">Services</a>
-          </div>
-          <div class="footCol">
-            <h5>Company</h5>
-            <a href="#page=about" data-page-link="about">About</a>
-            <a href="#page=contact" data-page-link="contact">Contact</a>
-            <a href="#page=login" data-page-link="login">Log In</a>
-            <a href="#page=admin" data-page-link="admin">Admin Login</a>
-          </div>
-          <div class="footCol">
-            <h5>Support</h5>
-            <a href="#page=joinfree" data-page-link="joinfree">Join for Free</a>
-            <a href="#" id="footEmail">Email Support</a>
-            <a href="#" id="footWhatsApp">WhatsApp Support</a>
-          </div>
         </div>
-      </div>
-      <div class="footBottom">
-        <div class="footBottomRow">
-          <div>© <span id="year"></span> STEAM ONE Platform. All rights reserved.</div>
-          <div class="timePill">🕒 Nigeria Time: <span id="ngTime">--:--:--</span></div>
+
+        <div class="footCol">
+          <h5>Platform</h5>
+          <a href="#page=home" data-page-link="home">Home</a>
+          <a href="#page=courses" data-page-link="courses">Courses</a>
+          <a href="#page=marketplace" data-page-link="marketplace">Marketplace</a>
+          <a href="#page=services" data-page-link="services">Services</a>
         </div>
+
+        <div class="footCol">
+          <h5>Company</h5>
+          <a href="#page=about" data-page-link="about">About</a>
+          <a href="#page=contact" data-page-link="contact">Contact</a>
+          <a href="#page=login" data-page-link="login">Log In</a>
+          <a href="#page=admin" data-page-link="admin">Admin Login</a>
+        </div>
+
+        <div class="footCol">
+          <h5>Support</h5>
+          <a href="#page=joinfree" data-page-link="joinfree">Join for Free</a>
+          <a href="#" id="footEmail">Email Support</a>
+          <a href="#" id="footWhatsApp">WhatsApp Support</a>
+        </div>
+
+        <div class="footCol">
+  <h5>Follow Us</h5>
+
+  <div class="socialInlineRow" aria-label="Social media links">
+    <a class="socialInlineLink" href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+      <span class="socialIcon">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M23 12s0-3.5-.45-5.19a3.02 3.02 0 0 0-2.12-2.14C18.72 4.2 12 4.2 12 4.2s-6.72 0-8.43.47A3.02 3.02 0 0 0 1.45 6.8C1 8.5 1 12 1 12s0 3.5.45 5.19a3.02 3.02 0 0 0 2.12 2.14c1.71.47 8.43.47 8.43.47s6.72 0 8.43-.47a3.02 3.02 0 0 0 2.12-2.14C23 15.5 23 12 23 12ZM10 15.5v-7l6 3.5-6 3.5Z"/>
+        </svg>
+      </span>
+      <span>YouTube</span>
+    </a>
+
+    <a class="socialInlineLink" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+      <span class="socialIcon">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.3-1.5 1.6-1.5H17V4.9c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.4V11H7.5v3h2.8v8h3.2Z"/>
+        </svg>
+      </span>
+      <span>Facebook</span>
+    </a>
+
+    <a class="socialInlineLink" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <span class="socialIcon">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2.2A2.8 2.8 0 0 0 4.2 7v10A2.8 2.8 0 0 0 7 19.8h10a2.8 2.8 0 0 0 2.8-2.8V7A2.8 2.8 0 0 0 17 4.2H7Zm10.25 1.65a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2.2A2.8 2.8 0 1 0 12 14.8 2.8 2.8 0 0 0 12 9.2Z"/>
+        </svg>
+      </span>
+      <span>Instagram</span>
+    </a>
+  </div>
+</div>
+    </div>
+
+    <div class="footBottom">
+      <div class="footBottomRow">
+        <div>© <span id="year"></span> STEAM ONE Platform. All rights reserved.</div>
+        <div class="timePill">🕒 Nigeria Time: <span id="ngTime">--:--:--</span></div>
       </div>
     </div>
-  </footer>
+  </div>
+</footer>
 </div>
 
 <script>
