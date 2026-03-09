@@ -2519,6 +2519,354 @@
     padding:24px 20px;
   }
 }
+
+.steamMarketplaceSection{
+  padding:72px 0;
+  background:#ffffff;
+}
+
+.steamMarketplaceShell{
+  display:flex;
+  flex-direction:column;
+  gap:28px;
+}
+
+.steamMarketplaceHero{
+  display:grid;
+  grid-template-columns:1.3fr .9fr;
+  gap:24px;
+  background:linear-gradient(135deg, #0b2a85 0%, #1239a5 100%);
+  border-radius:28px;
+  padding:34px;
+  color:#ffffff;
+  box-shadow:0 24px 60px rgba(11,42,133,.18);
+}
+
+.steamMarketplaceBadge{
+  display:inline-flex;
+  padding:8px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.18);
+  color:#fff;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.08em;
+  margin-bottom:14px;
+}
+
+.steamMarketplaceTitle{
+  margin:0 0 12px;
+  font-size:clamp(30px,4vw,50px);
+  line-height:1.08;
+  color:#fff;
+}
+
+.steamMarketplaceLead{
+  margin:0;
+  font-size:16px;
+  line-height:1.8;
+  color:rgba(255,255,255,.88);
+  max-width:760px;
+}
+
+.steamMarketplaceSearchRow{
+  display:grid;
+  grid-template-columns:1fr 1fr auto;
+  gap:14px;
+  margin-top:24px;
+}
+
+.steamSearchBox{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-height:56px;
+  padding:0 16px;
+  background:#ffffff;
+  border-radius:16px;
+}
+
+.steamSearchBox input{
+  width:100%;
+  border:0;
+  outline:none;
+  background:transparent;
+  color:#0b1530;
+  font-size:15px;
+}
+
+.steamSearchBtn{
+  min-height:56px;
+  padding:0 22px;
+  border:0;
+  border-radius:16px;
+  background:#ffffff;
+  color:#0b2a85;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.steamMarketplaceHeroActions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+  margin-top:20px;
+}
+
+.steamPrimaryBtn,
+.steamSecondaryBtn{
+  min-height:50px;
+  padding:0 20px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:14px;
+  text-decoration:none;
+  font-weight:700;
+}
+
+.steamPrimaryBtn{
+  background:#ffffff;
+  color:#0b2a85;
+}
+
+.steamSecondaryBtn{
+  background:transparent;
+  border:1px solid rgba(255,255,255,.25);
+  color:#ffffff;
+}
+
+.steamMarketplaceHeroCard{
+  background:#ffffff;
+  border-radius:24px;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  min-height:100%;
+}
+
+.steamHeroImage{
+  width:100%;
+  height:250px;
+  object-fit:cover;
+  display:block;
+}
+
+.steamHeroCardText{
+  padding:22px;
+}
+
+.steamHeroCardText h3{
+  margin:0 0 10px;
+  color:#0b1530;
+  font-size:24px;
+}
+
+.steamHeroCardText p{
+  margin:0;
+  color:#5a6b8a;
+  line-height:1.7;
+}
+
+.steamMarketplaceStats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.steamStatCard{
+  background:#ffffff;
+  border:1px solid rgba(11,42,133,.10);
+  border-radius:20px;
+  padding:24px;
+  text-align:center;
+  box-shadow:0 12px 28px rgba(11,21,48,.05);
+}
+
+.steamStatCard h3{
+  margin:0 0 8px;
+  color:#0b2a85;
+  font-size:30px;
+}
+
+.steamStatCard p{
+  margin:0;
+  color:#5a6b8a;
+  font-weight:600;
+}
+
+.steamMarketplaceFeatures{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.steamFeatureCard{
+  background:#ffffff;
+  border:1px solid rgba(11,42,133,.10);
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 14px 35px rgba(11,21,48,.05);
+}
+
+.steamFeatureImage{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  display:block;
+}
+
+.steamFeatureCardBody{
+  padding:22px;
+}
+
+.steamFeatureCardBody h3{
+  margin:0 0 10px;
+  color:#0b1530;
+  font-size:22px;
+}
+
+.steamFeatureCardBody p{
+  margin:0;
+  color:#5a6b8a;
+  line-height:1.7;
+}
+
+.steamTeachersGrid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+
+.steamTeacherCard{
+  background:#ffffff;
+  border:1px solid rgba(11,42,133,.10);
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 18px 40px rgba(11,21,48,.06);
+}
+
+.steamTeacherPhoto{
+  width:100%;
+  height:260px;
+  object-fit:cover;
+  display:block;
+}
+
+.steamTeacherBody{
+  padding:22px;
+}
+
+.steamTeacherLevel{
+  display:inline-flex;
+  padding:7px 12px;
+  border-radius:999px;
+  background:#edf4ff;
+  color:#0b2a85;
+  font-size:12px;
+  font-weight:800;
+  margin-bottom:12px;
+}
+
+.steamTeacherBody h3{
+  margin:0 0 10px;
+  font-size:24px;
+  color:#0b1530;
+}
+
+.steamTeacherMeta{
+  margin:0 0 6px;
+  color:#36507f;
+  font-size:14px;
+  font-weight:600;
+}
+
+.steamTeacherText{
+  margin:12px 0 18px;
+  color:#5a6b8a;
+  line-height:1.7;
+}
+
+.steamTeacherBtn{
+  width:100%;
+  min-height:50px;
+  border:0;
+  border-radius:14px;
+  background:#0b2a85;
+  color:#ffffff;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.steamMarketplaceProcess{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.steamProcessCard{
+  background:linear-gradient(180deg,#f7faff 0%,#eef5ff 100%);
+  border:1px solid rgba(11,42,133,.08);
+  border-radius:22px;
+  padding:24px;
+}
+
+.steamProcessNumber{
+  display:inline-grid;
+  place-items:center;
+  width:52px;
+  height:52px;
+  border-radius:14px;
+  background:#0b2a85;
+  color:#fff;
+  font-weight:800;
+  margin-bottom:14px;
+}
+
+.steamProcessCard h3{
+  margin:0 0 10px;
+  color:#0b1530;
+  font-size:21px;
+}
+
+.steamProcessCard p{
+  margin:0;
+  color:#5a6b8a;
+  line-height:1.7;
+}
+
+@media (max-width:1100px){
+  .steamMarketplaceHero,
+  .steamMarketplaceFeatures,
+  .steamTeachersGrid,
+  .steamMarketplaceProcess,
+  .steamMarketplaceStats{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .steamMarketplaceSearchRow{
+    grid-template-columns:1fr;
+  }
+}
+
+@media (max-width:700px){
+  .steamMarketplaceHero,
+  .steamMarketplaceFeatures,
+  .steamTeachersGrid,
+  .steamMarketplaceProcess,
+  .steamMarketplaceStats{
+    grid-template-columns:1fr;
+  }
+
+  .steamMarketplaceHero{
+    padding:22px;
+  }
+
+  .steamMarketplaceTitle{
+    font-size:30px;
+  }
+}
   </style>
 </head>
 <body>
@@ -2577,7 +2925,7 @@
           <h3>Quick start</h3>
 
           <div class="quickStartImageWrap">
-            <a class="imageLink" href="#page=joinfree" data-page-link="joinfree" aria-label="Go to teacher signup or login"><img src="images/teacher.png" alt="Quick start teachers learning"></a>
+            <a class="imageLink" href="#page=joinfree" data-page-link="joinfree" aria-label="Go to teacher signup or login"><img src="images/masters.png" alt="Quick start teachers learning"></a>
           </div>
 
           <div class="ctaRow">
@@ -3096,7 +3444,7 @@
         </div>
       </div>
       <div class="coursesHeroImage">
-        <img src="images/ab.png" alt="Teachers learning in a digital classroom">
+        <img src="images/ab-1.png" alt="Teachers learning in a digital classroom">
       </div>
     </div>
   </section>
@@ -3192,7 +3540,7 @@
     </div>
 
     <div class="coursesWhyImage">
-      <img src="images/ab-1.png" alt="Professional teacher development learning environment">
+      <img src="images/ab.png" alt="Professional teacher development learning environment">
     </div>
   </section>
 
@@ -3214,28 +3562,188 @@
 </section>
 
   <section class="page" id="page-marketplace">
-  <section class="section">
-    <div class="container">
-      <h2 class="h2">Certified Teachers Marketplace</h2>
-      <p class="lead">Find verified teachers and contact them with a shareable request link.</p>
-      <div class="cardGrid">
-        <article class="card"><div class="icon">✅</div><h4>Verified Profiles</h4><p>Only certified teachers appear here in the final system (demo shows sample profiles).</p></article>
-        <article class="card"><div class="icon">📩</div><h4>Contact Teacher</h4><p>One click generates a request link and opens email/WhatsApp for easy sharing.</p></article>
-        <article class="card"><div class="icon">🧾</div><h4>Admin-mediated Requests</h4><p>Requests can be routed to admin for review in your backend version.</p></article>
-      </div>
-      <div class="section" style="padding:18px 0 0">
-        <div class="ctaBand" style="background:linear-gradient(120deg,#0b1220,#111827)">
-          <div>
-            <h3>Need a teacher for your school?</h3>
-            <p>Send a request link to a teacher or to the admin team for follow-up.</p>
+  <section class="section steamMarketplaceSection" id="steamMarketplaceSection">
+  <div class="container">
+    <div class="steamMarketplaceShell">
+      <!-- HERO / INTRO -->
+      <div class="steamMarketplaceHero">
+        <div class="steamMarketplaceHeroText">
+          <span class="steamMarketplaceBadge">STEAM CERTIFIED TEACHER MARKETPLACE</span>
+          <h2 class="steamMarketplaceTitle">Connect with verified and certified teachers for modern classroom excellence.</h2>
+          <p class="steamMarketplaceLead">
+            Explore trusted teacher profiles, review certifications, discover classroom-ready educators, and connect through a secure admin-supported request system designed for schools, recruiters, and education partners.
+          </p>
+
+          <div class="steamMarketplaceSearchRow">
+            <div class="steamSearchBox">
+              <span>🔎</span>
+              <input type="text" placeholder="Search teacher, skill, certification, or subject">
+            </div>
+
+            <div class="steamSearchBox">
+              <span>📍</span>
+              <input type="text" placeholder="Search location or region">
+            </div>
+
+            <button class="steamSearchBtn" type="button">Search Teachers</button>
           </div>
-          <div class="ctaBtns">
-            <a class="btn btnWhite" href="#page=contact" data-page-link="contact">Contact a Teacher</a>
-            <a class="btn btnGlass" href="#page=contact" data-page-link="contact">Contact Admin</a>
+
+          <div class="steamMarketplaceHeroActions">
+            <a href="#page=marketplace" class="steamPrimaryBtn" data-page-link="marketplace">Browse Certified Teachers</a>
+            <a href="#page=joinfree" class="steamSecondaryBtn" data-page-link="joinfree">Create Teacher Profile</a>
+          </div>
+        </div>
+
+        <div class="steamMarketplaceHeroCard">
+          <img src="images/mark-1.png" alt="Certified teachers marketplace" class="steamHeroImage">
+          <div class="steamHeroCardText">
+            <h3>Verified Professional Profiles</h3>
+            <p>Certified teachers can showcase their qualifications, skills, and classroom strengths in a trusted professional marketplace.</p>
           </div>
         </div>
       </div>
+
+      <!-- STATS -->
+      <div class="steamMarketplaceStats">
+        <div class="steamStatCard">
+          <h3>500+</h3>
+          <p>Certified Teachers</p>
+        </div>
+        <div class="steamStatCard">
+          <h3>120+</h3>
+          <p>Schools & Recruiters</p>
+        </div>
+        <div class="steamStatCard">
+          <h3>98%</h3>
+          <p>Verified Profile Accuracy</p>
+        </div>
+        <div class="steamStatCard">
+          <h3>24/7</h3>
+          <p>Admin Request Support</p>
+        </div>
+      </div>
+
+      <!-- FEATURE CARDS -->
+      <div class="steamMarketplaceFeatures">
+        <article class="steamFeatureCard">
+          <img src="images/teacher-profile-card.png" alt="Teacher professional profile" class="steamFeatureImage">
+          <div class="steamFeatureCardBody">
+            <h3>Professional Teacher Profiles</h3>
+            <p>Every certified teacher profile is designed to highlight classroom experience, certification level, digital skills, and educational strengths.</p>
+          </div>
+        </article>
+
+        <article class="steamFeatureCard">
+          <img src="images/classroom-excellence.png" alt="Classroom excellence" class="steamFeatureImage">
+          <div class="steamFeatureCardBody">
+            <h3>Trusted Classroom Standards</h3>
+            <p>Teachers in the marketplace are positioned for modern education needs, helping schools identify professionals aligned with strong teaching practice.</p>
+          </div>
+        </article>
+
+        <article class="steamFeatureCard">
+          <img src="images/admin-support-request.png" alt="Admin supported contact flow" class="steamFeatureImage">
+          <div class="steamFeatureCardBody">
+            <h3>Admin-Supported Contact Requests</h3>
+            <p>Contact requests are routed properly to admin first, helping keep the teacher marketplace secure, organized, and professionally managed.</p>
+          </div>
+        </article>
+      </div>
+
+      <!-- CERTIFIED TEACHERS GRID -->
+      <div class="steamTeachersGrid">
+        <article class="steamTeacherCard">
+          <img src="images/teacher-1.png" alt="Certified teacher profile" class="steamTeacherPhoto">
+          <div class="steamTeacherBody">
+            <span class="steamTeacherLevel">STEAM ONE Certified</span>
+            <h3>Grace Johnson</h3>
+            <p class="steamTeacherMeta">Subject: Digital Literacy</p>
+            <p class="steamTeacherMeta">Location: Lagos, Nigeria</p>
+            <p class="steamTeacherMeta">Experience: 5 Years</p>
+            <p class="steamTeacherText">Focused on digital classroom integration, practical technology use, and modern learner engagement strategies.</p>
+            <button class="steamTeacherBtn" onclick="contactCertifiedTeacher('Grace Johnson','STEAM ONE Certified','Digital Literacy','Lagos, Nigeria')">
+              Contact Certified Teacher
+            </button>
+          </div>
+        </article>
+
+        <article class="steamTeacherCard">
+          <img src="images/teacher-2.png" alt="Certified teacher profile" class="steamTeacherPhoto">
+          <div class="steamTeacherBody">
+            <span class="steamTeacherLevel">STEAM TWO Certified</span>
+            <h3>Daniel Okoro</h3>
+            <p class="steamTeacherMeta">Subject: STEM Education</p>
+            <p class="steamTeacherMeta">Location: Abuja, Nigeria</p>
+            <p class="steamTeacherMeta">Experience: 7 Years</p>
+            <p class="steamTeacherText">Experienced in applied STEAM learning, technology integration, and project-based classroom delivery.</p>
+            <button class="steamTeacherBtn" onclick="contactCertifiedTeacher('Daniel Okoro','STEAM TWO Certified','STEM Education','Abuja, Nigeria')">
+              Contact Certified Teacher
+            </button>
+          </div>
+        </article>
+
+        <article class="steamTeacherCard">
+          <img src="images/teacher-3.png" alt="Certified teacher profile" class="steamTeacherPhoto">
+          <div class="steamTeacherBody">
+            <span class="steamTeacherLevel">STEAM THREE Certified</span>
+            <h3>Esther Adebayo</h3>
+            <p class="steamTeacherMeta">Subject: AI in Education</p>
+            <p class="steamTeacherMeta">Location: Ibadan, Nigeria</p>
+            <p class="steamTeacherMeta">Experience: 6 Years</p>
+            <p class="steamTeacherText">Supports advanced classroom innovation, AI-supported teaching practice, and future-ready teacher development.</p>
+            <button class="steamTeacherBtn" onclick="contactCertifiedTeacher('Esther Adebayo','STEAM THREE Certified','AI in Education','Ibadan, Nigeria')">
+              Contact Certified Teacher
+            </button>
+          </div>
+        </article>
+      </div>
+
+      <!-- HOW IT WORKS -->
+      <div class="steamMarketplaceProcess">
+        <div class="steamProcessCard">
+          <span class="steamProcessNumber">01</span>
+          <h3>Browse Certified Teachers</h3>
+          <p>Schools, partners, and recruiters can explore trusted teacher listings and review profile details.</p>
+        </div>
+
+        <div class="steamProcessCard">
+          <span class="steamProcessNumber">02</span>
+          <h3>Send Request to Admin</h3>
+          <p>Clicking Contact Certified Teacher sends the teacher request information to admin for proper coordination.</p>
+        </div>
+
+        <div class="steamProcessCard">
+          <span class="steamProcessNumber">03</span>
+          <h3>Open Teacher Dashboard</h3>
+          <p>After the request is submitted, the system can redirect to TeacherDashboardPage.tsx for continued action and tracking.</p>
+        </div>
+      </div>
     </div>
+  </div>
+</section>
+
+<script>
+  function contactCertifiedTeacher(name, level, subject, location) {
+    const teacherRequest = {
+      teacherName: name,
+      certificationLevel: level,
+      subject: subject,
+      location: location,
+      requestDate: new Date().toISOString(),
+      status: "Pending Admin Review"
+    };
+
+    localStorage.setItem("selectedCertifiedTeacherRequest", JSON.stringify(teacherRequest));
+
+    const existingRequests = JSON.parse(localStorage.getItem("adminTeacherRequests") || "[]");
+    existingRequests.push(teacherRequest);
+    localStorage.setItem("adminTeacherRequests", JSON.stringify(existingRequests));
+
+    alert("Your request has been sent to admin successfully.");
+
+    window.location.href = "/TeacherDashboardPage.tsx";
+  }
+</script>
   </section>
 </section>
 
@@ -3604,6 +4112,24 @@
       </article>
     </div>
   </section>
+
+  <article class="teamSlideCard">
+        <a class="teamSlideImage" href="https://www.byupathway.edu/bachelors-degree/software-development" target="_blank" rel="noopener noreferrer" aria-label="Open BYU-Pathway Software Development official website">
+          <img src="images/prince-1.jpeg" alt="Sunday Prince Augustine's software development journey">
+        </a>
+        <div class="teamSlideBody">
+          <h4>Developer</h4>
+          <p>
+            Name: Sunday Prince Augustine<br>
+            Profession: Software Development Engineering<br>
+            Education: BSC in Software Engineering<br>
+            Years of Experience: 3 Years (2023 - 2026)<br>
+            Company: Oyo Tech Hub<br>
+            Contact: saugustine@byupathway.edu<br><br>
+            Oyo Tech Hub is committed to developing strong software development talent by equipping learners and professionals with practical programming knowledge, web development expertise, problem-solving ability, and industry-ready digital skills for today’s technology world.
+          </p>
+        </div>
+      </article>
 
   <section class="aboutGallerySection">
     <div class="aboutGalleryHeader">
