@@ -442,6 +442,40 @@
 
 
 
+    .selectedPlanBanner{display:none;margin:0 0 18px;padding:16px 18px;border-radius:18px;background:linear-gradient(135deg, rgba(0,86,210,.10), rgba(0,86,210,.04));border:1px solid rgba(0,86,210,.16)}
+    .selectedPlanBanner.active{display:block}
+    .selectedPlanBanner strong{display:block;font-size:12px;letter-spacing:.3px;text-transform:uppercase;color:var(--cBlueDark);margin-bottom:6px}
+    .selectedPlanBanner h3{margin:0 0 6px;font-size:22px;line-height:1.25}
+    .selectedPlanBanner p{margin:0;color:var(--muted);font-size:14px}
+
+    .programHero{padding:42px 0 18px;background:linear-gradient(180deg,#fff 0%,#f5f9ff 100%);border-bottom:1px solid rgba(0,86,210,.10)}
+    .programGrid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr);gap:24px;align-items:start}
+    .programMainCard,.programSidebarCard,.programInfoCard{background:#fff;border:1px solid rgba(15,23,42,.10);border-radius:24px;box-shadow:0 16px 38px rgba(2,6,23,.07)}
+    .programMainCard{padding:26px}
+    .programSidebarCard{padding:22px;position:sticky;top:calc(var(--navH) + 18px)}
+    .programKicker{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:rgba(0,86,210,.08);color:var(--cBlueDark);font-weight:800;font-size:12px}
+    .programTitle{margin:14px 0 12px;font-size:42px;line-height:1.08;letter-spacing:-.8px}
+    .programLead{margin:0 0 18px;color:var(--muted);font-size:16px;max-width:60ch}
+    .programMetaRow{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
+    .programMetaPill{display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:999px;border:1px solid var(--line);background:#fff;font-size:13px;font-weight:700;color:#0f172a}
+    .programImage{width:100%;height:320px;border-radius:22px;object-fit:cover;display:block;margin-top:16px;background:#eef4ff}
+    .programSection{padding:16px 0 34px}
+    .programStack{display:grid;gap:18px}
+    .programInfoCard{padding:22px}
+    .programInfoCard h3{margin:0 0 10px;font-size:22px;color:#0b1530}
+    .programInfoCard p{margin:0;color:#5a6b8a;line-height:1.8}
+    .programBulletGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}
+    .programBullet{padding:14px 16px;border-radius:18px;background:#f8fbff;border:1px solid rgba(0,86,210,.10);font-size:14px;color:#0f172a;font-weight:600}
+    .programPriceLabel{font-size:12px;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.25px}
+    .programPrice{margin:6px 0 6px;font-size:36px;font-weight:1000;letter-spacing:-.6px;color:#0b1530}
+    .programSidebarCard .mutedLine{margin:0 0 16px;color:var(--muted);font-size:13px;line-height:1.7}
+    .programSidebarCard .btn{width:100%;justify-content:center}
+    .programSidebarList{display:grid;gap:10px;margin:16px 0 18px}
+    .programSidebarItem{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#0f172a}
+    .programSidebarItem span:first-child{color:var(--cBlueDark);font-weight:900}
+    @media (max-width:980px){.programGrid{grid-template-columns:1fr}.programSidebarCard{position:static}.programTitle{font-size:34px}}
+    @media (max-width:720px){.programMainCard,.programSidebarCard,.programInfoCard{border-radius:20px}.programMainCard,.programSidebarCard,.programInfoCard{padding:18px}.programImage{height:230px}.programBulletGrid{grid-template-columns:1fr}.programTitle{font-size:28px}}
+
     .menuToggle{display:none;align-items:center;justify-content:center;width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:#fff;color:#0f172a;font-size:18px;cursor:pointer;flex:0 0 auto}
     .menuToggle:hover{background:rgba(0,86,210,.06)}
 
@@ -2867,7 +2901,823 @@
     font-size:30px;
   }
 }
-  </style>
+
+.steam-hero-clone {
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #1f1f1f;
+    background: #ffffff;
+  }
+
+  .steam-hero-clone * {
+    box-sizing: border-box;
+  }
+
+  .steam-top {
+    background: #0056d2;
+    color: #ffffff;
+    padding: 32px 34px 34px;
+  }
+
+  .steam-top-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 30px;
+  }
+
+  .steam-left {
+    width: 55%;
+    max-width: 610px;
+  }
+
+  .steam-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+
+  .steam-badge .brand {
+    font-size: 28px;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+
+  .steam-badge .plus {
+    background: #ffffff;
+    color: #0056d2;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 3px 7px;
+    border-radius: 3px;
+    line-height: 1;
+    transform: translateY(1px);
+  }
+
+  .steam-left h1 {
+    margin: 0 0 12px;
+    font-size: 56px;
+    line-height: 1.08;
+    font-weight: 700;
+    letter-spacing: -1.4px;
+  }
+
+  .steam-left .subtext {
+    margin: 0 0 18px;
+    font-size: 15px;
+    line-height: 1.5;
+    max-width: 560px;
+    color: #edf4ff;
+  }
+
+  .steam-left .price {
+    margin: 0 0 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+  }
+
+  .enroll-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 140px;
+    height: 42px;
+    padding: 0 22px;
+    background: #ffffff;
+    color: #0056d2;
+    border-radius: 2px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .annual-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .offer-note {
+    margin: 0;
+    font-size: 11px;
+    color: #dce9ff;
+  }
+
+  .offer-note a {
+    color: #dce9ff;
+    font-weight: 700;
+    text-decoration: underline;
+  }
+
+  .steam-right {
+    width: 45%;
+    min-height: 290px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .discount-wrap {
+    position: relative;
+    transform: rotate(-6deg);
+    text-align: center;
+    z-index: 2;
+  }
+
+  .big-40 {
+    font-size: 160px;
+    line-height: 0.9;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -6px;
+    text-shadow: 3px 4px 0 rgba(0, 0, 0, 0.12);
+  }
+
+  .big-40 span {
+    font-size: 68px;
+    vertical-align: top;
+    margin-left: 4px;
+  }
+
+  .off-text {
+    margin-top: -10px;
+    font-size: 110px;
+    line-height: 0.85;
+    font-weight: 800;
+    color: #ffffff;
+    text-shadow: 3px 4px 0 rgba(0, 0, 0, 0.12);
+  }
+
+  .logo-bubble {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: #666;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    z-index: 1;
+  }
+
+  .bubble-ms {
+    top: 25px;
+    right: 85px;
+    display: grid;
+    grid-template-columns: repeat(2, 8px);
+    grid-template-rows: repeat(2, 8px);
+    gap: 2px;
+    padding: 10px;
+  }
+
+  .bubble-ms span:nth-child(1) { background: #f25022; width: 8px; height: 8px; }
+  .bubble-ms span:nth-child(2) { background: #7fba00; width: 8px; height: 8px; }
+  .bubble-ms span:nth-child(3) { background: #00a4ef; width: 8px; height: 8px; }
+  .bubble-ms span:nth-child(4) { background: #ffb900; width: 8px; height: 8px; }
+
+  .bubble-iste {
+    top: 15px;
+    left: 105px;
+    font-size: 11px;
+  }
+
+  .bubble-trcn {
+    left: 88px;
+    bottom: 60px;
+    font-size: 10px;
+  }
+
+  .bubble-unesco {
+    bottom: 28px;
+    left: 210px;
+    color: #0056d2;
+  }
+
+  .bubble-google {
+    right: 72px;
+    bottom: 54px;
+    color: #4285f4;
+    font-size: 18px;
+  }
+
+  .partners-band {
+    background: #f3f4f6;
+    padding: 24px 34px 28px;
+    border-top: 1px solid #e9edf4;
+  }
+
+  .partners-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .partners-inner h2 {
+    margin: 0 0 24px;
+    font-size: 22px;
+    line-height: 1.35;
+    font-weight: 500;
+    color: #111827;
+  }
+
+  .partners-logos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 26px;
+    flex-wrap: wrap;
+    padding-left: 16px;
+    border-left: 2px solid #1f1f1f;
+  }
+
+  .partners-logos a {
+    font-size: 20px;
+    color: #4b5563;
+    font-weight: 600;
+    white-space: nowrap;
+    text-decoration: none;
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+
+  .partners-logos a:hover {
+    color: #0056d2;
+    transform: translateY(-2px);
+  }
+
+  .partners-logos a:focus {
+    outline: 2px solid #0056d2;
+    outline-offset: 4px;
+  }
+
+  .features-band {
+    background: #e9eef6;
+    padding: 34px 34px;
+  }
+
+  .features-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 42px;
+  }
+
+  .feature-card .icon {
+    font-size: 22px;
+    margin-bottom: 14px;
+    color: #111827;
+  }
+
+  .feature-card h3 {
+    margin: 0 0 8px;
+    font-size: 16px;
+    line-height: 1.35;
+    font-weight: 700;
+    color: #111827;
+  }
+
+  .feature-card p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #374151;
+    max-width: 330px;
+  }
+
+  .bottom-promo {
+    background: #f7f7f8;
+    padding: 46px 34px 56px;
+  }
+
+  .bottom-promo-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+  }
+
+  .promo-text {
+    width: 54%;
+  }
+
+  .promo-text h2 {
+    margin: 0 0 24px;
+    font-size: 28px;
+    line-height: 1.28;
+    font-weight: 700;
+    color: #111827;
+    max-width: 610px;
+  }
+
+  .outline-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 38px;
+    padding: 0 18px;
+    border: 1px solid #0056d2;
+    color: #0056d2;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    background: #ffffff;
+  }
+
+  .promo-image-wrap {
+    width: 46%;
+    min-height: 260px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .shape-bg {
+    position: absolute;
+    width: 240px;
+    height: 170px;
+    background: #0056d2;
+    clip-path: polygon(18% 0%, 100% 0%, 82% 100%, 0% 100%);
+    bottom: 12px;
+    left: 70px;
+    opacity: 0.9;
+  }
+
+  .shape-photo {
+    position: relative;
+    width: 280px;
+    height: 190px;
+    overflow: hidden;
+    background: #ffffff;
+    border: 2px solid #dbe4f5;
+    clip-path: polygon(18% 0%, 100% 0%, 82% 100%, 0% 100%);
+    z-index: 2;
+  }
+
+  .shape-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media (max-width: 991px) {
+    .steam-top-inner,
+    .bottom-promo-inner {
+      flex-direction: column;
+    }
+
+    .steam-left,
+    .steam-right,
+    .promo-text,
+    .promo-image-wrap {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .steam-left h1 {
+      font-size: 42px;
+    }
+
+    .big-40 {
+      font-size: 118px;
+    }
+
+    .off-text {
+      font-size: 84px;
+    }
+
+    .features-inner {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+
+    .partners-logos {
+      gap: 18px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .steam-top,
+    .partners-band,
+    .features-band,
+    .bottom-promo {
+      padding-left: 18px;
+      padding-right: 18px;
+    }
+
+    .steam-badge .brand {
+      font-size: 22px;
+    }
+
+    .steam-left h1 {
+      font-size: 32px;
+      line-height: 1.15;
+    }
+
+    .steam-left .subtext,
+    .annual-text {
+      font-size: 13px;
+    }
+
+    .big-40 {
+      font-size: 90px;
+      letter-spacing: -4px;
+    }
+
+    .big-40 span {
+      font-size: 42px;
+    }
+
+    .off-text {
+      font-size: 62px;
+    }
+
+    .partners-inner h2,
+    .promo-text h2 {
+      font-size: 28px;
+    }
+
+    .partners-logos a {
+      font-size: 26px;
+    }
+
+    .shape-bg {
+      width: 180px;
+      height: 130px;
+      left: 35px;
+    }
+
+    .shape-photo {
+      width: 320px;
+      height: 250px;
+    }
+  }
+
+
+  .partners-band {
+  background: #f3f4f6;
+  padding: 24px 34px 28px;
+  border-top: 1px solid #e9edf4;
+  overflow: hidden;
+}
+
+.partners-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.partners-inner h2 {
+  margin: 0 0 24px;
+  font-size: 22px;
+  line-height: 1.35;
+  font-weight: 500;
+  color: #111827;
+}
+
+.partners-slider {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  border-left: 2px solid #1f1f1f;
+  padding-left: 16px;
+}
+
+.partners-track {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  width: max-content;
+  animation: partnersSlide 24s linear infinite;
+}
+
+.partners-track a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 140px;
+  min-height: 70px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.partners-track a:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+.partners-track img {
+  max-height: 46px;
+  max-width: 150px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+@keyframes partnersSlide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 768px) {
+  .partners-band {
+    padding: 20px 18px 24px;
+  }
+
+  .partners-inner h2 {
+    font-size: 18px;
+  }
+
+  .partners-track {
+    gap: 34px;
+  }
+
+  .partners-track a {
+    min-width: 110px;
+    min-height: 56px;
+  }
+
+  .partners-track img {
+    max-height: 34px;
+    max-width: 110px;
+  }
+}
+  
+/* Added shared page hero system and auto-sliding developer rows */
+.pageHeroBand{
+  padding:34px 24px;
+  background:linear-gradient(135deg,#f7faff 0%,#ffffff 100%);
+}
+.pageHeroBand.pageHeroSoft{
+  background:linear-gradient(135deg,#eef4ff 0%,#ffffff 100%);
+}
+.pageHeroInner{
+  display:grid;
+  grid-template-columns:1.08fr .92fr;
+  gap:28px;
+  align-items:center;
+}
+.pageHeroBadge{
+  display:inline-flex;
+  align-items:center;
+  padding:8px 14px;
+  border-radius:999px;
+  background:#eaf2ff;
+  color:#0b2a85;
+  font-weight:700;
+  font-size:13px;
+  letter-spacing:.2px;
+}
+.pageHeroText h2{
+  margin:12px 0 14px;
+  font-size:clamp(28px,4vw,44px);
+  line-height:1.14;
+  color:#0b1530;
+}
+.pageHeroText p{
+  margin:0 0 20px;
+  color:#5a6b8a;
+  line-height:1.75;
+  max-width:680px;
+}
+.pageHeroActions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+.pageHeroVisual{
+  min-height:320px;
+  border-radius:26px;
+  overflow:hidden;
+  position:relative;
+  box-shadow:0 18px 50px rgba(6,16,40,.12);
+  background:linear-gradient(135deg,#0b2a85 0%,#1f59d1 100%);
+  color:#fff;
+}
+.pageHeroVisual img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.pageHeroCard{
+  height:100%;
+  padding:28px 24px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  background:linear-gradient(135deg,#0b2a85 0%,#1f59d1 100%);
+}
+.pageHeroCard h3{
+  margin:0 0 14px;
+  font-size:24px;
+  line-height:1.2;
+}
+.pageHeroCard p{
+  margin:0;
+  color:rgba(255,255,255,.92);
+  line-height:1.75;
+  font-size:14px;
+}
+.pageHeroList{
+  display:grid;
+  gap:12px;
+  margin-top:18px;
+}
+.pageHeroList div{
+  padding:14px 16px;
+  border-radius:18px;
+  background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.16);
+}
+.pageHeroList strong{
+  display:block;
+  margin-bottom:4px;
+  color:#fff;
+  font-size:15px;
+}
+.pageHeroList span{
+  display:block;
+  color:rgba(255,255,255,.86);
+  font-size:13px;
+  line-height:1.6;
+}
+.developerSliderRow.autoSliding{
+  overflow:hidden;
+  scroll-behavior:auto;
+}
+.developerSliderRow.autoSliding.auto-ready{
+  gap:18px;
+}
+.developerSliderRow.autoSliding.auto-ready .developerImageCard{
+  flex:0 0 240px;
+  min-width:240px;
+}
+.signupPaymentSection{
+  margin-top:18px;
+  padding:18px;
+  border-radius:20px;
+  border:1px solid rgba(0,86,210,.14);
+  background:linear-gradient(180deg, rgba(0,86,210,.06), rgba(0,86,210,.02));
+}
+.signupPaymentSection[hidden]{display:none !important}
+.signupPaymentHeader{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:14px}
+.signupPaymentHeader h3{margin:0 0 6px;font-size:20px;color:#0b1530}
+.signupPaymentHeader p{margin:0;color:var(--muted);font-size:13px;max-width:56ch}
+.signupAmountBox{padding:12px 14px;border-radius:16px;background:#fff;border:1px solid rgba(0,86,210,.12);min-width:180px}
+.signupAmountBox strong{display:block;font-size:12px;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.2px}
+.signupAmountBox span{display:block;font-size:26px;font-weight:1000;color:#0b1530;line-height:1.1}
+.paymentMethodGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.paymentMethodOption{position:relative}
+.paymentMethodOption input{position:absolute;opacity:0;pointer-events:none}
+.paymentMethodCard{display:block;padding:14px 14px;border-radius:16px;border:1px solid var(--line);background:#fff;cursor:pointer;transition:border-color .15s ease, box-shadow .15s ease, transform .08s ease;height:100%}
+.paymentMethodCard strong{display:block;margin-bottom:6px;color:#0b1530;font-size:14px}
+.paymentMethodCard span{display:block;color:var(--muted);font-size:12px;line-height:1.6}
+.paymentMethodOption input:checked + .paymentMethodCard{border-color:rgba(0,86,210,.40);box-shadow:0 12px 26px rgba(0,86,210,.10)}
+.paymentMethodOption input:checked + .paymentMethodCard strong{color:var(--cBlueDark)}
+.paymentInstruction{margin-top:12px;padding:12px 14px;border-radius:16px;background:#fff;border:1px dashed rgba(0,86,210,.18);color:var(--muted);font-size:12px;line-height:1.7}
+.paymentInstruction strong{color:#0b1530}
+.facilitatorFreeNote{margin-top:18px;padding:14px 16px;border-radius:18px;background:rgba(22,163,74,.08);border:1px solid rgba(22,163,74,.18);color:#166534;font-size:13px;line-height:1.7}
+@media (max-width:720px){
+  .paymentMethodGrid{grid-template-columns:1fr}
+  .signupPaymentHeader{flex-direction:column}
+  .signupAmountBox{width:100%}
+}
+@media (max-width:760px){
+  .pageHeroBand{padding-left:16px;padding-right:16px}
+  .pageHeroInner{grid-template-columns:1fr}
+  .pageHeroVisual{min-height:260px}
+  .pageHeroActions{flex-direction:column;align-items:stretch}
+  .pageHeroActions .btn{width:100%;justify-content:center}
+}
+
+
+.partners-band {
+  width: 100%;
+  padding: 60px 20px;
+  background: #f7faff;
+  overflow: hidden;
+}
+
+.partners-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.partners-inner h2 {
+  font-size: 2rem;
+  color: #0b1f4d;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+.partners-slider {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.partners-track {
+  display: flex;
+  align-items: stretch;
+  gap: 24px;
+  width: max-content;
+  animation: partnersSlide 28s linear infinite;
+}
+
+.partner-card {
+  min-width: 180px;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 18px 14px;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.partner-card:hover {
+  transform: translateY(-6px);
+}
+
+.partner-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 12px;
+}
+
+.partner-card span {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #0b1f4d;
+  line-height: 1.4;
+}
+
+@keyframes partnersSlide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* pause on hover */
+.partners-slider:hover .partners-track {
+  animation-play-state: paused;
+}
+
+/* mobile */
+@media (max-width: 768px) {
+  .partners-inner h2 {
+    font-size: 1.4rem;
+  }
+
+  .partner-card {
+    min-width: 150px;
+    padding: 14px 10px;
+  }
+
+  .partner-card img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .partner-card span {
+    font-size: 0.85rem;
+  }
+}
+</style>
 </head>
 <body>
 <div class="wrap">
@@ -2912,65 +3762,148 @@
 
   <main class="main">
   <section class="page active" id="page-home">
-  <section class="hero">
-    <div class="container">
-      <div class="grid2">
-        <div>
-          <span class="kicker">STEAM ONE Platform</span>
-          <h1 class="h1">Professional online courses and teacher certifications for modern digital classrooms.</h1>
-          <p class="sub">A professional learning platform for teachers and facilitators, designed to build practical classroom skills through structured certification tracks, technology integration, and verified professional growth aligned with today’s education standards.</p>
+ <section class="steam-hero-clone">
+  <div class="steam-top">
+    <div class="steam-top-inner">
+      <div class="steam-left">
+        <div class="steam-badge">
+          <span class="brand">steam teachers</span>
+          <span class="plus">PLUS</span>
         </div>
 
-        <aside class="heroCard" aria-label="Quick actions">
-          <h3>Quick start</h3>
+        <h1>Build your future with the STEAM<br />Teachers Training Platform</h1>
 
-          <div class="quickStartImageWrap">
-            <a class="imageLink" href="#page=joinfree" data-page-link="joinfree" aria-label="Go to teacher signup or login"><img src="images/masters.png" alt="Quick start teachers learning"></a>
-          </div>
+        <p class="subtext">
+          
+        </p>
 
-          <div class="ctaRow">
-            <a class="btn btnPrimary btnSmall" href="#page=joinfree" data-page-link="joinfree">Enroll Now</a>
-            <a class="btn btnGhost btnSmall" href="#page=contact" data-page-link="contact">Contact Teacher</a>
-          </div>
-
-          <div class="note"><b></b>.</div>
-        </aside>
+        <div class="hero-actions">
+          
+        </div>
+        </p>
       </div>
-    </div>
-  </section>
 
-  <section class="partners">
-    <div class="container">
-      <div class="partnersRow">
-        <div class="logos" aria-label="Standards logos">
-          <a class="logoLink logoBox" href="https://www.microsoft.com/en-us/education" target="_blank" rel="noopener noreferrer" aria-label="Visit Microsoft Education website">
-            <img src="images/micro2026.png" alt="Microsoft Logo" class="plainLogo">
-            <span class="logoLine">Microsoft Education</span>
-          </a>
+      <div class="steam-right">
+        <div class="logo-bubble bubble-ms">
+          <span></span><span></span><span></span><span></span>
+        </div>
+        <div class="logo-bubble bubble-iste">ISTE</div>
+        <div class="logo-bubble bubble-trcn">TRCN</div>
+        <div class="logo-bubble bubble-unesco">U</div>
+        <div class="logo-bubble bubble-google">G</div>
 
-          <a class="logoLink logoBox" href="https://iste.org/" target="_blank" rel="noopener noreferrer" aria-label="Visit ISTE website">
-            <img src="images/iste2026.png" alt="ISTE Logo" class="plainLogo">
-            <span class="logoLine">ISTE Standards</span>
-          </a>
-
-          <a class="logoLink logoBox" href="https://www.unesco.org/en/digital-competencies-skills/ict-cft" target="_blank" rel="noopener noreferrer" aria-label="Visit UNESCO ICT CFT website">
-            <img src="images/unesco2026.png" alt="UNESCO ICT CFT Logo" class="plainLogo">
-            <span class="logoLine">UNESCO ICT CFT</span>
-          </a>
-
-          <a class="logoLink logoBox" href="https://www.oecd.org/en/about/programmes/pisa.html" target="_blank" rel="noopener noreferrer" aria-label="Visit OECD PISA website">
-            <img src="images/pisa2026.png" alt="PISA Logo" class="plainLogo">
-            <span class="logoLine">OECD PISA</span>
-          </a>
-
-          <a class="logoLink logoBox" href="https://trcn.gov.ng/" target="_blank" rel="noopener noreferrer" aria-label="Visit TRCN website">
-            <img src="images/trcn2026.png" alt="TRCN Logo" class="plainLogo">
-            <span class="logoLine">TRCN Nigeria</span>
-          </a>
+        <div class="discount-wrap">
+          <div class=""><span>100%</span></div>
+          <div class=""></div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+
+  <div class="partners-band">
+  <div class="partners-inner">
+    <h2>Learn from experienced facilitators, education partners, and digital classroom experts</h2>
+
+    <div class="partners-slider">
+      <div class="partners-track">
+        <a href="https://www.microsoft.com/en-us/education" target="_blank" rel="noopener noreferrer" aria-label="Microsoft Education" class="partner-card">
+          <img src="images/a-1.png" alt="Microsoft Education Logo">
+          <span>Microsoft Education</span>
+        </a>
+
+        <a href="https://iste.org/" target="_blank" rel="noopener noreferrer" aria-label="ISTE" class="partner-card">
+          <img src="images/a-2.png" alt="ISTE Logo">
+          <span>ISTE</span>
+        </a>
+
+        <a href="https://trcn.gov.ng/" target="_blank" rel="noopener noreferrer" aria-label="TRCN" class="partner-card">
+          <img src="images/a-3.jpg" alt="TRCN Logo">
+          <span>TRCN</span>
+        </a>
+
+        <a href="https://www.unesco.org/en/digital-competencies-skills/ict-cft" target="_blank" rel="noopener noreferrer" aria-label="UNESCO ICT CFT" class="partner-card">
+          <img src="images/a-4.png" alt="UNESCO ICT CFT Logo">
+          <span>UNESCO ICT CFT</span>
+        </a>
+
+        <a href="https://edu.google.com/" target="_blank" rel="noopener noreferrer" aria-label="Google for Education" class="partner-card">
+          <img src="images/a-5.jpg" alt="Google Education Logo">
+          <span>Google for Education</span>
+        </a>
+
+        <!-- duplicate for smooth auto sliding -->
+        <a href="https://www.microsoft.com/en-us/education" target="_blank" rel="noopener noreferrer" aria-label="Microsoft Education" class="partner-card">
+          <img src="images/a-1.png" alt="Microsoft Education Logo">
+          <span>Microsoft Education</span>
+        </a>
+
+        <a href="https://iste.org/" target="_blank" rel="noopener noreferrer" aria-label="ISTE" class="partner-card">
+          <img src="images/a-2.png" alt="ISTE Logo">
+          <span>ISTE</span>
+        </a>
+
+        <a href="https://trcn.gov.ng/" target="_blank" rel="noopener noreferrer" aria-label="TRCN" class="partner-card">
+          <img src="images/a-3.jpg" alt="TRCN Logo">
+          <span>TRCN</span>
+        </a>
+
+        <a href="https://www.unesco.org/en/digital-competencies-skills/ict-cft" target="_blank" rel="noopener noreferrer" aria-label="UNESCO ICT CFT" class="partner-card">
+          <img src="images/a-4.png" alt="UNESCO ICT CFT Logo">
+          <span>UNESCO ICT CFT</span>
+        </a>
+
+        <a href="https://edu.google.com/" target="_blank" rel="noopener noreferrer" aria-label="Google for Education" class="partner-card">
+          <img src="images/a-5.jpg" alt="Google Education Logo">
+          <span>Google for Education</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="features-band">
+    <div class="features-inner">
+      <div class="feature-card">
+        <div class="icon">◎</div>
+        <h3>Explore teacher training skills</h3>
+        <p>Access 10,000+ courses in AI, business, technology, pedagogy, and digital classroom practice.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon">▣</div>
+        <h3>Earn verified teaching credentials</h3>
+        <p>Get certificates for every course you finish and strengthen your professional profile for schools and recruiters.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon">☆</div>
+        <h3>Learn from expert facilitators</h3>
+        <p>Take your skills to the next level with expert-led learning paths and practical classroom-first support.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-promo">
+    <div class="bottom-promo-inner">
+      <div class="promo-text">
+        <h2>
+          Join educators building stronger classroom
+          practice, digital confidence, and professional
+          growth through structured training.
+        </h2>
+
+        <a href="#" class="outline-btn">Enroll now</a>
+      </div>
+
+      <div class="promo-image-wrap">
+        <div class="shape-bg"></div>
+        <div class="shape-photo">
+          <img src="images/a-04.png" alt="Educator using digital learning platform" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
   <section class="section imageShowcaseSection">
     <div class="container">
@@ -3119,8 +4052,8 @@
           <div class="homeCourseCardBody">
             <div class="homeCourseMeta">
               <div>
-                <div class="muted">Starting price</div>
-                <div class="homeCoursePrice">₦15,000</div>
+                <div class="muted"></div>
+                <div class="homeCoursePrice"></div>
               </div>
               <div class="muted">Beginner friendly</div>
             </div>
@@ -3140,8 +4073,8 @@
           <div class="homeCourseCardBody">
             <div class="homeCourseMeta">
               <div>
-                <div class="muted">Starting price</div>
-                <div class="homeCoursePrice">₦20,000</div>
+                <div class="muted"></div>
+                <div class="homeCoursePrice"></div>
               </div>
               <div class="muted">For active teachers</div>
             </div>
@@ -3161,8 +4094,8 @@
           <div class="homeCourseCardBody">
             <div class="homeCourseMeta">
               <div>
-                <div class="muted">Starting price</div>
-                <div class="homeCoursePrice">₦25,000</div>
+                <div class="muted"></div>
+                <div class="homeCoursePrice"></div>
               </div>
               <div class="muted">Advanced level</div>
             </div>
@@ -3284,7 +4217,7 @@
     </div>
 
     <!-- First Line -->
-    <div class="developerSliderRow" aria-label="Top developer and partner images slider">
+    <div class="developerSliderRow autoSliding" data-slide-speed="0.45" aria-label="Top developer and partner images slider">
       <article class="developerImageCard">
         <a class="developerImageLink" href="https://www.byui.edu/computer-science-engineering/" target="_blank" rel="noopener noreferrer" aria-label="Open BYU-Idaho Computer Science and Engineering Department">
           <img src="images/sch-1.png" alt="Brigham Young University Idaho Software Development Department">
@@ -3347,7 +4280,7 @@
     </div>
 
     <!-- Second Line -->
-    <div class="developerSliderRow" aria-label="Bottom developer and partner images slider">
+    <div class="developerSliderRow autoSliding" data-slide-speed="-0.4" aria-label="Bottom developer and partner images slider">
       <article class="developerImageCard">
         <a class="developerImageLink" href="https://www.ug.edu.gh/" target="_blank" rel="noopener noreferrer" aria-label="Open University of Ghana website">
           <img src="images/sch-7.png" alt="University of Ghana higher education partnership">
@@ -3413,7 +4346,301 @@
  </section>
     </section>
 
-   <section class="page" id="page-courses">
+ 
+
+    <section class="page" id="page-steam-one">
+      <section class="programHero">
+        <div class="container">
+          <div class="programGrid">
+            <div class="programMainCard">
+              <span class="programKicker">Coursera-style program page</span>
+              <h1 class="programTitle">STEAM ONE — Foundations for Digital Teaching</h1>
+              <p class="programLead">Start your teaching transformation with a beginner-friendly certification built for modern educators. STEAM ONE helps teachers build confidence in digital pedagogy, improve classroom delivery, and develop the practical teaching skills schools now expect in both physical and blended learning environments.</p>
+              <div class="programMetaRow">
+                <span class="programMetaPill">📘 Beginner friendly</span>
+                <span class="programMetaPill">🧑‍🏫 Teacher certification track</span>
+                <span class="programMetaPill">🇳🇬 Built for Nigeria and global classrooms</span>
+              </div>
+              <img class="programImage" src="images/course-1.png" alt="STEAM ONE digital teaching foundation program">
+            </div>
+            <aside class="programSidebarCard">
+              <div class="programPriceLabel">Program fee</div>
+              <div class="programPrice">₦15,000</div>
+              <p class="mutedLine">One-time enrollment fee for the complete STEAM ONE beginner certification experience.</p>
+              <div class="programSidebarList">
+                <div class="programSidebarItem"><span>✔</span><span>Foundational digital teaching modules</span></div>
+                <div class="programSidebarItem"><span>✔</span><span>Teaching practice and classroom readiness</span></div>
+                <div class="programSidebarItem"><span>✔</span><span>Certificate pathway and dashboard access</span></div>
+              </div>
+              <button class="btn btnPrimary" type="button" data-program-enroll="steam-one">Enroll in STEAM ONE</button>
+              <a class="btn btnGhost" href="#page=login" data-page-link="login">Already have an account? Log In</a>
+            </aside>
+          </div>
+        </div>
+      </section>
+      <section class="programSection">
+        <div class="container programStack">
+          <article class="programInfoCard">
+            <h3>What you will learn in STEAM ONE</h3>
+            <p>STEAM ONE is the ideal starting point for teachers who want to grow from traditional teaching into confident, technology-supported instruction. Inside this program, learners are introduced to the foundations of digital classroom practice, lesson structure, learner engagement, and professional teaching confidence. It is designed to help educators understand not only how to use digital tools, but how to apply them in meaningful ways that improve teaching quality, student participation, and classroom organization.</p>
+            <p>This program is attractive for teachers who want a clear, affordable, and professional entry into modern education practice. It gives schools and individual educators a trusted first step toward certification, stronger classroom performance, and long-term growth within the STEAM pathway.</p>
+            <div class="programBulletGrid">
+              <div class="programBullet">Digital classroom foundations</div>
+              <div class="programBullet">Lesson planning with technology</div>
+              <div class="programBullet">Student engagement strategies</div>
+              <div class="programBullet">Professional teacher growth pathway</div>
+            </div>
+          </article>
+          <article class="programInfoCard">
+            <h3>Who this program is for</h3>
+            <p>This plan is perfect for new teachers, classroom instructors, education graduates, school support staff, and facilitators who want to begin their professional journey with a strong foundation. It is also a smart choice for schools and education organisations that want staff to start with a structured and practical training model before moving into higher-level certification. STEAM ONE makes the first step feel simple, valuable, and rewarding.</p>
+          </article>
+          <div class="programHighlightGrid">
+            <article class="programHighlightCard">
+              <h4>What learners will gain</h4>
+              <p>Participants gain practical confidence in modern lesson delivery, digital communication, learner engagement, and foundational classroom technology use. This makes the program attractive to teachers who want immediate improvement they can apply in real schools.</p>
+            </article>
+            <article class="programHighlightCard">
+              <h4>Certificate benefits</h4>
+              <p>Completing STEAM ONE shows commitment to professional development, improves trust with schools and education partners, and gives learners a recognised starting point for moving into higher certification levels on the platform.</p>
+            </article>
+            <article class="programHighlightCard">
+              <h4>Career opportunities</h4>
+              <p>STEAM ONE supports entry-level teaching roles, school support positions, facilitator opportunities, and stronger visibility for educators building a verified professional profile in the marketplace.</p>
+            </article>
+          </div>
+          <article class="programInfoCard">
+            <h3>Outcomes after completing STEAM ONE</h3>
+            <ul class="programOutcomeList">
+              <li>Understand the basics of digital teaching and classroom technology integration.</li>
+              <li>Create more organised and engaging lesson experiences for learners.</li>
+              <li>Build a stronger professional foundation before progressing to STEAM TWO.</li>
+              <li>Improve readiness for school opportunities and verified profile growth.</li>
+            </ul>
+          </article>
+          <article class="programInfoCard">
+            <h3>Where this program can take you</h3>
+            <ul class="programCareerList">
+              <li>Begin a structured teacher certification journey with confidence.</li>
+              <li>Prepare for school-based digital teaching expectations in Nigeria and beyond.</li>
+              <li>Strengthen your value for classroom roles, school support, and facilitator work.</li>
+              <li>Position yourself for progression into higher-value STEAM certification plans.</li>
+            </ul>
+          </article>
+          <div class="programCTABox">
+            <h3>Begin your teaching growth with STEAM ONE</h3>
+            <p>Choose the beginner certification that helps you build confidence, improve classroom quality, and move into modern teaching with a clear and affordable pathway.</p>
+            <button class="btn btnWhite" type="button" data-program-enroll="steam-one">Enroll and continue to signup</button>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section class="page" id="page-steam-two">
+      <section class="programHero">
+        <div class="container">
+          <div class="programGrid">
+            <div class="programMainCard">
+              <span class="programKicker">Coursera-style program page</span>
+              <h1 class="programTitle">STEAM TWO — Technology Integration for Classrooms</h1>
+              <p class="programLead">Take your teaching to the next level with a professional program focused on real classroom integration. STEAM TWO helps educators connect digital tools to lesson outcomes, improve classroom workflow, strengthen learner interaction, and deliver more organised, engaging, and technology-driven instruction.</p>
+              <div class="programMetaRow">
+                <span class="programMetaPill">🧑‍🏫 Active classroom teachers</span>
+                <span class="programMetaPill">💻 Technology integration focus</span>
+                <span class="programMetaPill">📈 Professional growth pathway</span>
+              </div>
+              <img class="programImage" src="images/course-2.png" alt="STEAM TWO classroom technology integration program">
+            </div>
+            <aside class="programSidebarCard">
+              <div class="programPriceLabel">Program fee</div>
+              <div class="programPrice">₦20,000</div>
+              <p class="mutedLine">One-time enrollment fee for the full STEAM TWO classroom technology integration program.</p>
+              <div class="programSidebarList">
+                <div class="programSidebarItem"><span>✔</span><span>Digital tools for lesson delivery</span></div>
+                <div class="programSidebarItem"><span>✔</span><span>Blended classroom workflow design</span></div>
+                <div class="programSidebarItem"><span>✔</span><span>Teacher dashboard and plan tracking</span></div>
+              </div>
+              <button class="btn btnPrimary" type="button" data-program-enroll="steam-two">Enroll in STEAM TWO</button>
+              <a class="btn btnGhost" href="#page=login" data-page-link="login">Already have an account? Log In</a>
+            </aside>
+          </div>
+        </div>
+      </section>
+      <section class="programSection">
+        <div class="container programStack">
+          <article class="programInfoCard">
+            <h3>What you will learn in STEAM TWO</h3>
+            <p>STEAM TWO is built for educators who are ready to move beyond basic digital exposure and begin using technology with clear teaching purpose. This program focuses on practical classroom application, helping teachers connect digital tools to lesson objectives, improve communication, create interactive learning experiences, and organise stronger systems for delivery, collaboration, and assessment. It is a highly valuable next step for professionals who want their classroom practice to look more modern, effective, and competitive.</p>
+            <p>For many teachers, this is the level where classroom transformation becomes visible. It helps learners build confidence in blended teaching, increase professional relevance, and stand out as educators who can manage modern teaching expectations with structure and excellence.</p>
+            <div class="programBulletGrid">
+              <div class="programBullet">Technology-enhanced lesson delivery</div>
+              <div class="programBullet">Learning management workflow</div>
+              <div class="programBullet">Digital assessment and feedback</div>
+              <div class="programBullet">Classroom communication systems</div>
+            </div>
+          </article>
+          <article class="programInfoCard">
+            <h3>Why this plan matters</h3>
+            <p>STEAM TWO is ideal for active classroom teachers, facilitators, school leaders, and education professionals who already understand the basics and want to deliver stronger day-to-day results. It is especially attractive for teachers who want to improve classroom systems, increase learning engagement, and become more effective in technology-supported teaching. This makes it a strong professional upgrade and a valuable pathway toward the expert-level STEAM THREE program.</p>
+          </article>
+          <div class="programHighlightGrid">
+            <article class="programHighlightCard">
+              <h4>What learners will gain</h4>
+              <p>Learners gain stronger command of digital teaching tools, better classroom workflow, improved feedback systems, and practical strategies that make lessons more interactive, efficient, and measurable.</p>
+            </article>
+            <article class="programHighlightCard">
+              <h4>Certificate benefits</h4>
+              <p>STEAM TWO certification strengthens your professional credibility, shows readiness for modern teaching practice, and demonstrates that you can integrate technology into learning with confidence and purpose.</p>
+            </article>
+            <article class="programHighlightCard">
+              <h4>Career opportunities</h4>
+              <p>This level can support classroom advancement, facilitator roles, academic coordination support, school leadership opportunities, and better positioning for recruitment in digitally focused schools.</p>
+            </article>
+          </div>
+          <article class="programInfoCard">
+            <h3>Outcomes after completing STEAM TWO</h3>
+            <ul class="programOutcomeList">
+              <li>Deliver lessons with stronger structure, technology integration, and learner interaction.</li>
+              <li>Use digital systems for assessment, communication, and classroom organisation.</li>
+              <li>Stand out as a teacher who can manage blended and modern learning environments.</li>
+              <li>Prepare for advanced progression into STEAM THREE expert-level training.</li>
+            </ul>
+          </article>
+          <article class="programInfoCard">
+            <h3>Where this program can take you</h3>
+            <ul class="programCareerList">
+              <li>Strengthen your profile for promotion and higher-value teaching opportunities.</li>
+              <li>Improve your fit for schools seeking confident digital classroom practitioners.</li>
+              <li>Expand your path into facilitation, training support, and programme leadership.</li>
+              <li>Move closer to expert-level certification and education consulting pathways.</li>
+            </ul>
+          </article>
+          <div class="programCTABox">
+            <h3>Move forward with STEAM TWO</h3>
+            <p>Choose the professional plan that helps you integrate technology with purpose, improve classroom performance, and grow into a stronger, more competitive educator.</p>
+            <button class="btn btnWhite" type="button" data-program-enroll="steam-two">Enroll and continue to signup</button>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section class="page" id="page-steam-three">
+      <section class="programHero">
+        <div class="container">
+          <div class="programGrid">
+            <div class="programMainCard">
+              <span class="programKicker">Coursera-style program page</span>
+              <h1 class="programTitle">STEAM THREE — Advanced &amp; AI-Integrated Expert Level</h1>
+              <p class="programLead">Step into expert-level teaching and leadership with an advanced certification designed for future-ready educators. STEAM THREE empowers teachers with AI-supported workflows, advanced pedagogy, data-informed improvement strategies, and high-level classroom leadership skills for modern educational excellence.</p>
+              <div class="programMetaRow">
+                <span class="programMetaPill">🤖 AI-supported teaching</span>
+                <span class="programMetaPill">🏅 Expert certification level</span>
+                <span class="programMetaPill">📊 Advanced classroom strategy</span>
+              </div>
+              <img class="programImage" src="images/course-3.png" alt="STEAM THREE advanced AI integrated expert program">
+            </div>
+            <aside class="programSidebarCard">
+              <div class="programPriceLabel">Program fee</div>
+              <div class="programPrice">₦25,000</div>
+              <p class="mutedLine">One-time enrollment fee for the advanced STEAM THREE expert-level certification experience.</p>
+              <div class="programSidebarList">
+                <div class="programSidebarItem"><span>✔</span><span>Advanced digital pedagogy strategy</span></div>
+                <div class="programSidebarItem"><span>✔</span><span>AI-integrated teaching workflows</span></div>
+                <div class="programSidebarItem"><span>✔</span><span>Expert teacher growth pathway</span></div>
+              </div>
+              <button class="btn btnPrimary" type="button" data-program-enroll="steam-three">Enroll in STEAM THREE</button>
+              <a class="btn btnGhost" href="#page=login" data-page-link="login">Already have an account? Log In</a>
+            </aside>
+          </div>
+        </div>
+      </section>
+      <section class="programSection">
+        <div class="container programStack">
+          <article class="programInfoCard">
+            <h3>What you will learn in STEAM THREE</h3>
+            <p>STEAM THREE is the premium pathway for educators who want to lead at the highest professional level. It is designed for teachers, facilitators, coordinators, and education professionals who are ready to work with advanced instructional strategy, AI-supported planning, classroom innovation, and reflective improvement based on data and modern teaching trends. This program positions learners as forward-thinking educators who are prepared for the future of teaching and learning.</p>
+            <p>Beyond certification, STEAM THREE helps teachers strengthen their authority, visibility, and career value. It is a strong offer for professionals who want to be seen as advanced educators, digital leaders, mentors, and experts capable of driving innovation within schools, training centres, and learning organisations.</p>
+            <div class="programBulletGrid">
+              <div class="programBullet">AI-supported instruction design</div>
+              <div class="programBullet">Advanced teacher leadership skills</div>
+              <div class="programBullet">Data-informed classroom improvement</div>
+              <div class="programBullet">Expert certification progression</div>
+            </div>
+          </article>
+          <article class="programInfoCard">
+            <h3>Designed for advanced educators</h3>
+            <p>This plan is best for experienced teachers, instructional leaders, facilitators, administrators, and ambitious education professionals who want premium-level growth. It is especially attractive for those who want to stand out in recruitment, leadership, consulting, training, and advanced classroom practice. STEAM THREE presents a powerful value proposition for educators who are serious about excellence, innovation, and long-term impact.</p>
+          </article>
+          <div class="programHighlightGrid">
+            <article class="programHighlightCard">
+              <h4>What learners will gain</h4>
+              <p>Learners gain expert-level confidence in innovation, advanced pedagogy, AI-supported workflows, strategic lesson design, and improvement methods that can influence schools and training teams.</p>
+            </article>
+            <article class="programHighlightCard">
+              <h4>Certificate benefits</h4>
+              <p>STEAM THREE certification positions you as a premium educator, supports stronger professional authority, and helps you stand out for leadership, consulting, training, and expert classroom opportunities.</p>
+            </article>
+            <article class="programHighlightCard">
+              <h4>Career opportunities</h4>
+              <p>This level supports advanced teaching roles, instructional leadership, consultancy, facilitator training, programme management, school innovation support, and long-term professional recognition.</p>
+            </article>
+          </div>
+          <article class="programInfoCard">
+            <h3>Outcomes after completing STEAM THREE</h3>
+            <ul class="programOutcomeList">
+              <li>Use advanced digital and AI-supported systems to improve teaching quality.</li>
+              <li>Lead innovation, mentoring, and strategic classroom improvement with confidence.</li>
+              <li>Increase your authority for expert-level education roles and visibility.</li>
+              <li>Build a premium professional profile for recruitment, consulting, and impact.</li>
+            </ul>
+          </article>
+          <article class="programInfoCard">
+            <h3>Where this program can take you</h3>
+            <ul class="programCareerList">
+              <li>Prepare for education leadership, training, facilitation, and consulting roles.</li>
+              <li>Stand out for advanced school opportunities and premium teaching pathways.</li>
+              <li>Strengthen your authority as an educator who understands innovation and AI.</li>
+              <li>Create a stronger long-term path for influence, visibility, and professional growth.</li>
+            </ul>
+          </article>
+          <div class="programCTABox">
+            <h3>Step into expert-level teaching with STEAM THREE</h3>
+            <p>Choose the advanced certification built for educators who want authority, innovation, leadership value, and a future-ready professional advantage.</p>
+            <button class="btn btnWhite" type="button" data-program-enroll="steam-three">Enroll and continue to signup</button>
+          </div>
+        </div>
+      </section>
+    </section>
+
+<section class="page" id="page-courses">
+
+  <section class="pageHeroBand">
+    <div class="pageHeroInner">
+      <div class="pageHeroText">
+        <span class="pageHeroBadge">Courses Overview</span>
+        <h2>Structured teacher learning pathways for classroom growth and certification progress</h2>
+        <p>
+          Explore practical programs that help teachers grow from foundation level to advanced digital and AI-supported teaching practice, while keeping the professional learning design already built into this page.
+        </p>
+        <div class="pageHeroActions">
+          <a class="btn btnPrimary" href="#page=joinfree" data-page-link="joinfree">Start Learning</a>
+          <a class="btn btnGhost" href="#page=steam-one" data-page-link="steam-one">View STEAM ONE</a>
+        </div>
+      </div>
+      <div class="pageHeroVisual">
+        <div class="pageHeroCard">
+          <h3>Three clear certification levels</h3>
+          <div class="pageHeroList">
+            <div><strong>STEAM ONE</strong><span>Foundation learning for modern teaching confidence.</span></div>
+            <div><strong>STEAM TWO</strong><span>Technology integration for stronger classroom delivery.</span></div>
+            <div><strong>STEAM THREE</strong><span>Advanced and AI-supported expert teaching practice.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
   <section class="section">
     <div class="container">
       <h2 class="h2">Popular certification programs</h2>
@@ -3440,7 +4667,6 @@
         </p>
         <div class="coursesHeroActions">
           <a class="btn btnPrimary" href="#page=joinfree" data-page-link="joinfree">Start Learning</a>
-          <a class="btn btnGhost" href="#page=login" data-page-link="login">Login</a>
         </div>
       </div>
       <div class="coursesHeroImage">
@@ -3495,7 +4721,7 @@
           A beginner-friendly pathway for teachers who want to understand digital teaching,
           structured pedagogy, and practical classroom technology use.
         </p>
-        <a class="pathLink" href="#page=joinfree" data-page-link="joinfree">Enroll as Teacher</a>
+        <a class="pathLink" href="#page=steam-one" data-page-link="steam-one">View STEAM ONE</a>
       </article>
 
       <article class="coursesPathCard">
@@ -3505,7 +4731,7 @@
           Focused on digital classroom tools, teaching strategy, lesson improvement,
           and stronger learner engagement through guided professional development.
         </p>
-        <a class="pathLink" href="#page=joinfree" data-page-link="joinfree">Choose This Plan</a>
+        <a class="pathLink" href="#page=steam-two" data-page-link="steam-two">View STEAM TWO</a>
       </article>
 
       <article class="coursesPathCard">
@@ -3515,7 +4741,7 @@
           An advanced pathway for educators who want to integrate AI, analytics,
           and expert teaching workflows into modern education practice.
         </p>
-        <a class="pathLink" href="#page=joinfree" data-page-link="joinfree">Start Expert Track</a>
+        <a class="pathLink" href="#page=steam-three" data-page-link="steam-three">View STEAM THREE</a>
       </article>
     </div>
   </section>
@@ -3562,6 +4788,34 @@
 </section>
 
   <section class="page" id="page-marketplace">
+
+  <section class="pageHeroBand pageHeroSoft">
+    <div class="pageHeroInner">
+      <div class="pageHeroText">
+        <span class="pageHeroBadge">Teacher Marketplace</span>
+        <h2>Discover certified teachers and send secure contact requests through the platform</h2>
+        <p>
+          Review professional teacher profiles, request verified contact details through the small form flow, and keep every request ready for dashboard tracking and admin review without changing the core marketplace design below.
+        </p>
+        <div class="pageHeroActions">
+          <a class="btn btnPrimary" href="#steamMarketplaceSection">Browse Teachers</a>
+          <a class="btn btnGhost" href="#page=contact" data-page-link="contact">Need Support?</a>
+        </div>
+      </div>
+      <div class="pageHeroVisual">
+        <div class="pageHeroCard">
+          <h3>Request flow now follows your process</h3>
+          <div class="pageHeroList">
+            <div><strong>Open Form</strong><span>Requester enters name, email, phone, and optional organization.</span></div>
+            <div><strong>Submit Request</strong><span>Request is prepared for dashboard records and admin handling.</span></div>
+            <div><strong>Track Easily</strong><span>Designed to support teacher, dashboard, and admin-side visibility.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
   <section class="section steamMarketplaceSection" id="steamMarketplaceSection">
   <div class="container">
     <div class="steamMarketplaceShell">
@@ -3586,19 +4840,6 @@
             </div>
 
             <button class="steamSearchBtn" type="button">Search Teachers</button>
-          </div>
-
-          <div class="steamMarketplaceHeroActions">
-            <a href="#page=marketplace" class="steamPrimaryBtn" data-page-link="marketplace">Browse Certified Teachers</a>
-            <a href="#page=joinfree" class="steamSecondaryBtn" data-page-link="joinfree">Create Teacher Profile</a>
-          </div>
-        </div>
-
-        <div class="steamMarketplaceHeroCard">
-          <img src="images/mark-1.png" alt="Certified teachers marketplace" class="steamHeroImage">
-          <div class="steamHeroCardText">
-            <h3>Verified Professional Profiles</h3>
-            <p>Certified teachers can showcase their qualifications, skills, and classroom strengths in a trusted professional marketplace.</p>
           </div>
         </div>
       </div>
@@ -3626,34 +4867,12 @@
       <!-- FEATURE CARDS -->
       <div class="steamMarketplaceFeatures">
         <article class="steamFeatureCard">
-          <img src="images/teacher-profile-card.png" alt="Teacher professional profile" class="steamFeatureImage">
-          <div class="steamFeatureCardBody">
-            <h3>Professional Teacher Profiles</h3>
-            <p>Every certified teacher profile is designed to highlight classroom experience, certification level, digital skills, and educational strengths.</p>
-          </div>
-        </article>
-
-        <article class="steamFeatureCard">
-          <img src="images/classroom-excellence.png" alt="Classroom excellence" class="steamFeatureImage">
-          <div class="steamFeatureCardBody">
-            <h3>Trusted Classroom Standards</h3>
-            <p>Teachers in the marketplace are positioned for modern education needs, helping schools identify professionals aligned with strong teaching practice.</p>
-          </div>
-        </article>
-
-        <article class="steamFeatureCard">
-          <img src="images/admin-support-request.png" alt="Admin supported contact flow" class="steamFeatureImage">
-          <div class="steamFeatureCardBody">
-            <h3>Admin-Supported Contact Requests</h3>
-            <p>Contact requests are routed properly to admin first, helping keep the teacher marketplace secure, organized, and professionally managed.</p>
-          </div>
         </article>
       </div>
 
       <!-- CERTIFIED TEACHERS GRID -->
       <div class="steamTeachersGrid">
         <article class="steamTeacherCard">
-          <img src="images/teacher-1.png" alt="Certified teacher profile" class="steamTeacherPhoto">
           <div class="steamTeacherBody">
             <span class="steamTeacherLevel">STEAM ONE Certified</span>
             <h3>Grace Johnson</h3>
@@ -3668,7 +4887,6 @@
         </article>
 
         <article class="steamTeacherCard">
-          <img src="images/teacher-2.png" alt="Certified teacher profile" class="steamTeacherPhoto">
           <div class="steamTeacherBody">
             <span class="steamTeacherLevel">STEAM TWO Certified</span>
             <h3>Daniel Okoro</h3>
@@ -3683,7 +4901,6 @@
         </article>
 
         <article class="steamTeacherCard">
-          <img src="images/teacher-3.png" alt="Certified teacher profile" class="steamTeacherPhoto">
           <div class="steamTeacherBody">
             <span class="steamTeacherLevel">STEAM THREE Certified</span>
             <h3>Esther Adebayo</h3>
@@ -3722,32 +4939,273 @@
   </div>
 </section>
 
+<div class="teacherRequestModal" id="teacherRequestModal" aria-hidden="true">
+  <div class="teacherRequestBackdrop" data-close-teacher-request></div>
+  <div class="teacherRequestDialog" role="dialog" aria-modal="true" aria-labelledby="teacherRequestTitle">
+    <button type="button" class="teacherRequestClose" id="teacherRequestCloseBtn" aria-label="Close request form">&times;</button>
+    <div class="teacherRequestDialogBody">
+      <div class="teacherRequestHeader">
+        <span class="teacherRequestBadge">Marketplace Request</span>
+        <h3 id="teacherRequestTitle">Request for This STEAM-Certified Teacher Contact</h3>
+        <p id="teacherRequestTeacherMeta">Complete the small form below and submit the request to dashboard and admin records.</p>
+      </div>
+      <form id="teacherRequestForm" class="teacherRequestForm">
+        <div class="teacherRequestGrid">
+          <label>
+            <span>Name</span>
+            <input type="text" id="teacherRequestName" placeholder="Enter your full name" required>
+          </label>
+          <label>
+            <span>Email</span>
+            <input type="email" id="teacherRequestEmail" placeholder="Enter your email address" required>
+          </label>
+          <label>
+            <span>Phone Number</span>
+            <input type="tel" id="teacherRequestPhone" placeholder="Enter your phone number" required>
+          </label>
+          <label>
+            <span>Organization / School Name (Optional)</span>
+            <input type="text" id="teacherRequestOrganization" placeholder="Enter organization or school name">
+          </label>
+        </div>
+        <div class="teacherRequestActions">
+          <button type="button" class="btn btnGhost" id="teacherRequestCancelBtn">Cancel</button>
+          <button type="submit" class="btn btnPrimary">Submit Request</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<style>
+.teacherRequestModal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:3000;padding:20px}
+.teacherRequestModal.active{display:flex}
+.teacherRequestBackdrop{position:absolute;inset:0;background:rgba(4,24,56,.65);backdrop-filter:blur(4px)}
+.teacherRequestDialog{position:relative;width:min(100%,680px);background:#fff;border-radius:24px;box-shadow:0 30px 70px rgba(7,32,71,.22);overflow:hidden;border:1px solid rgba(17,71,153,.08)}
+.teacherRequestDialogBody{padding:28px}
+.teacherRequestHeader h3{margin:10px 0 10px;color:#0d2f66;font-size:1.6rem}
+.teacherRequestHeader p{margin:0 0 18px;color:#4f6380;line-height:1.6}
+.teacherRequestBadge{display:inline-flex;align-items:center;padding:8px 14px;border-radius:999px;background:#eaf2ff;color:#0d4ea6;font-weight:700;font-size:.85rem}
+.teacherRequestClose{position:absolute;top:14px;right:16px;border:none;background:transparent;font-size:2rem;line-height:1;color:#1f3c6e;cursor:pointer}
+.teacherRequestForm{display:flex;flex-direction:column;gap:18px}
+.teacherRequestGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.teacherRequestForm label{display:flex;flex-direction:column;gap:8px;color:#10386e;font-weight:600}
+.teacherRequestForm input{height:52px;border:1px solid #c9d8ee;border-radius:14px;padding:0 14px;font-size:1rem;outline:none}
+.teacherRequestForm input:focus{border-color:#1455b5;box-shadow:0 0 0 4px rgba(20,85,181,.1)}
+.teacherRequestActions{display:flex;justify-content:flex-end;gap:12px;flex-wrap:wrap}
+@media (max-width: 700px){.teacherRequestDialogBody{padding:22px}.teacherRequestGrid{grid-template-columns:1fr}}
+</style>
+
 <script>
+  const teacherRequestState = { teacher: null };
+
+  function openTeacherRequestModal() {
+    const modal = document.getElementById('teacherRequestModal');
+    if (!modal) return;
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeTeacherRequestModal() {
+    const modal = document.getElementById('teacherRequestModal');
+    if (!modal) return;
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
   function contactCertifiedTeacher(name, level, subject, location) {
-    const teacherRequest = {
+    teacherRequestState.teacher = {
       teacherName: name,
       certificationLevel: level,
       subject: subject,
       location: location,
       requestDate: new Date().toISOString(),
-      status: "Pending Admin Review"
+      status: 'Pending Admin Review'
     };
 
-    localStorage.setItem("selectedCertifiedTeacherRequest", JSON.stringify(teacherRequest));
+    localStorage.setItem('selectedCertifiedTeacherRequest', JSON.stringify(teacherRequestState.teacher));
 
-    const existingRequests = JSON.parse(localStorage.getItem("adminTeacherRequests") || "[]");
-    existingRequests.push(teacherRequest);
-    localStorage.setItem("adminTeacherRequests", JSON.stringify(existingRequests));
+    const meta = document.getElementById('teacherRequestTeacherMeta');
+    if (meta) {
+      meta.textContent = `${name} • ${level} • ${subject} • ${location}`;
+    }
 
-    alert("Your request has been sent to admin successfully.");
-
-    window.location.href = "/TeacherDashboardPage.tsx";
+    const form = document.getElementById('teacherRequestForm');
+    if (form) form.reset();
+    openTeacherRequestModal();
   }
+
+  document.addEventListener('click', function(event){
+    if(event.target.matches('[data-close-teacher-request]')) closeTeacherRequestModal();
+  });
+  document.getElementById('teacherRequestCloseBtn')?.addEventListener('click', closeTeacherRequestModal);
+  document.getElementById('teacherRequestCancelBtn')?.addEventListener('click', closeTeacherRequestModal);
+  document.addEventListener('keydown', function(event){
+    if(event.key === 'Escape') closeTeacherRequestModal();
+  });
+
+  document.getElementById('teacherRequestForm')?.addEventListener('submit', function(event){
+    event.preventDefault();
+    if(!teacherRequestState.teacher){
+      alert('Please choose a certified teacher first.');
+      return;
+    }
+    const requesterName = (document.getElementById('teacherRequestName')?.value || '').trim();
+    const requesterEmail = (document.getElementById('teacherRequestEmail')?.value || '').trim();
+    const requesterPhone = (document.getElementById('teacherRequestPhone')?.value || '').trim();
+    const requesterOrganization = (document.getElementById('teacherRequestOrganization')?.value || '').trim();
+    if(!requesterName || !requesterEmail || !requesterPhone){
+      alert('Please fill name, email, and phone number.');
+      return;
+    }
+
+    const requestRecord = {
+      id: 'req_' + Math.random().toString(16).slice(2) + Date.now(),
+      ...teacherRequestState.teacher,
+      requesterName,
+      requesterEmail,
+      requesterPhone,
+      requesterOrganization,
+      dashboardStatus: 'Submitted to Dashboard',
+      adminStatus: 'Sent to Admin',
+      submittedAt: new Date().toISOString()
+    };
+
+    localStorage.setItem('selectedCertifiedTeacherRequest', JSON.stringify(requestRecord));
+    localStorage.setItem('lastTeacherContactRequest', JSON.stringify(requestRecord));
+
+    const storageKeys = ['adminTeacherRequests','dashboardTeacherContactRequests','teacherContactRequests','dashboardRequests'];
+    storageKeys.forEach((key)=>{
+      const existing = JSON.parse(localStorage.getItem(key) || '[]');
+      existing.unshift(requestRecord);
+      localStorage.setItem(key, JSON.stringify(existing));
+    });
+
+    const adminEmailCopies = JSON.parse(localStorage.getItem('adminEmailCopies') || '[]');
+    adminEmailCopies.unshift({
+      to: 'admin@steamoneplatform.com',
+      subject: `Teacher Contact Request - ${requestRecord.teacherName}`,
+      body: `Teacher: ${requestRecord.teacherName}
+Level: ${requestRecord.certificationLevel}
+Subject: ${requestRecord.subject}
+Location: ${requestRecord.location}
+
+Requester Name: ${requesterName}
+Requester Email: ${requesterEmail}
+Requester Phone: ${requesterPhone}
+Organization / School Name: ${requesterOrganization || 'Not provided'}
+
+Submitted At: ${requestRecord.submittedAt}`,
+      createdAt: requestRecord.submittedAt,
+      requestId: requestRecord.id
+    });
+    localStorage.setItem('adminEmailCopies', JSON.stringify(adminEmailCopies));
+
+    closeTeacherRequestModal();
+    alert('Your request has been submitted successfully and copied to dashboard/admin records.');
+    window.location.href = 'TeacherDashboardPage.tsx';
+  });
+
+// Added stronger endless auto-sliding motion for the last two home-page image rows
+(function(){
+  const sliderRows = Array.from(document.querySelectorAll('.developerSliderRow.autoSliding'));
+  if(!sliderRows.length) return;
+
+  sliderRows.forEach((row)=>{
+    if(row.dataset.autoInit === 'true') return;
+    row.dataset.autoInit = 'true';
+
+    const originalCards = Array.from(row.children);
+    if(!originalCards.length) return;
+
+    originalCards.forEach((card)=>{
+      const clone = card.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      row.appendChild(clone);
+    });
+
+    row.classList.add('auto-ready');
+    let rafId = null;
+    let paused = false;
+    const baseSpeed = parseFloat(row.dataset.slideSpeed || '0.45');
+
+    const step = () => {
+      if(!paused){
+        row.scrollLeft += baseSpeed;
+        const resetPoint = row.scrollWidth / 2;
+        if(baseSpeed > 0 && row.scrollLeft >= resetPoint){
+          row.scrollLeft -= resetPoint;
+        }else if(baseSpeed < 0 && row.scrollLeft <= 0){
+          row.scrollLeft += resetPoint;
+        }
+      }
+      rafId = requestAnimationFrame(step);
+    };
+
+    if(baseSpeed < 0){
+      row.scrollLeft = row.scrollWidth / 2;
+    }
+
+    const start = () => {
+      if(!rafId) rafId = requestAnimationFrame(step);
+    };
+
+    const stop = () => {
+      if(rafId){
+        cancelAnimationFrame(rafId);
+        rafId = null;
+      }
+    };
+
+    row.addEventListener('mouseenter', ()=>{ paused = true; });
+    row.addEventListener('mouseleave', ()=>{ paused = false; });
+    row.addEventListener('touchstart', ()=>{ paused = true; }, {passive:true});
+    row.addEventListener('touchend', ()=>{ paused = false; }, {passive:true});
+
+    document.addEventListener('visibilitychange', ()=>{
+      if(document.hidden){ stop(); }
+      else { start(); }
+    });
+
+    start();
+  });
+})();
+
 </script>
   </section>
 </section>
 
     <section class="page" id="page-services">
+
+  <section class="pageHeroBand">
+    <div class="pageHeroInner">
+      <div class="pageHeroText">
+        <span class="pageHeroBadge">Education Services</span>
+        <h2>Professional services built for schools, teachers, and digital learning transformation</h2>
+        <p>
+          This page keeps your service sections intact while adding a stronger hero area that matches the home page style and introduces consulting, training support, and classroom transformation services clearly.
+        </p>
+        <div class="pageHeroActions">
+          <a class="btn btnPrimary" href="#page=contact" data-page-link="contact">Request a Service</a>
+          <a class="btn btnGhost" href="#page=about" data-page-link="about">Learn More</a>
+        </div>
+      </div>
+      <div class="pageHeroVisual">
+        <div class="pageHeroCard">
+          <h3>Built for practical impact</h3>
+          <div class="pageHeroList">
+            <div><strong>Teacher Training</strong><span>Hands-on support for digital pedagogy and classroom growth.</span></div>
+            <div><strong>School Support</strong><span>Guidance for implementation, systems, and education teams.</span></div>
+            <div><strong>Consulting</strong><span>Professional help for modern learning strategy and delivery.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
   <section class="section">
     <div class="container">
       <h2 class="h2">A professional learning platform for teachers</h2>
@@ -3972,6 +5430,34 @@
 </section>
 
    <section class="page" id="page-about">
+
+  <section class="pageHeroBand pageHeroSoft">
+    <div class="pageHeroInner">
+      <div class="pageHeroText">
+        <span class="pageHeroBadge">About STEAM ONE</span>
+        <h2>A professional teacher growth platform built for modern education and trusted collaboration</h2>
+        <p>
+          This hero section gives the About page the same strong top-page experience as the home page while keeping your existing mission, values, standards, and gallery sections unchanged below.
+        </p>
+        <div class="pageHeroActions">
+          <a class="btn btnPrimary" href="#page=courses" data-page-link="courses">Explore Courses</a>
+          <a class="btn btnGhost" href="#page=marketplace" data-page-link="marketplace">Visit Marketplace</a>
+        </div>
+      </div>
+      <div class="pageHeroVisual">
+        <div class="pageHeroCard">
+          <h3>What the platform stands for</h3>
+          <div class="pageHeroList">
+            <div><strong>Professional Learning</strong><span>Structured development for teachers and facilitators.</span></div>
+            <div><strong>Digital Readiness</strong><span>Modern classroom confidence with practical technology use.</span></div>
+            <div><strong>Trusted Pathways</strong><span>Aligned growth, certification, and education opportunity.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
   <section class="section">
     <div class="container">
       <h2 class="h2">About STEAM ONE</h2>
@@ -4351,6 +5837,34 @@
 </section>
 
     <section class="page" id="page-contact">
+
+  <section class="pageHeroBand">
+    <div class="pageHeroInner">
+      <div class="pageHeroText">
+        <span class="pageHeroBadge">Contact and Support</span>
+        <h2>Reach the STEAM ONE Platform team for support, partnerships, and service enquiries</h2>
+        <p>
+          Get help with courses, recruitment, teacher requests, service enquiries, partnerships, or platform guidance through the contact options and form sections already available on this page.
+        </p>
+        <div class="pageHeroActions">
+          <a class="btn btnPrimary" href="mailto:info@steamoneplatform.com">Email Support</a>
+          <a class="btn btnGhost" href="#page=services" data-page-link="services">Our Services</a>
+        </div>
+      </div>
+      <div class="pageHeroVisual">
+        <div class="pageHeroCard">
+          <h3>We’re ready to respond</h3>
+          <div class="pageHeroList">
+            <div><strong>Support Questions</strong><span>Platform access, signup, dashboard, and teacher-request help.</span></div>
+            <div><strong>Partnership Enquiries</strong><span>School, recruiter, and institutional collaboration requests.</span></div>
+            <div><strong>Service Requests</strong><span>Training, consulting, and education support follow-up.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
   <section class="section">
     <div class="container">
       <h2 class="h2">Contact</h2>
@@ -4466,6 +5980,34 @@
 </section>
 
     <section class="page" id="page-login">
+
+  <section class="pageHeroBand pageHeroSoft">
+    <div class="pageHeroInner">
+      <div class="pageHeroText">
+        <span class="pageHeroBadge">Secure Login</span>
+        <h2>Continue your learning and dashboard experience with role-based access</h2>
+        <p>
+          Teachers and facilitators can log in here and continue from their correct dashboard flow, while the page keeps your current login form and role handling below.
+        </p>
+        <div class="pageHeroActions">
+          <a class="btn btnPrimary" href="#page=joinfree" data-page-link="joinfree">Create Account</a>
+          <a class="btn btnGhost" href="#page=admin" data-page-link="admin">Admin Login</a>
+        </div>
+      </div>
+      <div class="pageHeroVisual">
+        <div class="pageHeroCard">
+          <h3>Role-based access</h3>
+          <div class="pageHeroList">
+            <div><strong>Teacher Login</strong><span>Continue learning, choose plans, and access teacher tools.</span></div>
+            <div><strong>Facilitator Login</strong><span>Enter facilitator workflow and support session tasks.</span></div>
+            <div><strong>Admin Entry</strong><span>Use protected admin credentials from the separate admin page.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
       <section class="authWrap">
         <div class="container">
           <div class="authCard">
@@ -4509,12 +6051,45 @@
     </section>
 
     <section class="page" id="page-joinfree">
+
+  <section class="pageHeroBand">
+    <div class="pageHeroInner">
+      <div class="pageHeroText">
+        <span class="pageHeroBadge">Join STEAM ONE</span>
+        <h2>Create your account and move into the right learning path for your role</h2>
+        <p>
+          This sign-up page now has a hero section that matches the home page feel while keeping your existing signup form, selected-plan banner, and dashboard flow below.
+        </p>
+        <div class="pageHeroActions">
+          <a class="btn btnPrimary" href="#page=login" data-page-link="login">Already Have an Account?</a>
+          <a class="btn btnGhost" href="#page=courses" data-page-link="courses">View Courses</a>
+        </div>
+      </div>
+      <div class="pageHeroVisual">
+        <div class="pageHeroCard">
+          <h3>Quick signup path</h3>
+          <div class="pageHeroList">
+            <div><strong>Choose Role</strong><span>Select teacher or facilitator during signup.</span></div>
+            <div><strong>Create Account</strong><span>Use email signup or Google signup option.</span></div>
+            <div><strong>Continue Forward</strong><span>Proceed to the matching dashboard flow after signup.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
       <section class="authWrap">
         <div class="container">
           <div class="authCard">
             <span class="kicker">✨ Join STEAM ONE</span>
             <h2 class="authTitle">Create your account</h2>
             <p class="authSub">Sign up and continue to your dashboard based on your selected role.</p>
+            <div class="selectedPlanBanner" id="selectedPlanBanner">
+              <strong>Selected Plan</strong>
+              <h3 id="selectedPlanTitle">STEAM ONE</h3>
+              <p id="selectedPlanMeta">Your chosen program and price will appear here before you create your account.</p>
+            </div>
 
             <button class="btn btnGoogle" id="googleSignupBtn" type="button">
               <span>G</span>
@@ -4544,17 +6119,98 @@
                 <input id="signupPass" type="password" placeholder="Create password" />
               </div>
             </div>
+
+            <div class="signupPaymentSection" id="signupPaymentSection">
+              <div class="signupPaymentHeader">
+                <div>
+                  <h3>Teacher payment method</h3>
+                  <p>Teachers complete plan payment before dashboard access. Facilitators sign up free and continue directly to the Facilitator Dashboard.</p>
+                </div>
+                <div class="signupAmountBox">
+                  <strong>Amount</strong>
+                  <span id="signupPaymentAmount">₦0</span>
+                </div>
+              </div>
+
+              <div class="paymentMethodGrid">
+                <label class="paymentMethodOption">
+                  <input type="radio" name="signupPaymentMethod" value="card" checked>
+                  <span class="paymentMethodCard">
+                    <strong>Card Payment</strong>
+                    <span>Use Paystack card checkout for Visa, Mastercard, or Verve cards.</span>
+                  </span>
+                </label>
+                <label class="paymentMethodOption">
+                  <input type="radio" name="signupPaymentMethod" value="bank_transfer">
+                  <span class="paymentMethodCard">
+                    <strong>Bank Transfer</strong>
+                    <span>Use Paystack transfer option and complete payment from your bank app.</span>
+                  </span>
+                </label>
+                <label class="paymentMethodOption">
+                  <input type="radio" name="signupPaymentMethod" value="ussd">
+                  <span class="paymentMethodCard">
+                    <strong>USSD</strong>
+                    <span>Pay through your bank USSD flow where supported by Paystack checkout.</span>
+                  </span>
+                </label>
+                <label class="paymentMethodOption">
+                  <input type="radio" name="signupPaymentMethod" value="bank">
+                  <span class="paymentMethodCard">
+                    <strong>Bank Account</strong>
+                    <span>Choose bank account payment or direct debit options available in checkout.</span>
+                  </span>
+                </label>
+              </div>
+
+              <div class="paymentInstruction" id="paymentInstructionBox">
+                <strong>Paystack ready:</strong> choose a payment method and create account. If your live Paystack public key is added later, the checkout popup can open automatically. For now, the payment flow will run in professional demo mode.
+              </div>
+            </div>
+
+            <div class="facilitatorFreeNote" id="facilitatorFreeNote" hidden>
+              Facilitator signup is free. Once your details are complete, you can continue directly to the Facilitator Dashboard without payment.
+            </div>
+
             <div class="authActions">
               <button class="btn btnPrimary" id="doSignup" type="button">Create Account</button>
               <a class="btn btnGhost" href="#page=login" data-page-link="login">Log In</a>
             </div>
-            <div class="hint">Teachers can sign up and open Teacher Dashboard directly, then choose a plan later, or complete payment first if a plan was selected before signup.</div>
+            <div class="hint">Teachers must complete payment before Teacher Dashboard opens. Facilitators sign up free and continue directly to their dashboard.</div>
           </div>
         </div>
       </section>
     </section>
 
     <section class="page" id="page-admin">
+
+  <section class="pageHeroBand pageHeroSoft">
+    <div class="pageHeroInner">
+      <div class="pageHeroText">
+        <span class="pageHeroBadge">Protected Admin Access</span>
+        <h2>Open the admin dashboard and manage platform-side records with the secured login</h2>
+        <p>
+          The admin page now starts with a full hero section while the credential form below remains in place for the existing admin dashboard access flow.
+        </p>
+        <div class="pageHeroActions">
+          <a class="btn btnPrimary" href="#page=login" data-page-link="login">Back to Login</a>
+          <a class="btn btnGhost" href="#page=marketplace" data-page-link="marketplace">View Marketplace</a>
+        </div>
+      </div>
+      <div class="pageHeroVisual">
+        <div class="pageHeroCard">
+          <h3>Admin control area</h3>
+          <div class="pageHeroList">
+            <div><strong>Protected Entry</strong><span>Only the saved admin credentials unlock the admin dashboard.</span></div>
+            <div><strong>Request Handling</strong><span>Prepared to review stored marketplace and platform request records.</span></div>
+            <div><strong>Platform Oversight</strong><span>Central access for management and monitoring workflow.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
       <section class="authWrap">
         <div class="container">
           <div class="authCard">
@@ -4697,10 +6353,11 @@
   });
 
   const ROUTES = {
-    teacherDashboard: "/TeacherDashboardPage",
-    facilitatorDashboard: "/FacilitatorDashboardPage",
-    adminDashboard: "/AdminDashboardPage"
+    teacherDashboard: 'TeacherDashboardPage.tsx',
+    facilitatorDashboard: 'FacilitatorDashboardPage.tsx',
+    adminDashboard: 'AdminDashboardPage.tsx'
   };
+  const PAYSTACK_PUBLIC_KEY = "";
 
   const COURSES = [
     { id: "steam-one", tag: "STEAM Track", title: "STEAM ONE — Foundations for Digital Teaching", desc: "Introductory modules for pre‑service and in‑service teachers.", price: 15000, filter: "steam" },
@@ -4726,7 +6383,27 @@
     catch(e){ return null; }
   }
 
-  function saveTeacherPlanPayment(course, source){
+  function getTeacherSignupAmount(){
+    const course = getSelectedCourse();
+    return course ? Number(course.price || 0) : 0;
+  }
+
+  function getSelectedSignupPaymentMethod(){
+    const selected = document.querySelector('input[name="signupPaymentMethod"]:checked');
+    return selected ? selected.value : "card";
+  }
+
+  function formatPaymentMethodLabel(method){
+    const labels = {
+      card: "Card Payment",
+      bank_transfer: "Bank Transfer",
+      ussd: "USSD",
+      bank: "Bank Account"
+    };
+    return labels[method] || "Paystack";
+  }
+
+  function saveTeacherPlanPayment(course, source, paymentMethod){
     if(!course) return false;
     const payment = {
       courseId: course.id,
@@ -4734,6 +6411,8 @@
       amount: course.price,
       paid: true,
       source,
+      paymentMethod: paymentMethod || "card",
+      gateway: "paystack",
       paidAt: new Date().toISOString()
     };
     localStorage.setItem("steamone_teacher_plan", JSON.stringify(payment));
@@ -4741,23 +6420,128 @@
     return true;
   }
 
-  function continueTeacherFlowAfterAuth(source){
+  function openTeacherDashboardAfterPayment(source, paymentMethod){
     const course = getSelectedCourse();
     if(course){
-      const ok = confirm(`Selected Plan:
-${course.title}
-Amount: ${naira(course.price)}
-
-Click OK to make payment and open Teacher Dashboard.`);
-      if(!ok) return;
-      saveTeacherPlanPayment(course, source);
-      localStorage.setItem("steamone_learning_ready", "true");
+      saveTeacherPlanPayment(course, source, paymentMethod);
     }
+    localStorage.setItem("steamone_learning_ready", "true");
     window.location.href = ROUTES.teacherDashboard;
+  }
+
+  function runTeacherPaymentFlow(source){
+    const course = getSelectedCourse();
+    if(!course){
+      alert("Please select a STEAM plan from the Courses page before teacher signup so payment can be completed.");
+      location.hash = "#page=courses";
+      return;
+    }
+    const email = (document.getElementById("signupEmail")?.value || document.getElementById("loginEmail")?.value || "teacher@steamone.demo").trim() || "teacher@steamone.demo";
+    const name = (document.getElementById("signupName")?.value || "STEAM ONE Teacher").trim() || "STEAM ONE Teacher";
+    const paymentMethod = getSelectedSignupPaymentMethod();
+    const amountKobo = Math.round(Number(course.price || 0) * 100);
+    const methodLabel = formatPaymentMethodLabel(paymentMethod);
+
+    const finalize = () => openTeacherDashboardAfterPayment(source, paymentMethod);
+
+    if(window.PaystackPop && PAYSTACK_PUBLIC_KEY){
+      const channels = paymentMethod === "bank_transfer" ? ["bank_transfer"] :
+        paymentMethod === "ussd" ? ["ussd"] :
+        paymentMethod === "bank" ? ["bank"] : ["card"];
+      const handler = window.PaystackPop.setup({
+        key: PAYSTACK_PUBLIC_KEY,
+        email,
+        amount: amountKobo,
+        currency: "NGN",
+        ref: "steamone_" + Date.now(),
+        firstname: name.split(" ")[0] || "STEAM",
+        lastname: name.split(" ").slice(1).join(" ") || "Teacher",
+        channels,
+        metadata: {
+          custom_fields: [
+            { display_name: "Role", variable_name: "role", value: "teacher" },
+            { display_name: "Course", variable_name: "course", value: course.title },
+            { display_name: "Payment Method", variable_name: "payment_method", value: methodLabel }
+          ]
+        },
+        callback: function(){
+          finalize();
+        },
+        onClose: function(){
+          alert("Payment window closed. Complete payment to continue to Teacher Dashboard.");
+        }
+      });
+      handler.openIframe();
+      return;
+    }
+
+    const confirmed = confirm(`Teacher plan payment
+
+Plan: ${course.title}
+Amount: ${naira(course.price)}
+Method: ${methodLabel}
+Gateway: Paystack
+
+Click OK to continue in demo payment mode and open Teacher Dashboard.`);
+    if(!confirmed) return;
+    finalize();
+  }
+
+  function continueTeacherFlowAfterAuth(source){
+    runTeacherPaymentFlow(source);
+  }
+  function getProgramPageHash(course){
+    return course ? `#page=${course.id}` : "#page=courses";
+  }
+  function openProgramPage(course){
+    if(!course) return;
+    setSelectedCourse(course);
+    location.hash = getProgramPageHash(course);
   }
   function goToTeacherAuthWithCourse(course, preferredPage){
     setSelectedCourse(course || null);
+    updateSelectedPlanUI();
     location.hash = preferredPage === "login" ? "#page=login" : "#page=joinfree";
+  }
+  function updateSelectedPlanUI(){
+    const course = getSelectedCourse();
+    const banner = document.getElementById("selectedPlanBanner");
+    const title = document.getElementById("selectedPlanTitle");
+    const meta = document.getElementById("selectedPlanMeta");
+    if(!banner || !title || !meta) return;
+    if(course){
+      banner.classList.add("active");
+      title.textContent = course.title;
+      meta.textContent = `${naira(course.price)} • Your selected plan will be used after signup before Teacher Dashboard opens.`;
+      return;
+    }
+    banner.classList.remove("active");
+    title.textContent = "Select a STEAM plan";
+    meta.textContent = "Choose a teacher plan from the Courses page before teacher signup so payment can be completed.";
+  }
+
+  function updateSignupPaymentUI(){
+    const role = document.getElementById("signupRole")?.value || "teacher";
+    const paymentSection = document.getElementById("signupPaymentSection");
+    const facilitatorNote = document.getElementById("facilitatorFreeNote");
+    const amountEl = document.getElementById("signupPaymentAmount");
+    const instruction = document.getElementById("paymentInstructionBox");
+    const course = getSelectedCourse();
+
+    if(amountEl){
+      amountEl.textContent = course ? naira(course.price) : "Select Plan";
+    }
+    if(instruction){
+      instruction.innerHTML = course
+        ? `<strong>Selected plan:</strong> ${course.title} • ${naira(course.price)}. Teachers complete payment through Paystack before dashboard access is granted.`
+        : `<strong>Select a plan first:</strong> teachers should choose a STEAM course from the Courses page before payment and dashboard access.`;
+    }
+    if(paymentSection){
+      paymentSection.hidden = role !== "teacher";
+    }
+    if(facilitatorNote){
+      facilitatorNote.hidden = role !== "facilitator";
+    }
   }
 
   const courseGrid = document.getElementById("courseGrid");
@@ -4804,20 +6588,28 @@ Click OK to make payment and open Teacher Dashboard.`);
   document.querySelectorAll("[data-home-enroll]").forEach((btn) => {
     btn.addEventListener("click", () => {
       const course = COURSES.find(c => c.id === btn.dataset.homeEnroll);
+      openProgramPage(course || null);
+    });
+  });
+
+  document.querySelectorAll("[data-program-enroll]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const course = COURSES.find(c => c.id === btn.dataset.programEnroll);
       goToTeacherAuthWithCourse(course || null, "joinfree");
     });
   });
 
-  document.getElementById("courseGrid")?.addEventListener("click", (e) => {    const t = e.target.closest("button");
+  document.getElementById("courseGrid")?.addEventListener("click", (e) => {
+    const t = e.target.closest("button");
     if(!t) return;
     const id = t.dataset.enroll || t.dataset.details || t.dataset.contact;
     const course = COURSES.find(c => c.id === id);
     if(t.dataset.enroll){
-      goToTeacherAuthWithCourse(course || null, "joinfree");
+      openProgramPage(course || null);
       return;
     }
     if(t.dataset.details){
-      alert("Course Details (demo):\n\n" + (course?.title || "Course"));
+      openProgramPage(course || null);
       return;
     }
     if(t.dataset.contact){
@@ -4831,7 +6623,7 @@ Click OK to make payment and open Teacher Dashboard.`);
   }
 
   function showPage(name){
-    const allowed = ["home","courses","marketplace","services","about","contact","login","joinfree","admin"];
+    const allowed = ["home","courses","marketplace","services","about","contact","login","joinfree","admin","steam-one","steam-two","steam-three"];
     const page = allowed.includes(name) ? name : "home";
     document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
     document.getElementById("page-" + page)?.classList.add("active");
@@ -4841,7 +6633,7 @@ Click OK to make payment and open Teacher Dashboard.`);
     window.scrollTo({top:0, behavior:"smooth"});
   }
 
-  function route(){ showPage(getCurrentPage()); }
+  function route(){ updateSelectedPlanUI(); updateSignupPaymentUI(); showPage(getCurrentPage()); }
   window.addEventListener("hashchange", route);
   route();
 
@@ -4849,6 +6641,9 @@ Click OK to make payment and open Teacher Dashboard.`);
     const active = document.querySelector(".tab.active")?.dataset.filter || "all";
     renderCourses(active, e.target.value || "");
   });
+
+  document.getElementById("signupRole")?.addEventListener("change", updateSignupPaymentUI);
+
 
   document.getElementById("doLogin")?.addEventListener("click", ()=>{
     const role = document.getElementById("loginRole").value;
