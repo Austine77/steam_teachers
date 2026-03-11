@@ -356,6 +356,8 @@
     .divider{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:12px;font-weight:800;margin:16px 0}.divider:before,.divider:after{content:"";flex:1;height:1px;background:var(--line)}
     .hint,.signupFreeFlowNote{display:none !important}
 
+    .adminCleanCard{max-width:440px;margin:0 auto;padding:34px 28px}
+
     footer{background:#0f3f8c;color:#fff;margin-top:36px;border-top:1px solid rgba(255,255,255,.16)}
     .footerMockup{max-width:1200px;margin:0 auto;padding:28px 20px 22px}
     .footerBrand{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:26px;text-decoration:none}
@@ -4241,6 +4243,10 @@
   align-items: center;
   gap: 24px;
   flex-wrap: wrap;
+  background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 20px;
+  padding: 24px;
 }
 
 .ctaBandIntro h3 {
@@ -4265,11 +4271,29 @@
   flex-wrap: wrap;
 }
 
+.ctaBandProfessional .btnWhite,
+.ctaBandProfessional .btnGlass {
+  background: rgba(255,255,255,0.12);
+  color: #ffffff;
+  border: 1px solid rgba(255,255,255,0.28);
+  font-weight: 800;
+}
+
+.ctaBandProfessional .btnWhite:hover,
+.ctaBandProfessional .btnGlass:hover {
+  background: rgba(255,255,255,0.20);
+  color: #ffffff;
+}
+
 .collaborationShowcase {
   display: grid;
   grid-template-columns: 1.05fr 1fr;
   gap: 28px;
   align-items: center;
+  background: linear-gradient(135deg, rgba(9, 30, 78, 0.95), rgba(18, 59, 143, 0.92));
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 22px;
+  padding: 24px;
 }
 
 .collaborationShowcaseImage {
@@ -4293,6 +4317,10 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 20px;
+  padding: 24px;
 }
 
 .collaborationTag {
@@ -4301,10 +4329,10 @@
   margin-bottom: 12px;
   padding: 8px 14px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.12);
-  color: #dbeafe;
+  background: rgba(255, 255, 255, 0.16);
+  color: #ffffff;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.4px;
   text-transform: uppercase;
 }
@@ -4338,6 +4366,12 @@
   .ctaBandProfessional {
     padding: 22px;
     border-radius: 18px;
+  }
+
+  .ctaBandTop,
+  .collaborationShowcase,
+  .collaborationShowcaseContent {
+    padding: 18px;
   }
 
   .ctaBandTop {
@@ -4460,7 +4494,22 @@
   overflow-x: auto;
 }
 
-</style>
+
+    /* Readability upgrade */
+    body{font-size:18px;line-height:1.75;color:#0b1220;font-weight:500}
+    p, li, label, input, select, textarea, .muted, .subtext, .helper-text{font-size:18px !important;line-height:1.75 !important;color:#0f172a !important;font-weight:600}
+    h1{font-size:clamp(2.2rem, 4vw, 3.6rem) !important;line-height:1.15 !important;font-weight:900 !important;color:#081225 !important}
+    h2{font-size:clamp(1.7rem, 3vw, 2.7rem) !important;line-height:1.2 !important;font-weight:850 !important;color:#081225 !important}
+    h3{font-size:clamp(1.3rem, 2.3vw, 2rem) !important;line-height:1.3 !important;font-weight:800 !important;color:#081225 !important}
+    h4,h5,h6{font-weight:800 !important;color:#081225 !important}
+    .navLinks a,.navDropdownToggle,.btn,.brandText strong,.brandText span{font-size:16px !important;font-weight:800 !important}
+    .searchBox input{font-size:16px !important;font-weight:600;color:#0f172a}
+    .pageTitle,.sectionTitle,.heroTitle,.title{font-weight:900 !important;color:#081225 !important}
+    .pageLead,.sectionLead,.heroText,.subtitle,.desc{font-size:18px !important;line-height:1.75 !important;color:#0f172a !important;font-weight:600 !important}
+    input,select,textarea{min-height:52px;font-size:17px !important;font-weight:600;border-width:1.5px !important}
+    ::placeholder{color:#475569;opacity:1;font-weight:500}
+
+  </style>
 </head>
 <body>
 <div class="wrap">
@@ -4485,6 +4534,7 @@
               <a href="#page=services" data-page-link="services">Services</a>
               <a href="#page=about" data-page-link="about">About</a>
               <a href="#page=contact" data-page-link="contact">Contact</a>
+              <a href="#page=admin" data-page-link="admin">Admin Login</a>
             </div>
           </details>
         </nav>
@@ -4521,7 +4571,7 @@
       <div class="promo-image-wrap">
         <div class="shape-bg"></div>
         <div class="shape-photo">
-          <img src="images/teacher.jpeg" alt="Educator using digital learning platform" />
+          <img src="images/teacher.png" alt="Educator using digital learning platform" />
         </div>
       </div>
     </div>
@@ -6298,8 +6348,7 @@ Submitted At: ${requestRecord.submittedAt}`,
             <div class="authActions">
               <button class="btn btnPrimary" id="doLogin" type="button" style="width:100%;justify-content:center">Log In</button>
               <a class="btn btnGhost" href="#page=joinfree" data-page-link="joinfree" style="width:100%;justify-content:center">Join for Free</a>
-              <a class="btn btnLink" href="#page=admin" data-page-link="admin" style="width:100%;justify-content:center">Admin Login</a>
-            </div>
+                          </div>
 </div>
         </div>
       </section>
@@ -6355,19 +6404,14 @@ Submitted At: ${requestRecord.submittedAt}`,
 
       <section class="authWrap">
         <div class="container">
-          <div class="authCard">
-            <span class="kicker">🛡️ Admin access</span>
-            <h2 class="authTitle">Admin login</h2>
-            <p class="authSub">Use the admin credentials to open the Admin Dashboard.</p>
+          <div class="authCard adminCleanCard">
             <div class="formGrid">
-              <div class="field"><label for="adminUser">Username</label><input id="adminUser" placeholder="OyoTechHub" /></div>
-              <div class="field"><label for="adminPass">Password</label><input id="adminPass" type="password" placeholder="EduProject2025" /></div>
+              <div class="field"><label for="adminUser">Username</label><input id="adminUser" placeholder="Username" /></div>
+              <div class="field"><label for="adminPass">Password</label><input id="adminPass" type="password" placeholder="Password" /></div>
             </div>
             <div class="authActions">
-              <button class="btn btnPrimary" id="doAdminLogin" type="button">Continue</button>
-              <a class="btn btnGhost" href="#page=login" data-page-link="login">Back to Login</a>
+              <button class="btn btnPrimary" id="doAdminLogin" type="button" style="width:100%;justify-content:center">Continue</button>
             </div>
-            <div class="hint">Admin is locked: <b>OyoTechHub</b> / <b>EduProject2025</b>.</div>
           </div>
         </div>
       </section>
@@ -6394,7 +6438,6 @@ Submitted At: ${requestRecord.submittedAt}`,
         <a href="#page=about" data-page-link="about">About</a>
         <a href="#page=contact" data-page-link="contact">Contact</a>
         <a href="#page=login" data-page-link="login">Log In</a>
-        <a href="#page=admin" data-page-link="admin">Admin Login</a>
       </div>
 
       <div class="footerColumn support">
@@ -6706,7 +6749,7 @@ Submitted At: ${requestRecord.submittedAt}`,
       contact: { badge: "Contact", title: "Professional development for educators building stronger classroom practice, digital confidence, and career growth through structured STEAM training.", image: "images/abt-2.jpeg", primaryHref: "#page=contact", primaryLabel: "Send a Message", secondaryHref: "#page=services", secondaryLabel: "View Services" },
       login: { badge: "Secure Login", title: "Professional development for educators building stronger classroom practice, digital confidence, and career growth through structured STEAM training.", image: "images/abt-2.jpeg", primaryHref: "#page=joinfree", primaryLabel: "Create Account", secondaryHref: "#page=admin", secondaryLabel: "Admin Login" },
       joinfree: { badge: "Join STEAM ONE", title: "Professional development for educators building stronger classroom practice, digital confidence, and career growth through structured STEAM training.", image: "images/abt-2.jpeg", primaryHref: "#page=login", primaryLabel: "Already Have an Account?", secondaryHref: "#page=courses", secondaryLabel: "View Courses" },
-      admin: { badge: "Admin Access", title: "Professional development for educators building stronger classroom practice, digital confidence, and career growth through structured STEAM training.", image: "images/abt-2.jpeg", primaryHref: "#page=login", primaryLabel: "Back to Login", secondaryHref: "#page=marketplace", secondaryLabel: "View Marketplace" },
+      admin: { badge: "", title: "", image: "images/abt-2.jpeg", primaryHref: "#page=login", primaryLabel: "", secondaryHref: "#page=marketplace", secondaryLabel: "" },
       "steam-one": { badge: "STEAM ONE", title: "Professional development for educators building stronger classroom practice, digital confidence, and career growth through structured STEAM training.", image: "images/abt-2.jpeg", primaryHref: "#page=joinfree", primaryLabel: "Join for Free", secondaryHref: "#page=login", secondaryLabel: "Log In" },
       "steam-two": { badge: "STEAM TWO", title: "Professional development for educators building stronger classroom practice, digital confidence, and career growth through structured STEAM training.", image: "images/abt-2.jpeg", primaryHref: "#page=joinfree", primaryLabel: "Join for Free", secondaryHref: "#page=login", secondaryLabel: "Log In" },
       "steam-three": { badge: "STEAM THREE", title: "Professional development for educators building stronger classroom practice, digital confidence, and career growth through structured STEAM training.", image: "images/abt-2.jpeg", primaryHref: "#page=joinfree", primaryLabel: "Join for Free", secondaryHref: "#page=login", secondaryLabel: "Log In" }
@@ -6715,7 +6758,7 @@ Submitted At: ${requestRecord.submittedAt}`,
   }
 
   function injectSharedTopHeroes(){
-    const pagesWithoutSharedHero = new Set(["courses","marketplace","services","about","contact","login","joinfree","steam-one","steam-two","steam-three"]);
+    const pagesWithoutSharedHero = new Set(["courses","marketplace","services","about","contact","login","joinfree","admin","steam-one","steam-two","steam-three"]);
     document.querySelectorAll(".page").forEach(pageEl => {
       if(pageEl.querySelector(".sharedTopHero")) return;
       const pageId = (pageEl.id || "").replace("page-","");
