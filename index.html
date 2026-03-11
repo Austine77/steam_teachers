@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>STEAM ONE Platform — Online Courses</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     :root{
       --cBlue:#0056D2;
@@ -21,13 +24,15 @@
       --ok:#16a34a;
       --warn:#f59e0b;
       --bad:#ef4444;
-      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+      --font: "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     }
 
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{margin:0;font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.5}
+    body{margin:0;font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6;letter-spacing:.01em;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
     a{color:inherit;text-decoration:none}
+    h1,h2,h3,h4,h5,h6{font-family:var(--font);letter-spacing:-.02em;color:var(--text)}
+    .brandText strong,.navLinks a,.btn,.kicker,.badge,.tab,.programKicker,.programMetaPill,.coursesMiniTag,.marketMiniTag,.servicesMiniTag{letter-spacing:0}
     button,input,select,textarea{font-family:inherit}
     .wrap{min-height:100%;display:flex;flex-direction:column}
 
@@ -42,6 +47,13 @@
     .navLinks{display:flex;align-items:center;gap:14px;flex:1;flex-wrap:wrap}
     .navLinks a{padding:10px 10px;border-radius:12px;color:#0f172a;font-size:14px;font-weight:600}
     .navLinks a:hover,.navLinks a.active{background:rgba(0,86,210,.08);color:var(--cBlueDark)}
+    .navDropdown{position:relative}
+    .navDropdownToggle{display:inline-flex;align-items:center;gap:8px;padding:10px 10px;border-radius:12px;color:#0f172a;font-size:14px;font-weight:600;cursor:pointer;list-style:none}
+    .navDropdownToggle::-webkit-details-marker{display:none}
+    .navDropdownToggle:hover,.navDropdown[open] .navDropdownToggle{background:rgba(0,86,210,.08);color:var(--cBlueDark)}
+    .navDropdownMenu{position:absolute;top:calc(100% + 10px);left:0;min-width:210px;padding:10px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 18px 40px rgba(15,23,42,.12);display:grid;gap:4px}
+    .navDropdownMenu a{display:block;width:100%}
+    .navDropdownMenu a:hover,.navDropdownMenu a.active{background:rgba(0,86,210,.08);color:var(--cBlueDark)}
     .search{width:min(760px,100%);display:flex;align-items:center;gap:10px}
     .searchBox{width:100%;display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--line);border-radius:999px;background:#fff}
     .searchBox input{width:100%;border:0;outline:0;font-size:14px;background:transparent}
@@ -89,7 +101,7 @@
 
     .course-top-title h1{
       color:#111;
-      font-family:Georgia, "Times New Roman", serif;
+      font-family:var(--font);
       font-size:26px;
       line-height:1.15;
       font-weight:800;
@@ -127,7 +139,7 @@
 
     .course-scallop-box h2{
       color:#13224e;
-      font-family:Georgia, "Times New Roman", serif;
+      font-family:var(--font);
       font-size:33px;
       line-height:1.28;
       font-weight:700;
@@ -344,14 +356,45 @@
     .divider{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:12px;font-weight:800;margin:16px 0}.divider:before,.divider:after{content:"";flex:1;height:1px;background:var(--line)}
     .hint,.signupFreeFlowNote{display:none !important}
 
-    footer{border-top:1px solid var(--line);background:#0b1220;color:#e5e7eb;margin-top:36px}
-    .footTop{padding:34px 0}.footGrid{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:16px}
-    @media (max-width:980px){.footGrid{grid-template-columns:1fr 1fr}} @media (max-width:520px){.footGrid{grid-template-columns:1fr}}
-    .footBrand{display:flex;gap:12px;align-items:flex-start}.footBrand .logoMark{width:40px;height:40px;border-radius:14px}
-    .footBrand h4{margin:0 0 6px;font-size:14px}.footBrand p{margin:0;color:rgba(229,231,235,.78);font-size:13px}
-    .footCol h5{margin:0 0 10px;font-size:13px;letter-spacing:.2px}.footCol a{display:block;padding:8px 0;color:rgba(229,231,235,.78);font-size:13px}.footCol a:hover{color:#fff}
-    .footBottom{border-top:1px solid rgba(255,255,255,.08);padding:14px 0;color:rgba(229,231,235,.74);font-size:12px}.footBottomRow{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
-    .timePill{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:#fff;font-weight:800}
+    footer{background:#0f3f8c;color:#fff;margin-top:36px;border-top:1px solid rgba(255,255,255,.16)}
+    .footerMockup{max-width:1200px;margin:0 auto;padding:28px 20px 22px}
+    .footerBrand{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:26px;text-decoration:none}
+    .footerBrand img{width:56px;height:56px;object-fit:contain;display:block;border-radius:14px;background:#fff;padding:6px;border:1px solid rgba(255,255,255,.22)}
+    .footerBrandText{color:#fff;font-size:1.1rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+    .footerTop{display:flex;justify-content:center;gap:56px;align-items:flex-start;flex-wrap:wrap;margin-bottom:30px}
+    .footerColumn{min-width:140px}
+    .footerColumn h3{font-size:16px;font-weight:800;color:#fff;display:inline-block;padding:6px 10px;margin-bottom:14px;border-radius:10px;background:#082a63;text-decoration:underline;text-underline-offset:3px}
+    .footerColumn a,.footerColumn p{display:block;color:#fff;text-decoration:none;margin-bottom:10px;padding:10px 12px;border-radius:10px;background:#082a63;line-height:1.15;min-width:120px;transition:transform .2s ease, background .2s ease, opacity .2s ease}
+    .footerColumn a:hover{transform:translateY(-2px);background:#061f49}
+    .footerColumn.support a,.footerColumn.support p{min-width:168px}
+    .footerMiddle{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap;margin-bottom:26px}
+    .logoGrid,.socialGrid{display:grid;grid-template-columns:repeat(3, minmax(0, 58px));gap:16px 20px;align-items:center}
+    .logoBox,.socialBox{width:58px;height:58px;border:1px solid rgba(255,255,255,.22);background:#fff;color:#111;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;text-align:center;padding:5px;border-radius:14px;overflow:hidden}
+    .logoBox img,.logoBox svg,.socialBox img,.socialBox svg{width:100%;height:100%;object-fit:contain;display:block}
+    .logoBox span,.socialBox span{display:block;font-size:10px;font-weight:800;line-height:1.1;text-align:center}
+    .centerTime{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:180px}
+    .clockDot{width:18px;height:18px;border:1px solid rgba(255,255,255,.55);border-radius:50%;margin-bottom:26px;position:relative;background:#fff}
+    .clockDot::before{content:"";position:absolute;width:1.5px;height:6px;background:#c33;top:2px;left:8px}
+    .clockDot::after{content:"";position:absolute;width:5px;height:1.5px;background:#333;top:8px;left:8px}
+    .timeBox{width:170px;min-height:62px;border:1px solid rgba(255,255,255,.22);background:#fff;display:flex;align-items:center;justify-content:center;color:#111;font-size:14px;text-transform:uppercase;border-radius:14px;padding:10px 14px;font-weight:800;text-align:center}
+    .footerBottom{display:flex;justify-content:center;margin-top:8px}
+    .copyrightBox{border:1px solid rgba(255,255,255,.22);background:#fff;width:min(100%, 420px);min-height:72px;display:flex;align-items:center;justify-content:center;padding:14px;border-radius:16px}
+    .copyrightText{background:#082a63;color:#fff;font-size:13px;padding:8px 10px;text-align:center;line-height:1.3;border-radius:10px}
+    @media (max-width:768px){
+      .footerTop{gap:22px;justify-content:space-between}
+      .footerMiddle{flex-direction:column;align-items:center}
+      .logoGrid,.socialGrid{grid-template-columns:repeat(3, minmax(0, 58px));gap:14px}
+      .centerTime{order:2}
+      .footerColumn,.footerColumn.support{width:calc(50% - 12px);min-width:0}
+      .footerColumn a,.footerColumn p,.footerColumn.support a,.footerColumn.support p{min-width:0;width:100%}
+    }
+    @media (max-width:560px){
+      .footerColumn,.footerColumn.support{width:100%}
+      .footerMockup{padding:24px 14px 20px}
+      .footerBrand{margin-bottom:22px}
+      .footerBrand img{width:50px;height:50px}
+      .footerBrandText{font-size:1rem;text-align:center}
+    }
   
   .quickStartImageWrap{
     width:100%;
@@ -718,7 +761,9 @@
       .navActions{display:none}
       .navBottom{display:none;justify-content:stretch}
       .navLinks{display:none;flex-direction:column;align-items:stretch;gap:8px;width:100%;padding-top:4px}
-      .navLinks a,.navActions a,.navActions button{width:100%;text-align:center}
+      .navLinks a,.navActions a,.navActions button,.navDropdownToggle{width:100%;text-align:center}
+      .navDropdown{width:100%}
+      .navDropdownMenu{position:static;min-width:100%;box-shadow:none;border-radius:14px;margin-top:8px}
       .nav.open .navTop{flex-wrap:wrap}
       .nav.open .navLinks{display:flex;order:3;flex:1 0 100%}
       .nav.open .navActions{display:flex;order:4;flex-direction:column;width:100%}
@@ -3142,7 +3187,7 @@
 
 .steam-hero-clone {
     width: 100%;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:var(--font);
     color: #1f1f1f;
     background: #ffffff;
   }
@@ -3733,7 +3778,7 @@
 .sharedTopHeroText h2{
   margin:0;
   color:#0b1c4d;
-  font-family:Georgia, "Times New Roman", serif;
+  font-family:var(--font);
   font-size:clamp(36px,3.5vw,72px);
   line-height:1.12;
   font-weight:500;
@@ -3806,12 +3851,12 @@
 
 .homeSharedTopHero{
   padding:22px 0 10px;
-  background:#dcdcdc;
+  background:#0f3f8c;
 }
 .homeSharedTopHero .sharedTopHeroInner{
-  background:#0056d2;
-  border-top:2px solid #0056d2;
-  border-bottom:2px solid #0056d2;
+  background:#0f3f8c;
+  border-top:2px solid #0f3f8c;
+  border-bottom:2px solid #0f3f8c;
 }
 .homeSharedTopHero .sharedTopHeroSpeech{
   background:transparent;
@@ -3823,7 +3868,7 @@
 }
 .homeSharedTopHero .sharedTopHeroActions .btnPrimary{
   background:#ffffff;
-  color:#0056d2;
+  color:#0f3f8c;
   border-color:#ffffff;
 }
 .homeSharedTopHero .sharedTopHeroActions .btnGhost{
@@ -3833,7 +3878,7 @@
 }
 .homeSharedTopHero .sharedTopHeroActions .btnGhost:hover{
   background:#ffffff;
-  color:#0056d2;
+  color:#0f3f8c;
 }
 .homeSharedTopHero .sharedTopHeroVisual{
   background:transparent;
@@ -3847,11 +3892,11 @@
   background:transparent;
 }
 .homeSharedTopHero .sharedTopHeroBottom{
-  background:#dcdcdc;
+  background:#0f3f8c;
 }
 .homeSharedTopHero .sharedTopHeroBottomInner{
-  background:#0056d2;
-  border-color:#0056d2;
+  background:#0f3f8c;
+  border-color:#0f3f8c;
 }
 .homeSharedTopHero .sharedTopHeroBottomInner h3{
   color:#ffffff;
@@ -4432,11 +4477,16 @@
 
         <nav class="navLinks" aria-label="Primary">
           <a href="#page=home" data-page-link="home">Home</a>
-          <a href="#page=courses" data-page-link="courses">Courses</a>
-          <a href="#page=marketplace" data-page-link="marketplace">Marketplace</a>
-          <a href="#page=services" data-page-link="services">Services</a>
-          <a href="#page=about" data-page-link="about">About</a>
-          <a href="#page=contact" data-page-link="contact">Contact</a>
+          <details class="navDropdown">
+            <summary class="navDropdownToggle">Catigory <span aria-hidden="true">▾</span></summary>
+            <div class="navDropdownMenu">
+              <a href="#page=courses" data-page-link="courses">Courses</a>
+              <a href="#page=marketplace" data-page-link="marketplace">Marketplace</a>
+              <a href="#page=services" data-page-link="services">Services</a>
+              <a href="#page=about" data-page-link="about">About</a>
+              <a href="#page=contact" data-page-link="contact">Contact</a>
+            </div>
+          </details>
         </nav>
 
         <button class="menuToggle" id="menuToggle" type="button" aria-label="Toggle menu" aria-expanded="false">☰</button>
@@ -6127,8 +6177,8 @@ Submitted At: ${requestRecord.submittedAt}`,
             <h2>Contact the STEAM ONE Platform team for support, partnerships, and professional enquiries</h2>
             <p>Reach out for teacher support, school partnerships, training collaboration, recruitment enquiries, certification guidance, and service requests through our professional contact channels.</p>
             <div class="course-hero-actions">
-              <a class="btn btnPrimary" href="mailto:info@steamoneplatform.com">Email Us</a>
-              <a class="btn btnGhost" href="https://wa.me/2340000000000" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+              <a class="btn btnPrimary" href="mailto:admin@steamteacher.name.ng">Email Us</a>
+              <a class="btn btnGhost" href="https://wa.me/2349039497777" target="_blank" rel="noopener noreferrer">WhatsApp</a>
             </div>
           </div>
         </div>
@@ -6148,22 +6198,22 @@ Submitted At: ${requestRecord.submittedAt}`,
       <article class="contactInfoCard">
         <div class="contactInfoIcon">📧</div>
         <h4>Email Address</h4>
-        <p>Use your official support or business email here.</p>
-        <a href="mailto:info@steamoneplatform.com">info@steamoneplatform.com</a>
+        <p>Official email for support, partnerships, training enquiries, and platform communication.</p>
+        <a href="mailto:admin@steamteacher.name.ng">admin@steamteacher.name.ng</a>
       </article>
 
       <article class="contactInfoCard">
         <div class="contactInfoIcon">📱</div>
         <h4>WhatsApp Support</h4>
-        <p>Replace this number with your real support line later.</p>
-        <a href="https://wa.me/2340000000000" target="_blank" rel="noopener noreferrer">+234 000 000 0000</a>
+        <p>Call or send a WhatsApp message for support, enquiries, and professional communication.</p>
+        <a href="https://wa.me/2349039497777" target="_blank" rel="noopener noreferrer">+234 903 949 7777</a>
       </article>
 
       <article class="contactInfoCard">
         <div class="contactInfoIcon">🏢</div>
         <h4>Office Address</h4>
-        <p>Add your office address or training center location here.</p>
-        <span>Oyo State, Nigeria</span>
+        <p>Main office and contact location for Oyo Tech Up and STEAM Teachers platform support.</p>
+        <span>Kasali Elesan Building, Momoh Memorial Hospital Junction,<br>KM 45, Idi Ope, Oyo 110011, Oyo, Nigeria</span>
       </article>
 
       <article class="contactInfoCard">
@@ -6179,20 +6229,20 @@ Submitted At: ${requestRecord.submittedAt}`,
   <section class="contactMapSection">
     <div class="contactMapText">
       <span class="contactMiniTag">Our Location</span>
-      <h2>Find us on the map</h2>
+      <h2>Find OYO TECH UP on the map</h2>
       <p>
-        This is a Google Map placeholder. Replace the iframe <b>src</b> link later
-        with your real Google Map embed link for your office, school, or support center.
+        Visit our office location in Oyo, Nigeria, or open the Google Map link directly for easier direction and navigation.
       </p>
+      <a class="btn btnPrimary" href="https://maps.app.goo.gl/4ASVuj2nDWZVHK759" target="_blank" rel="noopener noreferrer">Open Google Map</a>
     </div>
 
     <div class="contactMapWrap">
       <iframe
-        src="https://www.google.com/maps?q=Lagos%2C%20Nigeria&output=embed"
+        src="https://www.google.com/maps?q=Kasali%20Elesan%20Building%2C%20Momoh%20Memorial%20Hospital%20Junction%2C%20KM%2045%2C%20Idi%20Ope%2C%20Oyo%20110011%2C%20Oyo%2C%20Nigeria&output=embed"
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
         allowfullscreen
-        title="Google Map Location Placeholder">
+        title="OYO TECH UP Google Map Location">
       </iframe>
     </div>
   </section>
@@ -6325,92 +6375,99 @@ Submitted At: ${requestRecord.submittedAt}`,
   </main>
 
 <footer>
-  <div class="container">
-    <div class="footTop">
-      <div class="footGrid">
-        <div class="footBrand">
-
-            <div class="footerPartnerLogos" aria-label="Professional education partners">
-              <a class="footerLogoLink" href="https://www.microsoft.com/en-us/education" target="_blank" rel="noopener noreferrer" aria-label="Microsoft Education">
-                <img src="images/ft-1.png" alt="Microsoft Education Logo">
-              </a>
-
-              <a class="footerLogoLink" href="https://iste.org/" target="_blank" rel="noopener noreferrer" aria-label="ISTE">
-                <img src="images/ft-2.png" alt="ISTE Logo">
-              </a>
-
-              <a class="footerLogoLink" href="https://trcn.gov.ng/" target="_blank" rel="noopener noreferrer" aria-label="TRCN Nigeria">
-                <img src="images/ft-3.png" alt="TRCN Logo">
-              </a>
-
-              <a class="footerLogoLink" href="https://www.unesco.org/en/digital-competencies-skills/ict-cft" target="_blank" rel="noopener noreferrer" aria-label="UNESCO ICT CFT">
-                <img src="images/ft-4.png" alt="UNESCO ICT CFT Logo">
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="footCol">
-          <h5>Platform</h5>
-          <a href="#page=home" data-page-link="home">Home</a>
-          <a href="#page=courses" data-page-link="courses">Courses</a>
-          <a href="#page=marketplace" data-page-link="marketplace">Marketplace</a>
-          <a href="#page=services" data-page-link="services">Services</a>
-        </div>
-
-        <div class="footCol">
-          <h5>Company</h5>
-          <a href="#page=about" data-page-link="about">About</a>
-          <a href="#page=contact" data-page-link="contact">Contact</a>
-          <a href="#page=login" data-page-link="login">Log In</a>
-          <a href="#page=admin" data-page-link="admin">Admin Login</a>
-        </div>
-
-        <div class="footCol">
-          <h5>Support</h5>
-          <a href="#page=joinfree" data-page-link="joinfree">Join for Free</a>
-          <a href="#" id="footEmail">Email Support</a>
-          <a href="#" id="footWhatsApp">WhatsApp Support</a>
-        </div>
-
-        <div class="footCol">
-  <h5>Follow Us</h5>
-
-  <div class="socialInlineRow" aria-label="Social media links">
-    <a class="socialInlineLink" href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-      <span class="socialIcon">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M23 12s0-3.5-.45-5.19a3.02 3.02 0 0 0-2.12-2.14C18.72 4.2 12 4.2 12 4.2s-6.72 0-8.43.47A3.02 3.02 0 0 0 1.45 6.8C1 8.5 1 12 1 12s0 3.5.45 5.19a3.02 3.02 0 0 0 2.12 2.14c1.71.47 8.43.47 8.43.47s6.72 0 8.43-.47a3.02 3.02 0 0 0 2.12-2.14C23 15.5 23 12 23 12ZM10 15.5v-7l6 3.5-6 3.5Z"/>
-        </svg>
-      </span>
-      <span>YouTube</span>
+  <div class="footerMockup">
+    <a class="footerBrand" href="#page=home" data-page-link="home" aria-label="STEAM ONE Platform home">
+      <img src="images/logo.png" alt="STEAM ONE Platform Logo">
+      <span class="footerBrandText">STEAM ONE Platform</span>
     </a>
+    <div class="footerTop">
+      <div class="footerColumn">
+        <h3>Platform</h3>
+        <a href="#page=home" data-page-link="home">Home</a>
+        <a href="#page=courses" data-page-link="courses">Courses</a>
+        <a href="#page=marketplace" data-page-link="marketplace">Marketplace</a>
+        <a href="#page=services" data-page-link="services">Services</a>
+      </div>
 
-    <a class="socialInlineLink" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-      <span class="socialIcon">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.3-1.5 1.6-1.5H17V4.9c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.4V11H7.5v3h2.8v8h3.2Z"/>
-        </svg>
-      </span>
-      <span>Facebook</span>
-    </a>
+      <div class="footerColumn">
+        <h3>Company</h3>
+        <a href="#page=about" data-page-link="about">About</a>
+        <a href="#page=contact" data-page-link="contact">Contact</a>
+        <a href="#page=login" data-page-link="login">Log In</a>
+        <a href="#page=admin" data-page-link="admin">Admin Login</a>
+      </div>
 
-    <a class="socialInlineLink" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-      <span class="socialIcon">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2.2A2.8 2.8 0 0 0 4.2 7v10A2.8 2.8 0 0 0 7 19.8h10a2.8 2.8 0 0 0 2.8-2.8V7A2.8 2.8 0 0 0 17 4.2H7Zm10.25 1.65a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2.2A2.8 2.8 0 1 0 12 14.8 2.8 2.8 0 0 0 12 9.2Z"/>
-        </svg>
-      </span>
-      <span>Instagram</span>
-    </a>
-  </div>
-</div>
+      <div class="footerColumn support">
+        <h3>Support</h3>
+        <a href="#page=joinfree" data-page-link="joinfree">Join for Free</a>
+        <a href="#" id="footEmail">Email Support</a>
+        <a href="#" id="footWhatsApp">WhatsApp Support</a>
+        <h3 style="margin-top:8px;">Follow Us</h3>
+      </div>
     </div>
 
-    <div class="footBottom">
-      <div class="footBottomRow">
-        <div>© <span id="year"></span> STEAM ONE Platform. All rights reserved.</div>
-        <div class="timePill">🕒 Nigeria Time: <span id="ngTime">--:--:--</span></div>
+    <div class="footerMiddle">
+      <div class="logoGrid" aria-label="Professional education partners">
+        <a class="logoBox" href="https://www.microsoft.com/en-us/education" target="_blank" rel="noopener noreferrer" aria-label="Microsoft Education">
+          <img src="images/microsoft-11.png" alt="Microsoft Education Logo">
+        </a>
+        <a class="logoBox" href="https://iste.org/" target="_blank" rel="noopener noreferrer" aria-label="ISTE">
+          <img src="images/iste-22.png" alt="ISTE Logo">
+        </a>
+        <a class="logoBox" href="https://trcn.gov.ng/" target="_blank" rel="noopener noreferrer" aria-label="TRCN Nigeria">
+          <img src="images/trcn-33.jpg" alt="TRCN Logo">
+        </a>
+        <a class="logoBox" href="https://www.oecd.org/pisa/" target="_blank" rel="noopener noreferrer" aria-label="PISA">
+        <img src="images/pisa-44.png" alt="PISA Logo">
+        </a>
+        <a class="logoBox" href="https://edu.google.com/" target="_blank" rel="noopener noreferrer" aria-label="Google for Education">
+          <img src="images/google-55.jpg" alt="Google Logo">
+        </a>
+        <a class="logoBox" href="https://www.unesco.org/en/digital-competencies-skills/ict-cft" target="_blank" rel="noopener noreferrer" aria-label="UNESCO ICT CFT">
+          <img src="images/unesco-ict-cft-66.png" alt="UNESCO ICT CFT Logo">
+        </a>
+      </div>
+
+      <div class="centerTime">
+        <div class="clockDot"></div>
+        <div class="timeBox">Nigeria Time<br><span id="ngTime">--:--:--</span></div>
+      </div>
+
+      <div class="socialGrid" aria-label="Social media links">
+        <a class="socialBox" href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+          <svg viewBox="0 0 64 64" role="img" aria-hidden="true">
+            <rect x="6" y="14" width="52" height="36" rx="10" fill="#FF0000"/>
+            <polygon points="28,24 28,40 42,32" fill="#ffffff"/>
+          </svg>
+        </a>
+        <a class="socialBox" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <svg viewBox="0 0 64 64" role="img" aria-hidden="true">
+            <rect width="64" height="64" rx="12" fill="#1877F2"/>
+            <path d="M37 54V35h6l1-8h-7v-5c0-2.32.64-3.9 3.97-3.9H45V11.1C43.96 10.96 40.72 10.7 36.96 10.7c-7.84 0-13.2 4.78-13.2 13.56V27h-6v8h6v19h13.24z" fill="#ffffff"/>
+          </svg>
+        </a>
+        <a class="socialBox" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 64 64" role="img" aria-hidden="true">
+            <defs>
+              <linearGradient id="igGrad" x1="0" y1="64" x2="64" y2="0" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#F58529"/>
+                <stop offset="0.35" stop-color="#DD2A7B"/>
+                <stop offset="0.7" stop-color="#8134AF"/>
+                <stop offset="1" stop-color="#515BD4"/>
+              </linearGradient>
+            </defs>
+            <rect width="64" height="64" rx="14" fill="url(#igGrad)"/>
+            <rect x="17" y="17" width="30" height="30" rx="9" fill="none" stroke="#ffffff" stroke-width="4"/>
+            <circle cx="32" cy="32" r="8" fill="none" stroke="#ffffff" stroke-width="4"/>
+            <circle cx="43.5" cy="20.5" r="3" fill="#ffffff"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="footerBottom">
+      <div class="copyrightBox">
+        <div class="copyrightText">© <span id="year"></span> STEAM ONE Platform. All rights reserved.</div>
       </div>
     </div>
   </div>
@@ -6789,7 +6846,6 @@ Submitted At: ${requestRecord.submittedAt}`,
 
   document.getElementById("googleLoginBtn")?.addEventListener("click", ()=> doGoogleAuth("login"));
   document.getElementById("googleSignupBtn")?.addEventListener("click", ()=> doGoogleAuth("signup"));
-
   document.getElementById("btnSendContact")?.addEventListener("click", ()=>{
     const name = (document.getElementById("cName").value || "").trim();
     const email = (document.getElementById("cEmail").value || "").trim();
