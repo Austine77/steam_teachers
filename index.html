@@ -4509,7 +4509,56 @@
     input,select,textarea{min-height:52px;font-size:17px !important;font-weight:600;border-width:1.5px !important}
     ::placeholder{color:#475569;opacity:1;font-weight:500}
 
-  </style>
+  
+/* === Home wireframe-colored section update === */
+.home-wireframe-wrap{background:linear-gradient(180deg,#f8fbff 0%,#eef4ff 100%);padding:28px 0 40px}
+.home-wireframe-wrap .wf-container{max-width:1180px;margin:0 auto;padding:0 18px}
+.home-wireframe-wrap .wf-shell{border:1.6px solid rgba(11,42,133,.16);border-radius:44px;background:linear-gradient(180deg,#ffffff,#f7faff);box-shadow:0 16px 40px rgba(11,42,133,.08)}
+.home-wireframe-wrap .wf-title{border:1.6px solid rgba(11,42,133,.18);border-radius:12px;background:linear-gradient(180deg,#f4f8ff,#e8f0ff);padding:10px 16px;text-align:center;box-shadow:0 8px 20px rgba(11,42,133,.06)}
+.home-wireframe-wrap .wf-title h2,.home-wireframe-wrap .wf-title h3{margin:0;color:#102a72;line-height:1.2}
+.home-wireframe-wrap .wf-outline{border:1.6px solid rgba(11,42,133,.16);background:#fff;border-radius:14px}
+.home-wireframe-wrap .wf-hero{display:grid;grid-template-columns:1.55fr .8fr;gap:16px;align-items:stretch;margin-bottom:26px}
+.home-wireframe-wrap .wf-hero-text{padding:26px 22px;display:flex;align-items:center;justify-content:center;text-align:center;min-height:124px;background:linear-gradient(135deg,#ffffff,#edf4ff);font-size:18px;font-weight:700;color:#0f172a}
+.home-wireframe-wrap .wf-hero-image{position:relative;min-height:124px;overflow:visible;border-radius:0 0 18px 18px;background:linear-gradient(135deg,#dbe8ff,#f8fbff);display:flex;align-items:center;justify-content:center}
+.home-wireframe-wrap .wf-hero-image::after{content:"";position:absolute;right:26px;bottom:-13px;width:26px;height:26px;background:#f2f7ff;border-left:1.6px solid rgba(11,42,133,.18);border-bottom:1.6px solid rgba(11,42,133,.18);transform:rotate(-45deg)}
+.home-wireframe-wrap .wf-hero-image img{width:100%;height:100%;object-fit:cover;display:block}
+.home-wireframe-wrap .wf-partners{padding:16px 14px 18px;margin-bottom:32px}
+.home-wireframe-wrap .wf-partners-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:14px}
+.home-wireframe-wrap .wf-partner-card{border:1.6px solid rgba(11,42,133,.16);background:linear-gradient(180deg,#fff,#f3f7ff);border-radius:0;padding:14px 10px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:126px;color:#0f172a;text-decoration:none}
+.home-wireframe-wrap .wf-partner-card img{width:100%;max-width:96px;height:58px;object-fit:contain;margin-bottom:10px}
+.home-wireframe-wrap .wf-partner-card span{font-size:13px;font-weight:700;line-height:1.35}
+.home-wireframe-wrap .wf-feature-shell{padding:20px 14px;margin-bottom:32px}
+.home-wireframe-wrap .wf-features{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.home-wireframe-wrap .wf-feature{border:1.6px solid rgba(11,42,133,.16);background:linear-gradient(180deg,#ffffff,#eef4ff);padding:16px 12px;text-align:center;min-height:174px;display:flex;align-items:center;justify-content:center;font-weight:700;color:#1e293b;line-height:1.45}
+.home-wireframe-wrap .wf-team-shell{padding:22px 14px 28px;border-radius:84px;margin-bottom:34px}
+.home-wireframe-wrap .wf-team-intro{margin-top:10px;padding:12px 18px;text-align:center;font-weight:700;color:#223257;background:linear-gradient(180deg,#fefeff,#eef4ff)}
+.home-wireframe-wrap .wf-team-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px 34px;margin-top:24px;align-items:start}
+.home-wireframe-wrap .wf-team-item{text-align:center}
+.home-wireframe-wrap .wf-oval,.home-wireframe-wrap .wf-hex{margin:0 auto 10px;border:1.6px solid rgba(11,42,133,.18);background:linear-gradient(180deg,#f4f8ff,#e6efff);display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:0 10px 24px rgba(11,42,133,.08)}
+.home-wireframe-wrap .wf-oval{width:260px;height:170px;border-radius:50%}
+.home-wireframe-wrap .wf-hex{width:320px;height:128px;clip-path:polygon(8% 0%,92% 0%,100% 50%,92% 100%,8% 100%,0% 50%)}
+.home-wireframe-wrap .wf-oval img,.home-wireframe-wrap .wf-hex img{width:100%;height:100%;object-fit:cover}
+.home-wireframe-wrap .wf-tag{display:inline-block;border:1.6px solid rgba(11,42,133,.18);background:#edf4ff;padding:4px 12px;font-size:15px;font-weight:800;color:#0b2a85;margin-bottom:8px}
+.home-wireframe-wrap .wf-copy{max-width:330px;margin:0 auto;padding:12px 14px;border-radius:16px;border:1.6px solid rgba(11,42,133,.16);background:linear-gradient(180deg,#ffffff,#f3f7ff);font-size:14px;font-weight:700;line-height:1.35;color:#1e293b}
+.home-wireframe-wrap .wf-wide{grid-column:1/-1}
+.home-wireframe-wrap .wf-copy.wide{max-width:760px}
+.home-wireframe-wrap .wf-platform-shell{padding:22px 12px 26px;border-radius:40px;margin-bottom:34px}
+.home-wireframe-wrap .wf-platform-sub{margin-top:10px;padding:10px 16px;text-align:center;font-weight:700;color:#223257;background:linear-gradient(180deg,#fff,#eef4ff)}
+.home-wireframe-wrap .wf-mini-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+.home-wireframe-wrap .wf-mini-card{border:1.6px solid rgba(11,42,133,.16);background:linear-gradient(180deg,#ffffff,#edf4ff);padding:12px;text-align:center;min-height:220px}
+.home-wireframe-wrap .wf-mini-pill{display:inline-block;padding:6px 12px;border:1.6px solid rgba(11,42,133,.18);border-radius:10px;background:#fff;font-size:14px;font-weight:800;color:#102a72;margin-bottom:12px}
+.home-wireframe-wrap .wf-mini-card .icon{font-size:22px;margin-bottom:6px}
+.home-wireframe-wrap .wf-mini-card p{margin:8px 0 0;font-weight:800;color:#1e293b;line-height:1.38}
+.home-wireframe-wrap .wf-collab-shell{padding:24px 18px 28px;border-radius:86px}
+.home-wireframe-wrap .wf-collab-head{text-align:center;margin-bottom:16px}
+.home-wireframe-wrap .wf-collab-chip{display:inline-block;padding:6px 18px;border-radius:12px;background:linear-gradient(135deg,#1d4ed8,#0b2a85);color:#fff;font-weight:900;font-size:18px;box-shadow:0 10px 24px rgba(11,42,133,.18)}
+.home-wireframe-wrap .wf-collab-logo{max-width:520px;margin:12px auto 18px;border:1.6px solid rgba(11,42,133,.18);background:linear-gradient(180deg,#ffffff,#edf4ff);clip-path:polygon(6% 0%,94% 0%,100% 50%,94% 100%,6% 100%,0% 50%);padding:14px 18px}
+.home-wireframe-wrap .wf-collab-logo img{max-width:100%;height:auto;display:block;margin:0 auto}
+.home-wireframe-wrap .wf-collab-text{padding:18px 22px;border:1.6px solid rgba(11,42,133,.16);background:linear-gradient(180deg,#ffffff,#f5f8ff);font-size:15px;line-height:1.7;color:#1e293b;max-width:920px;margin:0 auto;text-align:center}
+@media (max-width:991px){.home-wireframe-wrap .wf-hero{grid-template-columns:1fr}.home-wireframe-wrap .wf-partners-grid{grid-template-columns:repeat(3,1fr)}.home-wireframe-wrap .wf-features{grid-template-columns:repeat(2,1fr)}.home-wireframe-wrap .wf-team-grid{grid-template-columns:1fr}.home-wireframe-wrap .wf-wide{grid-column:auto}.home-wireframe-wrap .wf-mini-grid{grid-template-columns:1fr}.home-wireframe-wrap .wf-hex{width:280px}}
+@media (max-width:640px){.home-wireframe-wrap{padding:18px 0 28px}.home-wireframe-wrap .wf-container{padding:0 12px}.home-wireframe-wrap .wf-hero-text{font-size:16px;padding:20px 16px}.home-wireframe-wrap .wf-partners-grid,.home-wireframe-wrap .wf-features{grid-template-columns:1fr}.home-wireframe-wrap .wf-oval{width:220px;height:148px}.home-wireframe-wrap .wf-hex{width:240px;height:108px}.home-wireframe-wrap .wf-copy,.home-wireframe-wrap .wf-copy.wide{max-width:100%}.home-wireframe-wrap .wf-collab-chip{font-size:16px}}
+
+</style>
 </head>
 <body>
 <div class="wrap">
@@ -4559,273 +4608,154 @@
   </header>
 
   <main class="main">
-  <section class="page active" id="page-home">
- <div class="bottom-promo">
-    <div class="bottom-promo-inner">
-      <div class="promo-text">
-        <h2>
-  Quick contact with certified teachers for classroom support, digital teaching guidance, and professional STEAM development.
-</h2>
-      </div>
-
-      <div class="promo-image-wrap">
-        <div class="shape-bg"></div>
-        <div class="shape-photo">
-          <img src="images/teacher.png" alt="Educator using digital learning platform" />
-        </div>
-      </div>
-    </div>
-  </div>
-
   
-<div class="partners-band">
-  <div class="partners-inner">
-    <h2>Learn from experienced facilitators, education partners, and digital classroom experts</h2>
+<section class="page active" id="page-home">
+  <div class="home-wireframe-wrap">
+    <div class="wf-container">
+      <section class="wf-hero">
+        <div class="wf-outline wf-hero-text">
+          <p>Quick contact with certified teachers for classroom support, digital teaching guidance, and professional STEAM development.</p>
+        </div>
+        <div class="wf-outline wf-hero-image">
+          <img src="images/teacher.png" alt="Quick contact with certified teachers">
+        </div>
+      </section>
 
-    <div class="partners-grid">
-      <a href="https://www.microsoft.com/en-us/education" target="_blank" rel="noopener noreferrer" aria-label="Microsoft Education" class="partner-card">
-        <img src="images/a-1.png" alt="Microsoft Education Logo">
-        <span>Microsoft Education</span>
-      </a>
+      <section class="wf-shell wf-partners">
+        <div class="wf-title"><h3>Learn from experienced facilitators, education partners, and digital classroom experts</h3></div>
+        <div class="wf-partners-grid">
+          <a href="https://www.microsoft.com/en-us/education" target="_blank" rel="noopener noreferrer" class="wf-partner-card"><img src="images/a-1.png" alt="Microsoft Education Logo"><span>Microsoft Education</span></a>
+          <a href="https://iste.org/" target="_blank" rel="noopener noreferrer" class="wf-partner-card"><img src="images/a-2.png" alt="ISTE Logo"><span>ISTE</span></a>
+          <a href="https://trcn.gov.ng/" target="_blank" rel="noopener noreferrer" class="wf-partner-card"><img src="images/a-3.jpg" alt="TRCN Logo"><span>TRCN</span></a>
+          <a href="https://www.unesco.org/en/digital-competencies-skills/ict-cft" target="_blank" rel="noopener noreferrer" class="wf-partner-card"><img src="images/a-4.png" alt="UNESCO ICT CFT Logo"><span>UNESCO ICT CFT</span></a>
+          <a href="https://edu.google.com/" target="_blank" rel="noopener noreferrer" class="wf-partner-card"><img src="images/a-5.jpg" alt="Google for Education Logo"><span>Google for Education</span></a>
+        </div>
+      </section>
 
-      <a href="https://iste.org/" target="_blank" rel="noopener noreferrer" aria-label="ISTE" class="partner-card">
-        <img src="images/a-2.png" alt="ISTE Logo">
-        <span>ISTE</span>
-      </a>
+      <section class="wf-shell wf-feature-shell">
+        <div class="wf-features">
+          <div class="wf-feature">Explore teacher training skills<br>Access 10,000+ courses in AI, business, technology, pedagogy, and digital classroom practice.</div>
+          <div class="wf-feature">Earn verified teaching credentials<br>Get certificates for every course you finish and strengthen your professional profile for schools and recruiters.</div>
+          <div class="wf-feature">Learn from expert facilitators<br>Take your skills to the next level with expert-led learning paths and practical classroom-first support.</div>
+          <div class="wf-feature">Learn from expert facilitators<br>Take your skills to the next level with expert-led learning paths and practical classroom-first support.</div>
+        </div>
+      </section>
 
-      <a href="https://trcn.gov.ng/" target="_blank" rel="noopener noreferrer" aria-label="TRCN" class="partner-card">
-        <img src="images/a-3.jpg" alt="TRCN Logo">
-        <span>TRCN</span>
-      </a>
-
-      <a href="https://www.unesco.org/en/digital-competencies-skills/ict-cft" target="_blank" rel="noopener noreferrer" aria-label="UNESCO ICT CFT" class="partner-card">
-        <img src="images/a-4.png" alt="UNESCO ICT CFT Logo">
-        <span>UNESCO ICT CFT</span>
-      </a>
-
-      <a href="https://edu.google.com/" target="_blank" rel="noopener noreferrer" aria-label="Google for Education" class="partner-card">
-        <img src="images/a-5.jpg" alt="Google Education Logo">
-        <span>Google for Education</span>
-      </a>
-    </div>
-  </div>
-</div>
-
-  <div class="features-band">
-    <div class="features-inner">
-      <div class="feature-card">
-        <div class="icon">◎</div>
-        <h3>Explore teacher training skills</h3>
-        <p>Access 10,000+ courses in AI, business, technology, pedagogy, and digital classroom practice.</p>
-      </div>
-
-      <div class="feature-card">
-        <div class="icon">▣</div>
-        <h3>Earn verified teaching credentials</h3>
-        <p>Get certificates for every course you finish and strengthen your professional profile for schools and recruiters.</p>
-      </div>
-
-      <div class="feature-card">
-        <div class="icon">☆</div>
-        <h3>Learn from expert facilitators</h3>
-        <p>Take your skills to the next level with expert-led learning paths and practical classroom-first support.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- OUR TEAM SECTION ADDED ONLY -->
-  <section class="section">
-    <div class="container">
-      <h2 class="h2">Our Team — STEAM Teachers Training Platform</h2>
-      <p class="lead">
-        STEAM Teachers Training Team has been working together with TRCN and other African higher education teams to support teacher development, professional collaboration, and stronger classroom impact across the education sector.
-      </p>
-
-      <div class="teamSlider" aria-label="Our team gallery">
-        <article class="teamSlideCard">
-          <a class="teamSlideImage" href="https://trcn.gov.ng/" target="_blank" rel="noopener noreferrer" aria-label="Open TRCN official website">
-            <img src="images/steam-a.jpeg" alt="Former DG TRCN with STEAM Teachers Training team">
-          </a>
-          <div class="teamSlideBody">
-            <h4>Former DG, TRCN</h4>
-            <p>
-              Professional engagement and educational collaboration with leadership connected to teacher development, standards, and national education growth.
-            </p>
-          </div>
-        </article>
-
-        <article class="teamSlideCard">
-          <a class="teamSlideImage" href="https://trcn.gov.ng/" target="_blank" rel="noopener noreferrer" aria-label="Open TRCN official website">
-            <img src="images/steam-b.jpeg" alt="STEAM Teachers Training Platform team meeting">
-          </a>
-          <div class="teamSlideBody">
-            <h4>STEAM Training Team</h4>
-            <p>
-              Our team continues to build teacher-focused learning opportunities that support practical digital teaching and certification growth.
-            </p>
-          </div>
-        </article>
-
-        <article class="teamSlideCard">
-          <a class="teamSlideImage" href="https://trcn.gov.ng/" target="_blank" rel="noopener noreferrer" aria-label="Open TRCN official website">
-            <img src="images/steam-c.jpeg" alt="STEAM team with African higher education partners">
-          </a>
-          <div class="teamSlideBody">
-            <h4>African Higher Education Collaboration</h4>
-            <p>
-              Working together with other African higher education teams to promote innovation, quality teaching, and professional excellence.
-            </p>
-          </div>
-        </article>
-
-        <article class="teamSlideCard">
-          <a class="teamSlideImage" href="https://trcn.gov.ng/" target="_blank" rel="noopener noreferrer" aria-label="Open TRCN official website">
-            <img src="images/steam-d.jpeg" alt="Teacher training partnership session">
-          </a>
-          <div class="teamSlideBody">
-            <h4>Teacher Development Partnership</h4>
-            <p>
-              Shared teacher training sessions designed to strengthen classroom practice, leadership, and modern educational delivery.
-            </p>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <section class="section imageShowcaseSection">
-    <div class="container">
-      <h2 class="h2">Education standards and classroom excellence</h2>
-      <p class="lead">
-        Explore four professional education areas that support digital transformation, teaching quality, teacher competency, and international learning impact.
-      </p>
-
-      <div class="imageShowcaseGrid fourInLine">
-        <article class="imageCard">
-          <a class="imageLink" href="https://www.microsoft.com/en-us/education" target="_blank" rel="noopener noreferrer" aria-label="Open Microsoft Education website">
-            <img src="images/microsoft.png" alt="Microsoft Education classroom">
-          </a>
-          <div class="imageCardBody">
-            <h4>Microsoft Education</h4>
-            <p>
-              Microsoft Education provides professional teaching and digital learning support for modern classrooms by helping educators combine strong pedagogy with powerful technology tools.
-            </p>
-          </div>
-        </article>
-
-        <article class="imageCard">
-          <a class="imageLink" href="https://iste.org/standards" target="_blank" rel="noopener noreferrer" aria-label="Open ISTE Standards website">
-            <img src="images/iste.png" alt="ISTE Education training">
-          </a>
-          <div class="imageCardBody">
-            <h4>ISTE Education</h4>
-            <p>
-              ISTE Education promotes standards-based digital teaching practice for educators and facilitators who want to use technology in ways that truly improve learning.
-            </p>
-          </div>
-        </article>
-
-        <article class="imageCard">
-          <a class="imageLink" href="https://www.unesco.org/en/digital-competencies-skills/ict-cft" target="_blank" rel="noopener noreferrer" aria-label="Open UNESCO ICT CFT website">
-            <img src="images/unesco.png" alt="UNESCO ICT CFT education program">
-          </a>
-          <div class="imageCardBody">
-            <h4>UNESCO ICT CFT</h4>
-            <p>
-              UNESCO ICT CFT, which stands for UNESCO Information and Communication Technology Competency Framework for Teachers, supports teacher competency development through structured ICT integration.
-            </p>
-          </div>
-        </article>
-      
-        <article class="imageCard">
-          <a class="imageLink" href="https://trcn.gov.ng/" target="_blank" rel="noopener noreferrer" aria-label="Open TRCN website">
-            <img src="images/trcn.png" alt="TRCN Nigeria teacher registration and professional standards">
-          </a>
-          <div class="imageCardBody">
-            <h4>TRCN Nigeria</h4>
-            <p>
-              TRCN, the Teachers Registration Council of Nigeria, supports teacher professionalism, registration, certification, and licensing while promoting strong teaching standards and professional growth across the education sector.
-            </p>
-          </div>
-        </article>
-
-        <article class="imageCard">
-          <a class="imageLink" href="https://www.oecd.org/en/about/programmes/pisa.html" target="_blank" rel="noopener noreferrer" aria-label="Open OECD PISA website">
-            <img src="images/pisa.png" alt="PISA education excellence">
-          </a>
-          <div class="imageCardBody">
-            <h4>PISA Education</h4>
-            <p>
-              PISA Education represents international classroom quality, assessment readiness, and learner impact by focusing on how well students can apply knowledge in practical and real-life situations.
-            </p>
-          </div>
-        </article>
-      </div>
-    </div>
-
-  <section class="section">
-    <div class="container">
-      <h2 class="h2">A professional learning platform for teachers</h2>
-      <p class="lead">Structured certification tracks, marketplace-ready profiles, and classroom-first skill building—wrapped in a Coursera-style experience.</p>
-
-      <div class="cardGrid">
-        <article class="card">
-          <div class="icon">🏅</div>
-          <h4>Certification Tracks</h4>
-          <p>STEAM ONE, TWO, THREE—progress from foundation to advanced AI-integrated teaching.</p>
-        </article>
-
-        <article class="card">
-          <div class="icon">🧑‍🏫</div>
-          <h4>Verified Teacher Marketplace</h4>
-          <p>Publish profiles, accept contact requests, and connect with schools and recruiters.</p>
-        </article>
-
-        <article class="card">
-          <div class="icon">📊</div>
-          <h4>Dashboard Experience</h4>
-          <p>Separate dashboards for Teachers, Facilitators, and Admin—role-based by design.</p>
-        </article>
-      </div>
-
-    <section class="section" style="padding: 20px 0 0;">
-  <div class="container">
-    <div class="ctaBand ctaBandProfessional">
-      <div class="ctaBandTop">
-        <div class="ctaBandIntro">
-          <h3>Start learning today</h3>
-          <p>
-            Enroll in a plan, complete modules, and unlock your dashboard experience.
+      <!-- OUR TEAM SECTION ADDED ONLY -->
+      <section class="section">
+        <div class="container">
+          <h2 class="h2">Our Team — STEAM Teachers Training Platform</h2>
+          <p class="lead">
+            STEAM Teachers Training Team has been working together with TRCN and other African higher education teams to support teacher development, professional collaboration, and stronger classroom impact across the education sector.
           </p>
-        </div>
 
-        <div class="ctaBtns">
-          <a class="btn btnWhite" href="#page=joinfree" data-page-link="joinfree">Teacher Sign Up</a>
-          <a class="btn btnGlass" href="#page=courses" data-page-link="courses">Browse Courses</a>
-        </div>
-      </div>
+          <div class="teamSlider" aria-label="Our team gallery">
+            <article class="teamSlideCard">
+              <a class="teamSlideImage" href="https://trcn.gov.ng/" target="_blank" rel="noopener noreferrer" aria-label="Open TRCN official website">
+                <img src="images/steam-a.jpeg" alt="Former DG TRCN with STEAM Teachers Training team">
+              </a>
+              <div class="teamSlideBody">
+                <h4>Former DG, TRCN</h4>
+                <p>
+                  Professional engagement and educational collaboration with leadership connected to teacher development, standards, and national education growth.
+                </p>
+              </div>
+            </article>
 
-      <div class="collaborationShowcase">
-        <div class="collaborationShowcaseImage">
-          <img src="images/collaboration.png" alt="TRCN and STEAM Teachers collaboration session">
-        </div>
+            <article class="teamSlideCard">
+              <a class="teamSlideImage" href="https://trcn.gov.ng/" target="_blank" rel="noopener noreferrer" aria-label="Open TRCN official website">
+                <img src="images/steam-b.jpeg" alt="STEAM Teachers Training Platform team meeting">
+              </a>
+              <div class="teamSlideBody">
+                <h4>STEAM Training Team</h4>
+                <p>
+                  Our team continues to build teacher-focused learning opportunities that support practical digital teaching and certification growth.
+                </p>
+              </div>
+            </article>
 
-        <div class="collaborationShowcaseContent">
-          <span class="collaborationTag">Professional Partnership</span>
-          <h3>TRCN and STEAM Teachers Collaboration</h3>
-          <p>
-            For over three years, STEAM Teachers has maintained a meaningful professional collaboration with the Teachers Registration Council of Nigeria (TRCN) in support of teacher development, stronger instructional practice, and improved educational standards. This relationship reflects a shared commitment to building educators who are professionally prepared, digitally confident, and equipped for the realities of modern classroom teaching. Through this collaboration, STEAM Teachers continues to promote structured professional learning, practical classroom innovation, and training opportunities that strengthen teaching quality across schools and institutions. Our engagement with TRCN represents a sustained effort to encourage teacher excellence, support professional ethics, and advance education through continuous capacity building. It also reflects our commitment to empowering teachers with relevant skills, modern teaching approaches, and long-term professional growth that positively influence learners, schools, and the wider education community across Nigeria and beyond.
-          </p>
+            <article class="teamSlideCard">
+              <a class="teamSlideImage" href="https://trcn.gov.ng/" target="_blank" rel="noopener noreferrer" aria-label="Open TRCN official website">
+                <img src="images/steam-c.jpeg" alt="STEAM team with African higher education partners">
+              </a>
+              <div class="teamSlideBody">
+                <h4>African Higher Education Collaboration</h4>
+                <p>
+                  Working together with other African higher education teams to promote innovation, quality teaching, and professional excellence.
+                </p>
+              </div>
+            </article>
+
+            <article class="teamSlideCard">
+              <a class="teamSlideImage" href="https://trcn.gov.ng/" target="_blank" rel="noopener noreferrer" aria-label="Open TRCN official website">
+                <img src="images/steam-d.jpeg" alt="Teacher training partnership session">
+              </a>
+              <div class="teamSlideBody">
+                <h4>Teacher Development Partnership</h4>
+                <p>
+                  Shared teacher training sessions designed to strengthen classroom practice, leadership, and modern educational delivery.
+                </p>
+              </div>
+            </article>
+
+          </div>
         </div>
-      </div>
+      </section>
+
+      <section class="wf-shell wf-platform-shell">
+        <div class="wf-title"><h2>A professional learning platform for teachers</h2></div>
+        <div class="wf-outline wf-platform-sub">Structured certification tracks, marketplace-ready profiles, and classroom-first skill building, wrapped in a Coursera-style experience.</div>
+        <div class="wf-mini-grid">
+          <div class="wf-mini-card"><div class="icon">🏅</div><div class="wf-mini-pill">Certification Tracks</div><p>STEAM ONE, TWO, THREE—progress from foundation to advanced AI-integrated teaching.</p></div>
+          <div class="wf-mini-card"><div class="icon">🧑‍🏫</div><div class="wf-mini-pill">Verified Teacher Marketplace</div><p>Publish profiles, accept contact requests, and connect with schools and recruiters.</p></div>
+          <div class="wf-mini-card"><div class="icon">📊</div><div class="wf-mini-pill">Dashboard Experience</div><p>Separate dashboards for Teachers, Facilitators, and Admin—role-based by design.</p></div>
+        </div>
+      </section>
+
+
+
+      <section class="wf-shell wf-team-shell">
+        <div class="wf-title"><h2>Education standards and classroom excellence</h2></div>
+        <div class="wf-outline wf-team-intro">Explore four professional education areas that support digital transformation, teaching quality, teacher competency, and international learning impact.</div>
+        <div class="wf-team-grid">
+          <div class="wf-team-item">
+            <a class="wf-oval" href="https://www.microsoft.com/en-us/education" target="_blank" rel="noopener noreferrer"><img src="images/microsoft.png" alt="Microsoft Education classroom"></a>
+            <div class="wf-tag">Microsoft Education</div>
+            <div class="wf-copy">Microsoft Education provides professional teaching and digital learning support for modern classrooms by helping educators combine strong pedagogy with powerful technology tools.</div>
+          </div>
+          <div class="wf-team-item">
+            <a class="wf-oval" href="https://iste.org/standards" target="_blank" rel="noopener noreferrer"><img src="images/iste.png" alt="ISTE Education training"></a>
+            <div class="wf-tag">ISTE Education</div>
+            <div class="wf-copy">ISTE Education promotes standards-based digital teaching practice for educators and facilitators who want to use technology in ways that truly improve learning.</div>
+          </div>
+          <div class="wf-team-item wf-wide">
+            <a class="wf-hex" href="https://www.unesco.org/en/digital-competencies-skills/ict-cft" target="_blank" rel="noopener noreferrer"><img src="images/unesco.png" alt="UNESCO ICT CFT education program"></a>
+            <div class="wf-tag">UNESCO ICT CFT</div>
+            <div class="wf-copy wide">UNESCO ICT CFT, which stands for UNESCO Information and Communication Technology Competency Framework for Teachers, supports teacher competency development through structured ICT integration.</div>
+          </div>
+          <div class="wf-team-item">
+            <a class="wf-oval" href="https://trcn.gov.ng/" target="_blank" rel="noopener noreferrer"><img src="images/trcn.png" alt="TRCN Nigeria teacher registration and professional standards"></a>
+            <div class="wf-tag">TRCN Nigeria</div>
+            <div class="wf-copy">TRCN, the Teachers Registration Council of Nigeria, supports teacher professionalism, registration, certification, and licensing while promoting strong teaching standards and professional growth across the education sector.</div>
+          </div>
+          <div class="wf-team-item">
+            <a class="wf-oval" href="https://www.oecd.org/en/about/programmes/pisa.html" target="_blank" rel="noopener noreferrer"><img src="images/pisa.png" alt="PISA education excellence"></a>
+            <div class="wf-tag">PISA Education</div>
+            <div class="wf-copy">PISA Education represents international classroom quality, assessment readiness, and learner impact by focusing on how well students can apply knowledge in practical and real-life situations.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="wf-shell wf-collab-shell">
+        <div class="wf-collab-head"><span class="wf-collab-chip">Professional Partnership</span></div>
+        <div class="wf-title"><h3>TRCN and STEAM Teachers Collaboration</h3></div>
+        <div class="wf-collab-logo"><img src="images/collaboration.png" alt="TRCN and STEAM Teachers Collaboration"></div>
+        <div class="wf-collab-text">For over three years, STEAM Teachers has maintained a meaningful professional collaboration with the Teachers Registration Council of Nigeria (TRCN) in support of teacher development, stronger instructional practice, and improved educational standards. This relationship reflects a shared commitment to building educators who are professionally prepared, digitally confident, and equipped for the realities of modern classroom teaching. Through this collaboration, STEAM Teachers continues to promote structured professional learning, practical classroom innovation, and training opportunities that strengthen teaching quality across schools and institutions. Our engagement with TRCN represents a sustained effort to encourage teacher excellence, support professional ethics, and advance education through continuous capacity building. It also reflects our commitment to empowering teachers with relevant skills, modern teaching approaches, and long-term professional growth that positively influence learners, schools, and the wider education community across Nigeria and beyond.</div>
+      </section>
     </div>
   </div>
 </section>
-    </section>
-  </section>
 
-  </section>
 
     <section class="page" id="page-steam-one">
       <section class="programHero">
@@ -6262,7 +6192,7 @@ Submitted At: ${requestRecord.submittedAt}`,
       <article class="contactInfoCard">
         <div class="contactInfoIcon">🏢</div>
         <h4>Office Address</h4>
-        <p>Main office and contact location for Oyo Tech Up and STEAM Teachers platform support.</p>
+        <p>Main office and contact location for Oyo Tech Hub and STEAM Teachers platform support.</p>
         <span>Kasali Elesan Building, Momoh Memorial Hospital Junction,<br>KM 45, Idi Ope, Oyo 110011, Oyo, Nigeria</span>
       </article>
 
